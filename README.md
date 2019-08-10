@@ -1,0 +1,2 @@
+# SIA
+Strong Artificial Intelligence
