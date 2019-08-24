@@ -1,5 +1,6 @@
 import unittest
 import SAIEyes
+import SAIEnergy
 import docker
 
 
@@ -65,6 +66,40 @@ class TestCoreFunctions(unittest.TestCase):
         # for image in client.images.list():
         #    print(image.id)
         # print(client.containers.run("ubuntu", "echo hello world"))
+
+    def test_cpu(self):
+        # !/usr/bin/env python
+        import psutil
+        # gives a single float value
+        print("psutil.cpu_percent()", psutil.cpu_percent())
+        # gives an object with many fields
+        print("psutil.virtual_memory().percent ", psutil.virtual_memory().percent)
+        # you can convert that object to a dictionary
+        #print(dict(psutil.virtual_memory()._asdict()))
+        print("psutil.swap_memory().percent ", psutil.swap_memory().percent)
+        # battery
+        print("psutil.sensors_battery().percent ", psutil.sensors_battery().percent)
+        # temperature
+        #print("psutil.sensors_temperatures() ",  psutil.sensors_temperatures())
+        print(psutil.__version__)
+
+    def test_temp(self):
+        import wmi
+        w = wmi.WMI(namespace="root\OpenHardwareMonitor")
+        temperature_infos = w.Sensor()
+        for sensor in temperature_infos:
+            if sensor.SensorType == u'Temperature':
+                print(sensor.Name)
+                print(sensor.Value)
+
+    def test_RAM_percent(self):
+        saie = SAIEnergy.SAIEnergy()
+        print(saie.get_current_RAM_percent())
+
+    def test_is_RAM_almost_available(self):
+        saie = SAIEnergy.SAIEnergy()
+        assert(not saie.is_RAM_almost_full())
+
 
 
 if __name__ == '__main__':
