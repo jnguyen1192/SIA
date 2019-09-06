@@ -1,7 +1,7 @@
 import unittest
-import SAIEyes
-import SAIEnergy
 import docker
+import SpeedTest
+import SAIEyes
 
 
 class TestCoreFunctions(unittest.TestCase):
@@ -9,6 +9,15 @@ class TestCoreFunctions(unittest.TestCase):
         res = 0
         pred = 0
         assert (pred == res)
+
+    def test_code_profiling(self):
+
+        st = SpeedTest.SpeedTest()
+
+        def t_s():
+            se = SAIEyes.SAIEyes()
+            se.get_current_screen()
+        print(st.test_speed(t_s))
 
     def test_docker_ubuntu(self):
         client = docker.from_env()
