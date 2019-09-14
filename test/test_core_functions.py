@@ -1,5 +1,7 @@
 import unittest
+
 import docker
+import os
 import SpeedTest
 import SAIEyes
 
@@ -20,10 +22,20 @@ class TestCoreFunctions(unittest.TestCase):
     def test_docker_ubuntu(self):
         client = docker.from_env()
         print(client.containers.run("ubuntu", "echo hello world"))
-        # client.images.pull('ubuntu')
-        # for image in client.images.list():
-        #    print(image.id)
-        # print(client.containers.run("ubuntu", "echo hello world"))
+
+    def test_docker_dockerfile(self):
+        client = docker.from_env()
+
+        img = client.images.build(path=os.getcwd())
+        print(img)
+        from pprint import pprint
+        client.images.prune(filters={'dangling': False})
+        pprint(client.images.list())
+        from datetime import datetime
+
+        client.containers.prune(filters={'until': datetime.timestamp(datetime.now())})
+        pprint(client.containers.list(all=True))
+        pprint(client.containers.list())
 
 
     def test_temp(self):
