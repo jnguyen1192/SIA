@@ -11,9 +11,7 @@ class TestCoreFunctions(unittest.TestCase):
         assert (pred == res)
 
     def test_code_profiling(self):
-
         st = SpeedTest.SpeedTest()
-
         def t_s():
             se = SAIEyes.SAIEyes()
             se.get_current_screen()
@@ -21,7 +19,7 @@ class TestCoreFunctions(unittest.TestCase):
 
     def test_docker_ubuntu(self):
         client = docker.from_env()
-        print(client)
+        print(client.containers.run("ubuntu", "echo hello world"))
         # client.images.pull('ubuntu')
         # for image in client.images.list():
         #    print(image.id)
