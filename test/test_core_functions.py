@@ -27,16 +27,17 @@ class TestCoreFunctions(unittest.TestCase):
         client = docker.from_env()
 
         img = client.images.build(path=os.getcwd())
+
+
         print(img)
         from pprint import pprint
         client.images.prune(filters={'dangling': False})
         pprint(client.images.list())
         from datetime import datetime
-
         client.containers.prune(filters={'until': datetime.timestamp(datetime.now())})
         pprint(client.containers.list(all=True))
-        pprint(client.containers.list())
 
+        pprint(client.containers.list())
 
     def test_temp(self):
         import wmi
