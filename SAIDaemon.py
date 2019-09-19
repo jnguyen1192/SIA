@@ -11,7 +11,21 @@ class SAIDaemon:
         try:
             client = docker.from_env()
             img = client.images.build(path=os.getcwd(), tag="sai_daemon")
-            print(client.containers.run("sai_daemon").decode('utf8'))
+
+            from docker.utils import kwargs_from_env
+            kwargs = kwargs_from_env()
+            # @source : https://github.com/qazbnm456/tsaotun/blob/master/tsaotun/lib/docker_client.py
+            api_client = docker.APIClient(**kwargs)
+            print(api_client.version())
+
+            print(os.getcwd())
+            """
+            print(api_client.create_container(image="sai_daemon", host_config=api_client.create_host_config(binds=[
+                    os.getcwd() + ':/code/',
+                ])).decode('utf8'))
+            """
+
+            #print(client.containers.run("sai_daemon").decode('utf8'))
             #print(img)
 
         except Exception as e:

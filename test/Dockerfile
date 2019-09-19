@@ -21,4 +21,4 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 # TODO Launch unit tests
 
 
-CMD echo hello world !
+CMD sleep 7200
