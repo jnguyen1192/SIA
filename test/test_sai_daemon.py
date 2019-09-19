@@ -8,6 +8,9 @@ class TestSAIDaemon(unittest.TestCase):
         self.said = SAIDaemon.SAIDaemon()
 
     def test_SAIDaemon_build(self):
+        assert (self.said.build('C:\\Users\\johdu\\PycharmProjects\\SAI') == 0)
+
+    def test_SAIDaemon_build_test(self):
         assert(self.said.build() == 0)
 
     def test_SAIEnergy_hello_world(self):
