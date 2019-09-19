@@ -40,7 +40,7 @@ class SAIDaemon:
             print(client.containers.run(image="sai_daemon",
                                         name="c_sai_daemon",
                                         volumes={"/c/Users/johdu/PycharmProjects/SAI":
-                                                     {'bind': '/code/new_repo', 'mode': 'rw'}
+                                                     {'bind': '/code/', 'mode': 'rw'}
                                                  }).decode('utf8'))
             # create container
             """
