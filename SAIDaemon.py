@@ -16,16 +16,32 @@ class SAIDaemon:
         api_client = None
         try:
             client = docker.from_env()
-            img = client.images.build(path=path_dockerfile, tag="sai_daemon")
+            # TODO only if images changes
+            #img = client.images.build(path=path_dockerfile, tag="sai_daemon")
 
             kwargs = kwargs_from_env()
             # @source : https://github.com/qazbnm456/tsaotun/blob/master/tsaotun/lib/docker_client.py
             api_client = docker.APIClient(**kwargs)
             print(api_client.version())
             print(os.getcwd()[2:])
-
+            print("Docker run ---------->")
+            #/Users/johdu/PycharmProjects/SAI/test
             # run container
-            print(client.containers.run(image="sai_daemon", name="c_sai_daemon", volumes={'/code/': {'bind': os.getcwd()[2:], 'mode': 'rw'}}).decode('utf8'))
+            # TODO stop current c_sai_daemon
+            for c in client.containers.list():
+                if c.__getattribute__("name") == "c_sai_daemon":
+                    api_client.kill("c_sai_daemon")
+            # TODO rm current c_sai_daemon
+            for c in client.containers.list(all=True):
+                if c.__getattribute__("name") == "c_sai_daemon":
+                    api_client.remove_container("c_sai_daemon")
+
+            # volume : src:dest
+            print(client.containers.run(image="sai_daemon",
+                                        name="c_sai_daemon",
+                                        volumes={"/Users/johdu/PycharmProjects/SAI":
+                                                     {'bind': '/code/new_repo', 'mode': 'rw'}
+                                                 }).decode('utf8'))
             # create container
             """
             resp = api_client.create_container(image="sai_daemon", name="container_sai_daemon", host_config=api_client.create_host_config(binds=[
