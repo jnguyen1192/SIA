@@ -35,6 +35,9 @@ class SAIDaemon:
             for c in client.containers.list(all=True):
                 if c.__getattribute__("name") == "c_sai_daemon":
                     api_client.remove_container("c_sai_daemon")
+            # @source : http://www.geo.mtu.edu/geoschem/docs/putty_install.html
+            # @source : https://github.com/asweigart/pyautogui/issues/124
+            # https://github.com/niranjanshr13/Automate_Linux_with_GAssistant probably use or not
 
             # volume : src:dest
             print(client.containers.run(image="sai_daemon",

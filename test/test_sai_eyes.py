@@ -1,6 +1,6 @@
 import unittest
 import SAIEyes
-
+import Xlib
 
 class TestSAIEyes(unittest.TestCase):
     def test_SAIEyes_get_screen(self):
