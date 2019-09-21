@@ -48,6 +48,13 @@ class TestCoreFunctions(unittest.TestCase):
                 print(sensor.Name)
                 print(sensor.Value)
 
+    def test_ip(self):
+        import socket
+        hostname = socket.gethostname()
+        IPAddr = socket.gethostbyname(socket.gethostname())
+        print("Your Computer Name is:" + hostname)
+        print("Your Computer IP Address is:" + IPAddr)
+
 
 if __name__ == '__main__':
     unittest.main()

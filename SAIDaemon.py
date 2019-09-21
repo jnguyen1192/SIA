@@ -1,6 +1,8 @@
 import os
 import docker
+import socket
 import logging
+
 
 from docker.utils import kwargs_from_env
 
@@ -17,7 +19,7 @@ class SAIDaemon:
         try:
             client = docker.from_env()
             # TODO only if images changes
-            #img = client.images.build(path=path_dockerfile, tag="sai_daemon")
+            img = client.images.build(path=path_dockerfile, tag="sai_daemon")
 
             kwargs = kwargs_from_env()
             # @source : https://github.com/qazbnm456/tsaotun/blob/master/tsaotun/lib/docker_client.py
@@ -38,13 +40,16 @@ class SAIDaemon:
             # @source : http://www.geo.mtu.edu/geoschem/docs/putty_install.html
             # @source : https://github.com/asweigart/pyautogui/issues/124
             # https://github.com/niranjanshr13/Automate_Linux_with_GAssistant probably use or not
-
+            IPAddr = socket.gethostbyname(socket.gethostname())
+            environment = {"DISPLAY": IPAddr + ':0.0'}
+            volumes = {"/c/Users/johdu/PycharmProjects/SAI":
+                           {'bind': '/code/', 'mode': 'rw'}
+                       }
             # volume : src:dest
             print(client.containers.run(image="sai_daemon",
                                         name="c_sai_daemon",
-                                        volumes={"/c/Users/johdu/PycharmProjects/SAI":
-                                                     {'bind': '/code/', 'mode': 'rw'}
-                                                 }).decode('utf8'))
+                                        volumes=volumes,
+                                        environment=environment).decode('utf8'))
             # create container
             """
             resp = api_client.create_container(image="sai_daemon", name="container_sai_daemon", host_config=api_client.create_host_config(binds=[

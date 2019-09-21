@@ -13,7 +13,9 @@ RUN apt-get update \
   && ln -s /usr/bin/python3 python \
   && pip3 install --upgrade pip
 
+RUN xhost +
 
+RUN touch ~/.Xauthority
 
 RUN pip3 install --no-cache-dir -r requirements.txt
 
