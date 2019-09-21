@@ -19,7 +19,7 @@ class SAIDaemon:
         try:
             client = docker.from_env()
             # TODO only if images changes
-            img = client.images.build(path=path_dockerfile, tag="sai_daemon")
+            #img = client.images.build(path=path_dockerfile, tag="sai_daemon")
 
             kwargs = kwargs_from_env()
             # @source : https://github.com/qazbnm456/tsaotun/blob/master/tsaotun/lib/docker_client.py
@@ -41,7 +41,10 @@ class SAIDaemon:
             # @source : https://github.com/asweigart/pyautogui/issues/124
             # https://github.com/niranjanshr13/Automate_Linux_with_GAssistant probably use or not
             IPAddr = socket.gethostbyname(socket.gethostname())
-            environment = {"DISPLAY": IPAddr + ':0.0'}
+            print(socket.gethostname(), " with 99, it's a docker tools ip")
+            print(IPAddr)
+            #environment = {"DISPLAY": IPAddr + ':0.0'}
+            environment = {"DISPLAY": '192.168.1.20:0.0'}
             volumes = {"/c/Users/johdu/PycharmProjects/SAI":
                            {'bind': '/code/', 'mode': 'rw'}
                        }
