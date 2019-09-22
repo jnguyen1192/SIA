@@ -40,11 +40,13 @@ class SAIDaemon:
             # @source : http://www.geo.mtu.edu/geoschem/docs/putty_install.html
             # @source : https://github.com/asweigart/pyautogui/issues/124
             # https://github.com/niranjanshr13/Automate_Linux_with_GAssistant probably use or not
-            IPAddr = socket.gethostbyname(socket.gethostname())
-            print(socket.gethostname(), " with 99, it's a docker tools ip")
-            print(IPAddr)
+            # TODO test if the ip is the real ip
+            IPAddr = socket.gethostbyname_ex(socket.gethostname())[-1][-1]  # socket.gethostbyname(socket.gethostname())
+            #print("other ", socket.gethostbyname_ex(socket.gethostname())[-1][-1])
+            #print(socket.gethostname(), " with 99, it's a docker tools ip")
+            print("Is is the real ip ?", IPAddr)
             #environment = {"DISPLAY": IPAddr + ':0.0'}
-            environment = {"DISPLAY": '192.168.1.20:0.0'}
+            environment = {"DISPLAY": '192.168.43.214:0.0'}
             volumes = {"/c/Users/johdu/PycharmProjects/SAI":
                            {'bind': '/code/', 'mode': 'rw'}
                        }
