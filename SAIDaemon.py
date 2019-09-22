@@ -45,6 +45,8 @@ class SAIDaemon:
             #print("other ", socket.gethostbyname_ex(socket.gethostname())[-1][-1])
             #print(socket.gethostname(), " with 99, it's a docker tools ip")
             print("Is is the real ip ?", IPAddr)
+
+
             #environment = {"DISPLAY": IPAddr + ':0.0'}
             environment = {"DISPLAY": '192.168.43.214:0.0'}
             volumes = {"/c/Users/johdu/PycharmProjects/SAI":
