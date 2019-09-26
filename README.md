@@ -3,4 +3,4 @@ Strong Artificial Intelligence
 
 # Draft with a daemon
 
-![draft](/data/Projet SAI.png)
+![draft](data/Projet SAI.png)
