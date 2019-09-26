@@ -2,7 +2,6 @@ import pyautogui
 import os
 from PIL import Image, ImageDraw
 import glob
-import Xlib
 
 import logging
 
@@ -19,12 +18,6 @@ class SAIEyes:
             os.makedirs(os.path.join(os.getcwd(), self.ltm_dir))
         if not os.path.exists(os.path.join(os.getcwd(), self.ctm_dir)):
             os.makedirs(os.path.join(os.getcwd(), self.ctm_dir))
-
-        class g:
-            xDisplay = "192.168.0.20:0.0"
-
-        # This is the magic bit
-        pyautogui.platformModule._display = Xlib.display.Display("192.168.0.20:0.0")
 
         logging.basicConfig(level=level)
 

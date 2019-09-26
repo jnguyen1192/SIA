@@ -48,7 +48,7 @@ class SAIDaemon:
 
 
             #environment = {"DISPLAY": IPAddr + ':0.0'}
-            environment = {"DISPLAY": '192.168.43.214:0.0'}
+            environment = {"DISPLAY": IPAddr + ':0.0'}
             volumes = {"/c/Users/johdu/PycharmProjects/SAI":
                            {'bind': '/code/', 'mode': 'rw'}
                        }
