@@ -24,3 +24,14 @@ class SAIBrain:
         """
         # TODO implement
         pass
+
+    """ Optionnal methods"""
+
+    def is_command_exist(self, command):
+        """
+        It will check if the command looks like another command
+        :return: True if it works else False
+        """
+        # TODO implement
+        pass
+
