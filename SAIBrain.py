@@ -14,24 +14,39 @@ class SAIBrain:
         It will rest and manage the memory
         :return: 0 if it works else -1
         """
-        # TODO implement
-        pass
+        try:
+            # TODO implement
+            return 0
+        except Exception:
+            return -1
 
     def find_new_command(self):
         """
         It will search a new command
         :return: 0 if it works else -1
         """
-        # TODO implement
-        pass
+        try:
+            # TODO implement
+            return 0
+        except Exception:
+            return -1
 
     """ Optionnal methods"""
-
     def is_command_exist(self, command):
         """
         It will check if the command looks like another command
         :return: True if it works else False
         """
         # TODO implement
-        pass
+        return False
 
+    def manage_memory(self):
+        """
+        It will compress every image used to get only interesting data
+        :return: 0 if it works else -1
+        """
+        try:
+            # TODO implement
+            return 0
+        except Exception:
+            return -1
