@@ -9,6 +9,17 @@ class SAIBrain:
         self.nb_best_command = nb_best_command
         self.nb_time_rest_second = nb_time_rest_second
 
+    def create_db(self):
+        """
+        Create the db containing commands
+        :return:
+        """
+        try:
+            # TODO implement
+            return 0
+        except Exception:
+            return -1
+
     def rest(self):
         """
         It will rest and manage the memory
