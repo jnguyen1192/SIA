@@ -9,6 +9,11 @@ class SAIBrain:
         self.nb_best_command = nb_best_command
         self.nb_time_rest_second = nb_time_rest_second
 
+    """
+    
+    Db creation methods
+    
+    """
     def create_db(self):
         """
         Create the db containing commands
