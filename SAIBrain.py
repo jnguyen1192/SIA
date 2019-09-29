@@ -17,6 +17,19 @@ class SAIBrain:
         try:
             # TODO implement
             # TODO create container with database
+
+            return 0
+        except Exception:
+            return -1
+
+    def create_container_db(self):
+        """
+        Create the container db containing commands
+        :return:
+        """
+        try:
+            # TODO build the image
+            # TODO run the container using the previous image with postgres
             return 0
         except Exception:
             return -1
