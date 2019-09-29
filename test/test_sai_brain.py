@@ -5,7 +5,7 @@ import SAIBrain
 class TestSAIBrain(unittest.TestCase):
 
     def setUp(self):
-        self.said = SAIBrain.SAIBrain()
+        self.saib = SAIBrain.SAIBrain()
 
     def test_SAIBrain_create_db_case_ok(self):
         # TODO implement
