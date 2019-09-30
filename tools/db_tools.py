@@ -1,5 +1,7 @@
 import psycopg2
 
+# TODO connect to the database with the correct credentials and refactor
+
 
 # TODO create function to use a query without parameters
 def query_without_parameters(query_without_parameters):
