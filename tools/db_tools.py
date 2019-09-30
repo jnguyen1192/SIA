@@ -36,7 +36,7 @@ def query_without_parameters(query_without_parameters):
 
 
 # TODO create function to use a query with parameters
-def query_wit_parameters(query, parameters):
+def query_with_parameters(query, parameters):
     """
     Create a query on the database without parameters
     :return: 0 if it works else -1
