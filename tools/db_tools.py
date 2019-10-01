@@ -1,5 +1,7 @@
 import psycopg2
 
+# TODO create the container with its credentials
+
 # TODO connect to the database with the correct credentials and refactor
 
 
