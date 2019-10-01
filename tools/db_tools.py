@@ -11,12 +11,16 @@ def run_db():
     """
     try:
         client = docker.from_env()
-        volumes = {"/c/Users/johdu/PycharmProjects/SAI/data_postgres":
+        #@source https://github.com/docker/for-win/issues/445
+        #docker volume create --name postgres-data-volume -d local
+        #volumes = {"/c/Users/johdu/PycharmProjects/SAI/data_postgres":
+        volumes = {"postgres-data-volume":
                        {'bind': '/var/lib/postgresql/data/', 'mode': 'rw'}
                    }
         fo = open("C:/Users/johdu/PycharmProjects/SAI/Dockerfile.postgres", "r")
-        client.images.build(fileobj=fo, tag="postgres", custom_context=True)
-
+        #print("Image building...")
+        #client.images.build(fileobj=fo, tag="postgres", custom_context=True)
+        #print("Image builded")
         kwargs = kwargs_from_env()
         # @source : https://github.com/qazbnm456/tsaotun/blob/master/tsaotun/lib/docker_client.py
         api_client = docker.APIClient(**kwargs)
@@ -29,7 +33,7 @@ def run_db():
             if c.__getattribute__("name") == "c_sai_postgres":
                 api_client.remove_container("c_sai_postgres")
 
-        print(client.containers.run(image="postgres",
+        print(client.containers.run(image="c_sai_postgres",
                                     name="c_sai_postgres",
                                     pid_mode="host",
                                     volumes=volumes).decode('utf8'))
