@@ -6,7 +6,7 @@ class Testdb_tools(unittest.TestCase):
 
     def test_db_tools_run_db_case_ok(self):
         # TODO implement
-        assert (True == True)
+        assert (dbt.run_db() == 0)
 
     def test_db_tools_run_db_case_nok(self):
         # TODO implement

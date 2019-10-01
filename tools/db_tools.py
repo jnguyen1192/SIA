@@ -1,5 +1,6 @@
 import psycopg2
 import docker
+from docker.utils import kwargs_from_env
 
 
 # TODO create the container with its credentials
@@ -13,9 +14,24 @@ def run_db():
         volumes = {"/c/Users/johdu/PycharmProjects/SAI/data_postgres":
                        {'bind': '/var/lib/postgresql/data/', 'mode': 'rw'}
                    }
+        fo = open("C:/Users/johdu/PycharmProjects/SAI/Dockerfile.postgres", "r")
+        client.images.build(fileobj=fo, tag="postgres", custom_context=True)
+
+        kwargs = kwargs_from_env()
+        # @source : https://github.com/qazbnm456/tsaotun/blob/master/tsaotun/lib/docker_client.py
+        api_client = docker.APIClient(**kwargs)
+        # TODO stop current c_sai_daemon
+        for c in client.containers.list():
+            if c.__getattribute__("name") == "c_sai_postgres":
+                api_client.kill("c_sai_postgres")
+        # TODO rm current c_sai_daemon
+        for c in client.containers.list(all=True):
+            if c.__getattribute__("name") == "c_sai_postgres":
+                api_client.remove_container("c_sai_postgres")
 
         print(client.containers.run(image="postgres",
                                     name="c_sai_postgres",
+                                    pid_mode="host",
                                     volumes=volumes).decode('utf8'))
         return 0
     except Exception as e:
