@@ -12,7 +12,8 @@ def run_db():
     try:
         client = docker.from_env()
         #@source https://github.com/docker/for-win/issues/445
-        #docker volume create --name postgres-data-volume -d local
+        #@source https://stackoverflow.com/questions/39496564/docker-volume-custom-mount-point
+        #docker volume create --name postgres-data-volume -d local --opt device="/c/Users/johdu/PycharmProjects/SAI/data_postgres" --opt o=bind
         #volumes = {"/c/Users/johdu/PycharmProjects/SAI/data_postgres":
         volumes = {"postgres-data-volume":
                        {'bind': '/var/lib/postgresql/data/', 'mode': 'rw'}
