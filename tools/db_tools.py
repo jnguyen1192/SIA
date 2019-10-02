@@ -32,11 +32,10 @@ def run_db():
         for c in client.containers.list(all=True):
             if c.__getattribute__("name") == "c_sai_postgres":
                 api_client.remove_container("c_sai_postgres")
-
+        print("Before postgres run")
         print(client.containers.run(image="c_sai_postgres",
-                                    name="c_sai_postgres",
-                                    pid_mode="host",
-                                    volumes=volumes).decode('utf8'))
+                                    name="c_sai_postgres").decode('utf8'))
+        print("after postgres run")
         return 0
     except Exception as e:
         print(e)
