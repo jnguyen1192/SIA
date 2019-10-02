@@ -13,8 +13,8 @@ def run_db():
         client = docker.from_env()
         #@source https://github.com/docker/for-win/issues/445
         #docker volume create --name postgres-data-volume -d local
-        volumes = {"/c/Users/johdu/PycharmProjects/SAI/data_postgres":
-        #volumes = {"postgres-data-volume":
+        #volumes = {"/c/Users/johdu/PycharmProjects/SAI/data_postgres":
+        volumes = {"postgres-data-volume":
                        {'bind': '/var/lib/postgresql/data/', 'mode': 'rw'}
                    }
         fo = open("C:/Users/johdu/PycharmProjects/SAI/Dockerfile.postgres", "r")
