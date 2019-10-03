@@ -14,6 +14,7 @@ def run_db():
         #@source https://github.com/docker/for-win/issues/445
         #docker volume create --name postgres-data-volume -d local
         #volumes = {"/c/Users/johdu/PycharmProjects/SAI/data_postgres":
+        # shared folder on oracle vm : C:\Users\johdu\PycharmProjects\SAI\data_postgres:/mnt/sda1/var/lib/docker/volumes/postgres-data-volume/_data
         volumes = {"postgres-data-volume":
                        {'bind': '/var/lib/postgresql/data/', 'mode': 'rw'}
                    }
