@@ -13,6 +13,7 @@ def run_db():
         client = docker.from_env()
         #@source https://github.com/docker/for-win/issues/445
         #@source https://stackoverflow.com/questions/39496564/docker-volume-custom-mount-point
+        #docker volume create --name postgres-data-volume -d local
         #docker volume create --name postgres-data-volume -d local --opt device="/c/Users/johdu/PycharmProjects/SAI/data_postgres" --opt o=bind
         #volumes = {"/c/Users/johdu/PycharmProjects/SAI/data_postgres":
         volumes = {"postgres-data-volume":
@@ -37,7 +38,8 @@ def run_db():
         container = client.containers.run(image="c_sai_postgres",
                                     name="c_sai_postgres",
                                     pid_mode="host",
-                                    volumes=volumes)
+                                    volumes=volumes,
+                                    detach=True)
 
         print(container.logs().decode('utf8'))
         print("after postgres run")
