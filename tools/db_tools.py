@@ -18,6 +18,9 @@ def run_db(port=5432):
         volumes = {"postgres-data-volume":
                        {'bind': '/var/lib/postgresql/data/', 'mode': 'rw'}
                    }
+        ports = {'5432/tcp': port}
+        environment = ["POSTGRES_USER=postgres",
+                       "POSTGRES_PASSWORD=postgres"]
         fo = open("C:/Users/johdu/PycharmProjects/SAI/Dockerfile.postgres", "r")
         #print("Image building...")
         #client.images.build(fileobj=fo, tag="postgres", custom_context=True)
@@ -35,11 +38,13 @@ def run_db(port=5432):
                 api_client.remove_container("c_sai_postgres")
         #print("Before postgres run")
         # to test pg database https://www.enterprisedb.com/download-postgresql-binaries
+        # to connect to the database enter the ip of docker
         container = client.containers.run(image="c_sai_postgres",
                                     name="c_sai_postgres",
                                     pid_mode="host",
                                     volumes=volumes,
-                                    ports={'5432/tcp': port},
+                                    ports=ports,
+                                    environment=environment,
                                     detach=True)
 
         print(container.logs().decode('utf8'))
