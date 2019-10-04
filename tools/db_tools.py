@@ -33,7 +33,7 @@ def run_db(port=5432):
         for c in client.containers.list(all=True):
             if c.__getattribute__("name") == "c_sai_postgres":
                 api_client.remove_container("c_sai_postgres")
-        print("Before postgres run")
+        #print("Before postgres run")
         # to test pg database https://www.enterprisedb.com/download-postgresql-binaries
         container = client.containers.run(image="c_sai_postgres",
                                     name="c_sai_postgres",
