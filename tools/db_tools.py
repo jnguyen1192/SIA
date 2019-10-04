@@ -4,7 +4,7 @@ from docker.utils import kwargs_from_env
 
 
 # TODO create the container with its credentials
-def run_db():
+def run_db(port=5432):
     """
     Create the postgres container and run it
     :return: 0 if it works else -1
@@ -34,10 +34,12 @@ def run_db():
             if c.__getattribute__("name") == "c_sai_postgres":
                 api_client.remove_container("c_sai_postgres")
         print("Before postgres run")
+        # to test pg database https://www.enterprisedb.com/download-postgresql-binaries
         container = client.containers.run(image="c_sai_postgres",
                                     name="c_sai_postgres",
                                     pid_mode="host",
                                     volumes=volumes,
+                                    ports={'5432/tcp': port},
                                     detach=True)
 
         print(container.logs().decode('utf8'))
