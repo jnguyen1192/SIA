@@ -19,11 +19,12 @@ def run_db(port=5432):
                        {'bind': '/var/lib/postgresql/data/', 'mode': 'rw'}
                    }
         ports = {'5432/tcp': port}
-        environment = ["POSTGRES_USER=postgres",
+        environment = ["POSTGRES_USER=root",
                        "POSTGRES_PASSWORD=postgres"]
         fo = open("C:/Users/johdu/PycharmProjects/SAI/Dockerfile.postgres", "r")
+        # docker build -f Dockerfile.postgres c_sai_postgres
+        #client.images.build(fileobj=fo, tag="c_sai_postgres", custom_context=True)
         #print("Image building...")
-        #client.images.build(fileobj=fo, tag="postgres", custom_context=True)
         #print("Image builded")
         kwargs = kwargs_from_env()
         # @source : https://github.com/qazbnm456/tsaotun/blob/master/tsaotun/lib/docker_client.py
