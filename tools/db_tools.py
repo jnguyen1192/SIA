@@ -19,7 +19,8 @@ def run_db(port=5432):
                        {'bind': '/var/lib/postgresql/data/', 'mode': 'rw'}
                    }
         ports = {'5432/tcp': port}
-        environment = ["POSTGRES_USER=root",
+        environment = ["POSTGRES_DB=postgres",
+                       "POSTGRES_USER=postgres",
                        "POSTGRES_PASSWORD=postgres"]
         fo = open("C:/Users/johdu/PycharmProjects/SAI/Dockerfile.postgres", "r")
         # docker build -f Dockerfile.postgres c_sai_postgres
@@ -43,7 +44,7 @@ def run_db(port=5432):
         container = client.containers.run(image="c_sai_postgres",
                                     name="c_sai_postgres",
                                     pid_mode="host",
-                                    volumes=volumes,
+                                    #volumes=volumes,
                                     ports=ports,
                                     environment=environment,
                                     detach=True)
