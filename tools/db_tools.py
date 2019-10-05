@@ -23,7 +23,7 @@ def run_db(port=5432):
                        "POSTGRES_USER=postgres",
                        "POSTGRES_PASSWORD=postgres"]
         fo = open("C:/Users/johdu/PycharmProjects/SAI/Dockerfile.postgres", "r")
-        # docker build -f Dockerfile.postgres c_sai_postgres
+        # docker build -f Dockerfile.postgres . -t c_sai_postgres
         #client.images.build(fileobj=fo, tag="c_sai_postgres", custom_context=True)
         #print("Image building...")
         #print("Image builded")
