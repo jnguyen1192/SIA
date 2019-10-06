@@ -48,9 +48,9 @@ def run_db(port=5432):
                                     ports=ports,
                                     environment=environment,
                                     detach=True)
-
-        print(container.logs().decode('utf8'))
-        print("after postgres run")
+        # TODO debug log here
+        #print(container.logs().decode('utf8'))
+        #print("after postgres run")
         return 0
     except Exception as e:
         print(e)
