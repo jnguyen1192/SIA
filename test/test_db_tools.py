@@ -8,7 +8,10 @@ from docker.utils import kwargs_from_env
 class Testdb_tools(unittest.TestCase):
 
     def test_db_tools_run_db_case_ok(self):
-        # TODO implement
+        """
+        Test if the database is running
+        :return:
+        """
         res = -1
         try:
             res = dbt.run_db()
@@ -17,6 +20,7 @@ class Testdb_tools(unittest.TestCase):
             kwargs = kwargs_from_env()
             api_client = docker.APIClient(**kwargs)
             # TODO stop current c_sai_daemon
+            # TODO test the connection
             #for c in client.containers.list():
             #    if c.__getattribute__("name") == "c_sai_postgres":
             #        api_client.kill("c_sai_postgres")
@@ -26,6 +30,7 @@ class Testdb_tools(unittest.TestCase):
             #        api_client.remove_container("c_sai_postgres")
         except Exception as e:
             print(e)
+            res = -1
 
         assert (res==0)
 
