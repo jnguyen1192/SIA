@@ -8,6 +8,14 @@ from docker.utils import kwargs_from_env
 
 class Testdb_tools(unittest.TestCase):
 
+    def setUp(self):
+        # TODO implement db launch
+        pass
+
+    def tearDown(self):
+        # TODO implement db stop
+        pass
+
     def test_db_tools_run_db_case_ok(self):
         """
         Test if the database is running
