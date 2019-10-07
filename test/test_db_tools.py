@@ -1,5 +1,6 @@
 import unittest
 import tools.db_tools as dbt
+import tools.sql_queries as sqt
 
 import docker
 from docker.utils import kwargs_from_env
@@ -39,8 +40,9 @@ class Testdb_tools(unittest.TestCase):
         Test if all the tables are created
         :return:
         """
-
-
+        tables_name = ['Strategie', 'Action', 'Has_action']
+        for name in tables_name:
+            assert(dbt.select_one_with_parameters(sqt.IS_TABLE_EXISTS, (name, )))
 
     def test_db_tools_run_db_case_nok(self):
         # TODO implement

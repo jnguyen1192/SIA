@@ -1,7 +1,7 @@
 import psycopg2
 import docker
 from docker.utils import kwargs_from_env
-
+import tools.sql_queries
 
 # TODO create the container with its credentials
 def run_db(port=5432):
@@ -102,13 +102,13 @@ def query_with_parameters(query, parameters):
     cursor = ""
     try:
         connection = psycopg2.connect(user="postgres",
-                                      password="pass@#29",
-                                      host="127.0.0.1",
+                                      password="postgres",
+                                      host="192.168.99.100",
                                       port="5432",
-                                      database="postgres_db")
+                                      database="postgres")
         cursor = connection.cursor()
-
-
+        print(query)
+        print(parameters)
         cursor.execute(query, parameters)
         connection.commit()
         print("Query with parameters executed successfully in PostgreSQL ")
@@ -122,3 +122,34 @@ def query_with_parameters(query, parameters):
             cursor.close()
             connection.close()
             print("PostgreSQL connection is closed")
+
+
+def select_one_with_parameters(query, parameters):
+    """
+    Select one result on the database with parameters
+    :return: 0 if it works else -1
+    """
+    connection = ""
+    cursor = ""
+    try:
+        connection = psycopg2.connect(user="postgres",
+                                      password="postgres",
+                                      host="192.168.99.100",
+                                      port="5432",
+                                      database="postgres")
+        cursor = connection.cursor()
+        #print(query)
+        #print(parameters)
+        cursor.execute(query, parameters)
+        res = cursor.fetchone()
+        #print("Query with parameters executed successfully in PostgreSQL ")
+        return res[0]
+    except (Exception, psycopg2.DatabaseError) as error:
+        print("Error while executing query with parameters in PostgreSQL", error)
+        return -1
+    finally:
+        # closing database connection.
+        if connection:
+            cursor.close()
+            connection.close()
+            #print("PostgreSQL connection is closed")
