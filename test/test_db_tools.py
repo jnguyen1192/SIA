@@ -34,6 +34,14 @@ class Testdb_tools(unittest.TestCase):
 
         assert (res==0)
 
+    def test_db_tools_all_tables_created(self):
+        """
+        Test if all the tables are created
+        :return:
+        """
+
+
+
     def test_db_tools_run_db_case_nok(self):
         # TODO implement
         assert (False == False)
