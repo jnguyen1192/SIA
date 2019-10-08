@@ -12,6 +12,7 @@ class Testdb_tools(unittest.TestCase):
     # @source:http://stezz.blogspot.com/2011/04/calling-only-once-setup-in-unittest-in.html
     ClassIsSetup = False
     ClassIsTeardown = 1
+    # TODO automaticly count the number of unittest
     ClassIsTeardownTotal = 6 # nb total of unittest
 
     def setUp(self):
