@@ -2,13 +2,9 @@ import psycopg2
 import docker
 import time
 
-from docker.utils import kwargs_from_env
-import tools.sql_queries
-
 import tools.docker_tools as dtt
 
 
-# TODO create the container with its credentials
 def run_db(port=5432):
     """
     Create the postgres container and run it
@@ -55,7 +51,6 @@ def run_db(port=5432):
         return -1
 
 
-# TODO Wait database connection
 def wait_db_connection(nb_retry=10, time_sleep=60):
     """
     Wait the database connection
@@ -73,6 +68,7 @@ def wait_db_connection(nb_retry=10, time_sleep=60):
             return 0
         except Exception as e:
             #print(e)
+            # TODO print all the functions called before
             print("I wait", time_sleep, "seconds until try again,", nb_retry - i - 1, "remaining test cycle")
             time.sleep(time_sleep)
             i = i + 1

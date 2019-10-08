@@ -3,11 +3,8 @@ import tools.db_tools as dbt
 import tools.sql_queries as sqt
 import tools.docker_tools as dtt
 
-import docker
-from docker.utils import kwargs_from_env
 
-
-class Testdb_tools(unittest.TestCase):
+class TestDb_tools(unittest.TestCase):
 
     # @source:http://stezz.blogspot.com/2011/04/calling-only-once-setup-in-unittest-in.html
     ClassIsSetup = False
