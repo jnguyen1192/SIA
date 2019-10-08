@@ -3,6 +3,7 @@ import docker
 from docker.utils import kwargs_from_env
 import tools.sql_queries
 
+
 # TODO create the container with its credentials
 def run_db(port=5432):
     """
@@ -30,6 +31,8 @@ def run_db(port=5432):
         kwargs = kwargs_from_env()
         # @source : https://github.com/qazbnm456/tsaotun/blob/master/tsaotun/lib/docker_client.py
         api_client = docker.APIClient(**kwargs)
+
+        ########################################################################
         # TODO refactor restart a container
         # TODO stop current c_sai_daemon
         for c in client.containers.list():
@@ -39,6 +42,7 @@ def run_db(port=5432):
         for c in client.containers.list(all=True):
             if c.__getattribute__("name") == "c_sai_postgres":
                 api_client.remove_container("c_sai_postgres")
+        ########################################################################
         #print("Before postgres run")
         # to test pg database https://www.enterprisedb.com/download-postgresql-binaries
         # to connect to the database enter the ip of docker

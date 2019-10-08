@@ -1,6 +1,7 @@
 import unittest
 import tools.db_tools as dbt
 import tools.sql_queries as sqt
+import tools.docker_tools as dtt
 
 import docker
 from docker.utils import kwargs_from_env
@@ -9,39 +10,18 @@ from docker.utils import kwargs_from_env
 class Testdb_tools(unittest.TestCase):
 
     def setUp(self):
-        # TODO implement db launch
-        pass
-
-    def tearDown(self):
-        # TODO implement db stop
-        pass
-
-    def test_db_tools_run_db_case_ok(self):
-        """
-        Test if the database is running
-        :return:
-        """
+        # run db container
         res = -1
         try:
             res = dbt.run_db()
-
-            client = docker.from_env()
-            kwargs = kwargs_from_env()
-            api_client = docker.APIClient(**kwargs)
-            # TODO stop current c_sai_daemon
-            # TODO test the connection
-            #for c in client.containers.list():
-            #    if c.__getattribute__("name") == "c_sai_postgres":
-            #        api_client.kill("c_sai_postgres")
-            # TODO rm current c_sai_daemon
-            #for c in client.containers.list(all=True):
-            #    if c.__getattribute__("name") == "c_sai_postgres":
-            #        api_client.remove_container("c_sai_postgres")
         except Exception as e:
             print(e)
             res = -1
+        assert (res == 0)
 
-        assert (res==0)
+    def tearDown(self):
+        # stop and remove db container
+        dtt.clean_container("c_sai_daemon")
 
     def test_db_tools_all_tables_created(self):
         """
