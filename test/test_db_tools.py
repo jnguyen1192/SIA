@@ -18,6 +18,7 @@ class Testdb_tools(unittest.TestCase):
             print(e)
             res = -1
         # todo wait database connection
+
         assert (res == 0)
 
     def tearDown(self):

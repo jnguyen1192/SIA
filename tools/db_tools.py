@@ -61,6 +61,9 @@ def run_db(port=5432):
         print(e)
         return -1
 
+# TODO Wait database connection
+
+
 # TODO connect to the database with the correct credentials and refactor
 
 
