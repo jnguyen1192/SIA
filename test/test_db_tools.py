@@ -11,22 +11,18 @@ class Testdb_tools(unittest.TestCase):
 
     def setUp(self):
         # run db container
-        res = -1
         try:
             res = dbt.run_db()
         except Exception as e:
             print(e)
             res = -1
-        # todo wait database connection
+        # wait database connection
         dbt.wait_db_connection()
         assert (res == 0)
 
     def tearDown(self):
         # stop and remove db container
-        client = docker.from_env()
-        kwargs = kwargs_from_env()
-        api_client = docker.APIClient(**kwargs)
-        dtt.clean_container(client, api_client, "c_sai_postgres")
+        dtt.clean_container("c_sai_postgres")
 
     def test_db_tools_all_tables_created(self):
         """

@@ -36,7 +36,7 @@ def run_db(port=5432):
         # @source : https://github.com/qazbnm456/tsaotun/blob/master/tsaotun/lib/docker_client.py
         api_client = docker.APIClient(**kwargs)
         # restart a container
-        dtt.clean_container(client, api_client, "c_sai_postgres")
+        dtt.clean_container("c_sai_postgres")
 
         # to test pg database https://www.enterprisedb.com/download-postgresql-binaries
         # to connect to the database enter the ip of docker
@@ -57,15 +57,14 @@ def run_db(port=5432):
 
 
 # TODO Wait database connection
-def wait_db_connection(nb_retry=10, time_sleep=10):
+def wait_db_connection(nb_retry=10, time_sleep=60):
     """
     Wait the database connection
     :return: 0 if it works else -1
     """
-    i = nb_retry
+    i = 0
     while i < nb_retry:
         try:
-            print("Try connexion worked")
             psycopg2.connect(user="postgres",
                               password="postgres",
                               host="192.168.99.100",
@@ -74,7 +73,8 @@ def wait_db_connection(nb_retry=10, time_sleep=10):
             print("Connexion worked")
             return 0
         except Exception as e:
-            print(e)
+            #print(e)
+            print("I wait", time_sleep, "seconds until try again,", nb_retry - i - 1, "remaining test cycle")
             time.sleep(time_sleep)
             i = i + 1
     return -1

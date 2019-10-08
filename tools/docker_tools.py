@@ -2,7 +2,7 @@ import docker
 from docker.utils import kwargs_from_env
 
 
-def clean_container(client, api_client, name):
+def clean_container(name):
     """
     Run the correponding container using the same image and container name
     :param client: the docker client
@@ -10,6 +10,9 @@ def clean_container(client, api_client, name):
     :param name_container: the container name
     :return: 0 if it works else -1
     """
+    client = docker.from_env()
+    kwargs = kwargs_from_env()
+    api_client = docker.APIClient(**kwargs)
     try:
         # TODO stop current c_sai_daemon
         for c in client.containers.list():
