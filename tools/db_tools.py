@@ -14,8 +14,8 @@ def run_db(port=5432):
     Create the postgres container and run it
     :return: 0 if it works else -1
     """
+    client = docker.from_env()
     try:
-        client = docker.from_env()
         #@source https://github.com/docker/for-win/issues/445
         #docker volume create --name postgres-data-volume -d local
         #volumes = {"/c/Users/johdu/PycharmProjects/SAI/data_postgres":
@@ -32,9 +32,6 @@ def run_db(port=5432):
         #client.images.build(fileobj=fo, tag="c_sai_postgres", custom_context=True)
         #print("Image building...")
         #print("Image builded")
-        kwargs = kwargs_from_env()
-        # @source : https://github.com/qazbnm456/tsaotun/blob/master/tsaotun/lib/docker_client.py
-        api_client = docker.APIClient(**kwargs)
         # restart a container
         dtt.clean_container("c_sai_postgres")
 
@@ -50,9 +47,11 @@ def run_db(port=5432):
         # TODO debug log here
         #print(container.logs().decode('utf8'))
         #print("after postgres run")
+        client.close()
         return 0
     except Exception as e:
         print(e)
+        client.close()
         return -1
 
 

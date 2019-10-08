@@ -9,20 +9,30 @@ from docker.utils import kwargs_from_env
 
 class Testdb_tools(unittest.TestCase):
 
+    # @source:http://stezz.blogspot.com/2011/04/calling-only-once-setup-in-unittest-in.html
+    ClassIsSetup = False
+    ClassIsTeardown = 1
+    ClassIsTeardownTotal = 6 # nb total of unittest
+
     def setUp(self):
-        # run db container
-        try:
-            res = dbt.run_db()
-        except Exception as e:
-            print(e)
-            res = -1
-        # wait database connection
-        dbt.wait_db_connection()
-        assert (res == 0)
+        if not self.ClassIsSetup:
+            # run db container
+            try:
+                res = dbt.run_db()
+            except Exception as e:
+                print(e)
+                res = -1
+            # wait database connection
+            dbt.wait_db_connection()
+            assert (res == 0)
+            self.__class__.ClassIsSetup = True
 
     def tearDown(self):
-        # stop and remove db container
-        dtt.clean_container("c_sai_postgres")
+        if self.ClassIsTeardown == self.ClassIsTeardownTotal:  # the number of test case
+            # stop and remove db container
+            dtt.clean_container("c_sai_postgres")
+        else:
+            self.__class__.ClassIsTeardown = self.ClassIsTeardown + 1
 
     def test_db_tools_all_tables_created(self):
         """

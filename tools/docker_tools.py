@@ -22,8 +22,12 @@ def clean_container(name):
         for c in client.containers.list(all=True):
             if c.__getattribute__("name") == name:#"c_sai_postgres":
                 api_client.remove_container(name)#"c_sai_postgres")
+        client.close()
+        api_client.close()
         return 0
     except Exception as e:
         print(e)
+        client.close()
+        api_client.close()
         return -1
 
