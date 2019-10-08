@@ -18,12 +18,15 @@ class Testdb_tools(unittest.TestCase):
             print(e)
             res = -1
         # todo wait database connection
-
+        dbt.wait_db_connection()
         assert (res == 0)
 
     def tearDown(self):
         # stop and remove db container
-        dtt.clean_container("c_sai_daemon")
+        client = docker.from_env()
+        kwargs = kwargs_from_env()
+        api_client = docker.APIClient(**kwargs)
+        dtt.clean_container(client, api_client, "c_sai_postgres")
 
     def test_db_tools_all_tables_created(self):
         """

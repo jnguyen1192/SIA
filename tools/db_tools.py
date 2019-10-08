@@ -1,7 +1,11 @@
 import psycopg2
 import docker
+import time
+
 from docker.utils import kwargs_from_env
 import tools.sql_queries
+
+import tools.docker_tools as dtt
 
 
 # TODO create the container with its credentials
@@ -31,19 +35,9 @@ def run_db(port=5432):
         kwargs = kwargs_from_env()
         # @source : https://github.com/qazbnm456/tsaotun/blob/master/tsaotun/lib/docker_client.py
         api_client = docker.APIClient(**kwargs)
+        # restart a container
+        dtt.clean_container(client, api_client, "c_sai_postgres")
 
-        ########################################################################
-        # TODO refactor restart a container
-        # TODO stop current c_sai_daemon
-        for c in client.containers.list():
-            if c.__getattribute__("name") == "c_sai_postgres":
-                api_client.kill("c_sai_postgres")
-        # TODO rm current c_sai_daemon
-        for c in client.containers.list(all=True):
-            if c.__getattribute__("name") == "c_sai_postgres":
-                api_client.remove_container("c_sai_postgres")
-        ########################################################################
-        #print("Before postgres run")
         # to test pg database https://www.enterprisedb.com/download-postgresql-binaries
         # to connect to the database enter the ip of docker
         container = client.containers.run(image="c_sai_postgres",
@@ -61,7 +55,29 @@ def run_db(port=5432):
         print(e)
         return -1
 
+
 # TODO Wait database connection
+def wait_db_connection(nb_retry=10, time_sleep=10):
+    """
+    Wait the database connection
+    :return: 0 if it works else -1
+    """
+    i = nb_retry
+    while i < nb_retry:
+        try:
+            print("Try connexion worked")
+            psycopg2.connect(user="postgres",
+                              password="postgres",
+                              host="192.168.99.100",
+                              port="5432",
+                              database="postgres")
+            print("Connexion worked")
+            return 0
+        except Exception as e:
+            print(e)
+            time.sleep(time_sleep)
+            i = i + 1
+    return -1
 
 
 # TODO connect to the database with the correct credentials and refactor
