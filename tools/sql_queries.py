@@ -10,5 +10,11 @@ For example :
  pos = 100,200
  move_cursor(pos)
  double_click(pos)
+ 
+ The xml will be for the previous example :
+ Action : move_cursor
+<pos>100,200</pos>
+ Action : double_click
+<pos>100,200</pos>
 """
 INSERT_ON_STRATEGIE = """"""
