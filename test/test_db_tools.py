@@ -28,7 +28,7 @@ class TestDb_tools(unittest.TestCase):
     def tearDown(self):
         if self.ClassIsTeardown == self.ClassIsTeardownTotal:  # the number of test case
             # stop and remove db container
-            dtt.clean_container("c_sai_postgres")
+            pass#dtt.clean_container("c_sai_postgres")
         else:
             self.__class__.ClassIsTeardown = self.ClassIsTeardown + 1
 
