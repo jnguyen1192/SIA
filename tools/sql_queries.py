@@ -16,5 +16,7 @@ For example :
 <pos>100,200</pos>
  Action : double_click
 <pos>100,200</pos>
+
 """
+#TODO A test will need to be do to know if we need to wait each actions
 INSERT_ON_STRATEGIE = """"""
