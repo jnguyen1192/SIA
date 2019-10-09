@@ -69,7 +69,7 @@ def wait_db_connection(nb_retry=10, time_sleep=60):
         except Exception as e:
             #print(e)
             # TODO print all the functions called before
-            print("I wait", time_sleep, "seconds until try again,", nb_retry - i - 1, "remaining test cycle")
+            print(wait_db_connection.__name__,": I wait", time_sleep, "seconds until try again,", nb_retry - i - 1, "remaining test cycle")
             time.sleep(time_sleep)
             i = i + 1
     return -1
