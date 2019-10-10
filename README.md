@@ -15,7 +15,7 @@ Strong Artificial Intelligence
 # Draft of SAI explore
 ![draft](https://github.com/jnguyen1192/SAI/blob/master/data/sai_explore.jpg)
 
-# Draft of SAI brain
+# Draft of SAI brain algorithm
 ![draft](https://github.com/jnguyen1192/SAI/blob/master/data/sai_brain.jpg)
 
 
