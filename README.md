@@ -11,3 +11,7 @@ Strong Artificial Intelligence
 
 # Draft of SAI part 1 a
 ![draft](https://github.com/jnguyen1192/SAI/blob/master/data/main_idea_part_1_a_strategies.jpg)
+
+# Draft of SAI explore
+![draft](https://github.com/jnguyen1192/SAI/blob/master/data/sai_explore.jpg)
+
