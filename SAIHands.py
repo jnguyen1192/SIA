@@ -21,4 +21,14 @@ class SAIHands:
             return -1
         return 0
 
+    def mouse_position(self):
+        """
+        Get the mouse position
+        :return:
+        """
+        try:
+            return pyautogui.position()
+        except Exception as e:
+            print(e)
+            return 0, 0
 

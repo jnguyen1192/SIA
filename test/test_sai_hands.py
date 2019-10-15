@@ -9,8 +9,10 @@ class TestSAIHands(unittest.TestCase):
         self.saih = SAIHands.SAIHands()
 
     def test_SAIHands_move_mouse_to_OK(self):
-        # TODO implement
-        pass
+        self.saih.move_mouse_to(10, 10)
+        x = self.saih.mouse_position().x
+        y = self.saih.mouse_position().y
+        assert((10, 10) == (x, y))
 
     def test_SAIHands_move_mouse_to_NOK(self):
         # TODO implement
