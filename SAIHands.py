@@ -60,7 +60,7 @@ class SAIHands:
 'command', 'option', 'optionleft', 'optionright']
         :return: 0 if it works else -1
         """
-        # TODO implement
+        # TODO implement in the future
         pass
 
 

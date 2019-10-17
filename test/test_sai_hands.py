@@ -32,14 +32,14 @@ class TestSAIHands(unittest.TestCase):
         """
         Test if the keyboard works with every keys
         """
-        # TODO immplement
+        # TODO immplement in the future
         pass
 
     def test_SAIHands_press_keyboard_to_NOK(self):
         """
         Test if the keyboard not works with a wrong key
         """
-        # TODO immplement
+        # TODO immplement in the future
         pass
 
 
