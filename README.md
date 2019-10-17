@@ -1,4 +1,4 @@
-# SIA
+# SAI
 Strong Artificial Intelligence
 
 # Draft with a daemon
