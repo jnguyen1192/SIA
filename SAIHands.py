@@ -32,6 +32,44 @@ class SAIHands:
             print(e)
             return 0, 0
 
+    def mouseLeftDown(self):
+        """
+        Press the left mouse button
+        :return: 0 if it works else -1
+        """
+        try:
+            pyautogui.mouseDown(button="LEFT")  # 1: LEFT 2: RIGHT 3: MIDDLE
+            return 0
+        except Exception as e:
+            print(e)
+            return -1
+
+    def mouseLeftUp(self):
+        """
+        Release the left mouse button
+        :return: 0 if it works else -1
+        """
+        try:
+            pyautogui.mouseUp(button="LEFT")  # 1: LEFT 2: RIGHT 3: MIDDLE
+            return 0
+        except Exception as e:
+            print(e)
+            return -1
+
+    def left_click(self):
+        """
+        Click with the left button
+        :return: 0 of it works else -1
+        """
+        try:
+            self.mouseLeftDown()
+            self.mouseLeftUp()
+            return 0
+        except Exception as e:
+            print(e)
+            return -1
+
+
     def press_keyboard(self, key):
         """
         Press a key on the keyboard
