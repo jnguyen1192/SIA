@@ -43,6 +43,19 @@ class TestSAIHands(unittest.TestCase):
         state_left = win32api.GetKeyState(0x01)
         assert(state_left == 0 or 1)
 
+    def test_SAIHands_left_click_NOK(self):
+        """
+        Test if the left click works
+        """
+        state_left = win32api.GetKeyState(0x01)
+        assert(state_left == -127 or -128)
+        assert(self.saih.mouseLeftDown() == 0)
+        state_left = win32api.GetKeyState(0x01)
+        assert(state_left == 0 or 1)
+        assert(self.saih.mouseLeftUp() == 0)
+        state_left = win32api.GetKeyState(0x01)
+        assert(state_left == -127 or -128)
+
     def test_SAIHands_mouse_left_down_OK(self):
         """
         Test if the left click works
@@ -50,6 +63,15 @@ class TestSAIHands(unittest.TestCase):
         assert(self.saih.mouseLeftDown() == 0)
         state_left = win32api.GetKeyState(0x01)
         assert(state_left == -127 or -128)
+        assert(self.saih.mouseLeftUp() == 0)
+
+    def test_SAIHands_mouse_left_down_NOK(self):
+        """
+        Test if the left click works
+        """
+        assert(self.saih.mouseLeftDown() == 0)
+        state_left = win32api.GetKeyState(0x01)
+        assert(state_left != 0 or 1)
         assert(self.saih.mouseLeftUp() == 0)
 
     def test_SAIHands_mouse_left_up_OK(self):
@@ -60,6 +82,15 @@ class TestSAIHands(unittest.TestCase):
         assert(self.saih.mouseLeftUp() == 0)
         state_left = win32api.GetKeyState(0x01)
         assert(state_left == 0 or 1)
+
+    def test_SAIHands_mouse_left_up_NOK(self):
+        """
+        Test if the left click works
+        """
+        assert(self.saih.mouseLeftDown() == 0)
+        assert(self.saih.mouseLeftUp() == 0)
+        state_left = win32api.GetKeyState(0x01)
+        assert(state_left != -127 or -128)
 
     def test_SAIHands_press_keyboard_to_NOK(self):
         """
