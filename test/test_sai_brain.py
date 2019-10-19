@@ -56,6 +56,14 @@ class TestSAIBrain(unittest.TestCase):
         # TODO implement
         assert (False==False)
 
+    def test_SAIBrain_is_diff_old_image_new_image_case_ok(self):
+        # TODO implement
+        assert (True==True)
+
+    def test_SAIBrain_is_diff_old_image_new_image_case_nok(self):
+        # TODO implement
+        assert (False==False)
+
 
 if __name__ == '__main__':
     unittest.main()
