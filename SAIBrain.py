@@ -1,3 +1,12 @@
+import numpy
+
+# https://www.pyimagesearch.com/2014/09/15/python-compare-two-images/
+from skimage.measure import structural_similarity as ssim
+import matplotlib.pyplot as plt
+import numpy as np
+import cv2
+
+
 class SAIBrain:
     """
     This class will manipulate data to learn things or manage memory
@@ -88,4 +97,6 @@ class SAIBrain:
         :param new_image: the current image
         :return: True if they are different else False
         """
+
+
         pass
