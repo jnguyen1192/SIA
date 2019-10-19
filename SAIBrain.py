@@ -80,3 +80,12 @@ class SAIBrain:
             return 0
         except Exception:
             return -1
+
+    def is_diff_old_image_new_image(self, old_image, new_image):
+        """
+        Compare if the two images are different or not
+        :param old_image: the previous image
+        :param new_image: the current image
+        :return: True if they are different else False
+        """
+        pass
