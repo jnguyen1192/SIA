@@ -57,7 +57,7 @@ class TestSAIBrain(unittest.TestCase):
         assert (False==False)
 
     def test_SAIBrain_is_diff_old_image_new_image_case_ok(self):
-        # TODO implement
+        # TODO refactor those functions into SAIBrain class
         from skimage.measure import structural_similarity as ssim
         import matplotlib.pyplot as plt
         import numpy as np
