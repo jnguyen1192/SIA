@@ -58,6 +58,9 @@ class TestSAIBrain(unittest.TestCase):
 
     def test_SAIBrain_is_diff_old_image_new_image_case_ok(self):
         # TODO refactor those functions into SAIBrain class
+        # Create a tools file that contains functions useful mse for example
+        # Use the good function for ssim
+        # Use the good path for windows
         from skimage.measure import structural_similarity as ssim
         import matplotlib.pyplot as plt
         import numpy as np
