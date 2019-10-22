@@ -56,7 +56,7 @@ class TestSAIBrain(unittest.TestCase):
         # TODO implement
         assert (False==False)
 
-    def test_SAIBrain_is_diff_old_image_new_image_case_ok(self):
+    def test_SAIBrain_is_diff_old_image_new_image_case_different_time_ok(self):
         # TODO refactor those functions into SAIBrain class
         # TODO Create a tools file that contains functions useful mse for example
         # TODO Use the good function for ssim
@@ -108,9 +108,13 @@ class TestSAIBrain(unittest.TestCase):
 
         assert (True==True)
 
-    def test_SAIBrain_is_diff_old_image_new_image_case_nok(self):
+    def test_SAIBrain_is_diff_old_image_new_image_case_same_images_ok(self):
         # TODO implement
-        assert (False==False)
+        assert (True==True)
+
+    def test_SAIBrain_is_diff_old_image_new_image_case_different_images_ok(self):
+        # TODO implement
+        assert (True==True)
 
 
 if __name__ == '__main__':
