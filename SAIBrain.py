@@ -91,6 +91,7 @@ class SAIBrain:
         :param new_image: the current image
         :return: True if they are different else False
         """
+        # TODO use mse function
 
 
         pass
