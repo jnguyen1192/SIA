@@ -42,6 +42,16 @@ class TestSAIBrain(unittest.TestCase):
         #       - mouse click : click, double_click,
         #       - mouse hold-release(with movement): x, y
         # Use a depth of 1
+        # TODO Mouse movement
+        import random
+        # x and y
+        # get window width and height
+        from win32api import GetSystemMetrics
+        # 1080, 1920
+        # 864, 1536
+        print("Width =", GetSystemMetrics(0))
+        print("Height =", GetSystemMetrics(1))
+
         assert (True==True)
 
     def test_SAIBrain_find_new_command_case_nok(self):
