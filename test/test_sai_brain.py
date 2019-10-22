@@ -1,10 +1,13 @@
 import unittest
 import SAIBrain
 
+import os
+
 
 class TestSAIBrain(unittest.TestCase):
 
     def setUp(self):
+        self.current_dir = os.getcwd()
         self.saib = SAIBrain.SAIBrain()
 
     def test_SAIBrain_create_db_case_ok(self):
@@ -62,7 +65,7 @@ class TestSAIBrain(unittest.TestCase):
         # TODO Use the good function for ssim
         # TODO Use the good path for windows
         # TODO Create another test images for this function
-        from skimage.measure import structural_similarity as ssim
+        from skimage.metrics._structural_similarity import structural_similarity as ssim
         import matplotlib.pyplot as plt
         import numpy as np
         import cv2
@@ -82,7 +85,7 @@ class TestSAIBrain(unittest.TestCase):
             # compute the mean squared error and structural similarity
             # index for the images
             m = mse(imageA, imageB)
-            s = ssim(imageA, imageB)
+            s = ssim(imageA, imageB, multichannel=True)
 
             # setup the figure
             fig = plt.figure(title)
@@ -100,9 +103,11 @@ class TestSAIBrain(unittest.TestCase):
 
             # show the images
             plt.show()
-
-        old_image = cv2.imread("is_diff_image_new_image/old_image_1.png")
-        new_image = cv2.imread("is_diff_image_new_image/new_image_1.png")
+        old_image_path = os.path.join(self.current_dir, "is_diff_old_image_new_image", "old_image_1.png")
+        new_image_path = os.path.join(self.current_dir, "is_diff_old_image_new_image", "new_image_1.png")
+        old_image = cv2.imread(old_image_path)
+        print(old_image)
+        new_image = cv2.imread(new_image_path)
         compare_images(old_image, new_image, "old_image vs. new_image")
 
 

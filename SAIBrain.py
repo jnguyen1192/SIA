@@ -1,11 +1,5 @@
 import numpy
 
-# https://www.pyimagesearch.com/2014/09/15/python-compare-two-images/
-from skimage.measure import structural_similarity as ssim
-import matplotlib.pyplot as plt
-import numpy as np
-import cv2
-
 
 class SAIBrain:
     """
