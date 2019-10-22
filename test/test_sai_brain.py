@@ -37,6 +37,11 @@ class TestSAIBrain(unittest.TestCase):
 
     def test_SAIBrain_find_new_command_case_ok(self):
         # TODO implement
+        # Create a random behavior for:
+        #       - mouse movement : x, y,
+        #       - mouse click : click, double_click,
+        #       - mouse hold-release(with movement): x, y
+        # Use a depth of 1
         assert (True==True)
 
     def test_SAIBrain_find_new_command_case_nok(self):
