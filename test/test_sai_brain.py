@@ -1,6 +1,8 @@
 import unittest
 import SAIBrain
+import tools.my_tools as mt
 
+import cv2
 import os
 
 
@@ -60,55 +62,13 @@ class TestSAIBrain(unittest.TestCase):
         assert (False==False)
 
     def test_SAIBrain_is_diff_old_image_new_image_case_different_time_ok(self):
-        # TODO refactor those functions into SAIBrain class
-        # TODO Create a tools file that contains functions useful mse for example
-        # TODO Use the good function for ssim
-        # TODO Use the good path for windows
         # TODO Create another test images for this function
-        from skimage.metrics._structural_similarity import structural_similarity as ssim
-        import matplotlib.pyplot as plt
-        import numpy as np
-        import cv2
-
-        def mse(imageA, imageB):
-            # the 'Mean Squared Error' between the two images is the
-            # sum of the squared difference between the two images;
-            # NOTE: the two images must have the same dimension
-            err = np.sum((imageA.astype("float") - imageB.astype("float")) ** 2)
-            err /= float(imageA.shape[0] * imageA.shape[1])
-
-            # return the MSE, the lower the error, the more "similar"
-            # the two images are
-            return err
-
-        def compare_images(imageA, imageB, title):
-            # compute the mean squared error and structural similarity
-            # index for the images
-            m = mse(imageA, imageB)
-            s = ssim(imageA, imageB, multichannel=True)
-
-            # setup the figure
-            fig = plt.figure(title)
-            plt.suptitle("MSE: %.2f, SSIM: %.2f" % (m, s))
-
-            # show first image
-            ax = fig.add_subplot(1, 2, 1)
-            plt.imshow(imageA, cmap=plt.cm.gray)
-            plt.axis("off")
-
-            # show the second image
-            ax = fig.add_subplot(1, 2, 2)
-            plt.imshow(imageB, cmap=plt.cm.gray)
-            plt.axis("off")
-
-            # show the images
-            plt.show()
         old_image_path = os.path.join(self.current_dir, "is_diff_old_image_new_image", "old_image_1.png")
         new_image_path = os.path.join(self.current_dir, "is_diff_old_image_new_image", "new_image_1.png")
         old_image = cv2.imread(old_image_path)
-        print(old_image)
+        #print(old_image)
         new_image = cv2.imread(new_image_path)
-        compare_images(old_image, new_image, "old_image vs. new_image")
+        mt.compare_images(old_image, new_image, "old_image vs. new_image")
 
 
         assert (True==True)
