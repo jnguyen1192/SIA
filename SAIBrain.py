@@ -1,4 +1,4 @@
-import numpy
+import tools.my_tools as mt
 
 
 class SAIBrain:
@@ -87,11 +87,11 @@ class SAIBrain:
     def is_diff_old_image_new_image(self, old_image, new_image):
         """
         Compare if the two images are different or not
-        :param old_image: the previous image
-        :param new_image: the current image
+        :param old_image: the previous image as ndarray
+        :param new_image: the current image as ndarray
         :return: True if they are different else False
         """
         # TODO use mse function
-
-
-        pass
+        if mt.mse(old_image, new_image) != 0:
+            return False
+        return True

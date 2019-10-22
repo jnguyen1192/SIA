@@ -1,6 +1,5 @@
 import unittest
 import SAIBrain
-import tools.my_tools as mt
 
 import cv2
 import os
@@ -62,29 +61,33 @@ class TestSAIBrain(unittest.TestCase):
         assert (False==False)
 
     def test_SAIBrain_is_diff_old_image_new_image_case_different_time_ok(self):
-        # TODO Create another test images for this function
+        """
+        Test if the function works with different time images
+        """
         # Result : MSE = 2.02
-        self.generic_test_SAIBrain_is_diff_old_image_new_image("old_image_1.png", "new_image_1.png")
-        assert (True==True)
+        self.generic_test_SAIBrain_is_diff_old_image_new_image("old_image_1.png", "new_image_1.png", False)
 
     def test_SAIBrain_is_diff_old_image_new_image_case_same_images_ok(self):
-        # TODO implement
+        """
+        Test if the function works with same images
+        """
         # Result : MSE = 0.0
-        self.generic_test_SAIBrain_is_diff_old_image_new_image("old_image_2.png", "new_image_2.png")
-        assert (True==True)
+        self.generic_test_SAIBrain_is_diff_old_image_new_image("old_image_2.png", "new_image_2.png", True)
 
     def test_SAIBrain_is_diff_old_image_new_image_case_different_images_ok(self):
-        # TODO implement
+        """
+        Test if the function works with different images
+        """
         # Result : MSE = 9.63
-        self.generic_test_SAIBrain_is_diff_old_image_new_image("old_image_3.png", "new_image_3.png")
-        assert (True==True)
+        self.generic_test_SAIBrain_is_diff_old_image_new_image("old_image_3.png", "new_image_3.png", False)
 
-    def generic_test_SAIBrain_is_diff_old_image_new_image(self, name_new_image, name_old_image):
+    def generic_test_SAIBrain_is_diff_old_image_new_image(self, name_new_image, name_old_image, pred):
         old_image_path = os.path.join(self.current_dir, "is_diff_old_image_new_image", name_new_image)
         new_image_path = os.path.join(self.current_dir, "is_diff_old_image_new_image", name_old_image)
         old_image = cv2.imread(old_image_path)
         new_image = cv2.imread(new_image_path)
-        mt.compare_images(old_image, new_image, "old_image vs. new_image")
+        res = self.saib.is_diff_old_image_new_image(old_image, new_image)
+        assert(pred == res)
 
 
 if __name__ == '__main__':
