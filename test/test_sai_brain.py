@@ -101,8 +101,8 @@ class TestSAIBrain(unittest.TestCase):
             # show the images
             plt.show()
 
-        old_image = cv2.imread("is_diff_image_new_image/old_image.png")
-        new_image = cv2.imread("is_diff_image_new_image/new_image.png")
+        old_image = cv2.imread("is_diff_image_new_image/old_image_1.png")
+        new_image = cv2.imread("is_diff_image_new_image/new_image_1.png")
         compare_images(old_image, new_image, "old_image vs. new_image")
 
 
