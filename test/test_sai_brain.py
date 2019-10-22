@@ -61,32 +61,27 @@ class TestSAIBrain(unittest.TestCase):
         # TODO implement
         assert (False==False)
 
+    def test_SAIBrain_is_diff_old_image_new_image_case_different_time_ok(self):
+        # TODO Create another test images for this function
+        self.generic_test_SAIBrain_is_diff_old_image_new_image("old_image_1.png", "new_image_1.png")
+        assert (True==True)
+
+    def test_SAIBrain_is_diff_old_image_new_image_case_same_images_ok(self):
+        # TODO implement
+        self.generic_test_SAIBrain_is_diff_old_image_new_image("old_image_2.png", "new_image_2.png")
+        assert (True==True)
+
+    def test_SAIBrain_is_diff_old_image_new_image_case_different_images_ok(self):
+        # TODO implement
+        self.generic_test_SAIBrain_is_diff_old_image_new_image("old_image_3.png", "new_image_3.png")
+        assert (True==True)
+
     def generic_test_SAIBrain_is_diff_old_image_new_image(self, name_new_image, name_old_image):
         old_image_path = os.path.join(self.current_dir, "is_diff_old_image_new_image", name_new_image)
         new_image_path = os.path.join(self.current_dir, "is_diff_old_image_new_image", name_old_image)
         old_image = cv2.imread(old_image_path)
         new_image = cv2.imread(new_image_path)
         mt.compare_images(old_image, new_image, "old_image vs. new_image")
-
-    def test_SAIBrain_is_diff_old_image_new_image_case_different_time_ok(self):
-        # TODO Create another test images for this function
-        self.generic_test_SAIBrain_is_diff_old_image_new_image("old_image_1.png", "new_image_1.png")
-        """
-        old_image_path = os.path.join(self.current_dir, "is_diff_old_image_new_image", "old_image_1.png")
-        new_image_path = os.path.join(self.current_dir, "is_diff_old_image_new_image", "new_image_1.png")
-        old_image = cv2.imread(old_image_path)
-        new_image = cv2.imread(new_image_path)
-        mt.compare_images(old_image, new_image, "old_image vs. new_image")
-        """
-        assert (True==True)
-
-    def test_SAIBrain_is_diff_old_image_new_image_case_same_images_ok(self):
-        # TODO implement
-        assert (True==True)
-
-    def test_SAIBrain_is_diff_old_image_new_image_case_different_images_ok(self):
-        # TODO implement
-        assert (True==True)
 
 
 if __name__ == '__main__':
