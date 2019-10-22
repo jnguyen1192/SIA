@@ -63,16 +63,19 @@ class TestSAIBrain(unittest.TestCase):
 
     def test_SAIBrain_is_diff_old_image_new_image_case_different_time_ok(self):
         # TODO Create another test images for this function
+        # Result : MSE = 2.02
         self.generic_test_SAIBrain_is_diff_old_image_new_image("old_image_1.png", "new_image_1.png")
         assert (True==True)
 
     def test_SAIBrain_is_diff_old_image_new_image_case_same_images_ok(self):
         # TODO implement
+        # Result : MSE = 0.0
         self.generic_test_SAIBrain_is_diff_old_image_new_image("old_image_2.png", "new_image_2.png")
         assert (True==True)
 
     def test_SAIBrain_is_diff_old_image_new_image_case_different_images_ok(self):
         # TODO implement
+        # Result : MSE = 9.63
         self.generic_test_SAIBrain_is_diff_old_image_new_image("old_image_3.png", "new_image_3.png")
         assert (True==True)
 
