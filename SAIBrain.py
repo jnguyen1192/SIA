@@ -1,4 +1,5 @@
 import tools.my_tools as mt
+import SAIHands
 
 
 class SAIBrain:
@@ -11,6 +12,7 @@ class SAIBrain:
         """
         self.nb_best_command = nb_best_command
         self.nb_time_rest_second = nb_time_rest_second
+        self.saih = SAIHands.SAIHands()
 
     """
     
