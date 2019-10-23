@@ -49,15 +49,19 @@ class TestSAIBrain(unittest.TestCase):
         from win32api import GetSystemMetrics
         # 1080, 1920
         # 864, 1536
-        import tkinter
+        #import tkinter
         import pyautogui
+        import random
+
+        x_rand = random.randint(0, pyautogui.size().width)
+        y_rand = random.randint(0, pyautogui.size().height)
         #print(pyautogui.size().width)
         #print(pyautogui.size().height)
 
-        root = tkinter.Tk()
-        width = root.winfo_screenwidth()
-        height = root.winfo_screenheight()
-        print(width, height)
+        #root = tkinter.Tk()
+        #width = root.winfo_screenwidth()
+        #height = root.winfo_screenheight()
+        #print(width, height)
 
         print("Width =", GetSystemMetrics(0))
         print("Height =", GetSystemMetrics(1))
