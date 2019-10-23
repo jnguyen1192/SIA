@@ -56,6 +56,7 @@ class TestSAIBrain(unittest.TestCase):
         x_rand = random.randint(0, pyautogui.size().width)
         y_rand = random.randint(0, pyautogui.size().height)
 
+        pyautogui.moveTo(x_rand, y_rand)
 
         #print(pyautogui.size().width)
         #print(pyautogui.size().height)
