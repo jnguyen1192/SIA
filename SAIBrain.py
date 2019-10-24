@@ -62,6 +62,7 @@ class SAIBrain:
         """
         try:
             # TODO implement
+            # TODO get the new shape obtain with the new command
             return 0
         except Exception:
             return -1
