@@ -59,10 +59,10 @@ class TestSAIBrain(unittest.TestCase):
 
         pyautogui.moveTo(x_rand, y_rand)
 
-
         print("Width =", GetSystemMetrics(0))
         print("Height =", GetSystemMetrics(1))
 
+        # TODO test the random mouse movement using old and new mouse position
         assert (True==True)
 
     def test_SAIBrain_find_new_command_case_nok(self):
