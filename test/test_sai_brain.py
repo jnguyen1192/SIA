@@ -42,6 +42,7 @@ class TestSAIBrain(unittest.TestCase):
         #       - mouse click : click, double_click,
         #       - mouse hold-release(with movement): x, y
         # Use a depth of 1
+        # TODO refactor the random mouse movement into a function on SAIBrain
         # TODO Mouse movement
         import random
         # x and y
@@ -58,13 +59,6 @@ class TestSAIBrain(unittest.TestCase):
 
         pyautogui.moveTo(x_rand, y_rand)
 
-        #print(pyautogui.size().width)
-        #print(pyautogui.size().height)
-
-        #root = tkinter.Tk()
-        #width = root.winfo_screenwidth()
-        #height = root.winfo_screenheight()
-        #print(width, height)
 
         print("Width =", GetSystemMetrics(0))
         print("Height =", GetSystemMetrics(1))
