@@ -115,6 +115,22 @@ class TestSAIBrain(unittest.TestCase):
         res = self.saib.is_diff_old_image_new_image(old_image, new_image)
         assert(pred == res)
 
+    def test_SAIBrain_get_new_shape_case_ok(self):
+        """
+        Test if the function works with different time images
+        """
+        old_image_path = os.path.join(self.current_dir, "is_diff_old_image_new_image", "old_image_3.png")
+        new_image_path = os.path.join(self.current_dir, "is_diff_old_image_new_image", "new_image_3.png")
+
+        old_image = cv2.imread(old_image_path)
+        new_image = cv2.imread(new_image_path)
+
+        res = self.saib.get_new_shape(old_image, new_image)
+
+        import matplotlib.pyplot as plt
+        plt.imshow(res)
+        plt.show()
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -107,3 +107,4 @@ class SAIBrain:
         """
         # TODO implement
         # Diff the two images to get a new shape
+        return old_image.astype("float") - new_image.astype("float")
