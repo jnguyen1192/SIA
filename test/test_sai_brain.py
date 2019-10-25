@@ -129,7 +129,12 @@ class TestSAIBrain(unittest.TestCase):
 
         import matplotlib.pyplot as plt
         plt.imshow(res)
+        plt.savefig("new_shape_1.png")
         plt.show()
+
+        # TODO only where there was a difference get the new image pixels
+        # TODO We need to save this shape into a new little image with it position on the big image
+
 
 
 if __name__ == '__main__':
