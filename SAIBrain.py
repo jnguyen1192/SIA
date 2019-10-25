@@ -94,7 +94,16 @@ class SAIBrain:
         :param new_image: the current image as ndarray
         :return: True if they are different else False
         """
-        # TODO use mse function
         if mt.mse(old_image, new_image) != 0:
             return False
         return True
+
+    def get_new_shape(self, old_image, new_image):
+        """
+        Get the shape obtains between 2 images
+        :param old_image: the previous image as ndarray
+        :param new_image: the current image as ndarray
+        :return: the new shape
+        """
+        # TODO implement
+        # Diff the two images to get a new shape
