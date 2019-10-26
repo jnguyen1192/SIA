@@ -135,6 +135,11 @@ class TestSAIBrain(unittest.TestCase):
         # TODO only where there was a difference get the new image pixels
         # TODO Create an array with True and False using res
         plt.show()
+        np_zero = np.zeros(3)
+        for i in res:
+            for j in i:
+                if not np.array_equal(j, np_zero):
+                    print("test", j)
         pprint(res)
         pprint([True if i != 0.0 else False for i in res])
         # TODO Get the shape position width and height using the True from res
