@@ -128,11 +128,19 @@ class TestSAIBrain(unittest.TestCase):
         res = self.saib.get_new_shape(old_image, new_image)
 
         import matplotlib.pyplot as plt
+        import numpy as np
+        from pprint import pprint
         plt.imshow(res)
         plt.savefig("new_shape_1.png")
-        plt.show()
-
         # TODO only where there was a difference get the new image pixels
+        # TODO Create an array with True and False using res
+        plt.show()
+        pprint(res)
+        pprint([True if i != 0.0 else False for i in res])
+        # TODO Get the shape position width and height using the True from res
+
+        # TODO Extract this sub array into a new res
+
         # TODO We need to save this shape into a new little image with it position on the big image
 
 
