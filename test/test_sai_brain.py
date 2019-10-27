@@ -145,6 +145,7 @@ class TestSAIBrain(unittest.TestCase):
         # TODO Correct the new array using [[...]...]
         print([True if np.array_equal(j, np_zero) else False for j in [i for i in res]])
         pprint(res)
+        # TODO Try to use res[i][j]
         #pprint([True if i != 0.0 else False for i in res])
         # TODO Get the shape position width and height using the True from res
         print("Get the shape position", res[0][0])
