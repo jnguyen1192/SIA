@@ -142,6 +142,7 @@ class TestSAIBrain(unittest.TestCase):
                 if not np.array_equal(j, np_zero):
                     print("test", j)
         """
+        # TODO Correct the new array using [[...]...]
         print([True if np.array_equal(j, np_zero) else False for j in [i for i in res]])
         pprint(res)
         #pprint([True if i != 0.0 else False for i in res])
