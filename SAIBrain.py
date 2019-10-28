@@ -98,7 +98,7 @@ class SAIBrain:
             return False
         return True
 
-    def get_new_shape(self, old_image, new_image):
+    def get_new_shape(self, old_image, new_image, threshold=10):
         """
         Get the shape obtains between 2 images
         :param old_image: the previous image as ndarray
@@ -107,4 +107,4 @@ class SAIBrain:
         """
         # TODO implement
         # Diff the two images to get a new shape
-        return old_image.astype("float") - new_image.astype("float")
+        return old_image - new_image

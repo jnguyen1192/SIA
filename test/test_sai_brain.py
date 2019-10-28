@@ -119,8 +119,8 @@ class TestSAIBrain(unittest.TestCase):
         """
         Test if the function works with different time images
         """
-        old_image_path = os.path.join(self.current_dir, "is_diff_old_image_new_image", "old_image_3.png")
-        new_image_path = os.path.join(self.current_dir, "is_diff_old_image_new_image", "new_image_3.png")
+        old_image_path = os.path.join(self.current_dir, "is_diff_old_image_new_image", "old_image_4.png")
+        new_image_path = os.path.join(self.current_dir, "is_diff_old_image_new_image", "new_image_4.png")
 
         old_image = cv2.imread(old_image_path)
         new_image = cv2.imread(new_image_path)
@@ -154,7 +154,6 @@ class TestSAIBrain(unittest.TestCase):
         # TODO Extract this sub array into a new res
 
         # TODO We need to save this shape into a new little image with it position on the big image
-
 
 
 if __name__ == '__main__':
