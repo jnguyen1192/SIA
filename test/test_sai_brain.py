@@ -131,6 +131,7 @@ class TestSAIBrain(unittest.TestCase):
         import numpy as np
         from pprint import pprint
         pprint(res)
+        pprint(res[251][0])
         plt.imshow(res)
         plt.savefig("new_shape_1.png")
         # TODO only where there was a difference get the new image pixels

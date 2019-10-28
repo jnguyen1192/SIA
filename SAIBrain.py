@@ -111,11 +111,11 @@ class SAIBrain:
         for index_i, i in enumerate(diff):
             for index_j, j in enumerate(i):
                 if not mt.np.array_equal(j, np_zero):
-                    print(index_i, index_j)
-                    bool_diff[index_i][index_j] = True
+                    #print(index_i, index_j)
+                    bool_diff[index_i][index_j] = [255, 255, 255]
                     #print("Diff", j, "Old", index_i, index_j)
                 else:
-                    bool_diff[index_i][index_j] = False
+                    bool_diff[index_i][index_j] = [0, 0, 0]
         # TODO implement
         # Diff the two images to get a new shape
         import numpy as np
