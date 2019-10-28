@@ -130,25 +130,29 @@ class TestSAIBrain(unittest.TestCase):
         import matplotlib.pyplot as plt
         import numpy as np
         from pprint import pprint
+        pprint(res)
         plt.imshow(res)
         plt.savefig("new_shape_1.png")
         # TODO only where there was a difference get the new image pixels
         # TODO Create an array with True and False using res
         plt.show()
-        np_zero = np.zeros(3)
+        #np_zero = np.zeros(3)
         """
-        for i in res:
-            for j in i:
+        for index_i, i in enumerate(res):
+            for index_j, j in enumerate(i):
                 if not np.array_equal(j, np_zero):
-                    print("test", j)
+                    print("Diff", j, "Old", index_i, index_j)
         """
         # TODO Correct the new array using [[...]...]
-        print([True if np.array_equal(j, np_zero) else False for j in [i for i in res]])
-        pprint(res)
+        #print("---------------------------")
+        #print([j if np.array_equal(j, np_zero) else j for j in [i for i in res]])
+        #print("---------------------------")
+        #pprint(res.shape)
         # TODO Try to use res[i][j]
         #pprint([True if i != 0.0 else False for i in res])
         # TODO Get the shape position width and height using the True from res
-        print("Get the shape position", res[0][0])
+        #print("Get the shape position", res[0][0])
+        #print("Test the shape position", np.array_equal(res[251][0], np_zero))
 
 
         # TODO Extract this sub array into a new res

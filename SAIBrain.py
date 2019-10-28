@@ -13,7 +13,6 @@ class SAIBrain:
         self.nb_best_command = nb_best_command
         self.nb_time_rest_second = nb_time_rest_second
         self.saih = SAIHands.SAIHands()
-
     """
     
     Db creation methods
@@ -100,11 +99,24 @@ class SAIBrain:
 
     def get_new_shape(self, old_image, new_image, threshold=10):
         """
-        Get the shape obtains between 2 images
+        Get the shape obtains between 2 images as an array and x, y and height an width
         :param old_image: the previous image as ndarray
         :param new_image: the current image as ndarray
         :return: the new shape
         """
+        np_zero = mt.np.zeros(3)
+
+        bool_diff = old_image.copy()
+        diff = old_image - new_image
+        for index_i, i in enumerate(diff):
+            for index_j, j in enumerate(i):
+                if not mt.np.array_equal(j, np_zero):
+                    print(index_i, index_j)
+                    bool_diff[index_i][index_j] = True
+                    #print("Diff", j, "Old", index_i, index_j)
+                else:
+                    bool_diff[index_i][index_j] = False
         # TODO implement
         # Diff the two images to get a new shape
-        return old_image - new_image
+        import numpy as np
+        return bool_diff
