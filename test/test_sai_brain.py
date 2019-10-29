@@ -125,7 +125,7 @@ class TestSAIBrain(unittest.TestCase):
         old_image = cv2.imread(old_image_path)
         new_image = cv2.imread(new_image_path)
 
-        res = self.saib.get_new_shape(old_image, new_image)
+        res = self.saib.get_transform_image(old_image, new_image)
 
         import matplotlib.pyplot as plt
         import numpy as np

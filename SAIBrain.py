@@ -97,7 +97,36 @@ class SAIBrain:
             return False
         return True
 
-    def get_new_shape(self, old_image, new_image, threshold=10):
+    def get_all_shape_from_image(self, transform_image):
+        """
+        Get all the shape from the transform image
+        :param transform_image:
+        :return: An array containing different shape
+        """
+        # TODO implement
+        pass
+
+    def get_all_shape_from_image(self, transform_image):
+        """
+        Get all the shape from the transform image
+        :param transform_image:
+        :return: An array containing different shape
+        """
+        # TODO implement
+        pass
+
+    def get_new_shape(self, i, j, all_shape):
+        """
+        Get the shape on the current pixel
+        :param i: the x position
+        :param j: the y position
+        :param all_shape: an array containg all the shape
+        :return: An update array containing different shape
+        """
+        # TODO implement
+        pass
+
+    def get_transform_image(self, old_image, new_image, threshold=10):
         """
         Get the shape obtains between 2 images as an array and x, y and height an width
         :param old_image: the previous image as ndarray
@@ -111,7 +140,7 @@ class SAIBrain:
         for index_i, i in enumerate(diff):
             for index_j, j in enumerate(i):
                 if not mt.np.array_equal(j, np_zero):
-                    #print(index_i, index_j)
+                    print(index_i, index_j)
                     bool_diff[index_i][index_j] = [255, 255, 255]
                     #print("Diff", j, "Old", index_i, index_j)
                 else:
