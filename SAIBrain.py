@@ -100,27 +100,29 @@ class SAIBrain:
     def get_all_shape_from_image(self, transform_image):
         """
         Get all the shape from the transform image
-        :param transform_image:
+        :param transform_image: the transform image with pixel true and false
         :return: An array containing different shape
         """
         all_shape = []
         for index_i, i in enumerate(transform_image):
             for index_j, j in enumerate(i):
-                if transform_image[i][j] == [255, 255, 255]:
+                if transform_image[i][j] == [255, 255, 255]:  # TODO use PIXEL_TRUE constant as [255, 255, 255]
                     all_shape = self.get_new_shape(transform_image, i, j, all_shape)
         return all_shape
 
     def get_new_shape(self, transform_image, i, j, all_shape):
         """
         Get the shape on the current pixel
-        :param transform_image: the transform image
+        :param transform_image: the transform image with pixel true and false
         :param i: the x position
         :param j: the y position
         :param all_shape: an array containg all the shape
         :return: An update array containing different shape
         """
         # TODO implement
-        return ""
+        if True == True:  # TODO Point(i, j).is_in(all_shape)
+            return all_shape
+        return all_shape.append("")  # create_new_shape(transform_image, i, j)
 
     def get_transform_image(self, old_image, new_image, threshold=10):
         """
@@ -136,11 +138,10 @@ class SAIBrain:
         for index_i, i in enumerate(diff):
             for index_j, j in enumerate(i):
                 if not mt.np.array_equal(j, np_zero):
-                    print(index_i, index_j)
                     bool_diff[index_i][index_j] = [255, 255, 255]
                     #print("Diff", j, "Old", index_i, index_j)
                 else:
-                    bool_diff[index_i][index_j] = [0, 0, 0]
+                    bool_diff[index_i][index_j] = [0, 0, 0]  # TODO use PIXEL_FALSE constant as [0, 0, 0]
         # TODO implement
         # Diff the two images to get a new shape
         import numpy as np
