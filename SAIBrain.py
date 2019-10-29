@@ -103,28 +103,24 @@ class SAIBrain:
         :param transform_image:
         :return: An array containing different shape
         """
-        # TODO implement
-        pass
+        all_shape = []
+        for index_i, i in enumerate(transform_image):
+            for index_j, j in enumerate(i):
+                if transform_image[i][j] == [255, 255, 255]:
+                    all_shape = self.get_new_shape(transform_image, i, j, all_shape)
+        return all_shape
 
-    def get_all_shape_from_image(self, transform_image):
-        """
-        Get all the shape from the transform image
-        :param transform_image:
-        :return: An array containing different shape
-        """
-        # TODO implement
-        pass
-
-    def get_new_shape(self, i, j, all_shape):
+    def get_new_shape(self, transform_image, i, j, all_shape):
         """
         Get the shape on the current pixel
+        :param transform_image: the transform image
         :param i: the x position
         :param j: the y position
         :param all_shape: an array containg all the shape
         :return: An update array containing different shape
         """
         # TODO implement
-        pass
+        return ""
 
     def get_transform_image(self, old_image, new_image, threshold=10):
         """
