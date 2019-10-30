@@ -48,6 +48,17 @@ class Point:
         self.x = x
         self.y = y
 
+    def is_in(self, all_shape):
+        """
+        To know if a point is in one of the giving shape
+        :param all_shape: the shapes we want to test
+        :return: True if it is in else False
+        """
+        # TODO implement for one shape
+
+        # TODO implement for each shape
+        return True
+
 
 class Shape:
     """
@@ -55,4 +66,5 @@ class Shape:
     """
     def __init__(self, list_point):
         self.list_point = list_point
+
 
