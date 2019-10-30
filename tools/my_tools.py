@@ -38,3 +38,13 @@ def compare_images(imageA, imageB, title):
 
     # show the images
     plt.show()
+
+
+class Point:
+    """
+    These class permits me to interpret a pixel on the image
+    """
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
