@@ -48,3 +48,11 @@ class Point:
         self.x = x
         self.y = y
 
+
+class Shape:
+    """
+    The class permits me to get the different coordinate of a shape between two images
+    """
+    def __init__(self, list_point):
+        self.list_point = list_point
+
