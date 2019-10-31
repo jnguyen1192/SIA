@@ -6,6 +6,7 @@ from shapely.geometry import Point, Polygon  # @source: https://gis.stackexchang
 # wget https://www.lfd.uci.edu/~gohlke/pythonlibs/#shapely/Shapely%E2%80%911.6.4.post2%E2%80%91cp37%E2%80%91cp37m%E2%80%91win32.whl
 # PycharmProjects\SAI\venv\Scripts>python.exe -m pip install C:\Users\johdu\Downloads\Shapely-1.6.4.post2-cp37-cp37m-win32.whl
 
+
 def mse(imageA, imageB):
     # the 'Mean Squared Error' between the two images is the
     # sum of the squared difference between the two images;

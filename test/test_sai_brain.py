@@ -160,6 +160,10 @@ class TestSAIBrain(unittest.TestCase):
 
         # TODO We need to save this shape into a new little image with it position on the big image
 
+    def test_SAIBrain_is_in():
+        # to implement
+        assert(True == True)
+
 
 if __name__ == '__main__':
     unittest.main()
