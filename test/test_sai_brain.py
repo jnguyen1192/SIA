@@ -160,9 +160,23 @@ class TestSAIBrain(unittest.TestCase):
 
         # TODO We need to save this shape into a new little image with it position on the big image
 
-    def test_SAIBrain_is_in():
+    def test_SAIBrain_is_in_OK(self):
         # to implement
-        assert(True == True)
+        point = SAIBrain.mt.Point(2, 2)
+        polygon = SAIBrain.mt.Polygon([(0, 0),
+                                       (0, 3),
+                                       (3, 3),
+                                       (3, 0)])
+        assert(polygon.contains(point))
+
+    def test_SAIBrain_is_in_NOK(self):
+        # to implement
+        point = SAIBrain.mt.Point(4, 4)
+        polygon = SAIBrain.mt.Polygon([(0, 0),
+                                       (0, 3),
+                                       (3, 3),
+                                       (3, 0)])
+        assert(not polygon.contains(point))
 
 
 if __name__ == '__main__':
