@@ -2,7 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from skimage.metrics._structural_similarity import structural_similarity as ssim
-
+from shapely.geometry import Point, Polygon  # @source: https://gis.stackexchange.com/questions/62925/shapely-not-installing-correctly
+# wget https://www.lfd.uci.edu/~gohlke/pythonlibs/#shapely/Shapely%E2%80%911.6.4.post2%E2%80%91cp37%E2%80%91cp37m%E2%80%91win32.whl
+# PycharmProjects\SAI\venv\Scripts>python.exe -m pip install C:\Users\johdu\Downloads\Shapely-1.6.4.post2-cp37-cp37m-win32.whl
 
 def mse(imageA, imageB):
     # the 'Mean Squared Error' between the two images is the
@@ -39,32 +41,5 @@ def compare_images(imageA, imageB, title):
     # show the images
     plt.show()
 
-
-class Point:
-    """
-    These class permits me to interpret a pixel on the image
-    """
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-
-    def is_in(self, all_shape):
-        """
-        To know if a point is in one of the giving shape
-        :param all_shape: the shapes we want to test
-        :return: True if it is in else False
-        """
-        # TODO implement for one shape
-
-        # TODO implement for each shape
-        return True
-
-
-class Shape:
-    """
-    The class permits me to get the different coordinate of a shape between two images
-    """
-    def __init__(self, list_point):
-        self.list_point = list_point
 
 
