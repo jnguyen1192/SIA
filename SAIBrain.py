@@ -120,9 +120,9 @@ class SAIBrain:
         :return: An update array containing different polygon
         """
         # TODO implement
-        if True == True:  # TODO Point(i, j).is_in(all_shape)
+        if self.is_in(mt.Point(i, j), all_polygon):  # Point(i, j).is_in(all_shape)
             return all_polygon
-        return all_polygon.append("")  # create_new_shape(transform_image, i, j)
+        return all_polygon.append("")  # TODO create_new_shape(transform_image, i, j)
 
     def is_in(self, point, all_polygon):
         """

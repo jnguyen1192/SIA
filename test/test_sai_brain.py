@@ -19,7 +19,7 @@ class TestSAIBrain(unittest.TestCase):
                                                          (7, 2),
                                                          (7, 6)]),
                                     SAIBrain.mt.Polygon([(1, 2),
-                                                         (1, 2),
+                                                         (1, 1),
                                                          (2, 1),
                                                          (2, 2)]),
                                     SAIBrain.mt.Polygon([(3, 4),
