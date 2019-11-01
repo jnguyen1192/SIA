@@ -103,26 +103,38 @@ class SAIBrain:
         :param transform_image: the transform image with pixel true and false
         :return: An array containing different shape
         """
-        all_shape = []
+        all_polygon = []
         for index_i, i in enumerate(transform_image):
             for index_j, j in enumerate(i):
                 if transform_image[i][j] == [255, 255, 255]:  # TODO use PIXEL_TRUE constant as [255, 255, 255]
-                    all_shape = self.get_new_shape(transform_image, i, j, all_shape)
-        return all_shape
+                    all_polygon = self.get_new_shape(transform_image, i, j, all_polygon)
+        return all_polygon
 
-    def get_new_shape(self, transform_image, i, j, all_shape):
+    def get_new_shape(self, transform_image, i, j, all_polygon):
         """
         Get the shape on the current pixel
         :param transform_image: the transform image with pixel true and false
         :param i: the x position
         :param j: the y position
-        :param all_shape: an array containg all the shape
-        :return: An update array containing different shape
+        :param all_polygon: an array containg all the polygon
+        :return: An update array containing different polygon
         """
         # TODO implement
         if True == True:  # TODO Point(i, j).is_in(all_shape)
-            return all_shape
-        return all_shape.append("")  # create_new_shape(transform_image, i, j)
+            return all_polygon
+        return all_polygon.append("")  # create_new_shape(transform_image, i, j)
+
+    def is_in(self, point, all_polygon):
+        """
+        Test if a point is on one of the giving polygon
+        :param point: the corresponding point (x, y)
+        :param all_polygon: all the polygon given
+        :return: True if the point is in one of the polygon else False
+        """
+        for polygon in all_polygon:
+            if polygon.contains(point):
+                return True
+        return False
 
     def get_transform_image(self, old_image, new_image, threshold=10):
         """
