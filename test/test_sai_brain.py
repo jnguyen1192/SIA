@@ -10,6 +10,23 @@ class TestSAIBrain(unittest.TestCase):
     def setUp(self):
         self.current_dir = os.getcwd()
         self.saib = SAIBrain.SAIBrain()
+        self.polygons_test_is_in = [SAIBrain.mt.Polygon([(1, 6),
+                                                         (1, 5),
+                                                         (4, 5),
+                                                         (4, 6)]),
+                                    SAIBrain.mt.Polygon([(5, 6),
+                                                         (5, 2),
+                                                         (7, 2),
+                                                         (7, 6)]),
+                                    SAIBrain.mt.Polygon([(1, 2),
+                                                         (1, 2),
+                                                         (2, 1),
+                                                         (2, 2)]),
+                                    SAIBrain.mt.Polygon([(3, 4),
+                                                         (3, 1),
+                                                         (4, 1),
+                                                         (4, 4)])
+                                    ]
 
     def test_SAIBrain_create_db_case_ok(self):
         # TODO implement
@@ -160,7 +177,10 @@ class TestSAIBrain(unittest.TestCase):
 
         # TODO We need to save this shape into a new little image with it position on the big image
 
-    def test_SAIBrain_is_in_OK(self):
+    def test_SAIBrain_contains_OK(self):
+        """
+        Test if the function contains works
+        """
         # to implement
         point = SAIBrain.mt.Point(2, 2)
         polygon = SAIBrain.mt.Polygon([(0, 0),
@@ -169,7 +189,10 @@ class TestSAIBrain(unittest.TestCase):
                                        (3, 0)])
         assert(polygon.contains(point))
 
-    def test_SAIBrain_is_in_NOK(self):
+    def test_SAIBrain_contains_NOK(self):
+        """
+        Test if the function contains works
+        """
         # to implement
         point = SAIBrain.mt.Point(4, 4)
         polygon = SAIBrain.mt.Polygon([(0, 0),
@@ -177,6 +200,20 @@ class TestSAIBrain(unittest.TestCase):
                                        (3, 3),
                                        (3, 0)])
         assert(not polygon.contains(point))
+
+    def test_SAIBrain_is_in_OK(self):
+        """
+        Test if the function is_in works
+        """
+        point = SAIBrain.mt.Point(6, 4)
+        assert(self.saib.is_in(point, self.polygons_test_is_in))
+
+    def test_SAIBrain_is_in_NOK(self):
+        """
+        Test if the function is_in works
+        """
+        point = SAIBrain.mt.Point(2, 3)
+        assert(not self.saib.is_in(point, self.polygons_test_is_in))
 
 
 if __name__ == '__main__':
