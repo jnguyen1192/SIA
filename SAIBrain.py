@@ -125,6 +125,13 @@ class SAIBrain:
         return all_polygon.append(self.create_new_shape(transform_image, i, j))
 
     def create_new_shape(self, transform_image, i, j):
+        """
+        Select the corresponding shape with the nearest point available
+        :param transform_image: the transform image with pixel true and false
+        :param i: the x position
+        :param j: the y position
+        :return: the polygon on the position given
+        """
         # TODO to implement
         return 0
 
