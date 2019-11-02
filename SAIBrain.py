@@ -124,6 +124,10 @@ class SAIBrain:
             return all_polygon
         return all_polygon.append("")  # TODO create_new_shape(transform_image, i, j)
 
+    def create_new_shape(self, transform_image, i, j):
+        # TODO to implement
+        return 0
+
     def is_in(self, point, all_polygon):
         """
         Test if a point is on one of the giving polygon
