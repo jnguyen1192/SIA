@@ -122,7 +122,7 @@ class SAIBrain:
         # TODO implement
         if self.is_in(mt.Point(i, j), all_polygon):  # Point(i, j).is_in(all_shape)
             return all_polygon
-        return all_polygon.append("")  # TODO create_new_shape(transform_image, i, j)
+        return all_polygon.append(self.create_new_shape(transform_image, i, j))
 
     def create_new_shape(self, transform_image, i, j):
         # TODO to implement
