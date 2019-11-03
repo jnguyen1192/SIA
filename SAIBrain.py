@@ -135,6 +135,14 @@ class SAIBrain:
         # TODO to implement
         return 0
 
+    def get_new_adjacent_pixel(self, transform_image, i, j):
+        # TODO implement
+        return ""
+
+    def get_adjacent_pixel(self, transform_image, i, j):
+        # TODO implement
+        return ""
+
     def is_in(self, point, all_polygon):
         """
         Test if a point is on one of the giving polygon
