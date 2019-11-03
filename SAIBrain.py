@@ -137,7 +137,8 @@ class SAIBrain:
 
     def get_new_adjacent_pixel(self, transform_image, i, j):
         # TODO implement
-        return ""
+        pixels = set(self.get_adjacent_pixel(transform_image, i, j))
+        return pixels
 
     def get_adjacent_pixel(self, transform_image, i, j):
         # TODO implement
