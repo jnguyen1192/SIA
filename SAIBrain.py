@@ -136,7 +136,14 @@ class SAIBrain:
         return 0
 
     def get_new_adjacent_pixel(self, transform_image, i, j):
-        # TODO implement
+        """
+        Get the new adjacent pixel of the current shape
+        TODO Correct using the shape
+        :param transform_image: the transform image with pixel true and false
+        :param i: the x position
+        :param j: the y position
+        :return: the new adjacent pixel
+        """
         pixels = set(self.get_adjacent_pixel(transform_image, i, j))
         return pixels
 
