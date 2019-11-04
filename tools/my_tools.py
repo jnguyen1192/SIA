@@ -43,4 +43,11 @@ def compare_images(imageA, imageB, title):
     plt.show()
 
 
+class Shape:
+    # TODO implement
+    def __init__(self):
+        # TODO implement
+        pass
+
+
 

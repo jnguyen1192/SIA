@@ -134,7 +134,9 @@ class SAIBrain:
         """
         # TODO to implement
         # Create the array of pixel
+        pixels = []
         # Create a recursive function that will add the pixel using adjacent pixel on the previous array
+
         return 0
 
     def get_new_adjacent_pixel(self, transform_image, i, j):
