@@ -126,13 +126,15 @@ class SAIBrain:
 
     def create_new_shape(self, transform_image, i, j):
         """
-        Select the corresponding shape with the nearest point available
+        Select the corresponding shape with the nearest point available using the first point as (i, j)
         :param transform_image: the transform image with pixel true and false
         :param i: the x position
         :param j: the y position
         :return: the polygon on the position given
         """
         # TODO to implement
+        # Create the array of pixel
+        # Create a recursive function that will add the pixel using adjacent pixel on the previous array
         return 0
 
     def get_new_adjacent_pixel(self, transform_image, i, j):
@@ -142,7 +144,7 @@ class SAIBrain:
         :param transform_image: the transform image with pixel true and false
         :param i: the x position
         :param j: the y position
-        :return: the new adjacent pixel
+        :return: the new array of adjacent pixel as [(1, 2), (1, 3), ... ]
         """
         pixels = set(self.get_adjacent_pixel(transform_image, i, j))
         return pixels
