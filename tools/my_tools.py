@@ -44,10 +44,28 @@ def compare_images(imageA, imageB, title):
 
 
 class Shape:
-    # TODO implement
-    def __init__(self):
+    def __init__(self, transform_image, i, j, pixels=[]):
+        self.transform_image = transform_image
+        self.i = i
+        self.j = j
+        self.pixels = pixels
+
+    def get_new_adjacent_pixel(self, transform_image, x, y):
+        """
+        Get the new adjacent pixel of the current shape
+        TODO Correct using the shape
+        :param transform_image: the transform image with pixel true and false
+        :param x: the x position
+        :param y: the y position
+        :return: the new array of adjacent pixel as [(1, 2), (1, 3), ... ]
+        """
+        pixels = set(self.get_adjacent_pixel(transform_image, x, y))
+        return pixels
+
+    def get_adjacent_pixel(self, transform_image, x, y):
         # TODO implement
-        pass
+        return ""
+
 
 
 

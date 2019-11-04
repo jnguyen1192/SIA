@@ -133,27 +133,8 @@ class SAIBrain:
         :return: the polygon on the position given
         """
         # TODO to implement
-        # Create the array of pixel
-        pixels = []
-        # Create a recursive function that will add the pixel using adjacent pixel on the previous array
-
+        # Use the class shape to create a new shape
         return 0
-
-    def get_new_adjacent_pixel(self, transform_image, i, j):
-        """
-        Get the new adjacent pixel of the current shape
-        TODO Correct using the shape
-        :param transform_image: the transform image with pixel true and false
-        :param i: the x position
-        :param j: the y position
-        :return: the new array of adjacent pixel as [(1, 2), (1, 3), ... ]
-        """
-        pixels = set(self.get_adjacent_pixel(transform_image, i, j))
-        return pixels
-
-    def get_adjacent_pixel(self, transform_image, i, j):
-        # TODO implement
-        return ""
 
     def is_in(self, point, all_polygon):
         """
