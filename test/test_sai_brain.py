@@ -215,6 +215,18 @@ class TestSAIBrain(unittest.TestCase):
         point = SAIBrain.mt.Point(2, 3)
         assert(not self.saib.is_in(point, self.polygons_test_is_in))
 
+    def test_SAIBrain_mt_shape_get_adjacent_pixel_OK(self):
+        """
+        Test if the function get_adjacent_pixel from my_tools works
+        """
+        # TODO implement
+
+    def test_SAIBrain_mt_shape_get_adjacent_pixel_NOK(self):
+        """
+        Test if the function get_adjacent_pixel from my_tools works
+        """
+        # TODO implement
+
 
 if __name__ == '__main__':
     unittest.main()
