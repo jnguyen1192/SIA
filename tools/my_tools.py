@@ -50,20 +50,26 @@ class Shape:
         self.j = j
         self.pixels = pixels
 
-    def get_new_adjacent_pixel(self, transform_image, x, y):
+    def get_new_adjacent_pixel(self, x, y):
         """
         Get the new adjacent pixel of the current shape
         TODO Correct using the shape
-        :param transform_image: the transform image with pixel true and false
         :param x: the x position
         :param y: the y position
         :return: the new array of adjacent pixel as [(1, 2), (1, 3), ... ]
         """
-        pixels = set(self.get_adjacent_pixel(transform_image, x, y))
+        # use get_adjacent_pixel
+        # check if those pixels are already use on pixels variable
+        # if it is true
+        #       do nothing
+        # else
+        #       get new adjacent pixel too
+        pixels = set(self.get_adjacent_pixel(x, y))
         return pixels
 
-    def get_adjacent_pixel(self, transform_image, x, y):
+    def get_adjacent_pixel(self, x, y):
         # TODO implement
+        # Get only True pixel around given (x, y) pixel
         return ""
 
 
