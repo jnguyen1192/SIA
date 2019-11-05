@@ -44,11 +44,12 @@ def compare_images(imageA, imageB, title):
 
 
 class Shape:
-    def __init__(self, transform_image, i, j, pixels=[]):
+    def __init__(self, transform_image, i, j, pixels=[], new_pixels=[]):
         self.transform_image = transform_image
         self.i = i
         self.j = j
         self.pixels = pixels
+        self.new_pixels = new_pixels
 
     def get_new_adjacent_pixel(self, x, y):
         """
@@ -63,7 +64,8 @@ class Shape:
         # if it is true
         #       do nothing
         # else
-        #       get new adjacent pixel too
+        #       add them to new pixels list variable
+        # while new pixels list contains point loop the previous statements
         pixels = set(self.get_adjacent_pixel(x, y))
         return pixels
 
