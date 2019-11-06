@@ -219,7 +219,13 @@ class TestSAIBrain(unittest.TestCase):
         """
         Test if the function get_adjacent_pixel from my_tools works
         """
+        # open image
 
+        # transform image
+
+        # create shape object
+
+        # test get adjacent pixel
 
         # TODO implement
 
