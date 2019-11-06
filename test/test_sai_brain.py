@@ -219,6 +219,8 @@ class TestSAIBrain(unittest.TestCase):
         """
         Test if the function get_adjacent_pixel from my_tools works
         """
+
+
         # TODO implement
 
     def test_SAIBrain_mt_shape_get_adjacent_pixel_NOK(self):
