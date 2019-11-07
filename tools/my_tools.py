@@ -72,6 +72,10 @@ class Shape:
     def get_adjacent_pixel(self, x, y):
         # TODO implement
         # Get only True pixel around given (x, y) pixel
+        # TODO test north pixel
+        # TODO test east pixel
+        # TODO test south pixel
+        # TODO test west pixel
         return ""
 
 
