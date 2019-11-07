@@ -77,13 +77,20 @@ class Shape:
         :return: an array containing all the adjacent pixel as True position
         """
         # TODO implement
+        adjacent_pixel = []
         # Get only True pixel around given (x, y) pixel
+        # TODO test boundaries
         # TODO test north pixel
 
+        # TODO test boundaries
         # TODO test east pixel
+
+        # TODO test boundaries
         # TODO test south pixel
+
+        # TODO test boundaries
         # TODO test west pixel
-        return ""
+        return adjacent_pixel
 
 
 
