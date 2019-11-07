@@ -70,9 +70,16 @@ class Shape:
         return pixels
 
     def get_adjacent_pixel(self, x, y):
+        """
+        Get the adjacent pixel only if they are True
+        :param x: the x position
+        :param y: the y position
+        :return: an array containing all the adjacent pixel as True position
+        """
         # TODO implement
         # Get only True pixel around given (x, y) pixel
         # TODO test north pixel
+
         # TODO test east pixel
         # TODO test south pixel
         # TODO test west pixel
