@@ -215,6 +215,28 @@ class TestSAIBrain(unittest.TestCase):
         point = SAIBrain.mt.Point(2, 3)
         assert(not self.saib.is_in(point, self.polygons_test_is_in))
 
+    def test_SAIBrain_mt_shape_get_adjacent_pixel(self):
+        """
+        Test if the function get_adjacent_pixel from my_tools works
+        """
+        # open image
+        old_image_path = os.path.join(self.current_dir, "test_shape", "old_get_adjacent_pixel.png")
+        new_image_path = os.path.join(self.current_dir, "test_shape", "new_get_adjacent_pixel.png")
+
+        old_image = cv2.imread(old_image_path)
+        new_image = cv2.imread(new_image_path)
+
+
+        # transform image
+        tr_img = self.saib.get_transform_image(old_image, new_image)
+        # TODO create shape object
+        for i_i, i in enumerate(tr_img):
+            for i_j, j in enumerate(i):
+                if not SAIBrain.mt.np.array_equal(tr_img[i_i][i_j], [0, 0, 0]):
+                    print("new pixel", i_i, i_j)
+
+        # TODO test get adjacent pixel
+
     def test_SAIBrain_mt_shape_get_adjacent_pixel_OK(self):
         """
         Test if the function get_adjacent_pixel from my_tools works
@@ -226,15 +248,11 @@ class TestSAIBrain(unittest.TestCase):
         old_image = cv2.imread(old_image_path)
         new_image = cv2.imread(new_image_path)
 
+
         # transform image
         tr_img = self.saib.get_transform_image(old_image, new_image)
-        # TODO create shape object
-        for i_i, i in enumerate(tr_img):
-            for i_j, j in enumerate(i):
-                if not SAIBrain.mt.np.array_equal(tr_img[i_i][i_j], [0, 0, 0]):
-                    print("new pixel", i_i, i_j)
-
-        # TODO test get adjacent pixel
+        my_shape = SAIBrain.mt.Shape(tr_img)
+        print(my_shape.get_adjacent_pixel(4, 4))
 
     def test_SAIBrain_mt_shape_get_adjacent_pixel_NOK(self):
         """

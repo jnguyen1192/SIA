@@ -44,10 +44,11 @@ def compare_images(imageA, imageB, title):
 
 
 class Shape:
-    def __init__(self, transform_image, i, j, pixels=[], new_pixels=[]):
+    def __init__(self, transform_image, pixels=[], new_pixels=[]):
+    #def __init__(self, transform_image, i, j, pixels=[], new_pixels=[]):
         self.transform_image = transform_image
-        self.i = i
-        self.j = j
+        #self.i = i
+        #self.j = j
         self.pixels = pixels
         self.new_pixels = new_pixels
 
@@ -82,25 +83,25 @@ class Shape:
         # TODO test boundaries
         # TODO test north pixel
         # y + 1
-        if self.transform_image[x][y+1] == [255, 255, 255]:
+        if np.array_equal(self.transform_image[x][y+1], [255, 255, 255]):
             adjacent_pixel.append(Point(x, y + 1))
 
         # TODO test boundaries
         # TODO test east pixel
         # x + 1
-        if self.transform_image[x][y+1] == [255, 255, 255]:
+        if np.array_equal(self.transform_image[x][y+1], [255, 255, 255]):
             adjacent_pixel.append(Point(x + 1, y))
 
         # TODO test boundaries
         # TODO test south pixel
         # y - 1
-        if self.transform_image[x][y+1] == [255, 255, 255]:
+        if np.array_equal(self.transform_image[x][y+1], [255, 255, 255]):
             adjacent_pixel.append(Point(x, y - 1))
 
         # TODO test boundaries
         # TODO test west pixel
         # x - 1
-        if self.transform_image[x][y+1] == [255, 255, 255]:
+        if np.array_equal(self.transform_image[x][y+1], [255, 255, 255]):
             adjacent_pixel.append(Point(x - 1, y))
 
         return adjacent_pixel
