@@ -82,18 +82,26 @@ class Shape:
         # TODO test boundaries
         # TODO test north pixel
         # y + 1
+        if self.transform_image[x][y+1] == [255, 255, 255]:
+            adjacent_pixel.append(Point(x, y + 1))
 
         # TODO test boundaries
         # TODO test east pixel
         # x + 1
+        if self.transform_image[x][y+1] == [255, 255, 255]:
+            adjacent_pixel.append(Point(x + 1, y))
 
         # TODO test boundaries
         # TODO test south pixel
         # y - 1
+        if self.transform_image[x][y+1] == [255, 255, 255]:
+            adjacent_pixel.append(Point(x, y - 1))
 
         # TODO test boundaries
         # TODO test west pixel
         # x - 1
+        if self.transform_image[x][y+1] == [255, 255, 255]:
+            adjacent_pixel.append(Point(x - 1, y))
 
         return adjacent_pixel
 
