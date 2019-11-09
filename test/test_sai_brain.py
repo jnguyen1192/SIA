@@ -252,8 +252,9 @@ class TestSAIBrain(unittest.TestCase):
         # transform image
         tr_img = self.saib.get_transform_image(old_image, new_image)
         my_shape = SAIBrain.mt.Shape(tr_img)
-        for p in my_shape.get_adjacent_pixel(4, 4):
-            print(p.x, p.y)
+        #print(len(my_shape.get_adjacent_pixel(4, 2)))
+        for p in my_shape.get_adjacent_pixel(4, 3):
+            print(p.y, p.x)
 
     def test_SAIBrain_mt_shape_get_adjacent_pixel_NOK(self):
         """

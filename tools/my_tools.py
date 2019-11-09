@@ -70,7 +70,7 @@ class Shape:
         pixels = set(self.get_adjacent_pixel(x, y))
         return pixels
 
-    def get_adjacent_pixel(self, x, y):
+    def get_adjacent_pixel(self, y, x):
         """
         Get the adjacent pixel only if they are True
         :param x: the x position
@@ -80,30 +80,38 @@ class Shape:
         # TODO implement
         adjacent_pixel = []
         # Get only True pixel around given (x, y) pixel
-        print(self.transform_image[x][y])
         # TODO test boundaries
         # TODO test north pixel
+        print(self.transform_image[y+1][x])
+        print(self.transform_image[y][x + 1])
+        print(self.transform_image[y - 1][x])
+        print(self.transform_image[y][x - 1])
+
         # y + 1
-        if np.array_equal(self.transform_image[x][y+1], [255, 255, 255]):
-            adjacent_pixel.append(Point(x, y + 1))
+        if np.array_equal(self.transform_image[y+1][x], [255, 255, 255]):
+            adjacent_pixel.append(Point(y+1, x))
 
         # TODO test boundaries
         # TODO test east pixel
         # x + 1
-        if np.array_equal(self.transform_image[x + 1][y], [255, 255, 255]):
-            adjacent_pixel.append(Point(x + 1, y))
+        if np.array_equal(self.transform_image[y][x + 1], [255, 255, 255]):
+            adjacent_pixel.append(Point(y, x + 1))
 
         # TODO test boundaries
         # TODO test south pixel
         # y - 1
-        if np.array_equal(self.transform_image[x][y - 1], [255, 255, 255]):
-            adjacent_pixel.append(Point(x, y - 1))
+        if np.array_equal(self.transform_image[y - 1][x], [255, 255, 255]):
+            adjacent_pixel.append(Point(y - 1, x))
 
         # TODO test boundaries
         # TODO test west pixel
         # x - 1
-        if np.array_equal(self.transform_image[x - 1][y], [255, 255, 255]):
-            adjacent_pixel.append(Point(x - 1, y))
+        if np.array_equal(self.transform_image[y][x - 1], [255, 255, 255]):
+            adjacent_pixel.append(Point(y, x - 1))
+
+        print(len(adjacent_pixel))
+        from pprint import pprint
+        pprint(self.transform_image)
 
         return adjacent_pixel
 
