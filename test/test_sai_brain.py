@@ -240,7 +240,26 @@ class TestSAIBrain(unittest.TestCase):
     def test_SAIBrain_mt_shape_get_adjacent_pixel_OK(self):
         """
         Test if the function get_adjacent_pixel from my_tools works
+        0 0 0 0 0 0 0
+        0 0 0 0 0 0 0
+        0 0 0 0 0 0 0
+        0 0 0 1 0 0 0
+        0 0 1 1 1 0 0
+        0 0 0 1 0 0 0
+        0 0 0 0 0 0 0
+        0 0 0 0 0 0 0
+        0 0 1 1 1 0 0
+        0 0 0 0 0 0 0
+        point(x,y)
+        point(3,4)
+
+        point(3,5)
+        point(4,4)
+        point(3,3)
+        point(2,4)
         """
+        x = 4
+        y = 3
         # open image
         old_image_path = os.path.join(self.current_dir, "test_shape", "old_get_adjacent_pixel.png")
         new_image_path = os.path.join(self.current_dir, "test_shape", "new_get_adjacent_pixel.png")
