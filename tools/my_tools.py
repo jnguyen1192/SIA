@@ -80,6 +80,7 @@ class Shape:
         # TODO implement
         adjacent_pixel = []
         # Get only True pixel around given (x, y) pixel
+        print(self.transform_image[x][y])
         # TODO test boundaries
         # TODO test north pixel
         # y + 1
@@ -89,19 +90,19 @@ class Shape:
         # TODO test boundaries
         # TODO test east pixel
         # x + 1
-        if np.array_equal(self.transform_image[x][y+1], [255, 255, 255]):
+        if np.array_equal(self.transform_image[x + 1][y], [255, 255, 255]):
             adjacent_pixel.append(Point(x + 1, y))
 
         # TODO test boundaries
         # TODO test south pixel
         # y - 1
-        if np.array_equal(self.transform_image[x][y+1], [255, 255, 255]):
+        if np.array_equal(self.transform_image[x][y - 1], [255, 255, 255]):
             adjacent_pixel.append(Point(x, y - 1))
 
         # TODO test boundaries
         # TODO test west pixel
         # x - 1
-        if np.array_equal(self.transform_image[x][y+1], [255, 255, 255]):
+        if np.array_equal(self.transform_image[x - 1][y], [255, 255, 255]):
             adjacent_pixel.append(Point(x - 1, y))
 
         return adjacent_pixel
