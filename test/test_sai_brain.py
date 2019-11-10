@@ -258,6 +258,7 @@ class TestSAIBrain(unittest.TestCase):
         point(3,3)
         point(2,4)
         """
+        # TODO implement
         x = 4
         y = 3
         # open image
@@ -280,6 +281,34 @@ class TestSAIBrain(unittest.TestCase):
         Test if the function get_adjacent_pixel from my_tools works
         """
         # TODO implement
+
+    def test_SAIBrain_mt_shape_get_adjacent_pixel_boundaries_east_OK(self):
+        """
+        Test if the function works with east boundaries with following parameters :
+        (3, 3) : (3, 2) + (2, 3)
+        """
+        pass
+
+    def test_SAIBrain_mt_shape_get_adjacent_pixel_boundaries_south_OK(self):
+        """
+        Test if the function works with east boundaries with following parameters :
+        (3, 1) : (2, 1) + (3, 2)
+        """
+        pass
+
+    def test_SAIBrain_mt_shape_get_adjacent_pixel_boundaries_west_OK(self):
+        """
+        Test if the function works with east boundaries with following parameters :
+        (1, 2) : (1, 3) + (2, 2)
+        """
+        pass
+
+    def test_SAIBrain_mt_shape_get_adjacent_pixel_boundaries_north_OK(self):
+        """
+        Test if the function works with east boundaries with following parameters :
+        (2, 3) : (2, 2) + (3, 3)
+        """
+        pass
 
 
 if __name__ == '__main__':
