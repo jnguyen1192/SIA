@@ -80,38 +80,44 @@ class Shape:
         # TODO implement
         adjacent_pixel = []
         # Get only True pixel around given (x, y) pixel
-        # TODO test boundaries
-        # TODO test north pixel
-        print(self.transform_image[y+1][x])
-        print(self.transform_image[y][x + 1])
-        print(self.transform_image[y - 1][x])
-        print(self.transform_image[y][x - 1])
-
+        # test boundaries
+        # test north pixel
+        #print(self.transform_image[y+1][x])
+        #print(self.transform_image[y][x + 1])
+        #print(self.transform_image[y - 1][x])
+        #print(self.transform_image[y][x - 1])
+        height = self.transform_image.shape[0]
+        width = self.transform_image.shape[1]
         # y + 1
-        if np.array_equal(self.transform_image[y+1][x], [255, 255, 255]):
-            adjacent_pixel.append(Point(y+1, x))
-
-        # TODO test boundaries
-        # TODO test east pixel
+        if not(y + 1 > height):
+            if np.array_equal(self.transform_image[y+1][x], [255, 255, 255]):
+                adjacent_pixel.append(Point(y+1, x))
+        #print("height", self.transform_image.shape[0])
+        #print("width", self.transform_image.shape[1])
+        # test boundaries
+        # test east pixel
         # x + 1
-        if np.array_equal(self.transform_image[y][x + 1], [255, 255, 255]):
-            adjacent_pixel.append(Point(y, x + 1))
+        if not (x + 1 > width):
+            if np.array_equal(self.transform_image[y][x + 1], [255, 255, 255]):
+                adjacent_pixel.append(Point(y, x + 1))
 
-        # TODO test boundaries
-        # TODO test south pixel
+        # test boundaries
+        # test south pixel
         # y - 1
-        if np.array_equal(self.transform_image[y - 1][x], [255, 255, 255]):
-            adjacent_pixel.append(Point(y - 1, x))
+        if not (y - 1 < 0):
+            if np.array_equal(self.transform_image[y - 1][x], [255, 255, 255]):
+                adjacent_pixel.append(Point(y - 1, x))
 
-        # TODO test boundaries
-        # TODO test west pixel
+        # test boundaries
+        # test west pixel
         # x - 1
-        if np.array_equal(self.transform_image[y][x - 1], [255, 255, 255]):
-            adjacent_pixel.append(Point(y, x - 1))
+        if not (x - 1 < 0):
+            if np.array_equal(self.transform_image[y][x - 1], [255, 255, 255]):
+                adjacent_pixel.append(Point(y, x - 1))
 
-        print(len(adjacent_pixel))
-        from pprint import pprint
-        pprint(self.transform_image)
+        #print(len(adjacent_pixel))
+        #from pprint import pprint
+        #pprint(self.transform_image)
 
         return adjacent_pixel
 
