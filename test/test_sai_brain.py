@@ -288,7 +288,7 @@ class TestSAIBrain(unittest.TestCase):
         (3, 3) : (3, 2) + (2, 3)
         """
         # open image
-        old_image_path = os.path.join(self.current_dir, "test_shape", "boundaries_east.png")
+        old_image_path = os.path.join(self.current_dir, "test_shape", "new_boundaries_east.png")
         new_image_path = os.path.join(self.current_dir, "test_shape", "new_get_adjacent_pixel.png")
 
         old_image = cv2.imread(old_image_path)
