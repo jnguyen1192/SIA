@@ -306,38 +306,48 @@ class TestSAIBrain(unittest.TestCase):
 
         # test if result of get_adjacent_pixel works correctly
         for i_p, p in enumerate(my_shape.get_adjacent_pixel(*first_point)):
-            assert(points_to_predict[i_p] == (p.y, p.x))
+            #print(p)
+            assert(points_to_predict[i_p] == p)
 
     def test_SAIBrain_mt_shape_get_adjacent_pixel_boundaries_east_OK(self):
         """
         Test if the function works with east boundaries with following parameters :
         east image
-        (2, 1) : (2, 2) + (1, 1)
+        (1, 2) : (2, 2) + (1, 1)
         """
-        first_point = (2, 1)
+        first_point = (1, 2)
         points_to_predict = [(2, 2), (1, 1)]
         self.generic_test_SAIBrain_mt_shape_get_adjacent_pixel_boundaries(first_point, points_to_predict, "east")
 
     def test_SAIBrain_mt_shape_get_adjacent_pixel_boundaries_south_OK(self):
         """
         Test if the function works with east boundaries with following parameters :
-        (3, 1) : (2, 1) + (3, 2)
+        south image
+        (2, 2) : (1, 2) + (2, 1)
         """
-        pass
+        first_point = (2, 2)
+        points_to_predict = [(1, 2), (2, 1)]
+        self.generic_test_SAIBrain_mt_shape_get_adjacent_pixel_boundaries(first_point, points_to_predict, "south")
 
     def test_SAIBrain_mt_shape_get_adjacent_pixel_boundaries_west_OK(self):
         """
         Test if the function works with east boundaries with following parameters :
-        (1, 2) : (1, 3) + (2, 2)
+        west image
+        (2, 0) : (1, 0) + (2, 1)
         """
-        pass
+        first_point = (2, 0)
+        points_to_predict = [(1, 0), (2, 1)]
+        self.generic_test_SAIBrain_mt_shape_get_adjacent_pixel_boundaries(first_point, points_to_predict, "west")
 
     def test_SAIBrain_mt_shape_get_adjacent_pixel_boundaries_north_OK(self):
         """
         Test if the function works with east boundaries with following parameters :
-        (2, 3) : (2, 2) + (3, 3)
+        north image
+        (0, 1) : (0, 2) + (1, 1)
         """
-        pass
+        first_point = (0, 1)
+        points_to_predict = [(0, 2), (1, 1)]
+        self.generic_test_SAIBrain_mt_shape_get_adjacent_pixel_boundaries(first_point, points_to_predict, "north")
 
 
 if __name__ == '__main__':

@@ -75,6 +75,7 @@ class Shape:
         Get the adjacent pixel only if they are True
         y position begins on top
         x position begins on left
+        north > east > south > west
         :param x: the x position
         :param y: the y position
         :return: an array containing all the adjacent pixel as True position
@@ -82,19 +83,19 @@ class Shape:
         # TODO implement
         adjacent_pixel = []
         # Get only True pixel around given (x, y) pixel
-        # test boundaries
-        # test north pixel
         #print(self.transform_image[y+1][x])
         #print(self.transform_image[y][x + 1])
         #print(self.transform_image[y - 1][x])
         #print(self.transform_image[y][x - 1])
         height = self.transform_image.shape[0]
         width = self.transform_image.shape[1]
-        # y + 1
-        if not(y + 1 >= height):
-            if np.array_equal(self.transform_image[y+1][x], [255, 255, 255]):
+        # test boundaries
+        # test north pixel
+        # y - 1
+        if not (y - 1 <= 0):
+            if np.array_equal(self.transform_image[y - 1][x], [255, 255, 255]):
                 print("north")
-                adjacent_pixel.append(Point(y+1, x))
+                adjacent_pixel.append((y - 1, x))
         #print("height", self.transform_image.shape[0])
         #print("width", self.transform_image.shape[1])
         # test boundaries
@@ -103,15 +104,15 @@ class Shape:
         if not (x + 1 >= width):
             if np.array_equal(self.transform_image[y][x + 1], [255, 255, 255]):
                 print("east")
-                adjacent_pixel.append(Point(y, x + 1))
+                adjacent_pixel.append((y, x + 1))
 
         # test boundaries
         # test south pixel
-        # y - 1
-        if not (y - 1 <= 0):
-            if np.array_equal(self.transform_image[y - 1][x], [255, 255, 255]):
+        # y + 1
+        if not(y + 1 >= height):
+            if np.array_equal(self.transform_image[y+1][x], [255, 255, 255]):
                 print("south")
-                adjacent_pixel.append(Point(y - 1, x))
+                adjacent_pixel.append((y+1, x))
 
         # test boundaries
         # test west pixel
@@ -119,7 +120,7 @@ class Shape:
         if not (x - 1 <= 0):
             if np.array_equal(self.transform_image[y][x - 1], [255, 255, 255]):
                 print("west")
-                adjacent_pixel.append(Point(y, x - 1))
+                adjacent_pixel.append((y, x - 1))
 
         #print(len(adjacent_pixel))
         #from pprint import pprint
