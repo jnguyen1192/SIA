@@ -288,8 +288,8 @@ class TestSAIBrain(unittest.TestCase):
         (3, 3) : (3, 2) + (2, 3)
         """
         # open image
-        old_image_path = os.path.join(self.current_dir, "test_shape", "new_boundaries_east.png")
-        new_image_path = os.path.join(self.current_dir, "test_shape", "new_get_adjacent_pixel.png")
+        old_image_path = os.path.join(self.current_dir, "test_shape", "old_boundaries_east.png")
+        new_image_path = os.path.join(self.current_dir, "test_shape", "new_boundaries_east.png")
 
         old_image = cv2.imread(old_image_path)
         new_image = cv2.imread(new_image_path)
@@ -298,7 +298,9 @@ class TestSAIBrain(unittest.TestCase):
         # transform image
         tr_img = self.saib.get_transform_image(old_image, new_image)
         my_shape = SAIBrain.mt.Shape(tr_img)
-        pass
+        for p in my_shape.get_adjacent_pixel(2, 1):
+            print(p.y, p.x)
+        #pass
 
     def test_SAIBrain_mt_shape_get_adjacent_pixel_boundaries_south_OK(self):
         """
