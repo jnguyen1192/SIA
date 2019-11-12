@@ -282,6 +282,32 @@ class TestSAIBrain(unittest.TestCase):
         """
         # TODO implement
 
+    def generic_test_SAIBrain_mt_shape_get_adjacent_pixel_boundaries(self, first_point, points_to_predict, cardinal_point):
+        """
+        Test if the function works with east boundaries with following parameters :
+        east image
+        (2, 1) : (2, 2) + (1, 1)
+        :param first_point: the point as (y, x)
+        :param points_to_predict: the points to predicts as [(y1, x1), (...) ...]
+        :param cardinal_point: the cardinal point (east, south, west, north)
+        """
+        #first_point = (2, 1)
+        #points_to_predict = [(2, 2), (1, 1)]
+        # open image
+        old_image_path = os.path.join(self.current_dir, "test_shape", "old_boundaries_" + cardinal_point + ".png")
+        new_image_path = os.path.join(self.current_dir, "test_shape", "new_boundaries_" + cardinal_point + ".png")
+
+        old_image = cv2.imread(old_image_path)
+        new_image = cv2.imread(new_image_path)
+
+        # transform image
+        tr_img = self.saib.get_transform_image(old_image, new_image)
+        my_shape = SAIBrain.mt.Shape(tr_img)
+
+        # test if result of get_adjacent_pixel works correctly
+        for i_p, p in enumerate(my_shape.get_adjacent_pixel(*first_point)):
+            assert(points_to_predict[i_p] == (p.y, p.x))
+
     def test_SAIBrain_mt_shape_get_adjacent_pixel_boundaries_east_OK(self):
         """
         Test if the function works with east boundaries with following parameters :
@@ -290,18 +316,7 @@ class TestSAIBrain(unittest.TestCase):
         """
         first_point = (2, 1)
         points_to_predict = [(2, 2), (1, 1)]
-        # open image
-        old_image_path = os.path.join(self.current_dir, "test_shape", "old_boundaries_east.png")
-        new_image_path = os.path.join(self.current_dir, "test_shape", "new_boundaries_east.png")
-
-        old_image = cv2.imread(old_image_path)
-        new_image = cv2.imread(new_image_path)
-
-        # transform image
-        tr_img = self.saib.get_transform_image(old_image, new_image)
-        my_shape = SAIBrain.mt.Shape(tr_img)
-        for i_p, p in enumerate(my_shape.get_adjacent_pixel(*first_point)):
-            assert(points_to_predict[i_p] == (p.y, p.x))
+        self.generic_test_SAIBrain_mt_shape_get_adjacent_pixel_boundaries(first_point, points_to_predict, "east")
 
     def test_SAIBrain_mt_shape_get_adjacent_pixel_boundaries_south_OK(self):
         """
