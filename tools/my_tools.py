@@ -56,8 +56,11 @@ class Shape:
         :param y: the y position
         :return: an array with new pixels
         """
-        # TODO implemented
-        pass
+        pixels = self.get_adjacent_pixel(y, x)
+        for pixel in pixels:
+            if pixel in self.pixels or pixel in self.new_pixels:
+                pixels.remove(pixel)
+        return pixels
 
     def get_shape(self, x, y):
         """
