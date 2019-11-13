@@ -50,7 +50,13 @@ class Shape:
         self.new_pixels = new_pixels
 
     def get_new_adjacent_pixel(self, y, x):
-        # TODO implement
+        """
+        Get the new adjacent pixel of the current shape
+        :param x: the x position
+        :param y: the y position
+        :return: an array with new pixels
+        """
+        # TODO implemented
         pass
 
     def get_shape(self, x, y):
