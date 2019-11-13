@@ -45,27 +45,39 @@ def compare_images(imageA, imageB, title):
 
 class Shape:
     def __init__(self, transform_image, pixels=[], new_pixels=[]):
-    #def __init__(self, transform_image, i, j, pixels=[], new_pixels=[]):
         self.transform_image = transform_image
-        #self.i = i
-        #self.j = j
         self.pixels = pixels
         self.new_pixels = new_pixels
 
-    def get_new_adjacent_pixel(self, x, y):
+    def get_new_adjacent_pixel(self, y, x):
+        # TODO implement
+        pass
+
+    def get_shape(self, x, y):
         """
-        Get the new adjacent pixel of the current shape
+        Get the current shape
         TODO Correct using the shape
         :param x: the x position
         :param y: the y position
         :return: the new array of adjacent pixel as [(1, 2), (1, 3), ... ]
         """
+        pixels = self.get_adjacent_pixel(y, x)
         # use get_adjacent_pixel
-        # check if those pixels are already use on pixels variable
+        if len(pixels) != 0:
+            self.new_pixels.append(pixels)
+            for pixel in self.new_pixels:
+            # check if those pixels are already use on pixels variable
+                if pixel not in self.pixels:
+                    self.pixels.append(pixels)
+                    # add them to new pixels list variable
+                    new_pixels = self.get_new_adjacent_pixel(*pixel)
+                    if len(new_pixels) != 0:
+                        self.new_pixels.append(new_pixels)
+        else:
+            return []
         # if it is true
         #       do nothing
         # else
-        #       add them to new pixels list variable
         # while new pixels list contains point loop the previous statements
         pixels = set(self.get_adjacent_pixel(x, y))
         return pixels
@@ -75,59 +87,38 @@ class Shape:
         Get the adjacent pixel only if they are True
         y position begins on top
         x position begins on left
-        north > east > south > west
+        order : north > east > south > west
         :param x: the x position
         :param y: the y position
         :return: an array containing all the adjacent pixel as True position
         """
-        # TODO implement
         adjacent_pixel = []
         # Get only True pixel around given (x, y) pixel
-        #print(self.transform_image[y+1][x])
-        #print(self.transform_image[y][x + 1])
-        #print(self.transform_image[y - 1][x])
-        #print(self.transform_image[y][x - 1])
         height = self.transform_image.shape[0]
         width = self.transform_image.shape[1]
-        # test boundaries
-        # test north pixel
+        # Test boundaries
+        # Test north pixel
         # y - 1
         if not (y - 1 <= 0):
             if np.array_equal(self.transform_image[y - 1][x], [255, 255, 255]):
-                print("north")
                 adjacent_pixel.append((y - 1, x))
-        #print("height", self.transform_image.shape[0])
-        #print("width", self.transform_image.shape[1])
-        # test boundaries
-        # test east pixel
+
+        # Test east pixel
         # x + 1
         if not (x + 1 >= width):
             if np.array_equal(self.transform_image[y][x + 1], [255, 255, 255]):
-                print("east")
                 adjacent_pixel.append((y, x + 1))
 
-        # test boundaries
-        # test south pixel
+        # Test south pixel
         # y + 1
         if not(y + 1 >= height):
             if np.array_equal(self.transform_image[y+1][x], [255, 255, 255]):
-                print("south")
                 adjacent_pixel.append((y+1, x))
 
-        # test boundaries
-        # test west pixel
+        # Test west pixel
         # x - 1
         if not (x - 1 <= 0):
             if np.array_equal(self.transform_image[y][x - 1], [255, 255, 255]):
-                print("west")
                 adjacent_pixel.append((y, x - 1))
 
-        #print(len(adjacent_pixel))
-        #from pprint import pprint
-        #pprint(self.transform_image)
-
         return adjacent_pixel
-
-
-
-

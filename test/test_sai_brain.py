@@ -291,8 +291,6 @@ class TestSAIBrain(unittest.TestCase):
         :param points_to_predict: the points to predicts as [(y1, x1), (...) ...]
         :param cardinal_point: the cardinal point (east, south, west, north)
         """
-        #first_point = (2, 1)
-        #points_to_predict = [(2, 2), (1, 1)]
         # open image
         old_image_path = os.path.join(self.current_dir, "test_shape", "old_boundaries_" + cardinal_point + ".png")
         new_image_path = os.path.join(self.current_dir, "test_shape", "new_boundaries_" + cardinal_point + ".png")
@@ -306,7 +304,6 @@ class TestSAIBrain(unittest.TestCase):
 
         # test if result of get_adjacent_pixel works correctly
         for i_p, p in enumerate(my_shape.get_adjacent_pixel(*first_point)):
-            #print(p)
             assert(points_to_predict[i_p] == p)
 
     def test_SAIBrain_mt_shape_get_adjacent_pixel_boundaries_east_OK(self):
@@ -348,6 +345,21 @@ class TestSAIBrain(unittest.TestCase):
         first_point = (0, 1)
         points_to_predict = [(0, 2), (1, 1)]
         self.generic_test_SAIBrain_mt_shape_get_adjacent_pixel_boundaries(first_point, points_to_predict, "north")
+
+    def test_code(self):
+        """
+
+        :return:
+        """
+        points_to_predict = [(0, 2), (1, 1)]
+        #points_to_predict.remove((0, 2))
+        #points_to_predict.append([])
+        for point in points_to_predict:
+            print(point)
+            if (0, 2) in points_to_predict:
+                points_to_predict.remove((0, 2))
+
+        #print(points_to_predict)
 
 
 if __name__ == '__main__':
