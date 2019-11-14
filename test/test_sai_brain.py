@@ -346,20 +346,18 @@ class TestSAIBrain(unittest.TestCase):
         points_to_predict = [(0, 2), (1, 1)]
         self.generic_test_SAIBrain_mt_shape_get_adjacent_pixel_boundaries(first_point, points_to_predict, "north")
 
-    def test_code(self):
+    def test_SAIBrain_mt_shape_get_new_adjacent_pixel_case_1_OK(self):
         """
-
-        :return:
+        Test if the function works and add the new pixel with the first case
         """
-        points_to_predict = [(0, 2), (1, 1)]
-        #points_to_predict.remove((0, 2))
-        #points_to_predict.append([])
-        for point in points_to_predict:
-            print(point)
-            if (0, 2) in points_to_predict:
-                points_to_predict.remove((0, 2))
+        #TODO implement
 
-        #print(points_to_predict)
+    def test_SAIBrain_mt_shape_get_new_adjacent_pixel_case_2_OK(self):
+        """
+        Test if the function works and add the new pixel with the second case
+        """
+        #TODO implement
+
 
 
 if __name__ == '__main__':
