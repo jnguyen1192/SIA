@@ -349,6 +349,8 @@ class TestSAIBrain(unittest.TestCase):
     def test_SAIBrain_mt_shape_get_new_adjacent_pixel_case_1_OK(self):
         """
         Test if the function works and add the new pixel with the first case
+        init : [(0, 0), (0, 1)
+        new : [(0, 2), (1, 1)
         """
         #TODO implement
 
