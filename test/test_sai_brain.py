@@ -346,6 +346,31 @@ class TestSAIBrain(unittest.TestCase):
         points_to_predict = [(0, 2), (1, 1)]
         self.generic_test_SAIBrain_mt_shape_get_adjacent_pixel_boundaries(first_point, points_to_predict, "north")
 
+    def generic_test_SAIBrain_mt_shape_get_new_adjacent_pixel_boundaries(self, pixel, pixels, new_pixels_to_predict, cardinal_point):
+        """
+        Test if the function works with east boundaries with following parameters :
+        east image
+        (2, 1) : (2, 2) + (1, 1)
+        :param pixel: the point as (y, x)
+        :param pixels: the point as (y, x)
+        :param new_pixels_to_predict: the points to predicts as [(y1, x1), (...) ...]
+        :param cardinal_point: the cardinal point (east, south, west, north)
+        """
+        # open image
+        old_image_path = os.path.join(self.current_dir, "test_shape", "old_boundaries_" + cardinal_point + ".png")
+        new_image_path = os.path.join(self.current_dir, "test_shape", "new_boundaries_" + cardinal_point + ".png")
+
+        old_image = cv2.imread(old_image_path)
+        new_image = cv2.imread(new_image_path)
+
+        # transform image
+        tr_img = self.saib.get_transform_image(old_image, new_image)
+        my_shape = SAIBrain.mt.Shape(tr_img, pixels)
+
+        # test if result of get_adjacent_pixel works correctly
+        for i_p, p in enumerate(my_shape.get_new_adjacent_pixel(*pixel)):
+            assert(new_pixels_to_predict[i_p] == p)
+
     def test_SAIBrain_mt_shape_get_new_adjacent_pixel_case_1_OK(self):
         """
         Test if the function works and add the new pixel with the first case
