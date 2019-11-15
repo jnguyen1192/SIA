@@ -352,7 +352,10 @@ class TestSAIBrain(unittest.TestCase):
         init : [(0, 0), (0, 1)
         new : [(0, 2), (1, 1)
         """
-        #TODO implement
+        pixel = (0, 1)
+        pixels = [(0, 0), (0, 1)]
+        new_pixels_to_predict = [(0, 2), (1, 1)]
+        # TODO implement
 
     def test_SAIBrain_mt_shape_get_new_adjacent_pixel_case_2_OK(self):
         """
