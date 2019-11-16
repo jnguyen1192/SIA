@@ -382,12 +382,38 @@ class TestSAIBrain(unittest.TestCase):
         new_pixels_to_predict = [(0, 2), (1, 1)]
         self.generic_test_SAIBrain_mt_shape_get_new_adjacent_pixel_boundaries(pixel, pixels, new_pixels_to_predict, "north")
 
-    def test_SAIBrain_mt_shape_get_new_adjacent_pixel_case_2_OK(self):
+    def test_SAIBrain_mt_shape_get_new_adjacent_pixel_east_OK(self):
         """
-        Test if the function works and add the new pixel with the second case
+        Test if the function works and add the new pixel with the east case
+        init : [(0, 3), (1, 2)
+        new : [(2, 2), (1, 1)
         """
-        #TODO implement
+        pixel = (1, 2)
+        pixels = [(0, 3), (1, 2)]
+        new_pixels_to_predict = [(2, 2), (1, 1)]
+        self.generic_test_SAIBrain_mt_shape_get_new_adjacent_pixel_boundaries(pixel, pixels, new_pixels_to_predict, "east")
 
+    def test_SAIBrain_mt_shape_get_new_adjacent_pixel_south_OK(self):
+        """
+        Test if the function works and add the new pixel with the south case
+        init : [(0, 0), (0, 1)
+        new : [(0, 2), (1, 1)
+        """
+        pixel = (2, 1)
+        pixels = [(1, 1), (2, 1)]
+        new_pixels_to_predict = [(2, 2), (2, 0)]
+        self.generic_test_SAIBrain_mt_shape_get_new_adjacent_pixel_boundaries(pixel, pixels, new_pixels_to_predict, "south")
+
+    def test_SAIBrain_mt_shape_get_new_adjacent_pixel_west_OK(self):
+        """
+        Test if the function works and add the new pixel with the west case
+        init : [(0, 0), (0, 1)
+        new : [(0, 2), (1, 1)
+        """
+        pixel = (1, 0)
+        pixels = [(0, 0), (1, 0)]
+        new_pixels_to_predict = [(1, 1), (2, 0)]
+        self.generic_test_SAIBrain_mt_shape_get_new_adjacent_pixel_boundaries(pixel, pixels, new_pixels_to_predict, "west")
 
 
 if __name__ == '__main__':
