@@ -357,8 +357,8 @@ class TestSAIBrain(unittest.TestCase):
         :param cardinal_point: the cardinal point (east, south, west, north)
         """
         # open image
-        old_image_path = os.path.join(self.current_dir, "test_shape", "old_boundaries_" + cardinal_point + ".png")
-        new_image_path = os.path.join(self.current_dir, "test_shape", "new_boundaries_" + cardinal_point + ".png")
+        old_image_path = os.path.join(self.current_dir, "test_shape", "old_get_new_adjacent_pixel_" + cardinal_point + ".png")
+        new_image_path = os.path.join(self.current_dir, "test_shape", "new_get_new_adjacent_pixel_" + cardinal_point + ".png")
 
         old_image = cv2.imread(old_image_path)
         new_image = cv2.imread(new_image_path)
@@ -371,16 +371,16 @@ class TestSAIBrain(unittest.TestCase):
         for i_p, p in enumerate(my_shape.get_new_adjacent_pixel(*pixel)):
             assert(new_pixels_to_predict[i_p] == p)
 
-    def test_SAIBrain_mt_shape_get_new_adjacent_pixel_case_1_OK(self):
+    def test_SAIBrain_mt_shape_get_new_adjacent_pixel_north_OK(self):
         """
-        Test if the function works and add the new pixel with the first case
+        Test if the function works and add the new pixel with the north case
         init : [(0, 0), (0, 1)
         new : [(0, 2), (1, 1)
         """
         pixel = (0, 1)
         pixels = [(0, 0), (0, 1)]
         new_pixels_to_predict = [(0, 2), (1, 1)]
-        # TODO implement
+        self.generic_test_SAIBrain_mt_shape_get_new_adjacent_pixel_boundaries(pixel, pixels, new_pixels_to_predict, "north")
 
     def test_SAIBrain_mt_shape_get_new_adjacent_pixel_case_2_OK(self):
         """
