@@ -357,7 +357,7 @@ class TestSAIBrain(unittest.TestCase):
         :param cardinal_point: the cardinal point (east, south, west, north)
         """
         # open image
-        old_image_path = os.path.join(self.current_dir, "test_shape", "old_get_new_adjacent_pixel_" + cardinal_point + ".png")
+        old_image_path = os.path.join(self.current_dir, "test_shape", "old_get_new_adjacent_pixel.png")
         new_image_path = os.path.join(self.current_dir, "test_shape", "new_get_new_adjacent_pixel_" + cardinal_point + ".png")
 
         old_image = cv2.imread(old_image_path)
