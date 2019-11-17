@@ -36,14 +36,6 @@ class TestSAIBrain(unittest.TestCase):
         # TODO implement
         assert (False==False)
 
-    def test_SAIBrain_create_db_case_ok(self):
-        # TODO implement
-        assert (True==True)
-
-    def test_SAIBrain_create_db_case_nok(self):
-        # TODO implement
-        assert (False==False)
-
     def test_SAIBrain_rest_case_ok(self):
         # TODO implement
         assert (True==True)
@@ -407,13 +399,28 @@ class TestSAIBrain(unittest.TestCase):
     def test_SAIBrain_mt_shape_get_new_adjacent_pixel_west_OK(self):
         """
         Test if the function works and add the new pixel with the west case
-        init : [(0, 0), (0, 1)
-        new : [(0, 2), (1, 1)
+        init : [(0, 0), (1, 0)
+        new : [(1, 1), (2, 1)
         """
         pixel = (1, 0)
         pixels = [(0, 0), (1, 0)]
         new_pixels_to_predict = [(1, 1), (2, 0)]
         self.generic_test_SAIBrain_mt_shape_get_new_adjacent_pixel_boundaries(pixel, pixels, new_pixels_to_predict, "west")
+
+    def test_SAIBrain_mt_shape_get_shape_west_OK(self):
+        """
+        Test if the function get shape works with the west case
+        mat=[0, 0, 0, 0, 0, 0,
+             0, 1, 1, 1, 1, 0,
+             0, 0, 1, 0, 1, 0,
+             0, 0, 1, 1, 1, 0,
+             0, 0, 0, 0, 0, 0]
+        Here, we want to get 1 on the previous matrix.
+        init : (1, 1)
+        predict : [(1, 2), (1, 3), (2, 2), (1, 4), (3, 2), (2, 4), (3, 3), (3, 4)]
+        """
+        # TODO generic_test_SAIBrain_mt_shape_get_shape(pixel, pixels_to_predict, "west")
+        #self.generic_test_SAIBrain_mt_shape_get_new_adjacent_pixel_boundaries(pixel, pixels, new_pixels_to_predict, "west")
 
 
 if __name__ == '__main__':
