@@ -419,8 +419,25 @@ class TestSAIBrain(unittest.TestCase):
         init : (1, 1)
         predict : [(1, 2), (1, 3), (2, 2), (1, 4), (3, 2), (2, 4), (3, 3), (3, 4)]
         """
+        pixel = (1, 1)
+        pixels_to_predict = [(1, 1), (1, 2), (1, 3), (2, 2), (1, 4), (3, 2), (2, 4), (3, 3), (3, 4)]
         # TODO generic_test_SAIBrain_mt_shape_get_shape(pixel, pixels_to_predict, "west")
         #self.generic_test_SAIBrain_mt_shape_get_new_adjacent_pixel_boundaries(pixel, pixels, new_pixels_to_predict, "west")
+
+        # open image
+        old_image_path = os.path.join(self.current_dir, "test_shape", "old_get_shape_west.png")
+        new_image_path = os.path.join(self.current_dir, "test_shape", "new_get_shape_west.png")
+
+        old_image = cv2.imread(old_image_path)
+        new_image = cv2.imread(new_image_path)
+
+        # transform image
+        tr_img = self.saib.get_transform_image(old_image, new_image)
+        my_shape = SAIBrain.mt.Shape(tr_img)
+
+        # test if result of get_adjacent_pixel works correctly
+        for i_p, p in enumerate(my_shape.get_shape(*pixel)):
+            assert(pixels_to_predict[i_p] == p)
 
 
 if __name__ == '__main__':

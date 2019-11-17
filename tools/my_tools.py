@@ -70,26 +70,38 @@ class Shape:
         :param y: the y position
         :return: the new array of adjacent pixel as [(1, 2), (1, 3), ... ]
         """
-        pixels = self.get_adjacent_pixel(y, x)
+        pixels = []
+        if np.array_equal(self.transform_image[y][x], [255, 255, 255]):
+            self.pixels.append((y, x))
+            pixels = self.get_adjacent_pixel(y, x)
         # use get_adjacent_pixel
         if len(pixels) != 0:
-            self.new_pixels.append(pixels)
-            for pixel in self.new_pixels:
+            self.new_pixels = self.new_pixels + pixels
+            i = 0
+            while i < len(self.new_pixels):
+            #for pixel in self.new_pixels:
             # check if those pixels are already use on pixels variable
+                pixel = self.new_pixels[i]
                 if pixel not in self.pixels:
-                    self.pixels.append(pixels)
+                    self.pixels.append(pixel)
+                    #self.new_pixels.remove(pixel)
                     # add them to new pixels list variable
                     new_pixels = self.get_new_adjacent_pixel(*pixel)
                     if len(new_pixels) != 0:
-                        self.new_pixels.append(new_pixels)
+                        self.new_pixels = self.new_pixels + new_pixels
+                #print(len(self.new_pixels))
+                i += 1
+
         else:
             return []
         # if it is true
         #       do nothing
         # else
         # while new pixels list contains point loop the previous statements
-        pixels = set(self.get_adjacent_pixel(x, y))
-        return pixels
+        #pixels = set(self.get_adjacent_pixel(x, y))
+        #print("pixels", self.pixels)
+        #print("new_pixels", self.new_pixels)
+        return self.pixels
 
     def get_adjacent_pixel(self, y, x):
         """
