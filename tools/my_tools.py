@@ -62,7 +62,7 @@ class Shape:
                 pixels.remove(pixel)
         return pixels
 
-    def get_shape(self, x, y):
+    def get_shape(self, y, x):
         """
         Get the current shape
         TODO Correct using the shape
