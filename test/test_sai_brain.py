@@ -426,12 +426,8 @@ class TestSAIBrain(unittest.TestCase):
         # transform image
         tr_img = self.saib.get_transform_image(old_image, new_image)
         my_shape = SAIBrain.mt.Shape(tr_img)
-        #print(len(my_shape.get_shape(*pixel)))
-        #print(len(pixels_to_predict))
         # test if result of get_adjacent_pixel works correctly
         for i_p, p in enumerate(my_shape.get_shape(*pixel)):
-            #print(i_p)
-            #print(p)
             assert(pixels_to_predict[i_p] == p)
 
     def test_SAIBrain_mt_shape_get_shape_west_OK(self):
@@ -444,7 +440,7 @@ class TestSAIBrain(unittest.TestCase):
              0, 0, 0, 0, 0, 0]
         Here, we want to get 1 on the previous matrix.
         init : (1, 1)
-        predict : [(1, 2), (1, 3), (2, 2), (1, 4), (3, 2), (2, 4), (3, 3), (3, 4)]
+        predict : [(1, 1), (1, 2), (1, 3), (2, 2), (1, 4), (3, 2), (2, 4), (3, 3), (3, 4)]
         """
         pixel = (1, 1)
         pixels_to_predict = [(1, 1), (1, 2), (1, 3), (2, 2), (1, 4), (3, 2), (2, 4), (3, 3), (3, 4)]
@@ -466,6 +462,39 @@ class TestSAIBrain(unittest.TestCase):
         pixel = (1, 3)
         pixels_to_predict = [(1, 3), (2, 3), (3, 3), (2, 2), (4, 3), (2, 1), (4, 2), (3, 1), (4, 1)]
         self.generic_test_SAIBrain_mt_shape_get_shape(pixel, pixels_to_predict, "north")
+
+    def test_SAIBrain_mt_shape_get_shape_east_OK(self):
+        """
+        Test if the function get shape works with the west case
+        mat=[0, 0, 0, 0, 0, 0,
+             0, 1, 1, 1, 0, 0,
+             0, 1, 0, 1, 0, 0,
+             0, 1, 1, 1, 1, 0,
+             0, 0, 0, 0, 0, 0]
+        Here, we want to get 1 on the previous matrix.
+        init : (1, 1)
+        predict : [(1, 2), (1, 3), (2, 2), (1, 4), (3, 2), (2, 4), (3, 3), (3, 4)]
+        """
+        pixel = (1, 1)
+        pixels_to_predict = [(1, 1), (1, 2), (2, 1), (1, 3), (3, 1), (2, 3), (3, 2), (3, 3), (3, 4)]
+        self.generic_test_SAIBrain_mt_shape_get_shape(pixel, pixels_to_predict, "east")
+
+    def test_SAIBrain_mt_shape_get_shape_south_OK(self):
+        """
+        Test if the function get shape works with the south case
+        mat=[0, 0, 0, 0, 0,
+             0, 1, 1, 1, 0,
+             0, 1, 0, 1, 0,
+             0, 1, 1, 1, 0,
+             0, 1, 0, 0, 0,
+             0, 0, 0, 0, 0]
+        Here, we want to get 1 on the previous matrix.
+        init : (1, 1)
+        predict : [(1, 1), (1, 2), (2, 1), (1, 3), (3, 1), (2, 3), (3, 2), (4, 1), (3, 3)]
+        """
+        pixel = (1, 1)
+        pixels_to_predict = [(1, 1), (1, 2), (2, 1), (1, 3), (3, 1), (2, 3), (3, 2), (4, 1), (3, 3)]
+        self.generic_test_SAIBrain_mt_shape_get_shape(pixel, pixels_to_predict, "south")
 
 
 if __name__ == '__main__':
