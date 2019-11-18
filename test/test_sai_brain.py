@@ -407,6 +407,30 @@ class TestSAIBrain(unittest.TestCase):
         new_pixels_to_predict = [(1, 1), (2, 0)]
         self.generic_test_SAIBrain_mt_shape_get_new_adjacent_pixel_boundaries(pixel, pixels, new_pixels_to_predict, "west")
 
+    def generic_test_SAIBrain_mt_shape_get_shape(self, pixel, pixels_to_predict, cardinal_point):
+        """
+        Generic function to test function get_shape with following parameters :
+        east image
+        (2, 1) : (2, 2) + (1, 1)
+        :param pixel: the point as (y, x)
+        :param pixels_to_predict: the points to predicts as [(y1, x1), (...) ...]
+        :param cardinal_point: the cardinal point (east, south, west, north)
+        """
+        # open image
+        old_image_path = os.path.join(self.current_dir, "test_shape", "old_get_shape_" + cardinal_point + ".png")
+        new_image_path = os.path.join(self.current_dir, "test_shape", "new_get_shape_" + cardinal_point + ".png")
+
+        old_image = cv2.imread(old_image_path)
+        new_image = cv2.imread(new_image_path)
+
+        # transform image
+        tr_img = self.saib.get_transform_image(old_image, new_image)
+        my_shape = SAIBrain.mt.Shape(tr_img)
+
+        # test if result of get_adjacent_pixel works correctly
+        for i_p, p in enumerate(my_shape.get_shape(*pixel)):
+            assert(pixels_to_predict[i_p] == p)
+
     def test_SAIBrain_mt_shape_get_shape_west_OK(self):
         """
         Test if the function get shape works with the west case
@@ -421,23 +445,7 @@ class TestSAIBrain(unittest.TestCase):
         """
         pixel = (1, 1)
         pixels_to_predict = [(1, 1), (1, 2), (1, 3), (2, 2), (1, 4), (3, 2), (2, 4), (3, 3), (3, 4)]
-        # TODO generic_test_SAIBrain_mt_shape_get_shape(pixel, pixels_to_predict, "west")
-        #self.generic_test_SAIBrain_mt_shape_get_new_adjacent_pixel_boundaries(pixel, pixels, new_pixels_to_predict, "west")
-
-        # open image
-        old_image_path = os.path.join(self.current_dir, "test_shape", "old_get_shape_west.png")
-        new_image_path = os.path.join(self.current_dir, "test_shape", "new_get_shape_west.png")
-
-        old_image = cv2.imread(old_image_path)
-        new_image = cv2.imread(new_image_path)
-
-        # transform image
-        tr_img = self.saib.get_transform_image(old_image, new_image)
-        my_shape = SAIBrain.mt.Shape(tr_img)
-
-        # test if result of get_adjacent_pixel works correctly
-        for i_p, p in enumerate(my_shape.get_shape(*pixel)):
-            assert(pixels_to_predict[i_p] == p)
+        self.generic_test_SAIBrain_mt_shape_get_shape(pixel, pixels_to_predict, "west")
 
 
 if __name__ == '__main__':
