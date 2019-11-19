@@ -134,6 +134,7 @@ class SAIBrain:
         """
         # TODO to implement
         # Use the class shape to create a new shape
+        # This shape will be on a new image in the directory almost long term memory
         return 0
 
     def is_in(self, point, all_polygon):
