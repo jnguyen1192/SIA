@@ -502,7 +502,7 @@ class TestSAIBrain(unittest.TestCase):
         """
         # TODO to implement
         # create an image using matplotlib using transparency with pixel (255, 255, 255, 255) and (0, 0, 0, 0)
-        # create an image using paint with the correct predict of shape
+        # create an image using paint with the correct predict of shape using https://www.photopea.com/
         # check if the function return the good shape and create the correct image
         pass
 
