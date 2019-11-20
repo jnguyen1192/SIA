@@ -496,6 +496,22 @@ class TestSAIBrain(unittest.TestCase):
         pixels_to_predict = [(1, 1), (1, 2), (2, 1), (1, 3), (3, 1), (2, 3), (3, 2), (4, 1), (3, 3)]
         self.generic_test_SAIBrain_mt_shape_get_shape(pixel, pixels_to_predict, "south")
 
+    def test_SAIBrain_create_shape_north_OK(self):
+        """
+        Test if the function create shape works with the north case
+        """
+        # TODO to implement
+        pass
+
+    def test_SAIBrain_create_shape_NOK(self):
+        """
+        Test if the function create shape works with the empty case
+        """
+        # TODO to implement
+        pass
+
+
+
 
 if __name__ == '__main__':
     unittest.main()
