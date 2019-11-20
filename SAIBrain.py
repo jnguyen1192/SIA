@@ -137,11 +137,12 @@ class SAIBrain:
         # This shape will be on a new image in the directory almost long term memory
 
         # This image will be compose of the shape as pixel (255, 255, 255, 255) and (0, 0, 0, 0)
+
         # This image will have a special name using height_width_number:
         #   - height : the height of the image
         #   - width : the width of the image
         #   - number : the number of the image in the corresponding cluster (height, width)
-        return 0 # the polygon on the position given
+        return 0  # the polygon on the position given
 
     def is_in(self, point, all_polygon):
         """
