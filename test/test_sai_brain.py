@@ -501,7 +501,7 @@ class TestSAIBrain(unittest.TestCase):
         Test if the function create shape works with the north case
         """
         # TODO to implement
-        # create an image using matplotlib using transparency with pixel (255, 255, 255, 255) and (0, 0, 0, 0)
+        # create an image using matplotlib using transparency with pixel (0, 0, 0, 0) and (0, 0, 0, 255)
         # create an image using paint with the correct predict of shape using https://www.photopea.com/
         # check if the function return the good shape and create the correct image
         # open image
