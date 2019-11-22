@@ -502,13 +502,28 @@ class TestSAIBrain(unittest.TestCase):
         """
         # TODO to implement
         # create an image using matplotlib using transparency with pixel (0, 0, 0, 0) and (0, 0, 0, 255)
+        # get the shape
+        # open image
+        old_image_path = os.path.join(self.current_dir, "test_shape", "old_get_shape_north.png")
+        new_image_path = os.path.join(self.current_dir, "test_shape", "new_get_shape_north.png")
+
+        old_image = cv2.imread(old_image_path)
+        new_image = cv2.imread(new_image_path)
+
+        # transform image
+        tr_img = self.saib.get_transform_image(old_image, new_image)
+
+        s = SAIBrain.mt.Shape(tr_img)
+        pixels = s.get_shape(1, 3)
+        from pprint import pprint
+        pprint(pixels)
+
         # create an image using paint with the correct predict of shape using https://www.photopea.com/
         # check if the function return the good shape and create the correct image
         # open image
-        old_image_path = os.path.join(self.current_dir, "test_shape", "new_create_shape_north_transparent_OK.png")
-        old_image = cv2.imread(old_image_path, cv2.IMREAD_UNCHANGED)
-        from pprint import pprint
-        pprint(old_image)
+        pred_image_path = os.path.join(self.current_dir, "test_shape", "new_create_shape_north_transparent_OK.png")
+        pred_image = cv2.imread(pred_image_path, cv2.IMREAD_UNCHANGED)
+        pprint(pred_image)
         pass
 
     def test_SAIBrain_create_shape_NOK(self):
