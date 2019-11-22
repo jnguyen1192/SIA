@@ -515,15 +515,26 @@ class TestSAIBrain(unittest.TestCase):
 
         s = SAIBrain.mt.Shape(tr_img)
         pixels = s.get_shape(1, 3)
+
+        # create an image called test_SAIBrain_create_shape_north_OK_3x4_1 which the small crop image with transparency
+        # TODO use function to get min y and x from pixels
+
+        # TODO substract all pixels with the previous new point
+
+        # TODO create an image with the new pixels using transparency
+
+
         from pprint import pprint
         pprint(pixels)
 
         # create an image using paint with the correct predict of shape using https://www.photopea.com/
-        # check if the function return the good shape and create the correct image
         # open image
         pred_image_path = os.path.join(self.current_dir, "test_shape", "new_create_shape_north_transparent_OK.png")
         pred_image = cv2.imread(pred_image_path, cv2.IMREAD_UNCHANGED)
         pprint(pred_image)
+
+
+        # check if the function return the good shape and create the correct image
         pass
 
     def test_SAIBrain_create_shape_NOK(self):
