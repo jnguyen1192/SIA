@@ -544,6 +544,20 @@ class TestSAIBrain(unittest.TestCase):
         # TODO to implement
         pass
 
+    def test_SAIBrain_get_box_OK(self):
+        """
+        Test if the function get box works
+        """
+        # TODO to implement
+        pass
+
+    def test_SAIBrain_get_box_NOK(self):
+        """
+        Test if the function get box works with the empty case
+        """
+        # TODO to implement
+        pass
+
 
 
 
