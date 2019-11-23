@@ -150,3 +150,11 @@ class Shape:
         :return: an array with two points [(y_min, x_min), (y_max, x_max) representing
         """
         # TODO implement
+        # Use pixels
+
+        # for each pixels
+        # get the min of y and x
+        # and
+        # get the max of y and x
+
+        # return those two points
