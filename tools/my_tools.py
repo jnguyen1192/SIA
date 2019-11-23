@@ -143,3 +143,10 @@ class Shape:
                 adjacent_pixel.append((y, x - 1))
 
         return adjacent_pixel
+
+    def get_box(self):
+        """
+        This method is always used after get_shape function
+        :return: an array with two points [(y_min, x_min), (y_max, x_max) representing
+        """
+        # TODO implement
