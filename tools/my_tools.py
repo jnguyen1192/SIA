@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
 
 from skimage.metrics._structural_similarity import structural_similarity as ssim
 from shapely.geometry import Point, Polygon  # @source: https://gis.stackexchange.com/questions/62925/shapely-not-installing-correctly
@@ -149,12 +150,21 @@ class Shape:
         This method is always used after get_shape function
         :return: an array with two points [(y_min, x_min), (y_max, x_max) representing
         """
-        # TODO implement
-        # Use pixels
-
+        min_y = sys.maxsize
+        min_x = sys.maxsize
+        max_y = -1
+        max_x = -1
         # for each pixels
-        # get the min of y and x
-        # and
-        # get the max of y and x
-
+        for pixel in self.pixels:
+            # get the min of y and x
+            if pixel[0] < min_y:
+                min_y = pixel[0]
+            if pixel[1] < min_x:
+                min_x = pixel[1]
+            # get the max of y and x
+            if pixel[0] > max_y:
+                max_y = pixel[0]
+            if pixel[1] > max_x:
+                max_x = pixel[1]
         # return those two points
+        return [(min_y, min_x), (max_y, max_x)]
