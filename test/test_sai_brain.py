@@ -3,6 +3,7 @@ import SAIBrain
 
 import cv2
 import os
+import sys
 
 
 class TestSAIBrain(unittest.TestCase):
@@ -555,18 +556,24 @@ class TestSAIBrain(unittest.TestCase):
         pixels = [(0, 1), (1, 1), (1, 2), (2, 1), (1, 0)]
         pixels_to_predict = [(0, 0), (2, 2)]
         my_shape = SAIBrain.mt.Shape([], pixels)
-        # test if result of get_adjacent_pixel works correctly
+        # test if result of get_box works correctly
         for i_p, p in enumerate(my_shape.get_box()):
             assert(pixels_to_predict[i_p] == p)
 
     def test_SAIBrain_get_box_NOK(self):
         """
         Test if the function get box works with the empty case
+        ...
+        ...
+        ...
         """
-        # TODO to implement
-        pass
-
-
+        # prepare data
+        pixels = []
+        pixels_to_predict = [(sys.maxsize, sys.maxsize), (-1, -1)]
+        my_shape = SAIBrain.mt.Shape([], pixels)
+        # test if result of get_box works correctly
+        for i_p, p in enumerate(my_shape.get_box()):
+            assert(pixels_to_predict[i_p] == p)
 
 
 if __name__ == '__main__':
