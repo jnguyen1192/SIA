@@ -575,6 +575,22 @@ class TestSAIBrain(unittest.TestCase):
         for i_p, p in enumerate(my_shape.get_box()):
             assert(pixels_to_predict[i_p] == p)
 
+    def test_SAIBrain_extract_box_OK(self):
+        """
+        Test if the function get box works
+        ....
+        ..x.
+        .xxx
+        ..x.
+
+        =
+        .x.
+        xxx
+        .x.
+
+        """
+        # TODO implement
+
 
 if __name__ == '__main__':
     unittest.main()
