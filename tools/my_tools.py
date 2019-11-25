@@ -148,7 +148,7 @@ class Shape:
     def get_box(self):
         """
         This method is always used after get_shape function
-        :return: an array with two points [(y_min, x_min), (y_max, x_max) representing
+        :return: an array with two points [(y_min, x_min), (y_max, x_max)] representing a box of the shape
         """
         min_y = sys.maxsize
         min_x = sys.maxsize
@@ -169,10 +169,19 @@ class Shape:
         # return those two points
         return [(min_y, min_x), (max_y, max_x)]
 
-    def extract_box(self):
+    def extract_box(self, min_max):
         """
         This method will extract the box on a new matrix
-        :return: an ndarray with the coordinates of the box
+        :param min_max: an array with two points [(y_min, x_min), (y_max, x_max)] representing a box of the shape
+        :return: an ndarray with the new coordinates of the shape
         """
         # TODO to implement
+        # declare a new pixels ndarray
+        # use min pixel to get the new pixels values (difference)
+
+        # for each pixels
+        #    new_pixel = substract the pixels by the min with canal alpha
+
+        # return the new_pixels
+
 
