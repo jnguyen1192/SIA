@@ -519,7 +519,7 @@ class TestSAIBrain(unittest.TestCase):
 
         # create an image called test_SAIBrain_create_shape_north_OK_3x4_1 which the small crop image with transparency
         # TODO use function to get min y and x from pixels
-
+        min_max_pixels = s.get_box()
         # TODO substract all pixels with the previous new point
 
         # TODO create an image with the new pixels using transparency

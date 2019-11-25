@@ -168,3 +168,11 @@ class Shape:
                 max_x = pixel[1]
         # return those two points
         return [(min_y, min_x), (max_y, max_x)]
+
+    def extract_box(self):
+        """
+        This method will extract the box on a new matrix
+        :return: an ndarray with the coordinates of the box
+        """
+        # TODO to implement
+
