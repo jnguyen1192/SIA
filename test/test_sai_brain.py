@@ -589,7 +589,26 @@ class TestSAIBrain(unittest.TestCase):
         .x.
 
         """
+
+        from pprint import pprint
         # TODO implement
+        # declare test pixels
+        pixels = [(1, 2), (2, 2), (2, 3), (3, 2), (2, 1)]
+        my_shape = SAIBrain.mt.Shape([], pixels)
+        # get the minmax
+        minmax = my_shape.get_box()
+        # create the ndarray using minmax
+        test_array = SAIBrain.mt.np.zeros(shape=(3, 3, 4), dtype=SAIBrain.mt.np.uint8)
+        # use minmax to shift the array
+        shift_array = [(p[0] - minmax[0][0], p[1] - minmax[0][1]) for p in my_shape.pixels]
+        # fulfill the new array with the shift array
+        for pixel in shift_array:
+            test_array[pixel[0]][pixel[1]] = [0, 0, 0, 255]
+
+        pprint(minmax)
+        pprint(type(test_array))
+        pprint(test_array)
+        cv2.imwrite("test.png", test_array)
 
 
 if __name__ == '__main__':
