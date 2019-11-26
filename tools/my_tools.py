@@ -175,13 +175,15 @@ class Shape:
         :param min_max: an array with two points [(y_min, x_min), (y_max, x_max)] representing a box of the shape
         :return: an ndarray with the new coordinates of the shape
         """
-        # TODO to implement
-        # declare a new pixels ndarray
+        # create the ndarray using minmax
+        test_array = np.zeros(shape=(min_max[1][0] - min_max[0][0] + 1, min_max[1][1] - min_max[0][1] + 1, 4),
+                              dtype=np.uint8)
         # use min pixel to get the new pixels values (difference)
+        shift_array = [(p[0] - min_max[0][0], p[1] - min_max[0][1]) for p in self.pixels]
+        # fulfill the new array with the shift array
+        for pixel in shift_array:
+            test_array[pixel[0]][pixel[1]] = [0, 0, 0, 255]
+        return test_array
 
-        # for each pixels
-        #    new_pixel = substract the pixels by the min with canal alpha
-
-        # return the new_pixels
 
 
