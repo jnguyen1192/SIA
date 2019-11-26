@@ -577,7 +577,7 @@ class TestSAIBrain(unittest.TestCase):
 
     def test_SAIBrain_extract_box_OK(self):
         """
-        Test if the function get box works
+        Test if the function extract box works
         ....
         ..x.
         .xxx
@@ -589,9 +589,9 @@ class TestSAIBrain(unittest.TestCase):
         .x.
 
         """
-
-        from pprint import pprint
-        # TODO implement
+        # declare image to predict
+        pred_image_path = os.path.join(self.current_dir, "test_shape", "extract_box_test_ok.png")
+        array_to_predict = cv2.imread(pred_image_path, cv2.IMREAD_UNCHANGED)
         # declare test pixels
         pixels = [(1, 2), (2, 2), (2, 3), (3, 2), (2, 1)]
         my_shape = SAIBrain.mt.Shape([], pixels)
@@ -599,8 +599,8 @@ class TestSAIBrain(unittest.TestCase):
         minmax = my_shape.get_box()
         # extract the box
         new_shape_img_with_canal_alpha = my_shape.extract_box(minmax)
-        pprint(new_shape_img_with_canal_alpha)
-        cv2.imwrite("test.png", new_shape_img_with_canal_alpha)
+
+        assert(SAIBrain.mt.np.array_equal(new_shape_img_with_canal_alpha, array_to_predict))
 
 
 if __name__ == '__main__':
