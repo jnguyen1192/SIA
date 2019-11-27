@@ -428,7 +428,7 @@ class TestSAIBrain(unittest.TestCase):
         tr_img = self.saib.get_transform_image(old_image, new_image)
         my_shape = SAIBrain.mt.Shape(tr_img)
         # test if result of get_adjacent_pixel works correctly
-        for i_p, p in enumerate(my_shape.get_shape(*pixel)):
+        for i_p, p in enumerate(my_shape.detect_shape(*pixel)):
             assert(pixels_to_predict[i_p] == p)
 
     def test_SAIBrain_mt_shape_get_shape_west_OK(self):
@@ -515,28 +515,25 @@ class TestSAIBrain(unittest.TestCase):
         tr_img = self.saib.get_transform_image(old_image, new_image)
 
         s = SAIBrain.mt.Shape(tr_img)
-        pixels = s.get_shape(1, 3)
+        s.detect_shape(1, 3)
 
         # create an image called test_SAIBrain_create_shape_north_OK_3x4_1 which the small crop image with transparency
-        # TODO use function to get min y and x from pixels
+        # use function to get min y and x from pixels
         min_max_pixels = s.get_box()
-        # TODO substract all pixels with the previous new point
-
-        # TODO create an image with the new pixels using transparency
-
-
+        #  substract all pixels with the previous new point
+        new_array = s.extract_box(min_max_pixels)
+        # create an image with the new pixels using transparency
+        image_path = os.path.join(self.current_dir, "test_shape", "test_SAIBrain_create_shape_north_OK_3x4_1.png")
         from pprint import pprint
-        pprint(pixels)
-
+        cv2.imwrite(image_path, new_array)
         # create an image using paint with the correct predict of shape using https://www.photopea.com/
         # open image
         pred_image_path = os.path.join(self.current_dir, "test_shape", "new_create_shape_north_transparent_OK.png")
         pred_image = cv2.imread(pred_image_path, cv2.IMREAD_UNCHANGED)
-        pprint(pred_image)
 
 
         # check if the function return the good shape and create the correct image
-        pass
+        assert(SAIBrain.mt.np.array_equal(new_array, pred_image))
 
     def test_SAIBrain_create_shape_NOK(self):
         """

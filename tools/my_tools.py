@@ -63,7 +63,7 @@ class Shape:
                 pixels.remove(pixel)
         return pixels
 
-    def get_shape(self, y, x):
+    def detect_shape(self, y, x):
         """
         Get the current shape
         TODO Correct using the shape
@@ -92,17 +92,6 @@ class Shape:
                         self.new_pixels = self.new_pixels + new_pixels
                 #print(len(self.new_pixels))
                 i += 1
-
-        else:
-            return []
-        # if it is true
-        #       do nothing
-        # else
-        # while new pixels list contains point loop the previous statements
-        #pixels = set(self.get_adjacent_pixel(x, y))
-        #print("pixels", self.pixels)
-        #print("new_pixels", self.new_pixels)
-        return self.pixels
 
     def get_adjacent_pixel(self, y, x):
         """
