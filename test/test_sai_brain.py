@@ -517,6 +517,7 @@ class TestSAIBrain(unittest.TestCase):
         s = SAIBrain.mt.Shape(tr_img)
         s.detect_shape(1, 3)
 
+        # TODO refactor with auto create with the correct name on the mid directory
         # create an image called test_SAIBrain_create_shape_north_OK_3x4_1 which the small crop image with transparency
         # use function to get min y and x from pixels
         min_max_pixels = s.get_box()

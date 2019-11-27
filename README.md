@@ -8,7 +8,6 @@ Strong Artificial Intelligence
 # Draft of SAI part 1
 ![draft](https://github.com/jnguyen1192/SAI/blob/master/data/main_idea_part_1.jpg)
 
-
 # Draft of SAI part 1 a
 ![draft](https://github.com/jnguyen1192/SAI/blob/master/data/main_idea_part_1_a_strategies.jpg)
 
@@ -18,12 +17,19 @@ Strong Artificial Intelligence
 # Draft of SAI brain algorithm
 ![draft](https://github.com/jnguyen1192/SAI/blob/master/data/sai_brain.jpg)
 
+# First estimation of disk usage for the brain
+![draft](https://github.com/jnguyen1192/SAI/blob/master/data/sai_brain_first_estimation_of_disk_usage.jpg)
+
 # Draft of SAI brain step to create
 ![draft](https://github.com/jnguyen1192/SAI/blob/master/data/sai_brain_step_to_create.jpg)
 
 # Draft of SAI hands
 ![draft](https://github.com/jnguyen1192/SAI/blob/master/data/sai_hands.jpg)
 
+
+# Source
+
+https://www.photopea.com/
 
 
 
