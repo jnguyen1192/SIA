@@ -31,9 +31,9 @@ class SpeedTest(unittest.TestCase):
                 name = "gross_"+str(i)
                 print(name)
                 # TODO find the best way
-                # first way 9.029s => 2 img/s
-                #cs = saie.get_current_screen(name+".png")
-                #saie.save_image_court_term_memory(cs, name + ".png")
+                # first way 9.029s => 2 img/s as a jpg 2.467s => 10 img/s
+                #cs = saie.get_current_screen(name+".jpg")
+                #saie.save_image_court_term_memory(cs, name + ".jpg")
                 # second way 5.343s => 4 img/s as a jpg 2.68s => 10 img/s
                 #import pyscreeze
                 #pyscreeze._screenshot_win32(name+".png")

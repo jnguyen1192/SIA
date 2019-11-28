@@ -30,6 +30,7 @@ class SAIEyes:
         return pyautogui.locateAllOnScreen(os.path.join(os.getcwd(), self.ltm_dir, cur_button))
 
     def save_image_court_term_memory(self, img, title="test.png"):
+        # TODO refactor to use d3dshot library instead of pyautgui to save a screenshot x2 time faster without taking img as parameter
         logging.info(os.path.join(os.getcwd(), self.ctm_dir, title))
         img.save(os.path.join(os.getcwd(), self.ctm_dir, title))
 
