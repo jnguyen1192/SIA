@@ -26,6 +26,8 @@ Strong Artificial Intelligence
 # Draft of SAI hands
 ![draft](https://github.com/jnguyen1192/SAI/blob/master/data/sai_hands.jpg)
 
+# Draft of SAI threads
+![draft](https://github.com/jnguyen1192/SAI/blob/master/data/sai_threads.jpg)
 
 # Source
 
