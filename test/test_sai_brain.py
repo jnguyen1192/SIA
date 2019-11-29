@@ -525,7 +525,7 @@ class TestSAIBrain(unittest.TestCase):
         new_array = s.extract_box(min_max_pixels)
         # create an image with the new pixels using transparency
         image_path = os.path.join(self.current_dir, "test_shape", "test_SAIBrain_create_shape_north_OK_3x4_1.png")
-        from pprint import pprint
+
         cv2.imwrite(image_path, new_array)
         # create an image using paint with the correct predict of shape using https://www.photopea.com/
         # open image

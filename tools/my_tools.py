@@ -174,5 +174,14 @@ class Shape:
             test_array[pixel[0]][pixel[1]] = [0, 0, 0, 255]
         return test_array
 
+    def get_name(self, new_array):
+        """
+        Create the name of the current shape using the dimension and the current date, for example:
+        height_width_%y%m%d%H%M%S%f
+        :return: the name with the correct format
+        """
+        # TODO implement
+        pass
+
 
 
