@@ -181,6 +181,9 @@ class Shape:
         :return: the name with the correct format
         """
         # TODO implement
+        # Get the shape of new array
+        # Get the current date with milliseconds
+        # return with the correct format
         pass
 
 
