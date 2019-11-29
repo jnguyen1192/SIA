@@ -29,6 +29,9 @@ Strong Artificial Intelligence
 # Draft of SAI threads
 ![draft](https://github.com/jnguyen1192/SAI/blob/master/data/sai_threads.jpg)
 
+# Draft of SAI spirit
+![draft](https://github.com/jnguyen1192/SAI/blob/master/data/sai_spirit.jpg)
+
 # Source
 
 https://www.photopea.com/
