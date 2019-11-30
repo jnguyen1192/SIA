@@ -4,9 +4,8 @@ import sys
 
 from skimage.metrics._structural_similarity import structural_similarity as ssim
 from shapely.geometry import Point, Polygon  # @source: https://gis.stackexchange.com/questions/62925/shapely-not-installing-correctly
-# wget https://www.lfd.uci.edu/~gohlke/pythonlibs/#shapely/Shapely%E2%80%911.6.4.post2%E2%80%91cp37%E2%80%91cp37m%E2%80%91win32.whl
-# PycharmProjects\SAI\venv\Scripts>python.exe -m pip install C:\Users\johdu\Downloads\Shapely-1.6.4.post2-cp37-cp37m-win32.whl
-
+# wget https://www.lfd.uci.edu/~gohlke/pythonlibs/#shapely/Shapely-1.6.4.post2-cp37-cp37m-win_amd64.whl
+# PycharmProjects\SAI\venv_37_64\Scripts>python.exe -m pip install "C:\Users\johdu\Downloads\Shapely-1.6.4.post2-cp37-cp37m-win_amd64.whl"
 
 def mse(imageA, imageB):
     # the 'Mean Squared Error' between the two images is the
@@ -177,11 +176,12 @@ class Shape:
     def get_name(self, new_array):
         """
         Create the name of the current shape using the dimension and the current date, for example:
-        height_width_%y%m%d%H%M%S%f
+        height_width_%Y_%m_%d_%H:%M:%S.%f
         :return: the name with the correct format
         """
         # TODO implement
         # Get the shape of new array
+
         # Get the current date with milliseconds
         # return with the correct format
         pass

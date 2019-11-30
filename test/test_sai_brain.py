@@ -549,9 +549,16 @@ class TestSAIBrain(unittest.TestCase):
         .x.
         xxx
         ...
-        The name should be 2_3_%y%m%d%H%M%S%f
+        The name should be 2_3_%Y_%m_%d_%H:%M:%S.%f
         """
         # TODO implement
+        # prepare data
+        pixels = [(0, 1), (1, 1), (1, 2), (1, 0)]
+        import datetime
+        today = datetime.datetime.now()
+        string_to_predict = "2_3_" + today.strftime("%Y_%m_%d_%H:%M:%S.%f")
+        print(string_to_predict)
+
 
 
     def test_SAIBrain_get_box_OK(self):
