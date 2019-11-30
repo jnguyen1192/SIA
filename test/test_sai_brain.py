@@ -543,6 +543,17 @@ class TestSAIBrain(unittest.TestCase):
         # TODO to implement
         pass
 
+    def test_SAIBrain_get_name_OK(self):
+        """
+        Test if the function get the correct name
+        .x.
+        xxx
+        ...
+        The name should be 2_3_%y%m%d%H%M%S%f
+        """
+        # TODO implement
+
+
     def test_SAIBrain_get_box_OK(self):
         """
         Test if the function get box works
