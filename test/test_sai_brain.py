@@ -543,24 +543,6 @@ class TestSAIBrain(unittest.TestCase):
         # TODO to implement
         pass
 
-    def test_SAIBrain_get_name_OK(self):
-        """
-        Test if the function get the correct name
-        .x.
-        xxx
-        ...
-        The name should be 2_3_%Y_%m_%d_%H:%M:%S.%f
-        """
-        # TODO implement
-        # prepare data
-        pixels = [(0, 1), (1, 1), (1, 2), (1, 0)]
-        import datetime
-        today = datetime.datetime.now()
-        string_to_predict = "2_3_" + today.strftime("%Y_%m_%d_%H:%M:%S.%f")
-        print(string_to_predict)
-
-
-
     def test_SAIBrain_get_box_OK(self):
         """
         Test if the function get box works
@@ -617,6 +599,30 @@ class TestSAIBrain(unittest.TestCase):
         new_shape_img_with_canal_alpha = my_shape.extract_box(minmax)
 
         assert(SAIBrain.mt.np.array_equal(new_shape_img_with_canal_alpha, array_to_predict))
+
+    def test_SAIBrain_get_name__little_case_OK(self):
+        """
+        Test if the function get the correct name with a little case
+        .x.
+        xxx
+        ...
+        The name should be 2_3_%Y_%m_%d_%H:%M:%S.%f
+        """
+        # prepare data
+        pixels = [(0, 1), (1, 1), (1, 2), (1, 0)]
+        import datetime
+        today = datetime.datetime.now()
+        string_to_predict = "2_3_" + today.strftime("%Y_%m_%d_%H:%M:%S.%f")
+        #print("String to predict", string_to_predict)
+        my_shape = SAIBrain.mt.Shape([], pixels)
+        # get the minmax
+        minmax = my_shape.get_box()
+        # extract the box
+        new_shape_img_with_canal_alpha = my_shape.extract_box(minmax)
+        name = my_shape.get_name(new_shape_img_with_canal_alpha)
+        #print("Name", name)
+        # test if the name is correct
+        assert(string_to_predict == name)
 
 
 if __name__ == '__main__':

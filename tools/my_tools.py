@@ -1,11 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import sys
+import datetime
 
 from skimage.metrics._structural_similarity import structural_similarity as ssim
 from shapely.geometry import Point, Polygon  # @source: https://gis.stackexchange.com/questions/62925/shapely-not-installing-correctly
 # wget https://www.lfd.uci.edu/~gohlke/pythonlibs/#shapely/Shapely-1.6.4.post2-cp37-cp37m-win_amd64.whl
 # PycharmProjects\SAI\venv_37_64\Scripts>python.exe -m pip install "C:\Users\johdu\Downloads\Shapely-1.6.4.post2-cp37-cp37m-win_amd64.whl"
+
 
 def mse(imageA, imageB):
     # the 'Mean Squared Error' between the two images is the
@@ -179,12 +181,13 @@ class Shape:
         height_width_%Y_%m_%d_%H:%M:%S.%f
         :return: the name with the correct format
         """
-        # TODO implement
         # Get the shape of new array
-
+        shape = new_array.shape
+        print(shape)
         # Get the current date with milliseconds
-        # return with the correct format
-        pass
+        today = datetime.datetime.now()
+        # Return with the correct format
+        return str(shape[0]) + "_" + str(shape[1]) + "_" + today.strftime("%Y_%m_%d_%H:%M:%S.%f")
 
 
 
