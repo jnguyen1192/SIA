@@ -617,7 +617,7 @@ class TestSAIBrain(unittest.TestCase):
         # test if the name is correct
         assert(string_to_predict == name)
 
-    def test_SAIBrain_get_name__little_case_OK(self):
+    def test_SAIBrain_get_name__little_case_1_OK(self):
         """
         Test if the function get the correct name with a little case
         .x.
@@ -629,6 +629,21 @@ class TestSAIBrain(unittest.TestCase):
         pixels = [(0, 1), (1, 1), (1, 2), (1, 0)]
         today = datetime.datetime.now()
         string_to_predict = "2_3_" + today.strftime("%Y_%m_%d_%H:%M:%S.%f")
+        #print("String to predict", string_to_predict)
+        self.generic_test_SAIBrain_mt_shape_get_name(self, pixels, string_to_predict)
+
+    def test_SAIBrain_get_name__little_case_2_OK(self):
+        """
+        Test if the function get the correct name with a little case
+        .x.
+        xxx
+        x..
+        The name should be 3_3_%Y_%m_%d_%H:%M:%S.%f
+        """
+        # prepare data
+        pixels = [(0, 1), (1, 1), (1, 2), (1, 0), (3, 0)]
+        today = datetime.datetime.now()
+        string_to_predict = "3_3_" + today.strftime("%Y_%m_%d_%H:%M:%S.%f")
         #print("String to predict", string_to_predict)
         self.generic_test_SAIBrain_mt_shape_get_name(self, pixels, string_to_predict)
 
