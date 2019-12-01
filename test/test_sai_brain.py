@@ -4,7 +4,7 @@ import SAIBrain
 import cv2
 import os
 import sys
-
+import datetime
 
 class TestSAIBrain(unittest.TestCase):
 
@@ -608,7 +608,14 @@ class TestSAIBrain(unittest.TestCase):
         :param pixels: an array containing a shape
         :param string_to_predict: the name of the shape as height_width_%m_%d_%H:%M:%S.%f
         """
-        # TODO implement
+        my_shape = SAIBrain.mt.Shape([], pixels)
+        # get the minmax
+        minmax = my_shape.get_box()
+        # extract the box
+        new_shape_img_with_canal_alpha = my_shape.extract_box(minmax)
+        name = my_shape.get_name(new_shape_img_with_canal_alpha)
+        # test if the name is correct
+        assert(string_to_predict == name)
 
     def test_SAIBrain_get_name__little_case_OK(self):
         """
@@ -620,19 +627,10 @@ class TestSAIBrain(unittest.TestCase):
         """
         # prepare data
         pixels = [(0, 1), (1, 1), (1, 2), (1, 0)]
-        import datetime
         today = datetime.datetime.now()
         string_to_predict = "2_3_" + today.strftime("%Y_%m_%d_%H:%M:%S.%f")
         #print("String to predict", string_to_predict)
-        my_shape = SAIBrain.mt.Shape([], pixels)
-        # get the minmax
-        minmax = my_shape.get_box()
-        # extract the box
-        new_shape_img_with_canal_alpha = my_shape.extract_box(minmax)
-        name = my_shape.get_name(new_shape_img_with_canal_alpha)
-        #print("Name", name)
-        # test if the name is correct
-        assert(string_to_predict == name)
+        self.generic_test_SAIBrain_mt_shape_get_name(self, pixels, string_to_predict)
 
 
 if __name__ == '__main__':
