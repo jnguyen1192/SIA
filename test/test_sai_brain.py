@@ -600,6 +600,16 @@ class TestSAIBrain(unittest.TestCase):
 
         assert(SAIBrain.mt.np.array_equal(new_shape_img_with_canal_alpha, array_to_predict))
 
+    def generic_test_SAIBrain_mt_shape_get_name(self, pixels, string_to_predict):
+        """
+        Generic function to test function get_name with following parameters :
+        east image
+
+        :param pixels: an array containing a shape
+        :param string_to_predict: the name of the shape as height_width_%m_%d_%H:%M:%S.%f
+        """
+        # TODO implement
+
     def test_SAIBrain_get_name__little_case_OK(self):
         """
         Test if the function get the correct name with a little case
