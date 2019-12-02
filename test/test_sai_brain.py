@@ -57,7 +57,7 @@ class TestSAIBrain(unittest.TestCase):
         import random
         # x and y
         # get window width and height
-        from win32api import GetSystemMetrics
+        #from win32api import GetSystemMetrics
         # 1080, 1920
         # 864, 1536
         #import tkinter
@@ -69,8 +69,8 @@ class TestSAIBrain(unittest.TestCase):
 
         pyautogui.moveTo(x_rand, y_rand)
 
-        print("Width =", GetSystemMetrics(0))
-        print("Height =", GetSystemMetrics(1))
+        #print("Width =", GetSystemMetrics(0))
+        #print("Height =", GetSystemMetrics(1))
 
         # TODO test the random mouse movement using old and new mouse position
         assert (True==True)
