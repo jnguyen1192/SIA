@@ -517,16 +517,18 @@ class TestSAIBrain(unittest.TestCase):
         s = SAIBrain.mt.Shape(tr_img)
         s.detect_shape(1, 3)
 
-        # TODO refactor with auto create with the correct name on the mid directory
         # create an image called test_SAIBrain_create_shape_north_OK_3x4_1 which the small crop image with transparency
         # use function to get min y and x from pixels
         min_max_pixels = s.get_box()
-        #  substract all pixels with the previous new point
+        # substract all pixels with the previous new point
         new_array = s.extract_box(min_max_pixels)
-        # create an image with the new pixels using transparency
-        image_path = os.path.join(self.current_dir, "test_shape", "test_SAIBrain_create_shape_north_OK_3x4_1.png")
+        # get the name of the shape
+        name = s.get_name(new_array)
 
+        # create an image with the new pixels using transparency
+        image_path = os.path.join(self.current_dir, "test_shape", name + ".png")
         cv2.imwrite(image_path, new_array)
+
         # create an image using paint with the correct predict of shape using https://www.photopea.com/
         # open image
         pred_image_path = os.path.join(self.current_dir, "test_shape", "new_create_shape_north_transparent_OK.png")
