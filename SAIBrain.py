@@ -1,17 +1,21 @@
 import tools.my_tools as mt
 import SAIHands
 
+import os
+import cv2
+
 
 class SAIBrain:
     """
     This class will manipulate data to learn things or manage memory
     """
-    def __init__(self, nb_best_command=5, nb_time_rest_second=3600):
+    def __init__(self, nb_best_command=5, nb_time_rest_second=3600, mtm_dir="MidTermMemory"):
         """
         It will set the core of the SIA
         """
         self.nb_best_command = nb_best_command
         self.nb_time_rest_second = nb_time_rest_second
+        self.mtm_dir = mtm_dir
         self.saih = SAIHands.SAIHands()
     """
     
@@ -124,24 +128,31 @@ class SAIBrain:
             return all_polygon
         return all_polygon.append(self.create_new_shape(transform_image, i, j))
 
-    def create_new_shape(self, transform_image, i, j):
+    def create_new_shape(self, transform_image, y, x):
         """
         Select the corresponding shape with the nearest point available using the first point as (i, j)
         :param transform_image: the transform image with pixel true and false
-        :param i: the x position
-        :param j: the y position
+        :param y: the y position
+        :param x: the x position
         :return: the polygon on the position given
         """
         # TODO to implement
         # Use the class shape to create a new shape
-        # This shape will be on a new image in the directory almost long term memory
-
+        s = mt.Shape(transform_image)
+        s.detect_shape(1, 3)
+       # use function to get min y and x from pixels
+        min_max_pixels = s.get_box()
         # This image will be compose of the shape as pixel (255, 255, 255, 255) and (0, 0, 0, 0)
-
+        new_array = s.extract_box(min_max_pixels)
+        # get the name of the shape
+        name = s.get_name(new_array)
+        # This shape will be on a new image in the directory mid term memory
         # This image will have a special name using height_width_number:
         #   - height : the height of the image
         #   - width : the width of the image
         #   - number : the number of the image in the corresponding cluster (height, width)
+        image_path = os.path.join(self.mtm_dir, name + ".png")
+        cv2.imwrite(image_path, new_array)
         return 0  # the polygon on the position given
 
     def is_in(self, point, all_polygon):
