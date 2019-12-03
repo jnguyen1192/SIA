@@ -107,12 +107,12 @@ class SAIBrain:
         :param transform_image: the transform image with pixel true and false
         :return: An array containing different shape
         """
-        all_polygon = []
+        browsed_pixels = []
         for index_i, i in enumerate(transform_image):
             for index_j, j in enumerate(i):
                 if transform_image[i][j] == [255, 255, 255]:  # TODO use PIXEL_TRUE constant as [255, 255, 255]
-                    all_polygon = self.get_new_shape(transform_image, i, j, all_polygon)
-        return all_polygon
+                    browsed_pixels = self.get_new_shape(transform_image, i, j, browsed_pixels)
+        return browsed_pixels
 
     def get_new_shape(self, transform_image, i, j, all_polygon):
         """
@@ -120,7 +120,7 @@ class SAIBrain:
         :param transform_image: the transform image with pixel true and false
         :param i: the x position
         :param j: the y position
-        :param all_polygon: an array containg all the polygon
+        :param browsed_pixels: an array containg all pixels browsed
         :return: An update array containing different polygon
         """
         # TODO implement
@@ -134,7 +134,7 @@ class SAIBrain:
         :param transform_image: the transform image with pixel true and false
         :param y: the y position
         :param x: the x position
-        :return: the polygon on the position given
+        :return: the browsed_pixels on the position given
         """
         # TODO to implement
         # Use the class shape to create a new shape
@@ -154,17 +154,18 @@ class SAIBrain:
         image_path = os.path.join(self.mtm_dir, name + ".png")
         cv2.imwrite(image_path, new_array)
         # TODO return a polygon representing the pixels browsed
-        return 0  # the polygon on the position given
+        return 0  # the browsed_pixels on the position given
 
-    def is_in(self, point, all_polygon):
+    def is_in(self, point, browsed_pixels):
         """
         Test if a point is on one of the giving polygon
-        :param point: the corresponding point (x, y)
-        :param all_polygon: all the polygon given
-        :return: True if the point is in one of the polygon else False
+        :param point: the corresponding point (y, x)
+        :param browsed_pixels: all the browsed pixels given
+        :return: True if the point is in one of the browsed pixels else False
         """
-        for polygon in all_polygon:
-            if polygon.contains(point):
+        for p in browsed_pixels:
+            if p == point:
+                print(p, point)
                 return True
         return False
 

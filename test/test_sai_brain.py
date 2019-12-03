@@ -12,23 +12,7 @@ class TestSAIBrain(unittest.TestCase):
     def setUp(self):
         self.current_dir = os.getcwd()
         self.saib = SAIBrain.SAIBrain()
-        self.polygons_test_is_in = [SAIBrain.mt.Polygon([(1, 6),
-                                                         (1, 5),
-                                                         (4, 5),
-                                                         (4, 6)]),
-                                    SAIBrain.mt.Polygon([(5, 6),
-                                                         (5, 2),
-                                                         (7, 2),
-                                                         (7, 6)]),
-                                    SAIBrain.mt.Polygon([(1, 2),
-                                                         (1, 1),
-                                                         (2, 1),
-                                                         (2, 2)]),
-                                    SAIBrain.mt.Polygon([(3, 4),
-                                                         (3, 1),
-                                                         (4, 1),
-                                                         (4, 4)])
-                                    ]
+        self.polygons_test_is_in = [(1, 6), (1, 5), (4, 5), (4, 6)]
 
     def test_SAIBrain_create_db_case_ok(self):
         # TODO implement
@@ -199,15 +183,17 @@ class TestSAIBrain(unittest.TestCase):
         """
         Test if the function is_in works
         """
-        point = SAIBrain.mt.Point(6, 4)
-        assert(self.saib.is_in(point, self.polygons_test_is_in))
+        browsed_pixels = [(1, 6), (1, 5), (4, 5), (4, 6)]
+        point = (4, 6)
+        assert(self.saib.is_in(point, browsed_pixels))
 
     def test_SAIBrain_is_in_NOK(self):
         """
         Test if the function is_in works
         """
-        point = SAIBrain.mt.Point(2, 3)
-        assert(not self.saib.is_in(point, self.polygons_test_is_in))
+        browsed_pixels = [(1, 6), (1, 5), (4, 5), (4, 6)]
+        point = (2, 3)
+        assert(not self.saib.is_in(point, browsed_pixels))
 
     def test_SAIBrain_mt_shape_get_adjacent_pixel(self):
         """
