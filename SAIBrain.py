@@ -153,8 +153,8 @@ class SAIBrain:
         #   - number : the number of the image in the corresponding cluster (height, width)
         image_path = os.path.join(self.mtm_dir, name + ".png")
         cv2.imwrite(image_path, new_array)
-        # TODO return a polygon representing the pixels browsed
-        return 0  # the browsed_pixels on the position given
+        # TODO return browsed pixels
+        return []  # the browsed_pixels on the position given
 
     def is_in(self, point, browsed_pixels):
         """

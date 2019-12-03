@@ -611,7 +611,7 @@ class TestSAIBrain(unittest.TestCase):
         print(string_to_predict)
         assert(string_to_predict == name)
 
-    def test_SAIBrain_get_name__little_case_1_OK(self):
+    def test_SAIBrain_get_name_little_case_1_OK(self):
         """
         Test if the function get the correct name with a little case
         .x.
@@ -625,7 +625,7 @@ class TestSAIBrain(unittest.TestCase):
         string_to_predict = "2_3_" + today.strftime("%Y_%m_%d_%H:%M:%S.%f")
         self.generic_test_SAIBrain_mt_shape_get_name(pixels, string_to_predict)
 
-    def test_SAIBrain_get_name__little_case_2_OK(self):
+    def test_SAIBrain_get_name_little_case_2_OK(self):
         """
         Test if the function get the correct name with a little case
         .x.
@@ -639,6 +639,22 @@ class TestSAIBrain(unittest.TestCase):
         string_to_predict = "3_3_" + today.strftime("%Y_%m_%d_%H:%M:%S.%f")
         self.generic_test_SAIBrain_mt_shape_get_name(pixels, string_to_predict)
 
+    def test_SAIBrain_create_new_shape_OK(self):
+        browsed_pixels_to_predict = []
+        # TODO create the image on directory containing two shapes
+        old_image_path = os.path.join(self.current_dir, "test_shape", "old_get_adjacent_pixel.png")
+        new_image_path = os.path.join(self.current_dir, "test_shape", "new_get_adjacent_pixel.png")
+
+        old_image = cv2.imread(old_image_path)
+        new_image = cv2.imread(new_image_path)
+
+        transform_image = self.saib.get_transform_image(old_image, new_image)
+        # TODO get the browsed pixels of the first shape
+        browsed_pixels = self.saib.create_new_shape(transform_image, 3, 3)
+        print(browsed_pixels)
+
+        # TODO test if the funtion works
+        assert(browsed_pixels == browsed_pixels_to_predict)
 
 if __name__ == '__main__':
     unittest.main()
