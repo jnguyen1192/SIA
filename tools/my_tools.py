@@ -183,7 +183,7 @@ class Shape:
         """
         # Get the shape of new array
         shape = new_array.shape
-        print(shape)
+        #print(shape)
         # Get the current date with milliseconds
         today = datetime.datetime.now()
         # Return with the correct format

@@ -6,6 +6,7 @@ import os
 import sys
 import datetime
 
+
 class TestSAIBrain(unittest.TestCase):
 
     def setUp(self):
@@ -427,8 +428,11 @@ class TestSAIBrain(unittest.TestCase):
         # transform image
         tr_img = self.saib.get_transform_image(old_image, new_image)
         my_shape = SAIBrain.mt.Shape(tr_img)
+        my_shape.detect_shape(*pixel)
         # test if result of get_adjacent_pixel works correctly
-        for i_p, p in enumerate(my_shape.detect_shape(*pixel)):
+        print(my_shape.pixels)
+        print(pixels_to_predict)
+        for i_p, p in enumerate(my_shape.pixels):
             assert(pixels_to_predict[i_p] == p)
 
     def test_SAIBrain_mt_shape_get_shape_west_OK(self):
@@ -617,6 +621,8 @@ class TestSAIBrain(unittest.TestCase):
         new_shape_img_with_canal_alpha = my_shape.extract_box(minmax)
         name = my_shape.get_name(new_shape_img_with_canal_alpha)
         # test if the name is correct
+        print(name)
+        print(string_to_predict)
         assert(string_to_predict == name)
 
     def test_SAIBrain_get_name__little_case_1_OK(self):
@@ -631,8 +637,7 @@ class TestSAIBrain(unittest.TestCase):
         pixels = [(0, 1), (1, 1), (1, 2), (1, 0)]
         today = datetime.datetime.now()
         string_to_predict = "2_3_" + today.strftime("%Y_%m_%d_%H:%M:%S.%f")
-        #print("String to predict", string_to_predict)
-        self.generic_test_SAIBrain_mt_shape_get_name(self, pixels, string_to_predict)
+        self.generic_test_SAIBrain_mt_shape_get_name(pixels, string_to_predict)
 
     def test_SAIBrain_get_name__little_case_2_OK(self):
         """
@@ -643,11 +648,10 @@ class TestSAIBrain(unittest.TestCase):
         The name should be 3_3_%Y_%m_%d_%H:%M:%S.%f
         """
         # prepare data
-        pixels = [(0, 1), (1, 1), (1, 2), (1, 0), (3, 0)]
+        pixels = [(0, 1), (1, 1), (1, 2), (1, 0), (2, 0)]
         today = datetime.datetime.now()
         string_to_predict = "3_3_" + today.strftime("%Y_%m_%d_%H:%M:%S.%f")
-        #print("String to predict", string_to_predict)
-        self.generic_test_SAIBrain_mt_shape_get_name(self, pixels, string_to_predict)
+        self.generic_test_SAIBrain_mt_shape_get_name(pixels, string_to_predict)
 
 
 if __name__ == '__main__':
