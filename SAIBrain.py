@@ -140,6 +140,9 @@ class SAIBrain:
         # Use the class shape to create a new shape
         s = mt.Shape(transform_image)
         s.detect_shape(y, x)
+        # get the pixels browsed to get the shape
+        browsed_pixels = s.pixels
+        #print(browsed_pixels)
         # use function to get min y and x from pixels
         min_max_pixels = s.get_box()
         # This image will be compose of the shape as pixel (255, 255, 255, 255) and (0, 0, 0, 0)
@@ -153,8 +156,9 @@ class SAIBrain:
         #   - number : the number of the image in the corresponding cluster (height, width)
         image_path = os.path.join(self.mtm_dir, name + ".png")
         cv2.imwrite(image_path, new_array)
-        # TODO return browsed pixels
-        return []  # the browsed_pixels on the position given
+        #print(new_array)
+        # return browsed pixels
+        return browsed_pixels  # the browsed_pixels on the position given
 
     def is_in(self, point, browsed_pixels):
         """

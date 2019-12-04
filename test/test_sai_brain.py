@@ -639,8 +639,8 @@ class TestSAIBrain(unittest.TestCase):
         string_to_predict = "3_3_" + today.strftime("%Y_%m_%d_%H:%M:%S.%f")
         self.generic_test_SAIBrain_mt_shape_get_name(pixels, string_to_predict)
 
-    def test_SAIBrain_create_new_shape_OK(self):
-        browsed_pixels_to_predict = []
+    def test_SAIBrain_create_new_shape_case_first_shape_found_OK(self):
+        browsed_pixels_to_predict = [(3, 3), (4, 3), (4, 4), (5, 3), (4, 2)]
         # TODO create the image on directory containing two shapes
         old_image_path = os.path.join(self.current_dir, "test_shape", "old_get_adjacent_pixel.png")
         new_image_path = os.path.join(self.current_dir, "test_shape", "new_get_adjacent_pixel.png")
@@ -651,10 +651,11 @@ class TestSAIBrain(unittest.TestCase):
         transform_image = self.saib.get_transform_image(old_image, new_image)
         # TODO get the browsed pixels of the first shape
         browsed_pixels = self.saib.create_new_shape(transform_image, 3, 3)
-        print(browsed_pixels)
+        #print(browsed_pixels)
 
         # TODO test if the funtion works
         assert(browsed_pixels == browsed_pixels_to_predict)
+
 
 if __name__ == '__main__':
     unittest.main()
