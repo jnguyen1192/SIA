@@ -108,13 +108,17 @@ class SAIBrain:
         :return: An array containing different shape
         """
         browsed_pixels = []
+        #print(transform_image.shape)
         for index_i, i in enumerate(transform_image):
             for index_j, j in enumerate(i):
-                if transform_image[i][j] == [255, 255, 255]:  # TODO use PIXEL_TRUE constant as [255, 255, 255]
-                    browsed_pixels = self.get_new_shape(transform_image, i, j, browsed_pixels)
+                #print(index_i)
+                #print(index_j)
+                #print(transform_image[index_i][index_j])
+                if mt.np.array_equal(transform_image[index_i][index_j], [255, 255, 255]):  # TODO use PIXEL_TRUE constant as [255, 255, 255]
+                    browsed_pixels = self.get_new_shape(transform_image, index_i, index_j, browsed_pixels)
         return browsed_pixels
 
-    def get_new_shape(self, transform_image, i, j, all_polygon):
+    def get_new_shape(self, transform_image, i, j, browsed_pixels):
         """
         Get the shape on the current pixel
         :param transform_image: the transform image with pixel true and false
@@ -124,9 +128,9 @@ class SAIBrain:
         :return: An update array containing different polygon
         """
         # TODO implement
-        if self.is_in(mt.Point(i, j), all_polygon):  # Point(i, j).is_in(all_shape)
-            return all_polygon
-        return all_polygon.append(self.create_new_shape(transform_image, i, j))
+        if self.is_in((i, j), browsed_pixels):
+            return browsed_pixels
+        return browsed_pixels + self.create_new_shape(transform_image, i, j)
 
     def create_new_shape(self, transform_image, y, x):
         """
@@ -169,7 +173,6 @@ class SAIBrain:
         """
         for p in browsed_pixels:
             if p == point:
-                print(p, point)
                 return True
         return False
 

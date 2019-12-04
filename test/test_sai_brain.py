@@ -649,11 +649,30 @@ class TestSAIBrain(unittest.TestCase):
         new_image = cv2.imread(new_image_path)
 
         transform_image = self.saib.get_transform_image(old_image, new_image)
-        # TODO get the browsed pixels of the first shape
+        # get the browsed pixels of the first shape
         browsed_pixels = self.saib.create_new_shape(transform_image, 3, 3)
         #print(browsed_pixels)
 
-        # TODO test if the funtion works
+        # test if the funtion works
+        assert(browsed_pixels == browsed_pixels_to_predict)
+
+    def test_SAIBrain_create_new_shape_case_first_all_shape_found_OK(self):
+        browsed_pixels_to_predict = [(3, 3), (4, 3), (4, 4), (5, 3), (4, 2), (8, 2), (8, 3), (8, 4)]
+
+        # TODO create the image on directory containing two shapes
+        old_image_path = os.path.join(self.current_dir, "test_shape", "old_get_adjacent_pixel.png")
+        new_image_path = os.path.join(self.current_dir, "test_shape", "new_get_adjacent_pixel.png")
+
+        old_image = cv2.imread(old_image_path)
+        new_image = cv2.imread(new_image_path)
+
+        transform_image = self.saib.get_transform_image(old_image, new_image)
+        # get all the browsed pixels
+        browsed_pixels = self.saib.get_all_shape_from_image(transform_image)
+        #browsed_pixels = self.saib.create_new_shape(transform_image, 3, 3)
+        #print(browsed_pixels)
+
+        # test if the funtion works
         assert(browsed_pixels == browsed_pixels_to_predict)
 
 
