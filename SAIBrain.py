@@ -130,7 +130,7 @@ class SAIBrain:
         # TODO implement
         if self.is_in((i, j), browsed_pixels):
             return browsed_pixels
-        return browsed_pixels + self.create_new_shape(transform_image, i, j)
+        return self.create_new_shape(transform_image, i, j)
 
     def create_new_shape(self, transform_image, y, x):
         """
