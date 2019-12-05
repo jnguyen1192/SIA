@@ -650,7 +650,9 @@ class TestSAIBrain(unittest.TestCase):
 
         transform_image = self.saib.get_transform_image(old_image, new_image)
         # get the browsed pixels of the first shape
-        browsed_pixels = self.saib.get_browsed_pixels(transform_image, 3, 3)
+        s = SAIBrain.mt.Shape(transform_image)
+        s.detect_shape(3, 3)
+        browsed_pixels = s.pixels
         #print(browsed_pixels)
 
         # test if the funtion works
@@ -671,6 +673,8 @@ class TestSAIBrain(unittest.TestCase):
         # get all the browsed pixels
         browsed_pixels = self.saib.get_all_shape_from_image(transform_image)
 
+        print(browsed_pixels)
+        print(browsed_pixels_to_predict)
         # test if the funtion works
         assert(browsed_pixels == browsed_pixels_to_predict)
         # TODO test the new images

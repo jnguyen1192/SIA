@@ -108,28 +108,22 @@ class SAIBrain:
         :return: An array containing different shape
         """
         browsed_pixels = []
-        #print(transform_image.shape)
+        # browse each pixels to find shape
         for index_i, i in enumerate(transform_image):
             for index_j, j in enumerate(i):
+                # check if a pixel is different
                 if mt.np.array_equal(transform_image[index_i][index_j], [255, 255, 255]):  # TODO use PIXEL_TRUE constant as [255, 255, 255]
-                    browsed_pixels = self.get_new_shape(transform_image, index_i, index_j, browsed_pixels)
+                    # check if the pixels is already browsed
+                    if not self.is_in((index_i, index_j), browsed_pixels):
+                        # get the browsed pixels
+                        s = mt.Shape(transform_image, [])
+                        s.detect_shape(index_i, index_j)
+                        browsed_pixels += s.pixels
+                        self.save_shape_box(s)
+                    #browsed_pixels = self.get_new_shape(s, index_i, index_j, browsed_pixels)
         return browsed_pixels
 
-    def get_new_shape(self, transform_image, i, j, browsed_pixels):
-        """
-        Get the shape on the current pixel
-        :param transform_image: the transform image with pixel true and false
-        :param i: the x position
-        :param j: the y position
-        :param browsed_pixels: an array containg all pixels browsed
-        :return: An update array containing different polygon
-        """
-        # TODO implement
-        if self.is_in((i, j), browsed_pixels):
-            return browsed_pixels
-        return self.get_browsed_pixels(transform_image, i, j)
-
-    def get_browsed_pixels(self, transform_image, y, x):
+    def get_browsed_pixels(self, s):
         """
         Select the corresponding shape with the nearest point available using the first point as (i, j)
         :param transform_image: the transform image with pixel true and false
@@ -137,17 +131,8 @@ class SAIBrain:
         :param x: the x position
         :return: the browsed_pixels on the position given
         """
-        # TODO to implement
-        # Use the class shape to create a new shape
-        s = mt.Shape(transform_image)
-        s.detect_shape(y, x)
-        # get the pixels browsed to get the shape
-        browsed_pixels = s.pixels
-        # Save the shape
-        self.save_shape_box(s)
-        #print(new_array)
         # return browsed pixels
-        return browsed_pixels  # the browsed_pixels on the position given
+        return s.pixels  # the browsed_pixels on the position given
 
     def save_shape_box(self, s):
         """
