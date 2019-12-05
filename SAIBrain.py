@@ -101,13 +101,14 @@ class SAIBrain:
             return False
         return True
 
-    def get_all_shape_from_image(self, transform_image):
+    def get_all_shape_from_image(self, transform_image, save=True):
         """
         Get all the shape from the transform image
         :param transform_image: the transform image with pixel true and false
         :return: An array containing different shape
         """
         browsed_pixels = []
+        path_shapes = []
         # browse each pixels to find shape
         for index_i, i in enumerate(transform_image):
             for index_j, j in enumerate(i):
@@ -119,8 +120,11 @@ class SAIBrain:
                         s = mt.Shape(transform_image, [])
                         s.detect_shape(index_i, index_j)
                         browsed_pixels += s.pixels
-                        self.save_shape_box(s)
+                        if save:
+                            path_shapes.append(self.save_shape_box(s))
                     #browsed_pixels = self.get_new_shape(s, index_i, index_j, browsed_pixels)
+        if save:
+            return browsed_pixels, path_shapes
         return browsed_pixels
 
     def get_browsed_pixels(self, s):
@@ -138,7 +142,7 @@ class SAIBrain:
         """
         Save the shape on the midTermMemory
         :param s: the shape detected
-        :return: 0 if it works else -1
+        :return: the path of image shape if it works else -1
         """
         # use function to get min y and x from pixels
         min_max_pixels = s.get_box()
@@ -160,7 +164,7 @@ class SAIBrain:
         except:
             print("save_shape_box : Image not created")
             return -1
-        return 0
+        return image_path
 
     def is_in(self, point, browsed_pixels):
         """

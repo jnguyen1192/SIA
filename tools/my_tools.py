@@ -72,7 +72,6 @@ class Shape:
         :param y: the y position
         :return: the new array of adjacent pixel as [(1, 2), (1, 3), ... ]
         """
-        print("before", self.pixels)
         pixels = []
         if np.array_equal(self.transform_image[y][x], [255, 255, 255]):
             self.pixels.append((y, x))

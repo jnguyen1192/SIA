@@ -670,14 +670,21 @@ class TestSAIBrain(unittest.TestCase):
         new_image = cv2.imread(new_image_path)
 
         transform_image = self.saib.get_transform_image(old_image, new_image)
-        # get all the browsed pixels
-        browsed_pixels = self.saib.get_all_shape_from_image(transform_image)
+        # get all the browsed pixels and not save the images
+        browsed_pixels, path_images = self.saib.get_all_shape_from_image(transform_image)
 
-        print(browsed_pixels)
-        print(browsed_pixels_to_predict)
         # test if the funtion works
         assert(browsed_pixels == browsed_pixels_to_predict)
-        # TODO test the new images
+        # test the new images
+        first_shape_test = cv2.imread(path_images[0])
+        second_shape_test = cv2.imread(path_images[1])
+        first_shape_pred_path = os.path.join(self.current_dir, "test_shape", "first_shape_extracted.png")
+        second_shape_pred_path = os.path.join(self.current_dir, "test_shape", "second_shape_extracted.png")
+        first_shape_pred = cv2.imread(first_shape_pred_path)
+        second_shape_pred = cv2.imread(second_shape_pred_path)
+        assert(SAIBrain.mt.mse(first_shape_test, first_shape_pred) == 0)
+        assert(SAIBrain.mt.mse(second_shape_test, second_shape_pred) == 0)
+        # TODO autoremove created images after the test
 
 
 if __name__ == '__main__':
