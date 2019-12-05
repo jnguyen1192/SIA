@@ -598,7 +598,7 @@ class TestSAIBrain(unittest.TestCase):
         east image
 
         :param pixels: an array containing a shape
-        :param string_to_predict: the name of the shape as height_width_%m_%d_%H:%M:%S.%f
+        :param string_to_predict: the name of the shape as height_width_%m%d%H%M%S%f
         """
         my_shape = SAIBrain.mt.Shape([], pixels)
         # get the minmax
@@ -622,7 +622,7 @@ class TestSAIBrain(unittest.TestCase):
         # prepare data
         pixels = [(0, 1), (1, 1), (1, 2), (1, 0)]
         today = datetime.datetime.now()
-        string_to_predict = "2_3_" + today.strftime("%Y_%m_%d_%H:%M:%S.%f")
+        string_to_predict = "2_3_" + today.strftime("%Y%m%d%H%M%S%f")
         self.generic_test_SAIBrain_mt_shape_get_name(pixels, string_to_predict)
 
     def test_SAIBrain_get_name_little_case_2_OK(self):
@@ -636,7 +636,7 @@ class TestSAIBrain(unittest.TestCase):
         # prepare data
         pixels = [(0, 1), (1, 1), (1, 2), (1, 0), (2, 0)]
         today = datetime.datetime.now()
-        string_to_predict = "3_3_" + today.strftime("%Y_%m_%d_%H:%M:%S.%f")
+        string_to_predict = "3_3_" + today.strftime("%Y%m%d%H%M%S%f")
         self.generic_test_SAIBrain_mt_shape_get_name(pixels, string_to_predict)
 
     def test_SAIBrain_create_new_shape_case_first_shape_found_OK(self):
@@ -650,11 +650,12 @@ class TestSAIBrain(unittest.TestCase):
 
         transform_image = self.saib.get_transform_image(old_image, new_image)
         # get the browsed pixels of the first shape
-        browsed_pixels = self.saib.create_new_shape(transform_image, 3, 3)
+        browsed_pixels = self.saib.get_browsed_pixels(transform_image, 3, 3)
         #print(browsed_pixels)
 
         # test if the funtion works
         assert(browsed_pixels == browsed_pixels_to_predict)
+        # TODO test the new images
 
     def test_SAIBrain_create_new_shape_case_first_all_shape_found_OK(self):
         browsed_pixels_to_predict = [(3, 3), (4, 3), (4, 4), (5, 3), (4, 2), (8, 2), (8, 3), (8, 4)]
@@ -672,6 +673,7 @@ class TestSAIBrain(unittest.TestCase):
 
         # test if the funtion works
         assert(browsed_pixels == browsed_pixels_to_predict)
+        # TODO test the new images
 
 
 if __name__ == '__main__':

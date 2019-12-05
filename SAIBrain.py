@@ -111,9 +111,6 @@ class SAIBrain:
         #print(transform_image.shape)
         for index_i, i in enumerate(transform_image):
             for index_j, j in enumerate(i):
-                #print(index_i)
-                #print(index_j)
-                #print(transform_image[index_i][index_j])
                 if mt.np.array_equal(transform_image[index_i][index_j], [255, 255, 255]):  # TODO use PIXEL_TRUE constant as [255, 255, 255]
                     browsed_pixels = self.get_new_shape(transform_image, index_i, index_j, browsed_pixels)
         return browsed_pixels
@@ -130,9 +127,9 @@ class SAIBrain:
         # TODO implement
         if self.is_in((i, j), browsed_pixels):
             return browsed_pixels
-        return self.create_new_shape(transform_image, i, j)
+        return self.get_browsed_pixels(transform_image, i, j)
 
-    def create_new_shape(self, transform_image, y, x):
+    def get_browsed_pixels(self, transform_image, y, x):
         """
         Select the corresponding shape with the nearest point available using the first point as (i, j)
         :param transform_image: the transform image with pixel true and false
@@ -146,7 +143,18 @@ class SAIBrain:
         s.detect_shape(y, x)
         # get the pixels browsed to get the shape
         browsed_pixels = s.pixels
-        #print(browsed_pixels)
+        # Save the shape
+        self.save_shape_box(s)
+        #print(new_array)
+        # return browsed pixels
+        return browsed_pixels  # the browsed_pixels on the position given
+
+    def save_shape_box(self, s):
+        """
+        Save the shape on the midTermMemory
+        :param s: the shape detected
+        :return: 0 if it works else -1
+        """
         # use function to get min y and x from pixels
         min_max_pixels = s.get_box()
         # This image will be compose of the shape as pixel (255, 255, 255, 255) and (0, 0, 0, 0)
@@ -159,10 +167,15 @@ class SAIBrain:
         #   - width : the width of the image
         #   - number : the number of the image in the corresponding cluster (height, width)
         image_path = os.path.join(self.mtm_dir, name + ".png")
-        cv2.imwrite(image_path, new_array)
-        #print(new_array)
-        # return browsed pixels
-        return browsed_pixels  # the browsed_pixels on the position given
+
+        try:
+            if not os.path.isdir(self.mtm_dir):
+                os.mkdir(self.mtm_dir)
+            cv2.imwrite(image_path, new_array)
+        except:
+            print("save_shape_box : Image not created")
+            return -1
+        return 0
 
     def is_in(self, point, browsed_pixels):
         """

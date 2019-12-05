@@ -187,7 +187,7 @@ class Shape:
         # Get the current date with milliseconds
         today = datetime.datetime.now()
         # Return with the correct format
-        return str(shape[0]) + "_" + str(shape[1]) + "_" + today.strftime("%Y_%m_%d_%H:%M:%S.%f")
+        return str(shape[0]) + "_" + str(shape[1]) + "_" + today.strftime("%Y%m%d%H%M%S%f")
 
 
 
