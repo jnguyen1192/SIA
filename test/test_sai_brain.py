@@ -657,7 +657,14 @@ class TestSAIBrain(unittest.TestCase):
 
         # test if the funtion works
         assert(browsed_pixels == browsed_pixels_to_predict)
-        # TODO test the new images
+        # test the new images
+        image_path = self.saib.save_shape_box(s)
+        first_shape_test = cv2.imread(image_path)
+        first_shape_pred_path = os.path.join(self.current_dir, "test_shape", "second_shape_extracted.png")
+        first_shape_pred = cv2.imread(first_shape_pred_path)
+        assert(SAIBrain.mt.mse(first_shape_test, first_shape_pred) == 0)
+        if os.path.isfile(image_path):
+            os.remove(image_path)
 
     def test_SAIBrain_create_new_shape_case_first_all_shape_found_OK(self):
         browsed_pixels_to_predict = [(3, 3), (4, 3), (4, 4), (5, 3), (4, 2), (8, 2), (8, 3), (8, 4)]
@@ -678,8 +685,8 @@ class TestSAIBrain(unittest.TestCase):
         # test the new images
         first_shape_test = cv2.imread(path_images[0])
         second_shape_test = cv2.imread(path_images[1])
-        first_shape_pred_path = os.path.join(self.current_dir, "test_shape", "first_shape_extracted.png")
-        second_shape_pred_path = os.path.join(self.current_dir, "test_shape", "second_shape_extracted.png")
+        first_shape_pred_path = os.path.join(self.current_dir, "test_shape", "second_shape_extracted.png")
+        second_shape_pred_path = os.path.join(self.current_dir, "test_shape", "first_shape_extracted.png")
         first_shape_pred = cv2.imread(first_shape_pred_path)
         second_shape_pred = cv2.imread(second_shape_pred_path)
         assert(SAIBrain.mt.mse(first_shape_test, first_shape_pred) == 0)
