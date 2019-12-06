@@ -684,7 +684,10 @@ class TestSAIBrain(unittest.TestCase):
         second_shape_pred = cv2.imread(second_shape_pred_path)
         assert(SAIBrain.mt.mse(first_shape_test, first_shape_pred) == 0)
         assert(SAIBrain.mt.mse(second_shape_test, second_shape_pred) == 0)
-        # TODO autoremove created images after the test
+        # autoremove created images after the test
+        for path_image in path_images:
+            if os.path.isfile(path_image):
+                os.remove(path_image)
 
 
 if __name__ == '__main__':
