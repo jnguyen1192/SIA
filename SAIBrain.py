@@ -65,7 +65,9 @@ class SAIBrain:
         """
         try:
             # TODO implement
-            # TODO get the new shape obtain with the new command
+            # TODO Browse images on mid term memory
+            # TODO Get the name of each images which have a transform superior than a threshold
+            # TODO     the action used to generate those image (x, y, click/double-click)
             return 0
         except Exception:
             return -1
