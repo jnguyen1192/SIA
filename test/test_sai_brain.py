@@ -228,8 +228,8 @@ class TestSAIBrain(unittest.TestCase):
 
 
         # transform image
-        tr_img = self.saib.get_transform_image(old_image, new_image)
-        my_shape = SAIBrain.mt.Shape(tr_img)
+        #tr_img = self.saib.get_transform_image(old_image, new_image)
+        #my_shape = SAIBrain.mt.Shape(tr_img)
         #print(len(my_shape.get_adjacent_pixel(4, 2)))
         #for p in my_shape.get_adjacent_pixel(y, x):
         #    print(p.y, p.x)
@@ -464,49 +464,6 @@ class TestSAIBrain(unittest.TestCase):
         pixel = (1, 1)
         pixels_to_predict = [(1, 1), (1, 2), (2, 1), (1, 3), (3, 1), (2, 3), (3, 2), (4, 1), (3, 3)]
         self.generic_test_SAIBrain_mt_shape_get_shape(pixel, pixels_to_predict, "south")
-
-    def test_SAIBrain_create_shape_north_OK(self):
-        """
-        Test if the function create shape works with the north case
-        """
-        # create an image using matplotlib using transparency with pixel (0, 0, 0, 0) and (0, 0, 0, 255)
-        # get the shape
-        # open image
-        old_image_path = os.path.join(self.current_dir, "test_shape", "old_get_shape_north.png")
-        new_image_path = os.path.join(self.current_dir, "test_shape", "new_get_shape_north.png")
-
-        old_image = cv2.imread(old_image_path)
-        new_image = cv2.imread(new_image_path)
-
-        # transform image
-        tr_img = self.saib.get_transform_image(old_image, new_image)
-
-        s = SAIBrain.mt.Shape(tr_img)
-        s.detect_shape(1, 3)
-
-        # create an image called test_SAIBrain_create_shape_north_OK_3x4_1 which the small crop image with transparency
-        # use function to get min y and x from pixels
-        min_max_pixels = s.get_box()
-        # substract all pixels with the previous new point
-        new_array = s.extract_box(min_max_pixels)
-        # get the name of the shape
-        name = s.get_name(new_array)
-
-        # create an image with the new pixels using transparency
-        image_path = os.path.join(self.current_dir, "test_shape", name + ".png")
-        cv2.imwrite(image_path, new_array)
-
-        # create an image using paint with the correct predict of shape using https://www.photopea.com/
-        # open image
-        pred_image_path = os.path.join(self.current_dir, "test_shape", "new_create_shape_north_transparent_OK.png")
-        pred_image = cv2.imread(pred_image_path, cv2.IMREAD_UNCHANGED)
-
-
-        # check if the function return the good shape and create the correct image
-        assert(SAIBrain.mt.np.array_equal(new_array, pred_image))
-        # autoremove created images after the test
-        if os.path.isfile(image_path):
-            os.remove(image_path)
 
     def test_SAIBrain_create_shape_NOK(self):
         """
