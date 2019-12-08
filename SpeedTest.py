@@ -55,17 +55,27 @@ class SpeedTest(unittest.TestCase):
         import time
         import d3dshot
         import os
+        from datetime import datetime, timezone
+
         d = d3dshot.create()
         start = time.time()
         end = 0
         i = 0
         print("hello")
-        # without current date
-        while end - start < 10:
+        # without current date 180 imgs => 18 img/s
+        """while end - start < 10: 
             name = "gross_"+str(i)
             d.screenshot_to_disk(directory=os.path.join("Speedtest", "CourtTermMemory"), file_name=name + ".jpg")
             end = time.time()
             i += 1
+        """
+        # with current date and deleting on the directory 169 imgs => 16.9 imgs/s
+        # with current date on the directory 183 imgs => 18 imgs/s
+        while end - start < 10:
+            d.screenshot_to_disk(directory=os.path.join("Speedtest", "CourtTermMemory"), file_name=datetime.today().strftime("%Y%m%d%H%M%S%f") + ".jpg")
+            end = time.time()
+            i += 1
+
 
 
 
