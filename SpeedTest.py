@@ -75,6 +75,7 @@ class SpeedTest(unittest.TestCase):
             d.screenshot_to_disk(directory=os.path.join("Speedtest", "CourtTermMemory"), file_name=datetime.today().strftime("%Y%m%d%H%M%S%f") + ".jpg")
             end = time.time()
             i += 1
+        # TODO in one hour we get 18 Go of images to clean and we need to know how much we can extract different shape during this hour
 
 
 
