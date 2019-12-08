@@ -44,12 +44,30 @@ class SpeedTest(unittest.TestCase):
                 #    os.replace('monitor-1.png', name+".png")
                     #sct.save()
                 # fourth way 4.909 => 5 img/s as a jpg 15 img/s
-                d.screenshot_to_disk(directory=os.path.join("Speedtest", "CourtTermMemory"), file_name=name + ".png")
+                d.screenshot_to_disk(directory=os.path.join("Speedtest", "CourtTermMemory"), file_name=name + ".jpg")
 
         my_thread = threading.Thread(target=loop26)
         my_thread.start()
 
         my_thread.join()
+
+    def test_take_img_during_10_seconds(self):
+        import time
+        import d3dshot
+        import os
+        d = d3dshot.create()
+        start = time.time()
+        end = 0
+        i = 0
+        print("hello")
+        # without current date
+        while end - start < 10:
+            name = "gross_"+str(i)
+            d.screenshot_to_disk(directory=os.path.join("Speedtest", "CourtTermMemory"), file_name=name + ".jpg")
+            end = time.time()
+            i += 1
+
+
 
     def test_speed(self, func, *args, nb_test=10):
         sum = 0
