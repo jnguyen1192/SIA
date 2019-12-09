@@ -107,6 +107,17 @@ class SpeedTest(unittest.TestCase):
         # TODO Optionnal 1: remove the duplicate shape
         # TODO Optionnal 2: remove the duplicate shape using a threshold
 
+    def test_auto_click_and_move_during_taking_image_during_10_seconds(self):
+        """
+        This will test if SAI correctly save the inputs it use to do actions
+        """
+        # TODO Get a random action
+        # TODO Start the saving in another thread during 10 seconds
+        # TODO Do the random action during at least during 5 seconds
+
+        # TODO Check if the database save the action
+        # TODO Check if the directory contains images
+
 
     def test_speed(self, func, *args, nb_test=10):
         sum = 0
