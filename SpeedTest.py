@@ -77,7 +77,25 @@ class SpeedTest(unittest.TestCase):
             i += 1
         # TODO in one hour we get 18 Go of images to clean and we need to know how much we can extract different shape during this hour
 
+    def test_take_img_during_one_hour(self):
+        """
+        Save one hour images
+        """
+        import time
+        import d3dshot
+        import os
+        from datetime import datetime
 
+        d = d3dshot.create()
+        start = time.time()
+        end = 0
+        i = 0
+        print("hello")
+        # TODO How many images has been created ?
+        while end - start < 3600:
+            d.screenshot_to_disk(directory=os.path.join("Speedtest", "OneHour"), file_name=datetime.today().strftime("%Y%m%d%H%M%S%f") + ".jpg")
+            end = time.time()
+            i += 1
 
 
     def test_speed(self, func, *args, nb_test=10):
