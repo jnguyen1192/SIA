@@ -97,6 +97,16 @@ class SpeedTest(unittest.TestCase):
             end = time.time()
             i += 1
 
+    def test_only_extract_shape_of_one_hour_images(self):
+        """
+        Extract the shape to one hour images to know what is the volume of the shape directory
+        """
+        # TODO for each images in directory Speedtest/OneHour
+        # TODO      use class Shape to extract all the shape
+        # TODO Get the size of the directory Speedtest/One_Hour_Shapes
+        # TODO Optionnal 1: remove the duplicate shape
+        # TODO Optionnal 2: remove the duplicate shape using a threshold
+
 
     def test_speed(self, func, *args, nb_test=10):
         sum = 0
