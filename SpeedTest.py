@@ -113,7 +113,7 @@ class SpeedTest(unittest.TestCase):
         """
         # TODO Get a random action
         # TODO Start the saving in another thread during 10 seconds
-        # TODO Do the random action during at least during 5 seconds
+        # TODO Do the random action during at least 3 seconds during 5 seconds
 
         # TODO Check if the database save the action
         # TODO Check if the directory contains images
@@ -124,7 +124,7 @@ class SpeedTest(unittest.TestCase):
         """
         # TODO Get a random action
         # TODO Start the saving in another thread during 60 seconds seconds
-        # TODO Do the random action during at least during each 10 seconds
+        # TODO Do the random action during at least 3 seconds  during each 10 seconds
 
         # TODO Check if the database save the action
         # TODO Check if the directory contains images
@@ -135,7 +135,18 @@ class SpeedTest(unittest.TestCase):
         """
         # TODO Get a random action
         # TODO Start the saving in another thread during 5 minutes
-        # TODO Do the random action during at least during each 30 seconds
+        # TODO Do the random action during at least 3 seconds  during each 30 seconds
+
+        # TODO Check if the database save the action
+        # TODO Check if the directory contains images
+
+    def test_auto_click_and_move_during_taking_image_during_10_minute(self):
+        """
+        This will test if SAI correctly save the inputs it use to do actions
+        """
+        # TODO Get a random action
+        # TODO Start the saving in another thread during 10 minutes
+        # TODO Do the random action during at least 3 seconds during each 45 seconds
 
         # TODO Check if the database save the action
         # TODO Check if the directory contains images
