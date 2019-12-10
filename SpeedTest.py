@@ -129,6 +129,17 @@ class SpeedTest(unittest.TestCase):
         # TODO Check if the database save the action
         # TODO Check if the directory contains images
 
+    def test_auto_click_and_move_during_taking_image_during_5_minute(self):
+        """
+        This will test if SAI correctly save the inputs it use to do actions
+        """
+        # TODO Get a random action
+        # TODO Start the saving in another thread during 5 minutes
+        # TODO Do the random action during at least during each 30 seconds
+
+        # TODO Check if the database save the action
+        # TODO Check if the directory contains images
+
 
     def test_speed(self, func, *args, nb_test=10):
         sum = 0
