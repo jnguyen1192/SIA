@@ -170,6 +170,20 @@ class SpeedTest(unittest.TestCase):
         # TODO                  as a new representation of the images less heavy
 
 
+    def test_auto_click_and_move_during_taking_image_during_60_minute_with_syntethisis(self):
+        """
+        This will test if SAI correctly save the inputs it use to do actions
+        """
+        # TODO Get a random action
+        # TODO Start the saving in another thread during 30 minutes
+        # TODO Do the random action during at least 3 seconds during each 45 seconds
+
+        # TODO Check if the database save the action
+        # TODO Check if the directory contains images
+        # TODO Then reduce the files as the shape
+        # TODO                       as a new representation of the images less heavy
+
+
 
 
     def test_speed(self, func, *args, nb_test=10):
