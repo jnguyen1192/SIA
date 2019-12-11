@@ -162,6 +162,13 @@ class SpeedTest(unittest.TestCase):
         # TODO Check if the database save the action
         # TODO Check if the directory contains images
 
+    def test_synthetisis_images_from_30_minutes_autoclick(self):
+        """
+        This will test if SAI correctly reduce images
+        """
+        # TODO Reduce the files as the shape
+        # TODO                  as a new representation of the images less heavy
+
 
 
 
