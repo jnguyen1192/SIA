@@ -61,9 +61,21 @@ class SAIBrain:
         except Exception:
             return -1
 
-    def find_new_command(self):
+    def find_new_random_command(self):
         """
-        It will search a new command
+        It will search a new command using a serie of random action
+        :return: 0 if it works else -1
+        """
+        try:
+            # TODO implement
+            return 0
+        except Exception:
+            return -1
+
+
+    def find_new_command_using_memory(self):
+        """
+        It will search a new command using memory
         :return: 0 if it works else -1
         """
         try:
