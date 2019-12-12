@@ -42,7 +42,10 @@ class SAIBrain:
         """
         try:
             # TODO build the image
+            # use function build from SAIDaemon
             # TODO run the container using the previous image with postgres
+            # use function run_db in db_tools.py
+            # be careful with volume persistence in windows maybe use a db from another computer or a vm
             return 0
         except Exception:
             return -1
