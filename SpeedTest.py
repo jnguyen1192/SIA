@@ -122,12 +122,18 @@ class SpeedTest(unittest.TestCase):
         """
         This will test if SAI correctly save the inputs it use to do actions
         """
+        # Implement the function create_db
+        # Launch the db with SAIBrain
         # TODO Get a random action
-        # TODO Start the saving in another thread during 60 seconds seconds
+        # Create a function random_point in the window in my_tools
+        # TODO Start the saving in another thread during 60 seconds
+        # Create a function Open in SAIEyes that will launch a thread that will save the images
         # TODO Do the random action during at least 3 seconds  during each 10 seconds
-
+        # Use function move_mouse_to or left_click to do a random action and stock the action with the times
         # TODO Check if the database save the action
+        # Select From action
         # TODO Check if the directory contains images
+        # os.path.isfile() using Select From action, images
 
     def test_auto_click_and_move_during_taking_image_during_5_minute(self):
         """
@@ -168,7 +174,6 @@ class SpeedTest(unittest.TestCase):
         """
         # TODO Reduce the files as the shape
         # TODO                  as a new representation of the images less heavy
-
 
     def test_auto_click_and_move_during_taking_image_during_60_minute_with_syntethisis(self):
         """
