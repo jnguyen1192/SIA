@@ -679,6 +679,10 @@ class TestSAIBrain(unittest.TestCase):
         # TODO implement
         pass
 
+    def test_find_new_command_using_memory(self):
+        # TODO implement
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()
