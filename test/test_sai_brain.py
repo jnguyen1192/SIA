@@ -675,6 +675,10 @@ class TestSAIBrain(unittest.TestCase):
             if os.path.isfile(path_image):
                 os.remove(path_image)
 
+    def test_find_new_random_command(self):
+        # TODO implement
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()
