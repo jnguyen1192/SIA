@@ -68,10 +68,13 @@ class SAIBrain:
         """
         try:
             # TODO implement
+            # Get the different types of actions (move, click, wait, ...)
+            # Get a random sequence of actions
+            # For each action put a random value between correct boundaries
+            # Stock those actions on the db
             return 0
         except Exception:
             return -1
-
 
     def find_new_command_using_memory(self):
         """
