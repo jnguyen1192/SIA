@@ -678,13 +678,17 @@ class TestSAIBrain(unittest.TestCase):
     def test_find_new_random_command(self):
         # TODO implement
         # Use object saibrain
-        # use function find_new_random_command
-        # check if there was new lines on tables concerned on db
-        # optional remove those lines on db
+        # Use function find_new_random_command
+        # Check if there was new lines on tables concerned on db
+        # Optional : remove those lines on db
         pass
 
     def test_find_new_command_using_memory(self):
         # TODO implement
+        # Use object saibrain
+        # Use function find_new_command_using_memory
+        # Check if there was new lines on tables concerned on db using specific images
+        # Optional : remove those lines on db
         pass
 
 
