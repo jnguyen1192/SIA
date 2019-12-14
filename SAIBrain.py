@@ -86,6 +86,7 @@ class SAIBrain:
             # TODO Browse images on mid term memory
             # TODO Get the name of each images which have a transform superior than a threshold
             # TODO     the action used to generate those image (x, y, click/double-click)
+            # TODO Stock the new SPECIAL specific action in db
             return 0
         except Exception:
             return -1
