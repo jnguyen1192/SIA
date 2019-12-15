@@ -110,6 +110,10 @@ class SAIBrain:
         """
         try:
             # TODO implement
+            # TODO remove duplicates images
+            # TODO remove duplicates images using threshold
+            # TODO only get the shape of an image with its coordinates and not the entire image, it is like a zoom
+            # TODO then remove the image which create a subimage of the shape
             return 0
         except Exception:
             return -1
