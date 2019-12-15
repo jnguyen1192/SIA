@@ -98,6 +98,9 @@ class SAIBrain:
         :return: True if it works else False
         """
         # TODO implement
+        # TODO use a select query on the db to check if the command exists
+        # TODO the command can be generique move(?, ?) and click(?, ?) parameters
+        # TODO or the command is a specific command move(1,2) and click(1,2)
         return False
 
     def manage_memory(self):
