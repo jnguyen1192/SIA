@@ -691,6 +691,10 @@ class TestSAIBrain(unittest.TestCase):
         # Optional : remove those lines on db
         pass
 
+    def test_manage_memory(self):
+        # TODO implement
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()
