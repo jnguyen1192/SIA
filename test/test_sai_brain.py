@@ -693,6 +693,9 @@ class TestSAIBrain(unittest.TestCase):
 
     def test_manage_memory(self):
         # TODO implement
+        # Prepare three duplicate images on memory
+        # Prepare three duplicate images on memory using threshold
+        # Check if it will only save the shape of each type
         pass
 
 
