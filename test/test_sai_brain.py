@@ -698,6 +698,9 @@ class TestSAIBrain(unittest.TestCase):
         # Check if it will only save the shape of each type
         pass
 
+    def test_get_transform_image(self):
+        # TODO implement
+        pass
 
 if __name__ == '__main__':
     unittest.main()
