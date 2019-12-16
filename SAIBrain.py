@@ -223,8 +223,8 @@ class SAIBrain:
                     bool_diff[index_i][index_j] = [255, 255, 255]
                     #print("Diff", j, "Old", index_i, index_j)
                 else:
-                    bool_diff[index_i][index_j] = [0, 0, 0]  # TODO use PIXEL_FALSE constant as [0, 0, 0]
-        # TODO implement
+                    bool_diff[index_i][index_j] = [0, 0, 0]
+        # TODO implement use threshold
         # Diff the two images to get a new shape
         import numpy as np
         return bool_diff
