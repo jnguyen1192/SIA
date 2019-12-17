@@ -700,7 +700,11 @@ class TestSAIBrain(unittest.TestCase):
 
     def test_get_transform_image(self):
         # TODO implement
+        # Prepare an image to predict
+        # Use two images to generate a new image
+        # Compare the image to predict with the new image
         pass
+
 
 if __name__ == '__main__':
     unittest.main()
