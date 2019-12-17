@@ -707,6 +707,9 @@ class TestSAIBrain(unittest.TestCase):
 
     def test_get_transform_image_using_threshold(self):
         # TODO implement
+        # Prepare an image to predict using threshold
+        # Use two images to generate a new image using threshold
+        # Compare the image to predict with the new image
         pass
 
 
