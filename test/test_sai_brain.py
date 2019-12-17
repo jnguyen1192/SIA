@@ -705,6 +705,10 @@ class TestSAIBrain(unittest.TestCase):
         # Compare the image to predict with the new image
         pass
 
+    def test_get_transform_image_using_threshold(self):
+        # TODO implement
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()
