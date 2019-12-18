@@ -14,8 +14,9 @@ def run_db(port=5432):
     try:
         #@source https://github.com/docker/for-win/issues/445
         #docker volume create --name postgres-data-volume -d local
-        #volumes = {"/c/Users/johdu/PycharmProjects/SAI/data_postgres":
-        # shared folder on oracle vm : C:\Users\johdu\PycharmProjects\SAI\data_postgres:/mnt/sda1/var/lib/docker/volumes/postgres-data-volume/_data
+        #volumes = {"/c/Users/johdu/PycharmProjects/SAI/backup_postgres":
+        # shared folder on oracle vm : C:\Users\johdu\PycharmProjects\SAI\backup_postgres:/mnt/sda1/var/lib/docker/volumes/postgres-data-volume/_data
+        # Backup http://support.divio.com/en/articles/646695-how-to-use-a-directory-outside-c-users-with-docker-toolbox-docker-for-windows
         volumes = {"postgres-data-volume":
                        {'bind': '/var/lib/postgresql/data/', 'mode': 'rw'}
                    }
@@ -36,7 +37,7 @@ def run_db(port=5432):
         container = client.containers.run(image="c_sai_postgres",
                                     name="c_sai_postgres",
                                     pid_mode="host",
-                                    #volumes=volumes,
+                                    volumes=volumes,
                                     ports=ports,
                                     environment=environment,
                                     detach=True)
@@ -57,6 +58,7 @@ def wait_db_connection(nb_retry=10, time_sleep=60):
     :return: 0 if it works else -1
     """
     i = 0
+    time.sleep(5)
     while i < nb_retry:
         try:
             psycopg2.connect(user="postgres",
@@ -64,7 +66,7 @@ def wait_db_connection(nb_retry=10, time_sleep=60):
                               host="192.168.99.100",
                               port="5432",
                               database="postgres")
-            print("Connexion worked")
+            #print("Connexion worked")
             return 0
         except Exception as e:
             #print(e)
