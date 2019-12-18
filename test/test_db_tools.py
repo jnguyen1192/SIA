@@ -35,13 +35,20 @@ class TestDb_tools(unittest.TestCase):
     def test_db_tools_all_tables_created(self):
         """
         Test if all the tables are created
-        :return:
         """
         tables_name = ['Strategie', 'Action', 'Has_action']
         for name in tables_name:
             res = dbt.select_one_with_parameters(sqt.IS_TABLE_EXISTS, (name,))
             assert(res != -1)
             assert(res == True)
+
+    def test_db_tools_new_backup(self):
+        """
+        Test function new_backup
+        Configure docker-machine share folder to use this
+        TODO need to optimize this procedure
+        """
+        pass
 
     def test_db_tools_run_db_case_nok(self):
         # TODO implement
