@@ -39,11 +39,13 @@ class TestDb_tools(unittest.TestCase):
         """
         tables_name = ['Strategie', 'Action', 'Has_action']
         for name in tables_name:
-            assert(dbt.select_one_with_parameters(sqt.IS_TABLE_EXISTS, (name, )))
+            res = dbt.select_one_with_parameters(sqt.IS_TABLE_EXISTS, (name,))
+            assert(res != -1)
+            assert(res == True)
 
     def test_db_tools_run_db_case_nok(self):
         # TODO implement
-        assert (False == False)
+        assert (-1)
 
     def test_db_tools_query_without_parameters_case_ok(self):
         # TODO implement
