@@ -173,3 +173,10 @@ def select_one_with_parameters(query, parameters):
             cursor.close()
             connection.close()
             #print("PostgreSQL connection is closed")
+
+def new_backup():
+    """
+    Create a backup using the corresponding container
+    :return: 0 if it works else -1
+    """
+    return 0
