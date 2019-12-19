@@ -13,6 +13,7 @@ class TestDb_tools(unittest.TestCase):
     ClassIsTeardownTotal = 6 # nb total of unittest
 
     def setUp(self):
+        # TODO run db backup container
         if not self.ClassIsSetup:
             # run db container
             try:
