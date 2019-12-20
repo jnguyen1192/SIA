@@ -52,6 +52,14 @@ def run_db(port=5432):
         return -1
 
 
+def run_backup():
+    """
+    Create the container which will backup the db on a windows share folder
+    :return: 0 if it works else -1
+    """
+    pass
+
+
 def wait_db_connection(nb_retry=10, time_sleep=60):
     """
     Wait the database connection
@@ -168,11 +176,10 @@ def select_one_with_parameters(query, parameters):
         print("Error while executing query with parameters in PostgreSQL", error)
         return -1
     finally:
-        # closing database connection.
         if connection:
+            # closing database connection.
             cursor.close()
             connection.close()
-            #print("PostgreSQL connection is closed")
 
 def new_backup():
     """
