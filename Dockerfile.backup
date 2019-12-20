@@ -1,0 +1,3 @@
+#   TODO Use an ubuntu version
+#   TODO install postgres
+#   TODO create a cron which backup every day at 5:00 AM
