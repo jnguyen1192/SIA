@@ -52,6 +52,13 @@ def run_db(port=5432):
         return -1
 
 
+def create_image_backup():
+    """
+    Create the image to backup
+    :return: 0 if it works else -1
+    """
+
+
 def run_backup():
     """
     Create the container which will backup the db on a windows share folder
