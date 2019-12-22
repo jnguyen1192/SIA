@@ -57,6 +57,15 @@ def create_image_backup():
     Create the image to backup
     :return: 0 if it works else -1
     """
+    client = docker.from_env()
+    try:
+        fo = open("C:/Users/johdu/PycharmProjects/SAI/Dockerfile.backup", "r")
+        # docker build -f Dockerfile.postgres . -t c_sai_backup
+        client.images.build(fileobj=fo, tag="c_sai_backup", custom_context=True)
+    except Exception as e:
+        print(e)
+        client.close()
+        return -1
 
 
 def run_backup():
