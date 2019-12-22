@@ -57,7 +57,42 @@ def run_backup():
     Create the container which will backup the db on a windows share folder
     :return: 0 if it works else -1
     """
-    pass
+
+    client = docker.from_env()
+    try:
+        #@source https://github.com/docker/for-win/issues/445
+        #docker volume create --name postgres-data-volume -d local
+        #volumes = {"/c/Users/johdu/PycharmProjects/SAI/backup_postgres":
+        # shared folder on oracle vm : C:\Users\johdu\PycharmProjects\SAI\backup_postgres:/mnt/sda1/var/lib/docker/volumes/postgres-data-volume/_data
+        # Backup http://support.divio.com/en/articles/646695-how-to-use-a-directory-outside-c-users-with-docker-toolbox-docker-for-windows
+        volumes = {"postgres-data-volume":
+                       {'bind': '/var/lib/postgresql/data/', 'mode': 'rw'}
+                   }
+        environment = ["POSTGRES_DB=postgres",
+                       "POSTGRES_USER=postgres",
+                       "POSTGRES_PASSWORD=postgres"]
+        #print("Image building...")
+        #print("Image builded")
+        # restart a container
+        dtt.clean_container("c_sai_backup")
+
+        # to test pg database https://www.enterprisedb.com/download-postgresql-binaries
+        # to connect to the database enter the ip of docker
+        container = client.containers.run(image="c_sai_backup",
+                                    name="c_sai_backup",
+                                    pid_mode="host",
+                                    volumes=volumes,
+                                    environment=environment,
+                                    detach=True)
+        # TODO debug log here
+        #print(container.logs().decode('utf8'))
+        #print("after postgres run")
+        client.close()
+        return 0
+    except Exception as e:
+        print(e)
+        client.close()
+        return -1
 
 
 def wait_db_connection(nb_retry=10, time_sleep=60):
