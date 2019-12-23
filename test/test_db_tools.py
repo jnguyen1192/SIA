@@ -48,6 +48,8 @@ class TestDb_tools(unittest.TestCase):
         Test if the image for backup is correctly build
         """
         # TODO to implement
+        #   Create the image
+        #   Check using docker client if the image is correctly added
 
     def test_db_tools_new_backup(self):
         """
