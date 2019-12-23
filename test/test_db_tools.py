@@ -43,6 +43,12 @@ class TestDb_tools(unittest.TestCase):
             assert(res != -1)
             assert(res == True)
 
+    def test_create_image_backup(self):
+        """
+        Test if the image for backup is correctly build
+        """
+        # TODO to implement
+
     def test_db_tools_new_backup(self):
         """
         Test function new_backup
