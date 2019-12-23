@@ -50,6 +50,7 @@ class TestDb_tools(unittest.TestCase):
         # TODO to implement
         #   Create the image
         #   Check using docker client if the image is correctly added
+        #   Optionally: check if all library are in the container
 
     def test_db_tools_new_backup(self):
         """
