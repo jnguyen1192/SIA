@@ -117,7 +117,7 @@ def wait_db_connection(nb_retry=10, time_sleep=60):
     :return: 0 if it works else -1
     """
     i = 0
-    time.sleep(5)
+    time.sleep(40)
     while i < nb_retry:
         try:
             psycopg2.connect(user="postgres",
@@ -125,7 +125,7 @@ def wait_db_connection(nb_retry=10, time_sleep=60):
                               host="192.168.99.100",
                               port="5432",
                               database="postgres")
-            #print("Connexion worked")
+            print("Connexion worked")
             return 0
         except Exception as e:
             #print(e)
