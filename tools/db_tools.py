@@ -59,7 +59,9 @@ def create_image_backup():
     """
     client = docker.from_env()
     try:
+        # TODO need to use the correct folder to use this command in docker-machine
         fo = open("C:/Users/johdu/PycharmProjects/SAI/Dockerfile.backup", "r")
+        print(fo.read())
         # docker build -f Dockerfile.postgres . -t c_sai_backup
         client.images.build(fileobj=fo, tag="c_sai_backup", custom_context=True)
     except Exception as e:
