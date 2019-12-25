@@ -1,6 +1,7 @@
 import psycopg2
 import docker
 import time
+import subprocess
 
 import tools.docker_tools as dtt
 
@@ -59,11 +60,14 @@ def create_image_backup():
     """
     client = docker.from_env()
     try:
-        # TODO need to use the correct folder to use this command in docker-machine
-        fo = open("C:/Users/johdu/PycharmProjects/SAI/Dockerfile.backup", "r")
-        print(fo.read())
-        # docker build -f Dockerfile.postgres . -t c_sai_backup
-        client.images.build(fileobj=fo, tag="c_sai_backup", custom_context=True)
+        # TODO Option 1: need to use the correct folder to use this command in docker-machine
+        #fo = open("C:/Users/johdu/PycharmProjects/SAI/Dockerfile.backup", "r")
+        #print(fo)
+        #
+        print("Before images build")
+        # TODO Option 2 : use subprocess to use cmd from win
+        # docker build -f Dockerfile.backup . -t c_sai_backup
+        #client.images.build(fileobj=fo, tag="c_sai_backup", custom_context=True)
     except Exception as e:
         print(e)
         client.close()
