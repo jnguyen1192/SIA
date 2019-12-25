@@ -66,6 +66,7 @@ def create_image_backup():
         #
         print("Before images build")
         # TODO Option 2 : use subprocess to use cmd from win
+        subprocess.run(["docker", "build", "-f", "C:/Users/johdu/PycharmProjects/SAI/Dockerfile.backup", ".", "-t", "c_sai_backup"])
         # docker build -f Dockerfile.backup . -t c_sai_backup
         #client.images.build(fileobj=fo, tag="c_sai_backup", custom_context=True)
     except Exception as e:
