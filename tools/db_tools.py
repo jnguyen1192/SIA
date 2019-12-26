@@ -66,7 +66,12 @@ def create_image_backup():
         #
         #print("Before images build")
         # TODO Option 2 : use subprocess to use cmd from win
-        res = subprocess.run(["docker", "build", "-f", "C:/Users/johdu/PycharmProjects/SAI/Dockerfile.backup", ".", "-t", "c_sai_backup"])
+        # Dev way
+        #res = subprocess.run(["docker", "build", "-f", "C:/Users/johdu/PycharmProjects/SAI/Dockerfile.backup", ".", "-t", "c_sai_backup"])
+        # Prod way
+        res = subprocess.run(["docker", "build", "-f", "C:/Users/johdu/PycharmProjects/SAI/Dockerfile.backup", ".", "-t", "c_sai_backup"],
+                             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
         # docker build -f Dockerfile.backup . -t c_sai_backup
         #print(type(res.returncode), res.returncode)
         return res.returncode

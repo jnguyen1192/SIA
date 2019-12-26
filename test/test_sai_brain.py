@@ -632,7 +632,6 @@ class TestSAIBrain(unittest.TestCase):
         s = SAIBrain.mt.Shape(transform_image)
         s.detect_shape(3, 3)
         browsed_pixels = s.pixels
-        #print(browsed_pixels)
 
         # test if the funtion works
         assert(browsed_pixels == browsed_pixels_to_predict)
