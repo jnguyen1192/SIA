@@ -252,4 +252,8 @@ def new_backup():
     Create a backup using the corresponding container
     :return: 0 if it works else -1
     """
+    # TODO
+    #   Use this command to connect to the DB on the container
+    #       PGPASSWORD=postgres pgsql -h 192.168.99.100 -p 5432 -U postgres
+
     return 0
