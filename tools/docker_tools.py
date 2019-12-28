@@ -9,11 +9,13 @@ def is_image_exist(name):
     :return: True if it works else False
     """
     client = docker.from_env()
-    new_name = client.images.search(name)
+    images_raws = client.images.list()
+    images = [image.tags[0] for image in images_raws if image.tags != []]
     client.close()
-    if name != new_name:
+    if name not in [image.split(":")[0] for image in images if image != ""]:
         return False
     return True
+
 
 def clean_container(name):
     """

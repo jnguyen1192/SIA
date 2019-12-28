@@ -17,6 +17,10 @@ class TestDb_tools(unittest.TestCase):
         if not self.ClassIsSetup:
             # run db container
             try:
+                if not dtt.is_image_exist("c_sai_postgres"):
+                    res = dbt.create_image_using_dockerfile("postgres")
+                    if res == -1:
+                        raise Exception("Image not created correctly")
                 res = dbt.run_db()
             except Exception as e:
                 print(e)
