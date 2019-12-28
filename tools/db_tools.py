@@ -2,6 +2,7 @@ import psycopg2
 import docker
 import time
 import subprocess
+import os
 
 import tools.docker_tools as dtt
 
@@ -35,6 +36,7 @@ def run_db(port=5432):
 
         # to test pg database https://www.enterprisedb.com/download-postgresql-binaries
         # to connect to the database enter the ip of docker
+        print("Création de l'image en cours...")
         container = client.containers.run(image="c_sai_postgres",
                                     name="c_sai_postgres",
                                     pid_mode="host",
@@ -53,6 +55,16 @@ def run_db(port=5432):
         return -1
 
 
+def get_pwd():
+    res = subprocess.run(['cmd', '/c', 'echo', '%cd%'], capture_output=True)
+    pwd = res.stdout.decode('utf8')
+    pwd_path = os.path.join(pwd)
+    pwd_path_split = pwd_path.split("\\")
+    if "test" in pwd_path_split[-1]:
+        pwd = "\\".join(pwd_path_split[:-1])
+    return pwd
+
+
 def create_image_backup():
     """
     Create the image to backup
@@ -67,11 +79,11 @@ def create_image_backup():
         #print("Before images build")
         # TODO Option 2 : use subprocess to use cmd from win
         # Prod way
-        res = subprocess.run(["docker", "build", "-f", "C:/Users/johdu/PycharmProjects/SAI/Dockerfile.backup", ".", "-t", "c_sai_backup"],
+        res = subprocess.run(["docker", "build", "-f", "C:/Users/anthony/PycharmProjects/SAI/Dockerfile.backup", ".", "-t", "c_sai_backup"],
                              stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         if res != 0:
             # Dev way
-            res = subprocess.run(["docker", "build", "-f", "C:/Users/johdu/PycharmProjects/SAI/Dockerfile.backup", ".", "-t", "c_sai_backup"])
+            res = subprocess.run(["docker", "build", "-f", "C:/Users/anthony/PycharmProjects/SAI/Dockerfile.backup", ".", "-t", "c_sai_backup"])
 
         # docker build -f Dockerfile.backup . -t c_sai_backup
         #print(type(res.returncode), res.returncode)
