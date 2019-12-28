@@ -53,7 +53,7 @@ class TestDb_tools(unittest.TestCase):
         #   3) Optionally: check if all library are in the container
         # 1) docker-machine start
 
-        res = dbt.create_image_backup()
+        res = dbt.create_image_using_dockerfile("backup")
         assert res == 0
 
     def test_db_tools_new_backup(self):

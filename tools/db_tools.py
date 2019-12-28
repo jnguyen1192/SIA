@@ -65,7 +65,7 @@ def get_pwd():
     return pwd
 
 
-def create_image_backup():
+def create_image_using_dockerfile(name):
     """
     Create the image to backup
     :return: 0 if it works else -1
@@ -79,7 +79,7 @@ def create_image_backup():
         #print("Before images build")
         # TODO Option 2 : use subprocess to use cmd from win
         # Prod way
-        res = subprocess.run(["docker", "build", "-f", "C:/Users/anthony/PycharmProjects/SAI/Dockerfile.backup", ".", "-t", "c_sai_backup"],
+        res = subprocess.run(["docker", "build", "-f", os.path.join(get_pwd(), "Dockerfile." + name), ".", "-t", "c_sai_backup"],
                              stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         if res != 0:
             # Dev way
