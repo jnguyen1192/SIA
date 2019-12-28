@@ -1,0 +1,8 @@
+# setup docker toolbox
+https://download.docker.com/win/stable/DockerToolbox.exe
+# setup oracle virtual box
+https://www.virtualbox.org/
+# setup docker-machine default
+docker-machine create default
+docker-machine start default
+docker-machine env default
