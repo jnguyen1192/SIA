@@ -2,6 +2,19 @@ import docker
 from docker.utils import kwargs_from_env
 
 
+def is_image_exist(name):
+    """
+    Check if an imag exist
+    :param name: the name of the image
+    :return: True if it works else False
+    """
+    client = docker.from_env()
+    new_name = client.images.search(name)
+    client.close()
+    if name != new_name:
+        return False
+    return True
+
 def clean_container(name):
     """
     Run the correponding container using the same image and container name
