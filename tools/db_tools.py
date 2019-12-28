@@ -44,7 +44,7 @@ def run_db(port=5432):
                                     environment=environment,
                                     detach=True)
         # TODO debug log here
-        print(container.logs().decode('utf8'))
+        #print(container.logs().decode('utf8'))
         #print("after postgres run")
         client.close()
         return 0
@@ -78,12 +78,12 @@ def create_image_using_dockerfile(name):
         #print("Before images build")
         # TODO Option 2 : use subprocess to use cmd from win
         # Prod way
-        res = subprocess.run(["cmd", "/c", "docker", "build", "-f", os.path.join(get_pwd(), "Dockerfile." + name), get_pwd(), "-t", "c_sai_"+ name],
+        res = subprocess.run(["cmd", "/c", "docker", "build", "-f", os.path.join(get_pwd(), "Dockerfile." + name), get_pwd(), "-t", "c_sai_" + name],
                              stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         if res.returncode != 0:
             print("Error code", res.returncode)
             # Dev way
-            res = subprocess.run(["cmd", "/c", "docker", "build", "-f", os.path.join(get_pwd(), "Dockerfile." + name), get_pwd(), "-t", "c_sai_"+ name])
+            res = subprocess.run(["cmd", "/c", "docker", "build", "-f", os.path.join(get_pwd(), "Dockerfile." + name), get_pwd(), "-t", "c_sai_" + name])
 
         # docker build -f Dockerfile.backup . -t c_sai_backup
         #print(type(res.returncode), res.returncode)
@@ -152,7 +152,7 @@ def wait_db_connection(nb_retry=10, time_sleep=60):
                               host="192.168.99.100",
                               port="5432",
                               database="postgres")
-            print("Connexion worked")
+            #print("Connexion worked")
             return 0
         except Exception as e:
             #print(e)

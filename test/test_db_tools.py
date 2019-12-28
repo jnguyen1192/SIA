@@ -55,10 +55,12 @@ class TestDb_tools(unittest.TestCase):
         #   1) Create the image
         #   2) Check using docker client if the image is correctly added
         #   3) Optionally: check if all library are in the container
-        # 1) docker-machine start
+        # 1)
+        assert dbt.create_image_using_dockerfile("backup") == 0
+        # 2)
+        assert dtt.is_image_exist("c_sai_backup")
+        # 3)
 
-        res = dbt.create_image_using_dockerfile("backup")
-        assert res == 0
 
     def test_db_tools_new_backup(self):
         """
