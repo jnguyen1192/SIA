@@ -6,7 +6,7 @@ import datetime
 from skimage.metrics._structural_similarity import structural_similarity as ssim
 from shapely.geometry import Point, Polygon  # @source: https://gis.stackexchange.com/questions/62925/shapely-not-installing-correctly
 # wget https://www.lfd.uci.edu/~gohlke/pythonlibs/#shapely/Shapely-1.6.4.post2-cp37-cp37m-win_amd64.whl
-# PycharmProjects\SAI\venv_37_64\Scripts>python.exe -m pip install "C:\Users\johdu\Downloads\Shapely-1.6.4.post2-cp37-cp37m-win_amd64.whl"
+# PycharmProjects\SAI\venv_37_64\Scripts>python.exe -m pip install "C:\Users\anthony\Downloads\Shapely-1.6.4.post2-cp37-cp37m-win_amd64.whl"
 
 
 def mse(imageA, imageB):
