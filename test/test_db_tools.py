@@ -55,6 +55,16 @@ class TestDb_tools(unittest.TestCase):
         #   1) Create the image
         #   2) Check using docker client if the image is correctly added
         #   3) Optionally: check if all library are in the container
+        #       docker run -it --name c_sai_backup c_sai_backup dpkg -s postgresql
+        #       docker rm c_sai_backup
+        #       docker run -it --name c_sai_backup c_sai_backup dpkg -s postgresql-contrib
+        #       docker rm c_sai_backup
+        #       docker run -it --name c_sai_backup c_sai_backup dpkg -s postgresql-client
+        #       docker rm c_sai_backup
+        #           Package: postgresql-contrib
+        #           Status: install ok installed
+        #           [...]
+        #       We need to check the status for each package
         # 1)
         assert dbt.create_image_using_dockerfile("backup") == 0
         # 2)
