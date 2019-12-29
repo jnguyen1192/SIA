@@ -2,9 +2,19 @@ import docker
 from docker.utils import kwargs_from_env
 
 
+def is_package_exist(package_name, image_name):
+    """
+    Check if a package exists on an image
+    :param package_name: the name of the package
+    :param image_name:
+    :return: True if it exists else False
+    """
+    return True
+
+
 def is_image_exist(name):
     """
-    Check if an imag exist
+    Check if an image exists
     :param name: the name of the image
     :return: True if it works else False
     """
