@@ -70,6 +70,7 @@ class TestDb_tools(unittest.TestCase):
         # 2)
         assert dtt.is_image_exist("c_sai_backup")
         # 3)
+        assert dtt.is_package_exist("postgresql", "backup")
 
 
     def test_db_tools_new_backup(self):

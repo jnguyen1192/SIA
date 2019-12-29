@@ -1,6 +1,7 @@
 import docker
+import subprocess
+import os
 from docker.utils import kwargs_from_env
-
 
 def is_package_exist(package_name, image_name):
     """
@@ -11,7 +12,19 @@ def is_package_exist(package_name, image_name):
     """
     # TODO
     #   run the corresponding image with the package to test and get the output
+    res = subprocess.run(
+        ["cmd", "/c", "docker", "run", "-it", "--name", "c_sai_" + image_name,  "c_sai_" + image_name, "dpkg", "-s", package_name])
+    if res.returncode != 0:
+        return False
+
+    #   remove the container
+    res = subprocess.run(
+        ["cmd", "/c", "docker", "rm", "c_sai_" + image_name]
+    )
+    if res.returncode != 0:
+        return False
     #   find on the output the correct message
+
     #   return the corresponding boolean
     return True
 
