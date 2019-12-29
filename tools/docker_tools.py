@@ -9,6 +9,10 @@ def is_package_exist(package_name, image_name):
     :param image_name:
     :return: True if it exists else False
     """
+    # TODO
+    #   run the corresponding image with the package to test and get the output
+    #   find on the output the correct message
+    #   return the corresponding boolean
     return True
 
 
