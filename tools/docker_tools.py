@@ -3,6 +3,7 @@ import subprocess
 import os
 from docker.utils import kwargs_from_env
 
+
 def is_package_exist(package_name, image_name):
     """
     Check if a package exists on an image
@@ -13,7 +14,8 @@ def is_package_exist(package_name, image_name):
     # TODO
     #   run the corresponding image with the package to test and get the output
     res = subprocess.run(
-        ["cmd", "/c", "docker", "run", "-it", "--name", "c_sai_" + image_name,  "c_sai_" + image_name, "dpkg", "-s", package_name])
+        ["cmd", "/c", "docker", "run", "-t", "--name", "c_sai_" + image_name,  "c_sai_" + image_name, "dpkg", "-s", package_name])
+    print(res)
     if res.returncode != 0:
         return False
 
