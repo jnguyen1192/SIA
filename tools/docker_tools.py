@@ -44,6 +44,14 @@ def is_image_exist(name):
     return True
 
 
+def is_container_exist(name):
+    """
+    Check if a container exists
+    :param name: the name of the container
+    :return: True if it works else False
+    """
+
+
 def clean_container(name):
     """
     Run the correponding container using the same image and container name
