@@ -50,6 +50,13 @@ def is_container_exist(name):
     :param name: the name of the container
     :return: True if it works else False
     """
+    client = docker.from_env()
+    containers_raws = client.containers.list()
+    containers = [container.name for container in containers_raws]
+    client.close()
+    if name not in containers:
+        return False
+    return True
 
 
 def clean_container(name):
