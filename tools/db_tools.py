@@ -78,8 +78,9 @@ def create_image_using_dockerfile(name):
         #print("Before images build")
         # TODO Option 2 : use subprocess to use cmd from win
         # Prod way
-        res = subprocess.run(["cmd", "/c", "docker", "build", "-f", os.path.join(get_pwd(), "Dockerfile." + name), get_pwd(), "-t", "c_sai_" + name],
-                             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        print("Before run")
+        res = subprocess.run(["cmd", "/c", "docker", "build", "-f", os.path.join(get_pwd(), "Dockerfile." + name), get_pwd(), "-t", "c_sai_" + name])
+        print("After run")
         if res.returncode != 0:
             print("Error code", res.returncode)
             # Dev way

@@ -69,6 +69,7 @@ class TestDb_tools(unittest.TestCase):
         #           [...]
         #       We need to check the status for each package
         # 1)
+        print("Before image create tested")
         assert dbt.create_image_using_dockerfile("backup") == 0
         print("Image create tested")
         # 2)
