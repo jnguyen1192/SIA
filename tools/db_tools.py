@@ -144,7 +144,6 @@ def wait_db_connection(nb_retry=10, time_sleep=60):
     :return: 0 if it works else -1
     """
     i = 0
-    time.sleep(40)
     while i < nb_retry:
         try:
             psycopg2.connect(user="postgres",

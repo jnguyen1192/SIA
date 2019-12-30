@@ -21,7 +21,10 @@ class TestDb_tools(unittest.TestCase):
                     res = dbt.create_image_using_dockerfile("postgres")
                     if res == -1:
                         raise Exception("Image not created correctly")
-                res = dbt.run_db()
+                if not dtt.is_container_exist("c_sai_postgres"):
+                    res = dbt.run_db()
+                else:
+                    res = 0
             except Exception as e:
                 print(e)
                 res = -1
@@ -67,10 +70,13 @@ class TestDb_tools(unittest.TestCase):
         #       We need to check the status for each package
         # 1)
         assert dbt.create_image_using_dockerfile("backup") == 0
+        print("Image create tested")
         # 2)
         assert dtt.is_image_exist("c_sai_backup")
+        print("Image exist tested")
         # 3)
         assert dtt.is_package_exist("postgresql", "backup")
+        print("Package exist tested")
 
 
     def test_db_tools_new_backup(self):
