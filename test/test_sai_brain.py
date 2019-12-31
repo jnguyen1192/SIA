@@ -16,6 +16,8 @@ class TestSAIBrain(unittest.TestCase):
 
     def test_SAIBrain_create_db_case_ok(self):
         # TODO implement
+        import tools.docker_tools as dtt
+        print(dtt.docker_ps())
         assert (True==True)
 
     def test_SAIBrain_create_db_case_nok(self):

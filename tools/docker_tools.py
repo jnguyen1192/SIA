@@ -21,7 +21,7 @@ def is_package_exist(package_name, image_name):
     output = res.stdout.decode("utf-8")
     #   remove the container
     res = subprocess.run(
-        ["cmd", "/c", "docker", "rm", "c_sai_" + image_name]
+        ["cmd", "/c", "docker", "rm", "c_sai_" + image_name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
     )
     if res.returncode != 0:
         return False
