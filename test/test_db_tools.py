@@ -93,12 +93,19 @@ class TestDb_tools(unittest.TestCase):
         assert  file_name != -1
         assert dbt.remove_backup(file_name) == 0
         # 2)
+        # TODO
+        #  create a temporary database using
+        #   - a container,
+        #   - or the current postgres container
         # 2.1)
         date = dbt.datetime.now().replace(microsecond=0).strftime("%Y%m%dT%H%M")  # without seconds
         assert date in file_name
         # 2.2)
+        # TODO
+        #  check if all the tables exists
         # 2.3)
-
+        # TODO
+        #  check if the main data are presents (Actions ...)
 
     def test_db_tools_run_db_case_nok(self):
         # TODO implement
