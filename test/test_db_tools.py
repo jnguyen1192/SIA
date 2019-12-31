@@ -53,32 +53,29 @@ class TestDb_tools(unittest.TestCase):
     def test_create_image_backup(self):
         """
         Test if the image for backup is correctly build
+           1) Create the image
+           2) Check using docker client if the image is correctly added
+           3) Optionally: check if all library are in the container
+               docker run -it --name c_sai_backup c_sai_backup dpkg -s postgresql
+               docker rm c_sai_backup
+               docker run -it --name c_sai_backup c_sai_backup dpkg -s postgresql-contrib
+               docker rm c_sai_backup
+               docker run -it --name c_sai_backup c_sai_backup dpkg -s postgresql-client
+               docker rm c_sai_backup
+                   Package: postgresql-contrib
+                   Status: install ok installed
+                   [...]
+               We need to check the status for each package
         """
-        # TODO to implement
-        #   1) Create the image
-        #   2) Check using docker client if the image is correctly added
-        #   3) Optionally: check if all library are in the container
-        #       docker run -it --name c_sai_backup c_sai_backup dpkg -s postgresql
-        #       docker rm c_sai_backup
-        #       docker run -it --name c_sai_backup c_sai_backup dpkg -s postgresql-contrib
-        #       docker rm c_sai_backup
-        #       docker run -it --name c_sai_backup c_sai_backup dpkg -s postgresql-client
-        #       docker rm c_sai_backup
-        #           Package: postgresql-contrib
-        #           Status: install ok installed
-        #           [...]
-        #       We need to check the status for each package
         # 1)
-        #print("Before image create tested")
         assert dbt.create_image_using_dockerfile("backup") == 0
-        #print("Image create tested")
         # 2)
         assert dtt.is_image_exist("c_sai_backup")
-        #print("Image exist tested")
         # 3)
         assert dtt.is_package_exist("postgresql", "backup")
-        #print("Package exist tested")
-
+        assert dtt.is_package_exist("postgresql-contrib", "backup")
+        assert dtt.is_package_exist("postgresql-client", "backup")
+        assert not dtt.is_package_exist("notexistpackage", "backup")
 
     def test_db_tools_new_backup(self):
         """
