@@ -8,7 +8,7 @@ def is_package_exist(package_name, image_name):
     """
     Check if a package exists on an image
     :param package_name: the name of the package
-    :param image_name:
+    :param image_name: the name of the image
     :return: True if it exists else False
     """
     # TODO
@@ -16,9 +16,8 @@ def is_package_exist(package_name, image_name):
     res = subprocess.run(
         ["cmd", "/c", "docker", "run", "-t", "--name", "c_sai_" + image_name,  "c_sai_" + image_name, "dpkg", "-s", package_name],
             capture_output=True)
-    if res.returncode != 0:
-        return False
     output = res.stdout.decode("utf-8")
+    #print(package_name, res)
     #   remove the container
     res = subprocess.run(
         ["cmd", "/c", "docker", "rm", "c_sai_" + image_name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
