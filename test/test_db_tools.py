@@ -69,15 +69,15 @@ class TestDb_tools(unittest.TestCase):
         #           [...]
         #       We need to check the status for each package
         # 1)
-        print("Before image create tested")
+        #print("Before image create tested")
         assert dbt.create_image_using_dockerfile("backup") == 0
-        print("Image create tested")
+        #print("Image create tested")
         # 2)
         assert dtt.is_image_exist("c_sai_backup")
-        print("Image exist tested")
+        #print("Image exist tested")
         # 3)
         assert dtt.is_package_exist("postgresql", "backup")
-        print("Package exist tested")
+        #print("Package exist tested")
 
 
     def test_db_tools_new_backup(self):
