@@ -267,7 +267,6 @@ def new_backup():
     # TODO
     #   Use this command to connect to the DB on the container
     #       PGPASSWORD=postgres pgsql -h 192.168.99.100 -p 5432 -U postgres
-    print()
     file_name = datetime.now().replace(microsecond=0).strftime("%Y%m%dT%H%M%S") + "_postgres.sql"
     res = subprocess.run(
         ["cmd", "/c", "docker", "exec", "-t", "c_sai_postgres", "pg_dumpall", "-c", "-U", "postgres", ">", os.path.join(get_pwd(), "backup_postgres", file_name)],
@@ -276,3 +275,17 @@ def new_backup():
     if res.returncode != 0:
         return -1
     return file_name
+
+
+def remove_backup(file_name):
+    """
+    Remove the given backup
+    :param file_name: the backup file name
+    :return: 0 if it works else -1
+    """
+    res = subprocess.run(
+        ["cmd", "/c", "del", "/f", os.path.join(get_pwd(), "backup_postgres", file_name)],
+        capture_output=True)
+    if res.returncode != 0:
+        return -1
+    return 0
