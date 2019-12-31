@@ -258,6 +258,7 @@ def select_one_with_parameters(query, parameters):
             cursor.close()
             connection.close()
 
+
 def new_backup():
     """
     Create a backup using the corresponding container
@@ -266,5 +267,10 @@ def new_backup():
     # TODO
     #   Use this command to connect to the DB on the container
     #       PGPASSWORD=postgres pgsql -h 192.168.99.100 -p 5432 -U postgres
+    res = subprocess.run(
+        ["cmd", "/c", "docker", "exec", "-t", "c_sai_postgres", "pgdump_all", "-c", "-U", "postgres", ">", "dump.sql"],
+        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    if res.returncode != 0:
+        return -1
 
     return 0
