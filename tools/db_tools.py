@@ -3,7 +3,7 @@ import docker
 import time
 import subprocess
 import os
-
+from datetime import datetime
 import tools.docker_tools as dtt
 
 
@@ -262,15 +262,17 @@ def select_one_with_parameters(query, parameters):
 def new_backup():
     """
     Create a backup using the corresponding container
-    :return: 0 if it works else -1
+    :return: the file name if it works else -1
     """
     # TODO
     #   Use this command to connect to the DB on the container
     #       PGPASSWORD=postgres pgsql -h 192.168.99.100 -p 5432 -U postgres
+    print()
+    file_name = datetime.now().replace(microsecond=0).strftime("%Y%m%dT%H%M%S") + "_postgres.sql"
     res = subprocess.run(
-        ["cmd", "/c", "docker", "exec", "-t", "c_sai_postgres", "pgdump_all", "-c", "-U", "postgres", ">", "dump.sql"],
-        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        ["cmd", "/c", "docker", "exec", "-t", "c_sai_postgres", "pg_dumpall", "-c", "-U", "postgres", ">", os.path.join(get_pwd(), "backup_postgres", file_name)],
+        capture_output=True)
+    print(res)
     if res.returncode != 0:
         return -1
-
-    return 0
+    return file_name

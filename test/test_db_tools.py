@@ -83,6 +83,8 @@ class TestDb_tools(unittest.TestCase):
         Configure docker-machine share folder to use this
         TODO need to optimize this procedure
         """
+        file_name = dbt.new_backup()
+        assert  file_name != -1
         # TODO  Create a backup using the corresponding container which need to be launch on Setup
         #       Check if the backup works:
         #           The correct date
