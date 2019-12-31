@@ -83,13 +83,22 @@ class TestDb_tools(unittest.TestCase):
         Configure docker-machine share folder to use this
         TODO need to optimize this procedure
         """
+        # TODO  1) Create a backup using the corresponding container which need to be launch on Setup
+        #       2) Check if the backup works:
+        #           2.1) The correct date
+        #           2.2) The correct tables
+        #           2.3) The correct data
+        # 1)
         file_name = dbt.new_backup()
         assert  file_name != -1
-        # TODO  Create a backup using the corresponding container which need to be launch on Setup
-        #       Check if the backup works:
-        #           The correct date
-        #           The correct tables
-        #           The correct data
+        assert dbt.remove_backup(file_name) == 0
+        # 2)
+        # 2.1)
+        date = dbt.datetime.now().replace(microsecond=0).strftime("%Y%m%dT%H%M")  # without seconds
+        assert date in file_name
+        # 2.2)
+        # 2.3)
+
 
     def test_db_tools_run_db_case_nok(self):
         # TODO implement

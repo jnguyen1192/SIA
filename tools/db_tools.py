@@ -271,7 +271,6 @@ def new_backup():
     res = subprocess.run(
         ["cmd", "/c", "docker", "exec", "-t", "c_sai_postgres", "pg_dumpall", "-c", "-U", "postgres", ">", os.path.join(get_pwd(), "backup_postgres", file_name)],
         capture_output=True)
-    print(res)
     if res.returncode != 0:
         return -1
     return file_name
