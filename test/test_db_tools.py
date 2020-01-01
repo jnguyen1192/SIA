@@ -91,7 +91,6 @@ class TestDb_tools(unittest.TestCase):
         # 1)
         file_name = dbt.new_backup()
         assert  file_name != -1
-        assert dbt.remove_backup(file_name) == 0
         # 2)
         # TODO
         #  create a temporary database using
@@ -106,6 +105,8 @@ class TestDb_tools(unittest.TestCase):
         else:
             tmp_db_run = 0
         assert tmp_db_run == 0
+        # TODO
+        #   load the previous backup into the new db
         # 2.1)
         date = dbt.datetime.now().replace(microsecond=0).strftime("%Y%m%dT%H%M")  # without seconds
         assert date in file_name
@@ -115,6 +116,7 @@ class TestDb_tools(unittest.TestCase):
         # 2.3)
         # TODO
         #  check if the main data are presents (Actions ...)
+        assert dbt.remove_backup(file_name) == 0
 
     def test_db_tools_run_db_case_nok(self):
         # TODO implement
