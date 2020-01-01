@@ -64,7 +64,7 @@ def get_pwd():
     return pwd
 
 
-def create_image_using_dockerfile(name, backup_path="tools/template_sai_db_plain_text.sql"):
+def create_image_using_dockerfile(name):
     """
     Create the image to backup
     :return: 0 if it works else -1
@@ -136,6 +136,14 @@ def run_backup():
         print(e)
         client.close()
         return -1
+
+
+def load_last_backup(container_name):
+    """
+    Load the backup into the container call c_sai_[container_name]
+    :param container_name: the name of the container
+    :return: 0 if it works else -1
+    """
 
 
 def wait_db_connection(nb_retry=10, time_sleep=60):
