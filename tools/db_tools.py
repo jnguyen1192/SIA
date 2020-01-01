@@ -7,7 +7,7 @@ from datetime import datetime
 import tools.docker_tools as dtt
 
 
-def run_db(port=5432):
+def run_db(container_name="postgres", image_name="postgres", port=5432):
     """
     Create the postgres container and run it
     :return: 0 if it works else -1
@@ -32,12 +32,12 @@ def run_db(port=5432):
         #print("Image building...")
         #print("Image builded")
         # restart a container
-        dtt.clean_container("c_sai_postgres")
+        dtt.clean_container("c_sai_" + container_name)
 
         # to test pg database https://www.enterprisedb.com/download-postgresql-binaries
         # to connect to the database enter the ip of docker
-        container = client.containers.run(image="c_sai_postgres",
-                                    name="c_sai_postgres",
+        container = client.containers.run(image="c_sai_" + image_name,
+                                    name="c_sai_" + container_name,
                                     pid_mode="host",
                                     volumes=volumes,
                                     ports=ports,
