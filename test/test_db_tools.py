@@ -103,13 +103,15 @@ class TestDb_tools(unittest.TestCase):
             res = dbt.create_image_using_dockerfile("postgres")
             if res == -1:
                 raise Exception("Image not created correctly")
-        if not dtt.is_container_exist("c_sai_postgres"):
-            tmp_db_run = dbt.run_db("tmp_postgres", 5433)
+        if not dtt.is_container_exist("c_sai_tmp_postgres"):
+            tmp_db_run = dbt.run_db("tmp_postgres", "postgres", 5433)
         else:
             tmp_db_run = 0
         assert tmp_db_run == 0
         # TODO
         #   load the previous backup into the new db
+        # docker exec -i c_sai_tmp_postgres psql -U postgres -d postgres < backup_postgres/20200101T141905_postgres.sql
+        print(file_name)
         # 2.1)
         date = dbt.datetime.now().replace(microsecond=0).strftime("%Y%m%dT%H%M")  # without seconds
         assert date in file_name

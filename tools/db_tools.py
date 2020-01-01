@@ -19,9 +19,9 @@ def run_db(container_name="postgres", image_name="postgres", port=5432):
         #volumes = {"/c/Users/johdu/PycharmProjects/SAI/backup_postgres":
         # shared folder on oracle vm : C:\Users\johdu\PycharmProjects\SAI\backup_postgres:/mnt/sda1/var/lib/docker/volumes/postgres-data-volume/_data
         # Backup http://support.divio.com/en/articles/646695-how-to-use-a-directory-outside-c-users-with-docker-toolbox-docker-for-windows
-        volumes = {"postgres-data-volume":
-                       {'bind': '/var/lib/postgresql/data/', 'mode': 'rw'}
-                   }
+        #volumes = {"postgres-data-volume":
+        #               {'bind': '/var/lib/postgresql/data/', 'mode': 'rw'}
+        #           }
         ports = {'5432/tcp': port}
         environment = ["POSTGRES_DB=postgres",
                        "POSTGRES_USER=postgres",
@@ -39,7 +39,7 @@ def run_db(container_name="postgres", image_name="postgres", port=5432):
         container = client.containers.run(image="c_sai_" + image_name,
                                     name="c_sai_" + container_name,
                                     pid_mode="host",
-                                    volumes=volumes,
+                                    #volumes=volumes,
                                     ports=ports,
                                     environment=environment,
                                     detach=True)
@@ -64,7 +64,7 @@ def get_pwd():
     return pwd
 
 
-def create_image_using_dockerfile(name):
+def create_image_using_dockerfile(name, backup_path="tools/template_sai_db_plain_text.sql"):
     """
     Create the image to backup
     :return: 0 if it works else -1
