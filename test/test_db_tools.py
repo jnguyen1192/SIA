@@ -97,10 +97,19 @@ class TestDb_tools(unittest.TestCase):
         #  create a temporary database using
         #   - a container,
         #   - or the current postgres container
+        if not dtt.is_image_exist("c_sai_postgres"):
+            res = dbt.create_image_using_dockerfile("postgres")
+            if res == -1:
+                raise Exception("Image not created correctly")
+        if not dtt.is_container_exist("c_sai_postgres"):
+            tmp_db_run = dbt.run_db("tmp_postgres", 5433)
+        else:
+            tmp_db_run = 0
+        assert tmp_db_run == 0
         # 2.1)
         date = dbt.datetime.now().replace(microsecond=0).strftime("%Y%m%dT%H%M")  # without seconds
         assert date in file_name
-        # 2.2)
+        # 2.2).
         # TODO
         #  check if all the tables exists
         # 2.3)
