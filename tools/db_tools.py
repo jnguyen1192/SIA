@@ -269,7 +269,7 @@ def new_backup():
     #       PGPASSWORD=postgres pgsql -h 192.168.99.100 -p 5432 -U postgres
     file_name = datetime.now().replace(microsecond=0).strftime("%Y%m%dT%H%M%S") + "_postgres.sql"
     res = subprocess.run(
-        ["cmd", "/c", "docker", "exec", "-t", "c_sai_postgres", "pg_dumpall", "-c", "-U", "postgres", ">", os.path.join(get_pwd(), "backup_postgres", file_name)],
+        ["cmd", "/c", "docker", "exec", "-t", "c_sai_postgres", "pg_dump", "-c", "-U", "postgres", ">", os.path.join(get_pwd(), "backup_postgres", file_name)],
         capture_output=True)
     if res.returncode != 0:
         return -1

@@ -69,6 +69,9 @@ class TestDb_tools(unittest.TestCase):
         """
         # 1)
         assert dbt.create_image_using_dockerfile("backup") == 0
+        import time
+        print("Loading...")
+        time.sleep(7200)
         # 2)
         assert dtt.is_image_exist("c_sai_backup")
         # 3)
@@ -90,7 +93,7 @@ class TestDb_tools(unittest.TestCase):
         #           2.3) The correct data
         # 1)
         file_name = dbt.new_backup()
-        assert  file_name != -1
+        assert file_name != -1
         # 2)
         # TODO
         #  create a temporary database using
@@ -116,7 +119,7 @@ class TestDb_tools(unittest.TestCase):
         # 2.3)
         # TODO
         #  check if the main data are presents (Actions ...)
-        assert dbt.remove_backup(file_name) == 0
+        #assert dbt.remove_backup(file_name) == 0
 
     def test_db_tools_run_db_case_nok(self):
         # TODO implement
