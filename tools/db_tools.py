@@ -136,6 +136,17 @@ def run_backup():
         return -1
 
 
+def get_last_backup():
+    """
+    Get the last backup created on directory backup_postgres
+    :return: the filename or -1
+    """
+    try:
+        return ""
+    except Exception as e:
+        print(e)
+        return -1
+
 
 def load_last_backup(container_name, db_user="postgres", db_name="postgres"):
     """
@@ -143,7 +154,7 @@ def load_last_backup(container_name, db_user="postgres", db_name="postgres"):
     :param container_name: the name of the container
     :return: 0 if it works else -1
     """
-    backup_name = ""#get_last_backup()
+    backup_name = get_last_backup()
     try:
         # docker exec -i c_sai_tmp_postgres psql -U postgres -d postgres < backup_postgres/20200101T141905_postgres.sql
         # Prod way
