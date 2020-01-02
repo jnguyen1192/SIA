@@ -20,3 +20,7 @@ For example :
 """
 #TODO A test will need to be do to know if we need to wait each actions
 INSERT_ON_STRATEGIE = """"""
+
+INSERT_ON_ACTION = """INSERT INTO public."Action"(
+	name)
+	VALUES (%s);"""

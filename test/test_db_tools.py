@@ -106,12 +106,14 @@ class TestDb_tools(unittest.TestCase):
         Configure docker-machine share folder to use this
         TODO need to optimize this procedure
         """
-        # TODO  1) Create a backup using the corresponding container which need to be launch on Setup
+        # TODO  1) Create a backup using the corresponding container which need to be launch on Setup with new data
         #       2) Check if the backup works:
         #           2.1) The correct date
         #           2.2) The correct tables
         #           2.3) The correct data
         # 1)
+        # TODO add a raw on table action
+        dbt.query_with_parameters(sqt.INSERT_ON_ACTION, ("test_new_backup"))
         file_name = dbt.new_backup()
         assert file_name != -1
         # 2)
