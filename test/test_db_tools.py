@@ -80,6 +80,12 @@ class TestDb_tools(unittest.TestCase):
         assert dtt.is_package_exist("postgresql-client", "backup")
         assert not dtt.is_package_exist("notexistpackage", "backup")
 
+    def test_get_last_backup(self):
+        """
+        Test function get_last_backup
+        """
+        # TODO implement
+
     def test_db_tools_new_backup(self):
         """
         Test function new_backup

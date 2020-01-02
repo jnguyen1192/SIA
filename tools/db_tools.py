@@ -142,6 +142,9 @@ def get_last_backup():
     :return: the filename or -1
     """
     try:
+        print(get_pwd())
+        mypath = ""
+        (_, _, filenames) = next(os.walk(mypath))
         return ""
     except Exception as e:
         print(e)
