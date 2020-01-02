@@ -64,14 +64,18 @@ class SAIBrain:
     def find_new_random_command(self):
         """
         It will search a new command using a serie of random action
+        TODO Action on RL
         :return: 0 if it works else -1
         """
         try:
             # TODO implement
-            # Get the different types of actions (move, click, wait, ...)
-            # Get a random sequence of actions
-            # For each action put a random value between correct boundaries
-            # Stock those actions on the db
+            #   Get the different types of actions (move, click, wait, ...)
+            #   Define the boundaries of actions
+            #       move: height, width, time
+            #
+            #   Get a random sequence of actions using the boundaries
+            #   For each action put a random value between correct boundaries
+            #   Stock those actions on the db
             return 0
         except Exception:
             return -1
@@ -79,6 +83,7 @@ class SAIBrain:
     def find_new_command_using_memory(self):
         """
         It will search a new command using memory
+        TODO Action on VL (Visualize Learning using fuzzy)
         :return: 0 if it works else -1
         """
         try:

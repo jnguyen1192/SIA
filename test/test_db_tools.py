@@ -49,7 +49,7 @@ class TestDb_tools(unittest.TestCase):
         for name in tables_name:
             res = dbt.select_one_with_parameters(sqt.IS_TABLE_EXISTS, (name,), test)
             assert(res != -1)
-            assert(res == True)
+            assert res
 
     def test_db_tools_all_tables_created(self):
         """
