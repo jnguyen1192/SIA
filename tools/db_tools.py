@@ -45,7 +45,6 @@ def run_db(container_name="postgres", image_name="postgres", port=5432):
                                     detach=True)
         # TODO debug log here
         #print(container.logs().decode('utf8'))
-        #print("after postgres run")
         client.close()
         return 0
     except Exception as e:
@@ -177,25 +176,29 @@ def load_last_backup(container_name, db_user="postgres", db_name="postgres"):
         return -1
 
 
-def wait_db_connection(nb_retry=10, time_sleep=60):
+def wait_db_connection(test=False, nb_retry=120, time_sleep=1):
     """
     Wait the database connection
     :return: 0 if it works else -1
     """
+    if test:
+        port = "5433"
+    else:
+        port = "5432"
     i = 0
     while i < nb_retry:
         try:
             psycopg2.connect(user="postgres",
                               password="postgres",
                               host="192.168.99.100",
-                              port="5432",
+                              port=port,
                               database="postgres")
             #print("Connexion worked")
             return 0
         except Exception as e:
             #print(e)
             # TODO print all the functions called before
-            print(wait_db_connection.__name__,": I wait", time_sleep, "seconds until try again,", nb_retry - i - 1, "remaining test cycle")
+            print(wait_db_connection.__name__, ": I wait", time_sleep, "seconds until try again,", nb_retry - i - 1, "remaining test cycle")
             time.sleep(time_sleep)
             i = i + 1
     return -1
@@ -243,9 +246,9 @@ def query_with_parameters(query, parameters, test=False):
     :return: 0 if it works else -1
     """
     if test:
-        port = 5433
+        port = "5433"
     else:
-        port = 5432
+        port = "5432"
     connection = ""
     cursor = ""
     try:
@@ -278,9 +281,9 @@ def select_one_with_parameters(query, parameters, test=False):
     :return: 0 if it works else -1
     """
     if test:
-        port = 5433
+        port = "5433"
     else:
-        port = 5432
+        port = "5432"
     connection = ""
     cursor = ""
     try:

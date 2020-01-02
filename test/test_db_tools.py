@@ -110,21 +110,25 @@ class TestDb_tools(unittest.TestCase):
         # 1) create a backup with a new raw on table action
         # add a raw on table action prod
         new_raw_table = "test_new_backup"
+        tmp_container_name = "tmp_postgres"
         assert dbt.query_with_parameters(sqt.INSERT_ON_ACTION, (new_raw_table,)) == 0
         file_name = dbt.new_backup()
         assert file_name != -1
+
         # 2) create a temporary database using a new postgres container with a different port (here 5433)
         if not dtt.is_image_exist("c_sai_postgres"):
             res = dbt.create_image_using_dockerfile("postgres")
             if res == -1:
                 raise Exception("Image not created correctly")
-        if not dtt.is_container_exist("c_sai_tmp_postgres"):
-            tmp_db_run = dbt.run_db("tmp_postgres", "postgres", 5433)
+        if not dtt.is_container_exist("c_sai_" + tmp_container_name):
+            tmp_db_run = dbt.run_db(tmp_container_name, "postgres", 5433)
+            # wait database connection
+            dbt.wait_db_connection(True)
         else:
             tmp_db_run = 0
         assert tmp_db_run == 0
         # load the previous backup into the new db
-        dbt.load_last_backup("tmp_postgres")
+        dbt.load_last_backup(tmp_container_name)
         # 2.1)  check if date is correct
         date = dbt.datetime.now().replace(microsecond=0).strftime("%Y%m%dT%H%M")  # without seconds
         assert date in file_name
@@ -134,11 +138,12 @@ class TestDb_tools(unittest.TestCase):
         assert dbt.select_one_with_parameters(sqt.IS_RAW_EXISTS_ON_ACTION, (new_raw_table,), True)
         assert not dbt.select_one_with_parameters(sqt.IS_RAW_EXISTS_ON_ACTION, ("other",), True)
         assert dbt.remove_backup(file_name) == 0
-        # TODO clean the db and remove the container tmp_postgres
+
+        # clean the db, stop and remove the tmp_postgres container
         # delete the new raw on table action prod
         assert dbt.query_with_parameters(sqt.DELETE_ON_ACTION, (new_raw_table,)) == 0
-        # TODO stop and remove the tmp_postgres container
-
+        # stop and remove the tmp_postgres container
+        assert dtt.clean_container("c_sai_" + tmp_container_name) == 0
 
     def test_db_tools_run_db_case_nok(self):
         # TODO implement
