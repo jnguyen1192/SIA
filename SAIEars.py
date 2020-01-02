@@ -1,5 +1,5 @@
-
 import speech_recognition as sr
+
 
 class SAIEars:
     """
@@ -13,3 +13,9 @@ class SAIEars:
         :return: the input as a text
         """
         # TODO implement
+        # obtain audio from the microphone
+        r = sr.Recognizer()
+        with sr.Microphone() as source:
+            print("Say something!")
+            audio = r.listen(source)
+        return audio
