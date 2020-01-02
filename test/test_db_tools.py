@@ -110,10 +110,8 @@ class TestDb_tools(unittest.TestCase):
         # 1) create a backup with a new raw on table action
         # add a raw on table action prod
         new_raw_table = "test_new_backup"
-        dbt.query_with_parameters(sqt.INSERT_ON_ACTION, (new_raw_table,))
+        assert dbt.query_with_parameters(sqt.INSERT_ON_ACTION, (new_raw_table,)) == 0
         file_name = dbt.new_backup()
-        # delete the new raw on table action prod
-        dbt.query_with_parameters(sqt.DELETE_ON_ACTION, (new_raw_table,))
         assert file_name != -1
         # 2) create a temporary database using a new postgres container with a different port (here 5433)
         if not dtt.is_image_exist("c_sai_postgres"):
@@ -136,6 +134,11 @@ class TestDb_tools(unittest.TestCase):
         assert dbt.select_one_with_parameters(sqt.IS_RAW_EXISTS_ON_ACTION, (new_raw_table,), True)
         assert not dbt.select_one_with_parameters(sqt.IS_RAW_EXISTS_ON_ACTION, ("other",), True)
         assert dbt.remove_backup(file_name) == 0
+        # TODO clean the db and remove the container tmp_postgres
+        # delete the new raw on table action prod
+        assert dbt.query_with_parameters(sqt.DELETE_ON_ACTION, (new_raw_table,)) == 0
+        # TODO stop and remove the tmp_postgres container
+
 
     def test_db_tools_run_db_case_nok(self):
         # TODO implement
