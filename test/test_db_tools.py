@@ -84,7 +84,14 @@ class TestDb_tools(unittest.TestCase):
         """
         Test function get_last_backup
         """
-        # TODO implement
+        # create a new backup
+        file_name = dbt.new_backup()
+        # get the last backup file name
+        last_backup = dbt.get_last_backup()
+        # remove the new backup
+        dbt.remove_backup(file_name)
+        # test the function
+        assert file_name == last_backup
 
     def test_db_tools_new_backup(self):
         """

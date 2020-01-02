@@ -142,10 +142,9 @@ def get_last_backup():
     :return: the filename or -1
     """
     try:
-        print(get_pwd())
-        mypath = ""
+        mypath = os.path.join(get_pwd(), "backup_postgres")
         (_, _, filenames) = next(os.walk(mypath))
-        return ""
+        return sorted(filenames, reverse=True)[0]
     except Exception as e:
         print(e)
         return -1
