@@ -233,29 +233,33 @@ def query_without_parameters(query_without_parameters):
         if (connection):
             cursor.close()
             connection.close()
-            print("PostgreSQL connection is closed")
+            #print("PostgreSQL connection is closed")
 
 
 # TODO create function to use a query with parameters
-def query_with_parameters(query, parameters):
+def query_with_parameters(query, parameters, test=False):
     """
     Create a query on the database without parameters
     :return: 0 if it works else -1
     """
+    if test:
+        port = 5433
+    else:
+        port = 5432
     connection = ""
     cursor = ""
     try:
         connection = psycopg2.connect(user="postgres",
                                       password="postgres",
                                       host="192.168.99.100",
-                                      port="5432",
+                                      port=port,
                                       database="postgres")
         cursor = connection.cursor()
-        print(query)
-        print(parameters)
+        #print(query)
+        #print(parameters)
         cursor.execute(query, parameters)
         connection.commit()
-        print("Query with parameters executed successfully in PostgreSQL ")
+        #print("Query with parameters executed successfully in PostgreSQL ")
         return 0
     except (Exception, psycopg2.DatabaseError) as error:
         print("Error while executing query with parameters in PostgreSQL", error)
@@ -265,7 +269,7 @@ def query_with_parameters(query, parameters):
         if (connection):
             cursor.close()
             connection.close()
-            print("PostgreSQL connection is closed")
+            #print("PostgreSQL connection is closed")
 
 
 def select_one_with_parameters(query, parameters, test=False):
@@ -283,7 +287,7 @@ def select_one_with_parameters(query, parameters, test=False):
         connection = psycopg2.connect(user="postgres",
                                       password="postgres",
                                       host="192.168.99.100",
-                                      port="5432",
+                                      port=port,
                                       database="postgres")
         cursor = connection.cursor()
         #print(query)

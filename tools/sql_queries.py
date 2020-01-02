@@ -24,3 +24,12 @@ INSERT_ON_STRATEGIE = """"""
 INSERT_ON_ACTION = """INSERT INTO public."Action"(
 	name)
 	VALUES (%s);"""
+
+DELETE_ON_ACTION = """DELETE FROM public."Action"
+	WHERE name = %s;"""
+
+IS_RAW_EXISTS_ON_ACTION = """SELECT EXISTS (
+   SELECT 1
+   FROM   "Action" 
+   WHERE  name = %s
+   );"""

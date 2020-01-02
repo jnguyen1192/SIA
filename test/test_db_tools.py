@@ -76,9 +76,6 @@ class TestDb_tools(unittest.TestCase):
         """
         # 1)
         assert dbt.create_image_using_dockerfile("backup") == 0
-        import time
-        print("Loading...")
-        time.sleep(7200)
         # 2)
         assert dtt.is_image_exist("c_sai_backup")
         # 3)
@@ -104,20 +101,21 @@ class TestDb_tools(unittest.TestCase):
         """
         Test function new_backup
         Configure docker-machine share folder to use this
-        TODO need to optimize this procedure
+          1) Create a backup using the corresponding container which need to be launch on Setup with new data
+          2) Check if the backup works:
+              2.1) The correct date
+              2.2) The correct tables
+              2.3) The correct data
         """
-        # TODO  1) Create a backup using the corresponding container which need to be launch on Setup with new data
-        #       2) Check if the backup works:
-        #           2.1) The correct date
-        #           2.2) The correct tables
-        #           2.3) The correct data
-        # 1)
-        # TODO add a raw on table action
-        dbt.query_with_parameters(sqt.INSERT_ON_ACTION, ("test_new_backup"))
+        # 1) create a backup with a new raw on table action
+        # add a raw on table action prod
+        new_raw_table = "test_new_backup"
+        dbt.query_with_parameters(sqt.INSERT_ON_ACTION, (new_raw_table,))
         file_name = dbt.new_backup()
+        # delete the new raw on table action prod
+        dbt.query_with_parameters(sqt.DELETE_ON_ACTION, (new_raw_table,))
         assert file_name != -1
-        # 2)
-        #  create a temporary database using a new postgres container with a different port (here 5433)
+        # 2) create a temporary database using a new postgres container with a different port (here 5433)
         if not dtt.is_image_exist("c_sai_postgres"):
             res = dbt.create_image_using_dockerfile("postgres")
             if res == -1:
@@ -129,15 +127,15 @@ class TestDb_tools(unittest.TestCase):
         assert tmp_db_run == 0
         # load the previous backup into the new db
         dbt.load_last_backup("tmp_postgres")
-        # 2.1)
+        # 2.1)  check if date is correct
         date = dbt.datetime.now().replace(microsecond=0).strftime("%Y%m%dT%H%M")  # without seconds
         assert date in file_name
         # 2.2) check if all the tables exists
         self.generic_db_tools_all_tables_created(True)
-        # 2.3)
-        # TODO
-        #  check if the main data are presents (Actions ...)
-        #assert dbt.remove_backup(file_name) == 0
+        # 2.3) check if the main data are presents (Actions ...)
+        assert dbt.select_one_with_parameters(sqt.IS_RAW_EXISTS_ON_ACTION, (new_raw_table,), True)
+        assert not dbt.select_one_with_parameters(sqt.IS_RAW_EXISTS_ON_ACTION, ("other",), True)
+        assert dbt.remove_backup(file_name) == 0
 
     def test_db_tools_run_db_case_nok(self):
         # TODO implement
