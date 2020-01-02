@@ -6,6 +6,11 @@ class SAIEars:
     This class is used to microphone as an input
     """
     # TODO use test_speech_recognition.py
+    #       1) ask for a command and initiate the position
+    #       2) do a random command
+    #       3) ask for answer yes/no
+    #       4) if yes stock on db command and random command
+    #       loop to 1
 
     def get_command(self):
         """
