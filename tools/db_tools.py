@@ -69,7 +69,6 @@ def create_image_using_dockerfile(name):
     Create the image to backup
     :return: 0 if it works else -1
     """
-    client = docker.from_env()
     try:
         # TODO Option 1: need to use the correct folder to use this command in docker-machine
         #fo = open("C:/Users/johdu/PycharmProjects/SAI/Dockerfile.backup", "r")
@@ -91,7 +90,6 @@ def create_image_using_dockerfile(name):
         #client.images.build(fileobj=fo, tag="c_sai_backup", custom_context=True)
     except Exception as e:
         print(e)
-        client.close()
         return -1
 
 
@@ -138,12 +136,32 @@ def run_backup():
         return -1
 
 
-def load_last_backup(container_name):
+
+def load_last_backup(container_name, db_user="postgres", db_name="postgres"):
     """
     Load the backup into the container call c_sai_[container_name]
     :param container_name: the name of the container
     :return: 0 if it works else -1
     """
+    backup_name = ""#get_last_backup()
+    try:
+        # docker exec -i c_sai_tmp_postgres psql -U postgres -d postgres < backup_postgres/20200101T141905_postgres.sql
+        # Prod way
+        res = subprocess.run(["cmd", "/c", "docker", "exec", "-i", "c_sai_" + container_name, "psql", "-U", db_user,
+                              "-d", db_name, "<", "backup_postgres/" + backup_name],
+                             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        if res.returncode != 0:
+            print("Error code", res.returncode)
+            # Dev way
+            res = subprocess.run(["cmd", "/c", "docker", "exec", "-i", "c_sai_" + container_name, "psql", "-U", db_user,
+                                  "-d", db_name, "<", "backup_postgres/" + backup_name])
+        # docker build -f Dockerfile.backup . -t c_sai_backup
+        #print(type(res.returncode), res.returncode)
+        return res.returncode
+        #client.images.build(fileobj=fo, tag="c_sai_backup", custom_context=True)
+    except Exception as e:
+        print(e)
+        return -1
 
 
 def wait_db_connection(nb_retry=10, time_sleep=60):
