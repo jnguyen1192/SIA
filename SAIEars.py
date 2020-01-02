@@ -10,7 +10,7 @@ class SAIEars:
     def get_command(self):
         """
         Get the microphone input
-        :return: the input as a text
+        :return: the input as a text or -1
         """
         # TODO implement
         # obtain audio from the microphone
@@ -18,4 +18,10 @@ class SAIEars:
         with sr.Microphone() as source:
             print("Say something!")
             audio = r.listen(source)
-        return audio
+            try:
+                return r.recognize_sphinx(audio)
+            except sr.UnknownValueError:
+                return self.get_command()
+            except sr.RequestError as e:
+                print("Sphinx error; {0}".format(e))
+                return -1

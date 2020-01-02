@@ -8,7 +8,9 @@ class TestSAIEars(unittest.TestCase):
         self.saie = SAIEars.SAIEars()
 
     def test_SAIEars_get_command_case_ok(self):
+        print(self.saie.get_command())
         # TODO implement
+
         assert (True==True)
 
 
