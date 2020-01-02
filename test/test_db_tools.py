@@ -40,15 +40,22 @@ class TestDb_tools(unittest.TestCase):
         else:
             self.__class__.ClassIsTeardown = self.ClassIsTeardown + 1
 
+    def generic_db_tools_all_tables_created(self, test=False):
+        """
+        Function to test if tables exist
+        :return:
+        """
+        tables_name = ['Strategie', 'Action', 'Has_action']
+        for name in tables_name:
+            res = dbt.select_one_with_parameters(sqt.IS_TABLE_EXISTS, (name,), test)
+            assert(res != -1)
+            assert(res == True)
+
     def test_db_tools_all_tables_created(self):
         """
         Test if all the tables are created
         """
-        tables_name = ['Strategie', 'Action', 'Has_action']
-        for name in tables_name:
-            res = dbt.select_one_with_parameters(sqt.IS_TABLE_EXISTS, (name,))
-            assert(res != -1)
-            assert(res == True)
+        self.generic_db_tools_all_tables_created()
 
     def test_create_image_backup(self):
         """
@@ -108,10 +115,7 @@ class TestDb_tools(unittest.TestCase):
         file_name = dbt.new_backup()
         assert file_name != -1
         # 2)
-        # TODO
-        #  create a temporary database using
-        #   - a container,
-        #   - or the current postgres container
+        #  create a temporary database using a new postgres container with a different port (here 5433)
         if not dtt.is_image_exist("c_sai_postgres"):
             res = dbt.create_image_using_dockerfile("postgres")
             if res == -1:
@@ -121,16 +125,13 @@ class TestDb_tools(unittest.TestCase):
         else:
             tmp_db_run = 0
         assert tmp_db_run == 0
-        # TODO
-        #   load the previous backup into the new db
-        # docker exec -i c_sai_tmp_postgres psql -U postgres -d postgres < backup_postgres/20200101T141905_postgres.sql
-        print(file_name)
+        # load the previous backup into the new db
+        dbt.load_last_backup("tmp_postgres")
         # 2.1)
         date = dbt.datetime.now().replace(microsecond=0).strftime("%Y%m%dT%H%M")  # without seconds
         assert date in file_name
-        # 2.2).
-        # TODO
-        #  check if all the tables exists
+        # 2.2) check if all the tables exists
+        self.generic_db_tools_all_tables_created(True)
         # 2.3)
         # TODO
         #  check if the main data are presents (Actions ...)

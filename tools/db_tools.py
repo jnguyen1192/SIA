@@ -161,13 +161,13 @@ def load_last_backup(container_name, db_user="postgres", db_name="postgres"):
         # docker exec -i c_sai_tmp_postgres psql -U postgres -d postgres < backup_postgres/20200101T141905_postgres.sql
         # Prod way
         res = subprocess.run(["cmd", "/c", "docker", "exec", "-i", "c_sai_" + container_name, "psql", "-U", db_user,
-                              "-d", db_name, "<", "backup_postgres/" + backup_name],
+                              "-d", db_name, "<", os.path.join(get_pwd(), "backup_postgres/" + backup_name)],
                              stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         if res.returncode != 0:
             print("Error code", res.returncode)
             # Dev way
             res = subprocess.run(["cmd", "/c", "docker", "exec", "-i", "c_sai_" + container_name, "psql", "-U", db_user,
-                                  "-d", db_name, "<", "backup_postgres/" + backup_name])
+                                  "-d", db_name, "<", os.path.join(get_pwd(), "backup_postgres/" + backup_name)])
         # docker build -f Dockerfile.backup . -t c_sai_backup
         #print(type(res.returncode), res.returncode)
         return res.returncode
@@ -268,11 +268,15 @@ def query_with_parameters(query, parameters):
             print("PostgreSQL connection is closed")
 
 
-def select_one_with_parameters(query, parameters):
+def select_one_with_parameters(query, parameters, test=False):
     """
     Select one result on the database with parameters
     :return: 0 if it works else -1
     """
+    if test:
+        port = 5433
+    else:
+        port = 5432
     connection = ""
     cursor = ""
     try:
