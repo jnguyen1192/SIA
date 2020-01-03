@@ -69,9 +69,11 @@ class SAIBrain:
         """
         try:
             # TODO implement
-            #   Get the different types of actions (move, click, wait, ...)
-            #   Define the boundaries of actions
-            #       move: height, width, time
+            #   1) Get the different types of actions (move, click, wait, ...)
+            #   2) Define the boundaries of actions
+            #       2.1) move: height, width, time
+            #       2.2) click: double left-click, left-click, right-click
+            #       2.3) sleep: 1-60 seconds
             #
             #   Get a random sequence of actions using the boundaries
             #   For each action put a random value between correct boundaries
