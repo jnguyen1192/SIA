@@ -72,8 +72,10 @@ class SAIBrain:
             #   1) Get the different types of actions (move, click, wait, ...)
             #   2) Define the boundaries of actions
             #       2.1) move: height, width, time
-            #       2.2) click: double left-click, left-click, right-click
+            #       2.2) click: double left-click, left-click, right-click, hold left-click
             #       2.3) sleep: 1-60 seconds
+            #   3) Select the random number of actions use 1-5
+            #   4) For each action, select between move/click/sleep and select there random possible value
             #
             #   Get a random sequence of actions using the boundaries
             #   For each action put a random value between correct boundaries
