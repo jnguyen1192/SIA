@@ -76,6 +76,10 @@ class SAIBrain:
             #       2.3) sleep: 1-60 seconds
             #   3) Select the random number of actions use 1-5
             #   4) For each action, select between move/click/sleep and select there random possible value
+            #       4.1) move : random height/width/time
+            #       4.2) click : one of the following
+            #       4.3) sleep : between 1-60 seconds
+            #   2) return the actions on a list or in the db
             #
             #   Get a random sequence of actions using the boundaries
             #   For each action put a random value between correct boundaries
