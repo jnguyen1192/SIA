@@ -201,7 +201,20 @@ class RandomAction:
         - hold left click
         - release left click
     """
-    # TODO implement
     def __init__(self):
-        pass
+        self.name = self.get_random_action_name()
+        self.parameters = self.get_random_parameters_using_action_name()
 
+    def get_random_action_name(self):
+        """"
+        Get a random action using the list of action on the file actions.xml
+        """
+        # TODO implement
+        return ""
+
+    def get_random_parameters_using_action_name(self):
+        """"
+        Get a random parameters using the boundaries using the name of the action on the file actions.xml
+        """
+        # TODO implement
+        return []
