@@ -190,4 +190,11 @@ class Shape:
         return str(shape[0]) + "_" + str(shape[1]) + "_" + today.strftime("%Y%m%d%H%M%S%f")
 
 
+class RandomAction:
+    """
+    Instanciate a random action
+    """
+    # TODO implement
+    def __init__(self):
+        pass
 
