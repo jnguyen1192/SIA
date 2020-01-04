@@ -192,7 +192,14 @@ class Shape:
 
 class RandomAction:
     """
-    Instanciate a random action
+    Instanciate a random action.
+    Possible random action:
+        - move with three parameters (0 - height, 0 - width, 0 - 3)
+        - sleep with one parameter (0 - 10)
+        - left click
+        - right click
+        - hold left click
+        - release left click
     """
     # TODO implement
     def __init__(self):
