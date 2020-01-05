@@ -13,6 +13,12 @@ class TestSAIEars(unittest.TestCase):
 
         assert (True==True)
 
+    def test_create_actions_xml(self):
+        """
+        Test if the file action.xml is correctly created
+        """
+        # TODO implement
+
 
 if __name__ == '__main__':
     unittest.main()
