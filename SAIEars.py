@@ -5,6 +5,10 @@ class SAIEars:
     """
     This class is used to microphone as an input
     """
+    def __init__(self):
+        # TODO implement
+        # create actions.xml using a predefine list if it isn't correspondant
+        pass
     # TODO use test_speech_recognition.py
     #       1) ask for a command and initiate the position
     #       2) do a random command
