@@ -16,6 +16,14 @@ class SAIEars:
     #       4) if yes stock on db command and random command
     #       loop to 1
 
+    def create_actions_xml(self):
+        """
+        Create the file actions.xml using a predefine list
+        :return: 0 if it works else -1
+        """
+        return -1
+
+
     def get_command(self):
         """
         Get the microphone input
