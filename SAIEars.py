@@ -36,6 +36,8 @@ class SAIEars:
         #           . max
         actions = []
         # TODO action move
+        move_width, move_height = pyautogui.size()
+        actions.append(("move", (0, move_width), (0, move_height)))
         # TODO action left click
         # TODO action hold left click
         # TODO action release left click
