@@ -1,5 +1,5 @@
 import speech_recognition as sr
-
+import pyautogui
 
 class SAIEars:
     """
@@ -34,6 +34,15 @@ class SAIEars:
         #       - param3 (optionnaly)
         #           . min
         #           . max
+        actions = []
+        # TODO action move
+        # TODO action left click
+        # TODO action hold left click
+        # TODO action release left click
+        # TODO action right click
+        # TODO action hold right click
+        # TODO action release right click
+        # TODO action sleep
         return -1
 
     def get_command(self):
