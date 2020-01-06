@@ -21,8 +21,20 @@ class SAIEars:
         Create the file actions.xml using a predefine list
         :return: 0 if it works else -1
         """
+        # TODO
+        #   The files will have actions
+        #   For each action, it can be:
+        #       - name
+        #       - param1 (optionnaly)
+        #           . min
+        #           . max
+        #       - param2 (optionnaly)
+        #           . min
+        #           . max
+        #       - param3 (optionnaly)
+        #           . min
+        #           . max
         return -1
-
 
     def get_command(self):
         """
