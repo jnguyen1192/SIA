@@ -1,5 +1,6 @@
 import speech_recognition as sr
 import pyautogui
+import xml.etree.ElementTree as ET
 
 class SAIEars:
     """
@@ -36,26 +37,40 @@ class SAIEars:
         #       - param3 (optionnaly)
         #           . min
         #           . max
-        actions = []
-        # TODO action move
-        move_width, move_height = pyautogui.size()
-        actions.append(("move", (0, move_width), (0, move_height)))
-        # TODO action left click
-        actions.append(("left_click", ()))
-        # TODO action hold left click
-        actions.append(("hold_left_click", ()))
-        # TODO action release left click
-        actions.append(("release_left_click", ()))
-        # TODO action right click
-        actions.append(("right_click", ()))
-        # TODO action hold right click
-        actions.append(("hold_right_click", ()))
-        # TODO action release right click
-        actions.append(("release_right_click", ()))
-        # TODO action sleep
-        actions.append(("release_right_click", (1, self.TIME_TO_WAIT_MAX)))
-        # TODO create the xml file with the list
-        return -1
+        try:
+            actions = []
+            # TODO action move
+            move_width, move_height = pyautogui.size()
+            actions.append(("move", (0, move_width), (0, move_height)))
+            # TODO action left click
+            actions.append(("left_click", ()))
+            # TODO action hold left click
+            actions.append(("hold_left_click", ()))
+            # TODO action release left click
+            actions.append(("release_left_click", ()))
+            # TODO action right click
+            actions.append(("right_click", ()))
+            # TODO action hold right click
+            actions.append(("hold_right_click", ()))
+            # TODO action release right click
+            actions.append(("release_right_click", ()))
+            # TODO action sleep
+            actions.append(("release_right_click", (1, self.TIME_TO_WAIT_MAX)))
+            # TODO create the xml file with the list
+
+            # create the file structure
+            actions_xml = ET.Element('actions')
+            for action in actions:
+                action_name, params = action
+                ET.SubElement(actions_xml, action_name)
+            # create a new XML file with the results
+            my_actions_xml = ET.tostring(actions_xml)
+            actions_xml_file = open("test_xml_actions.xml", "w")
+            actions_xml_file.write(my_actions_xml)
+            return 0
+        except Exception as e:
+            print(e)
+            return -1
 
     def get_command(self):
         """
