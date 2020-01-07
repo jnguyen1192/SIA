@@ -17,7 +17,7 @@ class TestSAIEars(unittest.TestCase):
         """
         Test if the file action.xml is correctly created
         """
-        # TODO implement
+        assert self.saie.create_actions_xml() == 0
 
 
 if __name__ == '__main__':

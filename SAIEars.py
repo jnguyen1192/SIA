@@ -1,6 +1,8 @@
 import speech_recognition as sr
 import pyautogui
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as ET  # create xml file
+from xml.dom import minidom  # pretty print on xml file
+
 
 class SAIEars:
     """
@@ -22,51 +24,60 @@ class SAIEars:
     def create_actions_xml(self):
         """
         Create the file actions.xml using a predefine list
+        The files will have actions
+        For each action, it can be:
+           - name
+           - param1 (optionnaly)
+               . min
+               . max
+           - param2 (optionnaly)
+               . min
+               . max
+           - param3 (optionnaly)
+               . min
+               . max
         :return: 0 if it works else -1
         """
-        # TODO
-        #   The files will have actions
-        #   For each action, it can be:
-        #       - name
-        #       - param1 (optionnaly)
-        #           . min
-        #           . max
-        #       - param2 (optionnaly)
-        #           . min
-        #           . max
-        #       - param3 (optionnaly)
-        #           . min
-        #           . max
         try:
             actions = []
-            # TODO action move
+            # action move
             move_width, move_height = pyautogui.size()
-            actions.append(("move", (0, move_width), (0, move_height)))
-            # TODO action left click
+            actions.append(("move", ((0, move_width), (0, move_height))))
+            # action left click
             actions.append(("left_click", ()))
-            # TODO action hold left click
+            # action hold left click
             actions.append(("hold_left_click", ()))
-            # TODO action release left click
+            # action release left click
             actions.append(("release_left_click", ()))
-            # TODO action right click
+            # action right click
             actions.append(("right_click", ()))
-            # TODO action hold right click
+            # action hold right click
             actions.append(("hold_right_click", ()))
-            # TODO action release right click
+            # action release right click
             actions.append(("release_right_click", ()))
-            # TODO action sleep
-            actions.append(("release_right_click", (1, self.TIME_TO_WAIT_MAX)))
-            # TODO create the xml file with the list
-
+            # action sleep
+            actions.append(("sleep", ((1, self.TIME_TO_WAIT_MAX), )))
+            # create the xml file with the list
             # create the file structure
             actions_xml = ET.Element('actions')
             for action in actions:
                 action_name, params = action
-                ET.SubElement(actions_xml, action_name)
+                cur_action = ET.SubElement(actions_xml, "action")
+                cur_name = ET.SubElement(cur_action, "name")
+                cur_name.set("value", action_name)
+                for index, param in enumerate(params):
+                    cur_param = ET.SubElement(cur_action, "param" + str(index+1))
+                    min = ET.SubElement(cur_param, "min")
+                    min.set("value", str(param[0])) #  convert to str for xml file
+                    max = ET.SubElement(cur_param, "max")
+                    max.set("value", str(param[1]))
+
             # create a new XML file with the results
-            my_actions_xml = ET.tostring(actions_xml)
+            my_actions_xml = minidom.parseString(ET.tostring(actions_xml)).toprettyxml(indent="   ")
+
             actions_xml_file = open("test_xml_actions.xml", "w")
             actions_xml_file.write(my_actions_xml)
+            actions_xml_file.close()
             return 0
         except Exception as e:
             print(e)
