@@ -5,6 +5,8 @@ class SAIEars:
     """
     This class is used to microphone as an input
     """
+    TIME_TO_WAIT_MAX = 10
+
     def __init__(self):
         # TODO implement
         # create actions.xml using a predefine list if it isn't correspondant
@@ -39,12 +41,20 @@ class SAIEars:
         move_width, move_height = pyautogui.size()
         actions.append(("move", (0, move_width), (0, move_height)))
         # TODO action left click
+        actions.append(("left_click", ()))
         # TODO action hold left click
+        actions.append(("hold_left_click", ()))
         # TODO action release left click
+        actions.append(("release_left_click", ()))
         # TODO action right click
+        actions.append(("right_click", ()))
         # TODO action hold right click
+        actions.append(("hold_right_click", ()))
         # TODO action release right click
+        actions.append(("release_right_click", ()))
         # TODO action sleep
+        actions.append(("release_right_click", (1, self.TIME_TO_WAIT_MAX)))
+        # TODO create the xml file with the list
         return -1
 
     def get_command(self):
