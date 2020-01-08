@@ -21,7 +21,7 @@ class SAIEars:
     #       4) if yes stock on db command and random command
     #       loop to 1
 
-    def create_actions_xml(self):
+    def create_actions_xml(self, file_name="actions.xml"):
         """
         Create the file actions.xml using a predefine list
         The files will have actions
@@ -75,7 +75,7 @@ class SAIEars:
             # create a new XML file with the results
             my_actions_xml = minidom.parseString(ET.tostring(actions_xml)).toprettyxml(indent="   ")
 
-            actions_xml_file = open("test_xml_actions.xml", "w")
+            actions_xml_file = open(file_name, "w")
             actions_xml_file.write(my_actions_xml)
             actions_xml_file.close()
             return 0
