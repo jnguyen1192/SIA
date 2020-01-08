@@ -21,7 +21,7 @@ class TestSAIEars(unittest.TestCase):
         Test if the file action.xml is correctly created
         """
         new_file_name = "actions.xml"
-        test_file_name = "test_xml_actions.xml"
+        test_file_name = os.path.join("test_SAIEars", "test_xml_actions.xml")
         # create a sample file result
         assert self.saie.create_actions_xml() == 0
         # check if the new file correspond to the sample file result
