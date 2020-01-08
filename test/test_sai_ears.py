@@ -2,6 +2,8 @@ import unittest
 import SAIEars
 
 import filecmp
+import os
+
 
 class TestSAIEars(unittest.TestCase):
 
@@ -18,11 +20,15 @@ class TestSAIEars(unittest.TestCase):
         """
         Test if the file action.xml is correctly created
         """
-        # TODO create a sample file result
+        new_file_name = "actions.xml"
+        test_file_name = "test_xml_actions.xml"
+        # create a sample file result
         assert self.saie.create_actions_xml() == 0
-        # TODO check if the new file correspond to the sample file result
-        assert filecmp.cmp("actions.xml", "test_xml_actions.xml")
-        # TODO clean the file created
+        # check if the new file correspond to the sample file result
+        assert filecmp.cmp(new_file_name, test_file_name)
+        # clean the file created
+        if os.path.isfile(new_file_name):
+            os.remove(new_file_name)
 
 
 if __name__ == '__main__':
