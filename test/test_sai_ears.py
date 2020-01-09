@@ -10,7 +10,7 @@ class TestSAIEars(unittest.TestCase):
     def setUp(self):
         self.saie = SAIEars.SAIEars()
 
-    def test_SAIEars_get_command_case_ok(self):
+    def test_SAIEars_analyse_microphone_1(self):
         """Show a text-mode spectrogram using live microphone data."""
         import argparse
         import math
@@ -42,7 +42,7 @@ class TestSAIEars(unittest.TestCase):
             print(sd.query_devices())
             parser.exit(0)
         __doc__ = "Show a text-mode spectrogram using live microphone dataShow a text-mode spectrogram using live microphone data"
-        print(__doc__, usage_line)
+
         parser = argparse.ArgumentParser(
             description=__doc__ + '\n\nSupported keys:' + usage_line,
             formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -123,6 +123,30 @@ class TestSAIEars(unittest.TestCase):
             parser.exit(type(e).__name__ + ': ' + str(e))
 
         assert (True==True)
+
+    def test_SAIEars_analyse_microphone_2(self):
+        import pyaudio
+        import struct
+        import matplotlib.pyplot as plt
+        import numpy as np
+        from scipy import signal
+        mic = pyaudio.PyAudio()
+        FORMAT = pyaudio.paInt16
+        CHANNELS = 1
+        RATE = 20000
+        CHUNK = int(RATE / 20)
+        stream = mic.open(format=FORMAT, channels=CHANNELS, rate=RATE, input=True, output=True, frames_per_buffer=CHUNK)
+
+        plt.ylabel('Frequency [Hz]')
+        plt.xlabel('Time [sec]')
+
+        while True:
+            data = stream.read(CHUNK)
+            data = np.array(struct.unpack(str(2 * CHUNK) + 'B', data), dtype='b')
+            f, t, Sxx = signal.spectrogram(data, fs=CHUNK)
+            dBS = 10 * np.log10(Sxx)
+            plt.pcolormesh(t, f, dBS)
+            plt.pause(0.005)
 
     def test_create_actions_xml(self):
         """
