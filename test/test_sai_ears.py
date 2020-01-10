@@ -199,6 +199,9 @@ class TestSAIEars(unittest.TestCase):
         """
         https://www.swharden.com/wp/2016-07-19-realtime-audio-visualization-in-python/
         """
+        # TODO
+        #   try to save data of recording as numpy
+        #   try to load the data saved
         import pyaudio
         import time
         import pylab
