@@ -177,6 +177,24 @@ class TestSAIEars(unittest.TestCase):
         stream.close()
         p.terminate()
 
+    def test_SAIEars_analyse_microphone_4(self):
+        """
+        https://config9.com/linux/how-to-read-realtime-microphone-audio-volume-in-python-and-ffmpeg-or-similar/
+        """
+        import numpy as np
+        import sounddevice as sd
+
+        duration = 10 #in seconds
+
+        def audio_callback(indata, frames, time, status):
+           volume_norm = np.linalg.norm(indata) * 10
+           print("|" * int(volume_norm))
+
+
+        stream = sd.InputStream(callback=audio_callback)
+        with stream:
+           sd.sleep(duration * 1000)
+
     def test_create_actions_xml(self):
         """
         Test if the file action.xml is correctly created
