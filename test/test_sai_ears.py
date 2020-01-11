@@ -315,6 +315,7 @@ class TestSAIEars(unittest.TestCase):
         RATE = 16000
         RECORD_SECONDS = 2.5
         CHUNKSIZE = 1024
+        MIN_VOLUME = 50
 
         # initialize portaudio
         p = pyaudio.PyAudio()
@@ -323,7 +324,11 @@ class TestSAIEars(unittest.TestCase):
         frames = []  # A python-list of chunks(numpy.ndarray)
         for _ in range(0, int(RATE / CHUNKSIZE * RECORD_SECONDS)):
             data = stream.read(CHUNKSIZE)
-            frames.append(numpy.fromstring(data, dtype=numpy.int16))
+            frame = numpy.fromstring(data, dtype=numpy.int16)
+            print(max(frame))
+            frames.append(frame)
+            if max(frame) < MIN_VOLUME:
+                break
 
         # Convert the list of numpy-arrays into a 1D array (column-wise)
         numpydata = numpy.hstack(frames)
@@ -342,6 +347,7 @@ class TestSAIEars(unittest.TestCase):
         plt.ylabel('some numbers')
         plt.show()
         pprint(wav.read('out.wav')[1].shape)
+
 
     def test_create_actions_xml(self):
         """
