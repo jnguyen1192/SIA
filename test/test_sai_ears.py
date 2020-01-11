@@ -336,7 +336,11 @@ class TestSAIEars(unittest.TestCase):
         pprint(numpydata)
         import scipy.io.wavfile as wav
         wav.write('out.wav', RATE, numpydata)
-        pprint(wav.read('out.wav'))
+        #pprint()
+        import matplotlib.pyplot as plt
+        plt.plot(wav.read('out.wav')[1])
+        plt.ylabel('some numbers')
+        plt.show()
         pprint(wav.read('out.wav')[1].shape)
 
     def test_create_actions_xml(self):
