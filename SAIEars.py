@@ -3,6 +3,9 @@ import pyautogui
 import xml.etree.ElementTree as ET  # create xml file
 from xml.dom import minidom  # pretty print on xml file
 
+import pyaudio
+import numpy
+
 
 class SAIEars:
     """
@@ -82,6 +85,41 @@ class SAIEars:
         except Exception as e:
             print(e)
             return -1
+
+    def get_next_sound_detected(self, RATE=16000):
+        """
+        Get the next sound detected from the microphone as a numpy array
+        :return: a numpy array
+        """
+        RECORD_SECONDS = 3600
+        CHUNKSIZE = 1024
+        MIN_VOLUME = 100
+
+        # initialize portaudio
+        p = pyaudio.PyAudio()
+        stream = p.open(format=pyaudio.paInt16, channels=1, rate=RATE, input=True, frames_per_buffer=CHUNKSIZE)
+        begin = False
+        frames = []  # A python-list of chunks(numpy.ndarray)
+        for _ in range(0, int(RATE / CHUNKSIZE * RECORD_SECONDS)):
+            data = stream.read(CHUNKSIZE)
+            frame = numpy.fromstring(data, dtype=numpy.int16)
+            if max(frame) > MIN_VOLUME:
+                begin = True
+            # print(max(frame))
+            if begin:
+                frames.append(frame)
+            if max(frame) < MIN_VOLUME and begin:
+                break
+
+        # Convert the list of numpy-arrays into a 1D array (column-wise)
+        numpydata = numpy.hstack(frames)
+
+        # close stream
+        stream.stop_stream()
+        stream.close()
+        p.terminate()
+
+        return numpydata
 
     def get_command(self):
         """

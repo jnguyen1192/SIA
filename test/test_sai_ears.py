@@ -309,37 +309,10 @@ class TestSAIEars(unittest.TestCase):
     def test_SAIEars_analyse_microphone_6(self):
         # TODO
         #   Use those data to only record when there was a sound of a voice using dynamic deep reinforcement learning
-        import pyaudio
-        import numpy
-
         RATE = 16000
-        RECORD_SECONDS = 3600
-        CHUNKSIZE = 1024
-        MIN_VOLUME = 100
+        numpydata = self.saie.get_next_sound_detected(RATE)
 
-        # initialize portaudio
-        p = pyaudio.PyAudio()
-        stream = p.open(format=pyaudio.paInt16, channels=1, rate=RATE, input=True, frames_per_buffer=CHUNKSIZE)
-        begin = False
-        frames = []  # A python-list of chunks(numpy.ndarray)
-        for _ in range(0, int(RATE / CHUNKSIZE * RECORD_SECONDS)):
-            data = stream.read(CHUNKSIZE)
-            frame = numpy.fromstring(data, dtype=numpy.int16)
-            if max(frame) > MIN_VOLUME:
-                begin = True
-            #print(max(frame))
-            if begin:
-                frames.append(frame)
-            if max(frame) < MIN_VOLUME and begin:
-                break
 
-        # Convert the list of numpy-arrays into a 1D array (column-wise)
-        numpydata = numpy.hstack(frames)
-
-        # close stream
-        stream.stop_stream()
-        stream.close()
-        p.terminate()
         from pprint import pprint
         pprint(numpydata)
         import scipy.io.wavfile as wav
