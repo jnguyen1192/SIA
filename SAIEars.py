@@ -86,18 +86,21 @@ class SAIEars:
             print(e)
             return -1
 
-    def get_next_sound_detected(self, RATE=16000):
+    def get_next_sound_detected(self, RATE=16000, RECORD_SECONDS=3600, CHUNKSIZE = 1024, MIN_VOLUME = 100):
         """
         Get the next sound detected from the microphone as a numpy array
+        :param RATE: the speed to read the data from the microphone
+        :param RECORD_SECONDS: the number of seconds we want the detector will wait a sound (it can be infinite)
+        :param CHUNKSIZE: the width between each data from microphone input
+        :param MIN_VOLUME: the minimum volume of noise to start and end the sound detection
         :return: a numpy array
         """
-        RECORD_SECONDS = 3600
-        CHUNKSIZE = 1024
-        MIN_VOLUME = 100
-
         # initialize portaudio
         p = pyaudio.PyAudio()
+        # open stream
         stream = p.open(format=pyaudio.paInt16, channels=1, rate=RATE, input=True, frames_per_buffer=CHUNKSIZE)
+
+        # parse the microphone input in a numpy array
         begin = False
         frames = []  # A python-list of chunks(numpy.ndarray)
         for _ in range(0, int(RATE / CHUNKSIZE * RECORD_SECONDS)):
