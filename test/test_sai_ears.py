@@ -30,8 +30,16 @@ class TestSAIEars(unittest.TestCase):
 
     def test_is_listen_reward(self):
         """
-        Test if the sound listened is reward
+        Test if the sound listened is a reward
         """
+        # TODO implement
+        pass
+
+    def test_is_listen_penalize(self):
+        """
+        Test if the sound listened is a penalize
+        """
+        # TODO implement
         pass
 
     def test_create_actions_xml(self):
