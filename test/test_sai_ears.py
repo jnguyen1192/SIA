@@ -28,6 +28,11 @@ class TestSAIEars(unittest.TestCase):
         plt.show()
         pprint(wav.read('out.wav')[1].shape)
 
+    def test_is_listen_reward(self):
+        """
+        Test if the sound listened is reward
+        """
+        pass
 
     def test_create_actions_xml(self):
         """
