@@ -33,6 +33,13 @@ class TestSAIEars(unittest.TestCase):
         Test if the sound listened is a reward
         """
         # TODO implement
+        #   Save in the db every expression that looks like a reward
+        #       "Oui"
+        #       "Bravo"
+        #       "C'est bien"
+        #       "Parfait"
+        #       [...]
+        #   Then compare the sound to the db
         pass
 
     def test_is_listen_penalize(self):
@@ -40,6 +47,13 @@ class TestSAIEars(unittest.TestCase):
         Test if the sound listened is a penalize
         """
         # TODO implement
+        # TODO implement
+        #   Save in the db every expression that looks like a reward
+        #       "Non"
+        #       "Ce n'est pas ça"
+        #       "Tu te trompes"
+        #       [...]
+        #   Then compare the sound to the db
         pass
 
     def test_create_actions_xml(self):
