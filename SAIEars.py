@@ -142,3 +142,11 @@ class SAIEars:
             except sr.RequestError as e:
                 print("Sphinx error; {0}".format(e))
                 return -1
+
+    def is_listen_reward(self):
+        """
+        Check if the sound is a reward using the db
+        :return: True if it is else False
+        """
+        # TODO to implement
+        return True
