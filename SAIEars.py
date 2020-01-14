@@ -143,9 +143,10 @@ class SAIEars:
                 print("Sphinx error; {0}".format(e))
                 return -1
 
-    def is_listen_reward(self):
+    def is_listen(self, method):
         """
-        Check if the sound is a reward using the db
+        Check if the sound is in one of the methods using the db
+        :param method: the name of the method we want to check, it can be "reward" or "penalize"
         :return: True if it is else False
         """
         # TODO to implement
