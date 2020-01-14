@@ -150,4 +150,7 @@ class SAIEars:
         :return: True if it is else False
         """
         # TODO to implement
+        #   Create a tools to fufill the db with the reward and penalize method using the keyboard of the mouse
+        #   Use a method like mse to compare the sound listen with the method on the db
+        #   Optionally: optimize the speed
         return True
