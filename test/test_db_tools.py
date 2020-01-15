@@ -145,6 +145,12 @@ class TestDb_tools(unittest.TestCase):
         # stop and remove the tmp_postgres container
         assert dtt.clean_container("c_sai_" + tmp_container_name) == 0
 
+    def test_fufill_db(self):
+        """
+        Test if function fufill_db works correctly
+        """
+        assert True
+
     def test_db_tools_run_db_case_nok(self):
         # TODO implement
         assert (-1)
