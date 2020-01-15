@@ -345,5 +345,17 @@ def fufill_db():
     A function that launch a window to fufill the database with the reward and penalize sounds
     :return: 0 if it works else -1
     """
-    # TODO implement
+    # TODO
+    #   Use module Tkinter
+    #       To create a windows that record a sound
+    #           The arrow left will define it as a penalize
+    #           The arrow right will define it as a reward
+    #           The arrow down will record the next sound
+    #           The arrow up stop the recording and create the list of sound
+    #           The arrow left will choose the previous sound
+    #           The arrow right will choose the next sound
+    #           The arrow down play the current sound
+    #           The arrow up will save the sounds on the db
+    #       It will return 0 if db save the sounds else -1
+    #       Optionally: save the sounds on a csv if the db doesn't work
     pass
