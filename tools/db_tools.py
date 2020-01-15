@@ -338,3 +338,12 @@ def remove_backup(file_name):
     if res.returncode != 0:
         return -1
     return 0
+
+
+def fufill_db():
+    """
+    A function that launch a window to fufill the database with the reward and penalize sounds
+    :return: 0 if it works else -1
+    """
+    # TODO implement
+    pass
