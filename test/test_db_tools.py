@@ -149,6 +149,35 @@ class TestDb_tools(unittest.TestCase):
         """
         Test if function fufill_db works correctly
         """
+        import tkinter as tk
+
+        class Application(tk.Frame):
+            def __init__(self, master=None):
+                super().__init__(master)
+                self.master = master
+                self.pack()
+                self.create_widgets()
+
+            def create_widgets(self):
+                self.hi_there = tk.Button(self)
+                self.hi_there["text"] = "Hello World\n(click me)"
+                self.hi_there["command"] = self.say_hi
+                self.hi_there.pack(side="top")
+
+                self.quit = tk.Button(self, text="QUIT", fg="red",
+                                      command=self.master.destroy)
+                self.quit.pack(side="bottom")
+
+            def say_hi(self):
+                print("hi there, everyone!")
+
+        print("BeforeBefore")
+        root = tk.Tk()
+        print("Before")
+        app = Application(master=root)
+        print("After")
+        app.mainloop()
+        print("AfterAfter")
         assert True
 
     def test_db_tools_run_db_case_nok(self):
