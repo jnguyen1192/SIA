@@ -151,11 +151,21 @@ class TestDb_tools(unittest.TestCase):
         """
 
 
-        def left(event):
+        def left_keypress_1(event):
+            # TODO penalize behavior
             print("left")
 
-        def right(event):
+        def right_keypress_1(event):
+            # TODO reward behavior
             print("right")
+
+        def down_keypress_1(event):
+            # TODO record next sound behavior
+            print("down")
+
+        def up_keypress_1(event):
+            # TODO stop the recording and create the list of sound
+            print("up")
 
         import tkinter as tk
 
@@ -166,7 +176,6 @@ class TestDb_tools(unittest.TestCase):
                 self.pack()
                 self.create_widgets()
                 self.create_keypress()
-
 
             def create_widgets(self):
                 self.hi_there = tk.Button(self)
@@ -181,9 +190,10 @@ class TestDb_tools(unittest.TestCase):
                 self.bind("<Key-Return>", self.say_hi)
 
             def create_keypress(self):
-                self.master.bind('<Left>', left)
-                self.master.bind('<Right>', right)
-
+                self.master.bind('<Left>', left_keypress_1)
+                self.master.bind('<Right>', right_keypress_1)
+                self.master.bind('<Down>', down_keypress_1)
+                self.master.bind('<Up>', up_keypress_1)
 
             def say_hi(self):
                 print("hi there, everyone!")
