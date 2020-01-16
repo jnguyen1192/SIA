@@ -149,6 +149,14 @@ class TestDb_tools(unittest.TestCase):
         """
         Test if function fufill_db works correctly
         """
+
+
+        def left(event):
+            print("left")
+
+        def right(event):
+            print("right")
+
         import tkinter as tk
 
         class Application(tk.Frame):
@@ -157,6 +165,8 @@ class TestDb_tools(unittest.TestCase):
                 self.master = master
                 self.pack()
                 self.create_widgets()
+                self.create_keypress()
+
 
             def create_widgets(self):
                 self.hi_there = tk.Button(self)
@@ -168,6 +178,13 @@ class TestDb_tools(unittest.TestCase):
                                       command=self.master.destroy)
                 self.quit.pack(side="bottom")
 
+                self.bind("<Key-Return>", self.say_hi)
+
+            def create_keypress(self):
+                self.master.bind('<Left>', left)
+                self.master.bind('<Right>', right)
+
+
             def say_hi(self):
                 print("hi there, everyone!")
 
@@ -176,6 +193,7 @@ class TestDb_tools(unittest.TestCase):
         print("Before")
         app = Application(master=root)
         print("After")
+
         app.mainloop()
         print("AfterAfter")
         assert True
