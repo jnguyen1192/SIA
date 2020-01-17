@@ -149,17 +149,15 @@ class TestDb_tools(unittest.TestCase):
         """
         Test if function fufill_db works correctly
         """
-
-
-        def left_keypress_1(event):
+        def left_keypress_1(event=""):
             # TODO penalize behavior
             print("left")
 
-        def right_keypress_1(event):
+        def right_keypress_1(event=""):
             # TODO reward behavior
             print("right")
 
-        def down_keypress_1(event):
+        def down_keypress_1(event=""):
             # TODO record next sound behavior
             print("down")
 
@@ -178,7 +176,6 @@ class TestDb_tools(unittest.TestCase):
                 self.create_keypress()
 
             def create_widgets(self):
-
                 self.b_up = tk.Button(self)
                 self.b_up["text"] = "↑←→↓"
                 self.b_up["command"] = up_keypress_1
