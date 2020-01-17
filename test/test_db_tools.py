@@ -163,7 +163,7 @@ class TestDb_tools(unittest.TestCase):
             # TODO record next sound behavior
             print("down")
 
-        def up_keypress_1(event):
+        def up_keypress_1(event=""):
             # TODO stop the recording and create the list of sound
             print("up")
 
@@ -178,16 +178,15 @@ class TestDb_tools(unittest.TestCase):
                 self.create_keypress()
 
             def create_widgets(self):
-                self.hi_there = tk.Button(self)
-                self.hi_there["text"] = "Hello World\n(click me)"
-                self.hi_there["command"] = self.say_hi
-                self.hi_there.pack(side="top")
+
+                self.b_up = tk.Button(self)
+                self.b_up["text"] = "↑←→↓"
+                self.b_up["command"] = up_keypress_1
+                self.b_up.pack(side="top")
 
                 self.quit = tk.Button(self, text="QUIT", fg="red",
                                       command=self.master.destroy)
                 self.quit.pack(side="bottom")
-
-                self.bind("<Key-Return>", self.say_hi)
 
             def create_keypress(self):
                 self.master.bind('<Left>', left_keypress_1)
@@ -195,8 +194,6 @@ class TestDb_tools(unittest.TestCase):
                 self.master.bind('<Down>', down_keypress_1)
                 self.master.bind('<Up>', up_keypress_1)
 
-            def say_hi(self):
-                print("hi there, everyone!")
 
         print("BeforeBefore")
         root = tk.Tk()
