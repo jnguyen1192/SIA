@@ -177,13 +177,29 @@ class TestDb_tools(unittest.TestCase):
 
             def create_widgets(self):
                 self.b_up = tk.Button(self)
-                self.b_up["text"] = "↑←→↓"
+                self.b_up["text"] = "↑"
                 self.b_up["command"] = up_keypress_1
                 self.b_up.pack(side="top")
 
+                self.b_left = tk.Button(self)
+                self.b_left["text"] = "←"
+                self.b_left["command"] = left_keypress_1
+                self.b_left.pack(side="left")
+
+                self.b_right = tk.Button(self)
+                self.b_right["text"] = "→"
+                self.b_right["command"] = right_keypress_1
+                self.b_right.pack(side="right")
+
+                self.b_down = tk.Button(self)
+                self.b_down["text"] = "↓"
+                self.b_down["command"] = down_keypress_1
+                self.b_down.pack()
+                """
                 self.quit = tk.Button(self, text="QUIT", fg="red",
                                       command=self.master.destroy)
                 self.quit.pack(side="bottom")
+                """
 
             def create_keypress(self):
                 self.master.bind('<Left>', left_keypress_1)
