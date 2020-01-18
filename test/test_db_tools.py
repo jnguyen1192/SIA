@@ -173,7 +173,7 @@ class TestDb_tools(unittest.TestCase):
                 self.master = master
                 self.master.geometry("500x500") #You want the size of the app to be 500x500
                 #self.master.resizable(0, 0) #Don't allow resizing in the x or y direction
-                self.pack()
+                #self.pack()
                 self.create_widgets()
                 self.create_keypress()
 
@@ -181,9 +181,9 @@ class TestDb_tools(unittest.TestCase):
                 self.b_up = tk.Button(self)
                 self.b_up["text"] = "↑"
                 self.b_up["command"] = up_keypress_1
-                self.b_up.place(x=150, y=300)
-
                 self.b_up.pack()
+                self.b_up.place(width=100, height=100, x=150, y=300)
+
 
                 self.l_up = tk.Label(root, text="Create sound list")
                 self.l_up.place(width=120, x=150, y=340)
@@ -191,25 +191,25 @@ class TestDb_tools(unittest.TestCase):
                 self.b_left = tk.Button(self)
                 self.b_left["text"] = "←"
                 self.b_left["command"] = left_keypress_1
-                self.b_left.pack(side="left")
+                #self.b_left.pack(side="left")
 
                 self.l_left = tk.Label(root, text="Penalize")
 
                 self.b_right = tk.Button(self)
                 self.b_right["text"] = "→"
                 self.b_right["command"] = right_keypress_1
-                self.b_right.pack(side="right")
+                #self.b_right.pack(side="right")
 
                 self.l_right = tk.Label(root, text="Reward")
-                self.l_right.pack(side="right")
+                #self.l_right.pack(side="right")
 
                 self.b_down = tk.Button(self)
                 self.b_down["text"] = "↓"
                 self.b_down["command"] = down_keypress_1
-                self.b_down.pack()
+                #self.b_down.pack()
 
                 self.l_down = tk.Label(root, text="Record sound")
-                self.l_down.pack()
+                #self.l_down.pack()
 
 
                 """
