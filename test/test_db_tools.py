@@ -171,56 +171,60 @@ class TestDb_tools(unittest.TestCase):
             def __init__(self, master=None):
                 super().__init__(master)
                 self.master = master
-                self.master.geometry("500x500") #You want the size of the app to be 500x500
-                self.my_frame = tk.Frame(self.master, width=500, height=500)
+                self.master.geometry("600x600") #You want the size of the app to be 500x500
+                self.my_frame = tk.Frame(self.master, width=600, height=600)
                 self.my_frame.pack()  # Note the parentheses added here
                 #self.master.resizable(0, 0) #Don't allow resizing in the x or y direction
-                #self.pack()
                 self.create_widgets()
-                self.create_keypress()
 
             def create_widgets(self):
+                """
+                Create all the widgets of the frame
+                """
+                self.create_arrows_button()
+                self.create_keypress()
+
+            def create_arrows_button(self):
+                """
+                Create the arrows button
+                """
+                arrow_padding_y = 400
+                arrow_padding_x = 260
                 self.b_up = tk.Button(self.my_frame)
                 self.b_up["text"] = "↑"
                 self.b_up["command"] = up_keypress_1
                 self.b_up["width"] = 10
-                self.b_up.place(x=100, y=100)
-                #self.b_up.pack()
-                #self.b_up.place(width=100, height=100, x=150, y=300)
-                #self.b_up.grid(row=2, column=2)
+                self.b_up.place(x=arrow_padding_x + 110, y=arrow_padding_y + 0)
 
                 self.l_up = tk.Label(self.my_frame, text="Create sound list")
-                self.l_up.place(width=120, x=150, y=340)
+                self.l_up.place(width=120, x=arrow_padding_x + 80, y=arrow_padding_y + 40)
 
                 self.b_left = tk.Button(self.my_frame)
                 self.b_left["text"] = "←"
                 self.b_left["command"] = left_keypress_1
-                #self.b_left.pack(side="left")
+                self.b_left["width"] = 10
+                self.b_left.place(x=arrow_padding_x + 10, y=arrow_padding_y + 70)
 
                 self.l_left = tk.Label(self.my_frame, text="Penalize")
+                self.l_left.place(width=120, x=arrow_padding_x + 0, y=arrow_padding_y + 110)
 
                 self.b_right = tk.Button(self.my_frame)
                 self.b_right["text"] = "→"
                 self.b_right["command"] = right_keypress_1
-                #self.b_right.pack(side="right")
+                self.b_right["width"] = 10
+                self.b_right.place(x=arrow_padding_x + 210, y=arrow_padding_y + 70)
 
                 self.l_right = tk.Label(self.my_frame, text="Reward")
-                #self.l_right.pack(side="right")
+                self.l_right.place(width=120, x=arrow_padding_x + 200, y=arrow_padding_y + 110)
 
                 self.b_down = tk.Button(self.my_frame)
                 self.b_down["text"] = "↓"
                 self.b_down["command"] = down_keypress_1
-                #self.b_down.pack()
+                self.b_down["width"] = 10
+                self.b_down.place(x=arrow_padding_x + 110, y=arrow_padding_y + 70)
 
                 self.l_down = tk.Label(self.my_frame, text="Record sound")
-                #self.l_down.pack()
-
-
-                """
-                self.quit = tk.Button(self, text="QUIT", fg="red",
-                                      command=self.master.destroy)
-                self.quit.pack(side="bottom")
-                """
+                self.l_down.place(width=120, x=arrow_padding_x + 100, y=arrow_padding_y + 110)
 
             def create_keypress(self):
                 self.master.bind('<Left>', left_keypress_1)
