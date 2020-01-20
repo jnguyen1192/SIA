@@ -192,6 +192,10 @@ class TestDb_tools(unittest.TestCase):
                 # TODO implement
                 pass
 
+            def affect_method_on_new_sound(self, method):
+                # TODO implement
+                pass
+
             def create_arrows_button(self):
                 """
                 Create the arrows button
