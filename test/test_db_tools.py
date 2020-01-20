@@ -188,6 +188,10 @@ class TestDb_tools(unittest.TestCase):
                 # TODO implement
                 pass
 
+            def get_next_sound_using_sai_ears(self):
+                # TODO implement
+                pass
+
             def create_arrows_button(self):
                 """
                 Create the arrows button
