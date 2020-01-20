@@ -10,7 +10,7 @@ class TestDb_tools(unittest.TestCase):
     ClassIsSetup = False
     ClassIsTeardown = 1
     # TODO automaticly count the number of unittest
-    ClassIsTeardownTotal = 6 # nb total of unittest
+    ClassIsTeardownTotal = 6  # nb total of unittest
 
     def setUp(self):
         # TODO run db backup container
@@ -183,6 +183,10 @@ class TestDb_tools(unittest.TestCase):
                 """
                 self.create_arrows_button()
                 self.create_keypress()
+
+            def get_list_sounds(self):
+                # TODO implement
+                pass
 
             def create_arrows_button(self):
                 """
