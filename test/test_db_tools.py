@@ -185,7 +185,13 @@ class TestDb_tools(unittest.TestCase):
                 self.create_keypress()
 
             def get_list_sounds(self):
-                # TODO implement
+                """
+                Get the list of sound as an array of numpy array
+                :return: a list of numpy array
+                """
+                # TODO
+                #   Use a function from db_tools to select id, sound from table sound
+                #   Optionnaly: Get the method with the sound
                 pass
 
             def get_next_sound_using_sai_ears(self):
