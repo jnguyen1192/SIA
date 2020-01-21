@@ -189,7 +189,13 @@ class TestDb_tools(unittest.TestCase):
                 pass
 
             def get_next_sound_using_sai_ears(self):
-                # TODO implement
+                """
+                Get a numpy array that represent the sound recording
+                :return: a numpy array or -1
+                """
+                # TODO
+                #   Use SAIEars to record a sound
+                #   Then return the sound
                 pass
 
             def insert_new_sound_using_method(self, method, new_sound):
