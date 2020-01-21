@@ -192,8 +192,16 @@ class TestDb_tools(unittest.TestCase):
                 # TODO implement
                 pass
 
-            def affect_method_on_new_sound(self, method):
-                # TODO implement
+            def insert_new_sound_using_method(self, method, new_sound):
+                """
+                Insert a new sound on the db
+                :param method: the method (reward or penalize)
+                :param new_sound: the new sound as a numpy array
+                :return: 0 if it works else -1
+                """
+                # TODO
+                #   Use a function from db_tools to insert a new sound
+                #   Optionally: create the corresponding table
                 pass
 
             def create_arrows_button(self):
