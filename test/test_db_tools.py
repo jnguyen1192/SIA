@@ -214,9 +214,12 @@ class TestDb_tools(unittest.TestCase):
             def down_keypress_1(self, event=""):
                 # TODO record next sound behavior
                 print("down")
+                # TODO test record next sound
                 print("Test record next sound")
                 next_sound = self.get_next_sound_using_sai_ears()
                 print(next_sound)
+                # TODO Define a button to listen the current sound
+                #   For example the space button to record a new sound
 
             def up_keypress_1(self, event=""):
                 # TODO stop the recording and create the list of sound
