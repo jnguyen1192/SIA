@@ -149,23 +149,9 @@ class TestDb_tools(unittest.TestCase):
         """
         Test if function fufill_db works correctly
         """
-        def left_keypress_1(event=""):
-            # TODO penalize behavior
-            print("left")
-
-        def right_keypress_1(event=""):
-            # TODO reward behavior
-            print("right")
-
-        def down_keypress_1(event=""):
-            # TODO record next sound behavior
-            print("down")
-
-        def up_keypress_1(event=""):
-            # TODO stop the recording and create the list of sound
-            print("up")
 
         import tkinter as tk
+        import SAIEars
 
         class Application(tk.Frame):
             def __init__(self, master=None):
@@ -176,6 +162,7 @@ class TestDb_tools(unittest.TestCase):
                 self.my_frame.pack()  # Note the parentheses added here
                 #self.master.resizable(0, 0) #Don't allow resizing in the x or y direction
                 self.create_widgets()
+                self.saiears = SAIEars.SAIEars()
 
             def create_widgets(self):
                 """
@@ -202,7 +189,7 @@ class TestDb_tools(unittest.TestCase):
                 # TODO
                 #   Use SAIEars to record a sound
                 #   Then return the sound
-                pass
+                return self.saiears.get_next_sound_detected()
 
             def insert_new_sound_using_method(self, method, new_sound):
                 """
@@ -216,6 +203,25 @@ class TestDb_tools(unittest.TestCase):
                 #   Optionally: create the corresponding table
                 pass
 
+            def left_keypress_1(self, event=""):
+                # TODO penalize behavior
+                print("left")
+
+            def right_keypress_1(self, event=""):
+                # TODO reward behavior
+                print("right")
+
+            def down_keypress_1(self, event=""):
+                # TODO record next sound behavior
+                print("down")
+                print("Test record next sound")
+                next_sound = self.get_next_sound_using_sai_ears()
+                print(next_sound)
+
+            def up_keypress_1(self, event=""):
+                # TODO stop the recording and create the list of sound
+                print("up")
+
             def create_arrows_button(self):
                 """
                 Create the arrows button
@@ -224,7 +230,7 @@ class TestDb_tools(unittest.TestCase):
                 arrow_padding_x = 260
                 self.b_up = tk.Button(self.my_frame)
                 self.b_up["text"] = "↑"
-                self.b_up["command"] = up_keypress_1
+                self.b_up["command"] = self.up_keypress_1
                 self.b_up["width"] = 10
                 self.b_up.place(x=arrow_padding_x + 110, y=arrow_padding_y + 0)
 
@@ -233,7 +239,7 @@ class TestDb_tools(unittest.TestCase):
 
                 self.b_left = tk.Button(self.my_frame)
                 self.b_left["text"] = "←"
-                self.b_left["command"] = left_keypress_1
+                self.b_left["command"] = self.left_keypress_1
                 self.b_left["width"] = 10
                 self.b_left.place(x=arrow_padding_x + 10, y=arrow_padding_y + 70)
 
@@ -242,7 +248,7 @@ class TestDb_tools(unittest.TestCase):
 
                 self.b_right = tk.Button(self.my_frame)
                 self.b_right["text"] = "→"
-                self.b_right["command"] = right_keypress_1
+                self.b_right["command"] = self.right_keypress_1
                 self.b_right["width"] = 10
                 self.b_right.place(x=arrow_padding_x + 210, y=arrow_padding_y + 70)
 
@@ -251,7 +257,7 @@ class TestDb_tools(unittest.TestCase):
 
                 self.b_down = tk.Button(self.my_frame)
                 self.b_down["text"] = "↓"
-                self.b_down["command"] = down_keypress_1
+                self.b_down["command"] = self.down_keypress_1
                 self.b_down["width"] = 10
                 self.b_down.place(x=arrow_padding_x + 110, y=arrow_padding_y + 70)
 
@@ -259,10 +265,10 @@ class TestDb_tools(unittest.TestCase):
                 self.l_down.place(width=120, x=arrow_padding_x + 100, y=arrow_padding_y + 110)
 
             def create_keypress(self):
-                self.master.bind('<Left>', left_keypress_1)
-                self.master.bind('<Right>', right_keypress_1)
-                self.master.bind('<Down>', down_keypress_1)
-                self.master.bind('<Up>', up_keypress_1)
+                self.master.bind('<Left>', self.left_keypress_1)
+                self.master.bind('<Right>', self.right_keypress_1)
+                self.master.bind('<Down>', self.down_keypress_1)
+                self.master.bind('<Up>', self.up_keypress_1)
 
 
         print("BeforeBefore")
