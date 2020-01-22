@@ -1,8 +1,12 @@
 import speech_recognition as sr
+# pip install SpeechRecognition
 import pyautogui
 import xml.etree.ElementTree as ET  # create xml file
 from xml.dom import minidom  # pretty print on xml file
 
+# https://stackoverflow.com/questions/54998028/how-do-i-install-pyaudio-on-python-3-7
+# wget
+# pip install PyAudio-0.2.11-cp37-cp37m-win_amd64.whl
 import pyaudio
 import numpy
 

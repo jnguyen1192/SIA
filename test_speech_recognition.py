@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # https://stackoverflow.com/questions/54998028/how-do-i-install-pyaudio-on-python-3-7
+# wget 
 # pip install PyAudio‑0.2.11‑cp37‑cp37m‑win_amd64.whl
 
 # pip install pocketsphinx‑0.1.15‑cp37‑cp37m‑win_amd64.whl
