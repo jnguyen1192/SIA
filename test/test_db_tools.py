@@ -232,8 +232,9 @@ class TestDb_tools(unittest.TestCase):
                 print("up")
                 print("Sounds :", self.sounds)
 
-            def space_key_press_1(self, event=""):
+            def space_keypress_1(self, event=""):
                 # TODO play the current sound recorded
+                print("space")
                 pass
 
             def create_arrows_button(self):
@@ -278,11 +279,21 @@ class TestDb_tools(unittest.TestCase):
                 self.l_down = tk.Label(self.my_frame, text="Record sound")
                 self.l_down.place(width=120, x=arrow_padding_x + 100, y=arrow_padding_y + 110)
 
+                self.b_space = tk.Button(self.my_frame)
+                self.b_space["text"] = ""
+                self.b_space["command"] = self.space_keypress_1
+                self.b_space["width"] = 20
+                self.b_space.place(x=arrow_padding_x + -220, y=arrow_padding_y + 70)
+
+                self.l_space = tk.Label(self.my_frame, text="Play current sound")
+                self.l_space.place(width=120, x=arrow_padding_x + -200, y=arrow_padding_y + 110)
+
             def create_keypress(self):
                 self.master.bind('<Left>', self.left_keypress_1)
                 self.master.bind('<Right>', self.right_keypress_1)
                 self.master.bind('<Down>', self.down_keypress_1)
                 self.master.bind('<Up>', self.up_keypress_1)
+                self.master.bind('<space>', self.space_keypress_1)
 
 
         print("BeforeBefore")
