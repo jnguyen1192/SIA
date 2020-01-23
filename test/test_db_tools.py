@@ -232,6 +232,10 @@ class TestDb_tools(unittest.TestCase):
                 print("up")
                 print("Sounds :", self.sounds)
 
+            def space_key_press_1(self, event=""):
+                # TODO play the current sound recorded
+                pass
+
             def create_arrows_button(self):
                 """
                 Create the arrows button
