@@ -235,6 +235,10 @@ class TestDb_tools(unittest.TestCase):
             def space_keypress_1(self, event=""):
                 # TODO play the current sound recorded
                 print("space")
+                # TODO refactor into SAISpirit or SAISpeech
+                import sounddevice
+                fs = 16000
+                sounddevice.play(self.current_sound, fs)  # releases GIL
                 pass
 
             def create_arrows_button(self):
