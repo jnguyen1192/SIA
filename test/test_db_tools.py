@@ -164,7 +164,7 @@ class TestDb_tools(unittest.TestCase):
                 self.create_widgets()
                 self.saiears = SAIEars.SAIEars()
                 self.sounds = []
-                self.current_sound = []
+                self.current_sound = -1
 
             def create_widgets(self):
                 """
@@ -208,22 +208,31 @@ class TestDb_tools(unittest.TestCase):
             def left_keypress_1(self, event=""):
                 # TODO penalize behavior
                 print("left")
-                self.sounds.append((self.current_sound, "penalize"))
-                print((self.current_sound, "penalize"), "added")
+                if type(self.current_sound) != type(-1):
+                    self.sounds.append((self.current_sound, "penalize"))
+                    print((self.current_sound, "penalize"), "added")
+                    self.current_sound = -1
+                else:
+                    print("No sound to add")
 
             def right_keypress_1(self, event=""):
                 # TODO reward behavior
                 print("right")
-                self.sounds.append((self.current_sound, "reward"))
-                print((self.current_sound, "reward"), "added")
+                if type(self.current_sound) != type(-1):
+                    self.sounds.append((self.current_sound, "reward"))
+                    print((self.current_sound, "reward"), "added")
+                    self.current_sound = -1
+                else:
+                    print("No sound to add")
 
             def down_keypress_1(self, event=""):
                 # TODO record next sound behavior
                 print("down")
                 # TODO test record next sound
-                print("Test record next sound")
+                print("Waiting for a sound")
                 next_sound = self.get_next_sound_using_sai_ears()
                 self.current_sound = next_sound
+                print("New sound recorded")
                 # TODO Define a button to listen the current sound
                 #   For example the space button to record a new sound
 
@@ -237,8 +246,11 @@ class TestDb_tools(unittest.TestCase):
                 print("space")
                 # TODO refactor into SAISpirit or SAISpeech
                 import sounddevice
-                fs = 16000
-                sounddevice.play(self.current_sound, fs)  # releases GIL
+                import time
+                if type(self.current_sound) != type(-1):
+                    fs = 16000
+                    sounddevice.play(self.current_sound, fs)  # releases GIL https://www.scivision.dev/playing-sounds-from-numpy-arrays-in-python/
+                    time.sleep(1)
                 pass
 
             def create_arrows_button(self):
