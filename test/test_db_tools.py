@@ -240,6 +240,14 @@ class TestDb_tools(unittest.TestCase):
                 # TODO stop the recording and create the list of sound
                 print("up")
                 print("Sounds :", self.sounds)
+                if self.sounds != []:
+                    arrow_padding_y = 20
+                    arrow_padding_x = 40
+                    for i in range(2):
+                        newButton = tk.Button(self.my_frame, text="Sound " + str(i + 1) + " " + self.sounds[i][1],
+                                              command=self.space_keypress_1)
+                        newButton.place(x=arrow_padding_x, y=arrow_padding_y + 50 * i)
+                    #Board.boardButtons.append(newButton)
 
             def space_keypress_1(self, event=""):
                 # TODO play the current sound recorded
