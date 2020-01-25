@@ -183,6 +183,24 @@ class TestDb_tools(unittest.TestCase):
                 #   Optionnaly: Get the method with the sound
                 pass
 
+            def play_sound(self, num_sound):
+                """
+                Play the sound using the number
+                :param num_sound: the numero of the sound
+                :return: 0 if it works else -1
+                """
+                try:
+                    import sounddevice
+                    import time
+                    print("play_sound", num_sound)
+                    fs = 16000
+                    sounddevice.play(self.sounds[num_sound][0],
+                                     fs)  # releases GIL https://www.scivision.dev/playing-sounds-from-numpy-arrays-in-python/
+                    time.sleep(1)
+                except Exception as e:
+                    print(e)
+                    return -1
+
             def get_next_sound_using_sai_ears(self):
                 """
                 Get a numpy array that represent the sound recording
@@ -243,9 +261,9 @@ class TestDb_tools(unittest.TestCase):
                 if self.sounds != []:
                     arrow_padding_y = 20
                     arrow_padding_x = 40
-                    for i in range(2):
+                    for i in range(len(self.sounds)):
                         newButton = tk.Button(self.my_frame, text="Sound " + str(i + 1) + " " + self.sounds[i][1],
-                                              command=self.space_keypress_1)
+                                              command=lambda: self.play_sound(i))
                         newButton.place(x=arrow_padding_x, y=arrow_padding_y + 50 * i)
                     #Board.boardButtons.append(newButton)
 
