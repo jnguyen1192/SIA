@@ -183,18 +183,18 @@ class TestDb_tools(unittest.TestCase):
                 #   Optionnaly: Get the method with the sound
                 pass
 
-            def play_sound(self, num_sound):
+            def play_sound(self, event=""):
                 """
                 Play the sound using the number
                 :param num_sound: the numero of the sound
                 :return: 0 if it works else -1
                 """
                 try:
+                    # TODO refactor into SAISpirit or SAISpeech
                     import sounddevice
                     import time
-                    print("play_sound", num_sound)
                     fs = 16000
-                    sounddevice.play(self.sounds[num_sound][0],
+                    sounddevice.play(self.sounds[self.b_sounds[event.widget]][0], #  self.b_sounds[event.widget] give the correct sound
                                      fs)  # releases GIL https://www.scivision.dev/playing-sounds-from-numpy-arrays-in-python/
                     time.sleep(1)
                 except Exception as e:
@@ -258,13 +258,15 @@ class TestDb_tools(unittest.TestCase):
                 # TODO stop the recording and create the list of sound
                 print("up")
                 print("Sounds :", self.sounds)
+                self.b_sounds = {}
                 if self.sounds != []:
                     arrow_padding_y = 20
                     arrow_padding_x = 40
                     for i in range(len(self.sounds)):
-                        newButton = tk.Button(self.my_frame, text="Sound " + str(i + 1) + " " + self.sounds[i][1],
-                                              command=lambda: self.play_sound(i))
+                        newButton = tk.Button(self.my_frame, text="Sound " + str(i + 1) + " " + self.sounds[i][1])
+                        newButton.bind("<Button-1>", self.play_sound)
                         newButton.place(x=arrow_padding_x, y=arrow_padding_y + 50 * i)
+                        self.b_sounds[newButton] = i
                     #Board.boardButtons.append(newButton)
 
             def space_keypress_1(self, event=""):
