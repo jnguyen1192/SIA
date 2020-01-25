@@ -267,6 +267,7 @@ class TestDb_tools(unittest.TestCase):
                         newButton.bind("<Button-1>", self.play_sound)
                         newButton.place(x=arrow_padding_x, y=arrow_padding_y + 50 * i)
                         self.b_sounds[newButton] = i
+                # TODO change behavior of all buttons to go on phase 2
                     #Board.boardButtons.append(newButton)
 
             def space_keypress_1(self, event=""):
