@@ -337,6 +337,7 @@ class TestDb_tools(unittest.TestCase):
                 self.l_space.place(width=120, x=arrow_padding_x + -200, y=arrow_padding_y + 110)
 
             def create_keypress(self):
+                # TODO refactor to have the new behavior for phase 2
                 self.master.bind('<Left>', self.left_keypress_1)
                 self.master.bind('<Right>', self.right_keypress_1)
                 self.master.bind('<Down>', self.down_keypress_1)
