@@ -223,6 +223,8 @@ class TestDb_tools(unittest.TestCase):
                 #   Optionally: create the corresponding table
                 pass
 
+
+            # TODO the same functions but with _2 and the correct behavior
             def left_keypress_1(self, event=""):
                 # TODO penalize behavior
                 print("left")
