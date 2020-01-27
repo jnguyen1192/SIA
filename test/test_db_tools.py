@@ -170,7 +170,7 @@ class TestDb_tools(unittest.TestCase):
                 """
                 Create all the widgets of the frame
                 """
-                self.create_arrows_button()
+                self.create_arrows_button_1()
                 self.create_keypress()
 
             def get_list_sounds(self):
@@ -284,6 +284,7 @@ class TestDb_tools(unittest.TestCase):
                 # TODO
                 #  change behavior of all buttons to go on phase 2
                 #  change text of all buttons of the windows
+                self.create_arrows_button_2()
 
                     #Board.boardButtons.append(newButton)
 
@@ -299,9 +300,9 @@ class TestDb_tools(unittest.TestCase):
                     time.sleep(1)
                 pass
 
-            def create_arrows_button(self):
+            def create_arrows_button_1(self):
                 """
-                Create the arrows button
+                Create the arrows button of phase 1
                 """
                 arrow_padding_y = 400
                 arrow_padding_x = 260
@@ -339,6 +340,57 @@ class TestDb_tools(unittest.TestCase):
                 self.b_down.place(x=arrow_padding_x + 110, y=arrow_padding_y + 70)
 
                 self.l_down = tk.Label(self.my_frame, text="Record sound")
+                self.l_down.place(width=120, x=arrow_padding_x + 100, y=arrow_padding_y + 110)
+
+                self.b_space = tk.Button(self.my_frame)
+                self.b_space["text"] = ""
+                self.b_space["command"] = self.space_keypress_1
+                self.b_space["width"] = 20
+                self.b_space.place(x=arrow_padding_x + -220, y=arrow_padding_y + 70)
+
+                self.l_space = tk.Label(self.my_frame, text="Play current sound")
+                self.l_space.place(width=120, x=arrow_padding_x + -200, y=arrow_padding_y + 110)
+
+            def create_arrows_button_2(self):
+                """
+                Create the arrows button of phase 2
+                """
+                arrow_padding_y = 400
+                arrow_padding_x = 260
+                self.b_up = tk.Button(self.my_frame)
+                self.b_up["text"] = "↑"
+                self.b_up["command"] = self.up_keypress_1
+                self.b_up["width"] = 10
+                self.b_up.place(x=arrow_padding_x + 110, y=arrow_padding_y + 0)
+
+                self.l_up = tk.Label(self.my_frame, text="Save on db")
+                self.l_up.place(width=120, x=arrow_padding_x + 80, y=arrow_padding_y + 40)
+
+                self.b_left = tk.Button(self.my_frame)
+                self.b_left["text"] = "←"
+                self.b_left["command"] = self.left_keypress_1
+                self.b_left["width"] = 10
+                self.b_left.place(x=arrow_padding_x + 10, y=arrow_padding_y + 70)
+
+                self.l_left = tk.Label(self.my_frame, text="Previous sound")
+                self.l_left.place(width=120, x=arrow_padding_x + 0, y=arrow_padding_y + 110)
+
+                self.b_right = tk.Button(self.my_frame)
+                self.b_right["text"] = "→"
+                self.b_right["command"] = self.right_keypress_1
+                self.b_right["width"] = 10
+                self.b_right.place(x=arrow_padding_x + 210, y=arrow_padding_y + 70)
+
+                self.l_right = tk.Label(self.my_frame, text="Next sound")
+                self.l_right.place(width=120, x=arrow_padding_x + 200, y=arrow_padding_y + 110)
+
+                self.b_down = tk.Button(self.my_frame)
+                self.b_down["text"] = "↓"
+                self.b_down["command"] = self.down_keypress_1
+                self.b_down["width"] = 10
+                self.b_down.place(x=arrow_padding_x + 110, y=arrow_padding_y + 70)
+
+                self.l_down = tk.Label(self.my_frame, text="Remove sound")
                 self.l_down.place(width=120, x=arrow_padding_x + 100, y=arrow_padding_y + 110)
 
                 self.b_space = tk.Button(self.my_frame)
