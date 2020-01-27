@@ -223,6 +223,9 @@ class TestDb_tools(unittest.TestCase):
                 #   Optionally: create the corresponding table
                 pass
 
+            def left_keypress_2(self, event=""):
+                # TODO penalize behavior
+                print("left phase 2")
 
             # TODO the same functions but with _2 and the correct behavior
             def left_keypress_1(self, event=""):
@@ -368,7 +371,7 @@ class TestDb_tools(unittest.TestCase):
 
                 self.b_left = tk.Button(self.my_frame)
                 self.b_left["text"] = "←"
-                self.b_left["command"] = self.left_keypress_1
+                self.b_left["command"] = self.left_keypress_2
                 self.b_left["width"] = 10
                 self.b_left.place(x=arrow_padding_x + 10, y=arrow_padding_y + 70)
 
