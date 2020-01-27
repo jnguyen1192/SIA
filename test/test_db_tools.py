@@ -196,7 +196,7 @@ class TestDb_tools(unittest.TestCase):
                     fs = 16000
                     sounddevice.play(self.sounds[self.b_sounds[event.widget]][0], #  self.b_sounds[event.widget] give the correct sound
                                      fs)  # releases GIL https://www.scivision.dev/playing-sounds-from-numpy-arrays-in-python/
-                    time.sleep(1)
+
                 except Exception as e:
                     print(e)
                     return -1
@@ -256,19 +256,31 @@ class TestDb_tools(unittest.TestCase):
                 # TODO Define a button to listen the current sound
                 #   For example the space button to record a new sound
 
+            def refresh_buttons_sounds(self):
+                """
+                Refresh the buttons using the list of sounds
+                :return: 0 if it works else -1
+                """
+                try:
+                    print("Sounds :", self.sounds)
+                    self.b_sounds = {}
+                    if self.sounds != []:
+                        arrow_padding_y = 20
+                        arrow_padding_x = 40
+                        for i in range(len(self.sounds)):
+                            newButton = tk.Button(self.my_frame, text="Sound " + str(i + 1) + " " + self.sounds[i][1])
+                            newButton.bind("<Button-1>", self.play_sound)
+                            newButton.place(x=arrow_padding_x, y=arrow_padding_y + 50 * i)
+                            self.b_sounds[newButton] = i
+                    return 0
+                except Exception as e:
+                    print(e)
+                    return -1
+
             def up_keypress_1(self, event=""):
                 # TODO stop the recording and create the list of sound
                 print("up")
-                print("Sounds :", self.sounds)
-                self.b_sounds = {}
-                if self.sounds != []:
-                    arrow_padding_y = 20
-                    arrow_padding_x = 40
-                    for i in range(len(self.sounds)):
-                        newButton = tk.Button(self.my_frame, text="Sound " + str(i + 1) + " " + self.sounds[i][1])
-                        newButton.bind("<Button-1>", self.play_sound)
-                        newButton.place(x=arrow_padding_x, y=arrow_padding_y + 50 * i)
-                        self.b_sounds[newButton] = i
+                self.refresh_buttons_sounds()
                 # TODO
                 #  change behavior of all buttons to go on phase 2
                 #  change text of all buttons of the windows
