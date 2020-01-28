@@ -288,6 +288,7 @@ class TestDb_tools(unittest.TestCase):
                 #  change behavior of all buttons to go on phase 2
                 #  change text of all buttons of the windows
                 self.create_arrows_button_2()
+                self.create_keypress_2()
 
                     #Board.boardButtons.append(newButton)
 
