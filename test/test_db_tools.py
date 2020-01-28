@@ -171,7 +171,7 @@ class TestDb_tools(unittest.TestCase):
                 Create all the widgets of the frame
                 """
                 self.create_arrows_button_1()
-                self.create_keypress()
+                self.create_keypress_1()
 
             def get_list_sounds(self):
                 """
@@ -405,9 +405,16 @@ class TestDb_tools(unittest.TestCase):
                 self.l_space = tk.Label(self.my_frame, text="Play current sound")
                 self.l_space.place(width=120, x=arrow_padding_x + -200, y=arrow_padding_y + 110)
 
-            def create_keypress(self):
-                # TODO refactor to have the new behavior for phase 2
+            def create_keypress_1(self):
                 self.master.bind('<Left>', self.left_keypress_1)
+                self.master.bind('<Right>', self.right_keypress_1)
+                self.master.bind('<Down>', self.down_keypress_1)
+                self.master.bind('<Up>', self.up_keypress_1)
+                self.master.bind('<space>', self.space_keypress_1)
+
+            def create_keypress_2(self):
+                # TODO refactor to have the new behavior for phase 2
+                self.master.bind('<Left>', self.left_keypress_2)
                 self.master.bind('<Right>', self.right_keypress_1)
                 self.master.bind('<Down>', self.down_keypress_1)
                 self.master.bind('<Up>', self.up_keypress_1)
