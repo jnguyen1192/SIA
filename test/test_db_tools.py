@@ -224,8 +224,24 @@ class TestDb_tools(unittest.TestCase):
                 pass
 
             def left_keypress_2(self, event=""):
-                # TODO penalize behavior
+                # TODO select previous sound
                 print("left phase 2")
+
+            def right_keypress_2(self, event=""):
+                # TODO select previous sound
+                print("right phase 2")
+
+            def up_keypress_2(self, event=""):
+                # TODO save on db and qui windows with confirmation
+                print("up phase 2")
+
+            def down_keypress_2(self, event=""):
+                # TODO remove current sound
+                print("down phase 2")
+
+            def space_keypress_2(self, event=""):
+                # TODO play current sound
+                print("space phase 2")
 
             # TODO the same functions but with _2 and the correct behavior
             def left_keypress_1(self, event=""):
