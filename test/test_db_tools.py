@@ -225,11 +225,13 @@ class TestDb_tools(unittest.TestCase):
 
             def left_keypress_2(self, event=""):
                 # TODO select previous sound
+                self.current_sound = (self.current_sound - 1) % len(self.sounds)
                 print("left phase 2")
 
             def right_keypress_2(self, event=""):
-                # TODO select previous sound
+                # TODO select next sound
                 print("right phase 2")
+                self.current_sound = (self.current_sound + 1) % len(self.sounds)
 
             def up_keypress_2(self, event=""):
                 # TODO save on db and qui windows with confirmation
@@ -238,10 +240,17 @@ class TestDb_tools(unittest.TestCase):
             def down_keypress_2(self, event=""):
                 # TODO remove current sound
                 print("down phase 2")
+                del self.sounds[self.current_sound]
+                self.refresh_buttons_sounds()
 
             def space_keypress_2(self, event=""):
                 # TODO play current sound
                 print("space phase 2")
+                fs = 16000
+                import sounddevice
+                sounddevice.play(self.sounds[self.current_sound][0],
+                                 fs)  # releases GIL https://www.scivision.dev/playing-sounds-from-numpy-arrays-in-python/
+
 
             # TODO the same functions but with _2 and the correct behavior
             def left_keypress_1(self, event=""):
@@ -305,6 +314,7 @@ class TestDb_tools(unittest.TestCase):
                 #  change text of all buttons of the windows
                 self.create_arrows_button_2()
                 self.create_keypress_2()
+                self.current_sound = 0
 
                     #Board.boardButtons.append(newButton)
 
