@@ -432,10 +432,10 @@ class TestDb_tools(unittest.TestCase):
             def create_keypress_2(self):
                 # TODO refactor to have the new behavior for phase 2
                 self.master.bind('<Left>', self.left_keypress_2)
-                self.master.bind('<Right>', self.right_keypress_1)
-                self.master.bind('<Down>', self.down_keypress_1)
-                self.master.bind('<Up>', self.up_keypress_1)
-                self.master.bind('<space>', self.space_keypress_1)
+                self.master.bind('<Right>', self.right_keypress_2)
+                self.master.bind('<Down>', self.down_keypress_2)
+                self.master.bind('<Up>', self.up_keypress_2)
+                self.master.bind('<space>', self.space_keypress_2)
 
 
         print("BeforeBefore")
