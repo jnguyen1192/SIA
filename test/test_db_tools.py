@@ -164,6 +164,7 @@ class TestDb_tools(unittest.TestCase):
                 self.create_widgets()
                 self.saiears = SAIEars.SAIEars()
                 self.sounds = []
+                self.b_sounds = {}
                 self.current_sound = -1
 
             def create_widgets(self):
@@ -242,6 +243,8 @@ class TestDb_tools(unittest.TestCase):
                 print("down phase 2")
                 del self.sounds[self.current_sound]
                 self.refresh_buttons_sounds()
+                if self.current_sound > len(self.sounds) - 1:
+                    self.current_sound = len(self.sounds) - 1
 
             def space_keypress_2(self, event=""):
                 # TODO play current sound
@@ -291,6 +294,10 @@ class TestDb_tools(unittest.TestCase):
                 """
                 try:
                     print("Sounds :", self.sounds)
+                    # TODO remove existing buttons before create them
+                    if len(self.b_sounds) > 0:
+                        for b in self.b_sounds:
+                            tk.Button.destroy(b)
                     self.b_sounds = {}
                     if self.sounds != []:
                         arrow_padding_y = 20
