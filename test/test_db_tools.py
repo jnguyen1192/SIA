@@ -224,6 +224,15 @@ class TestDb_tools(unittest.TestCase):
                 #   Optionally: create the corresponding table
                 pass
 
+            def update_color_current_sound(self):
+                """
+                Update the colors of the sounds buttons
+                :return: 0 if it works else -1
+                """
+                # TODO
+                #   Select all sounds buttons and recreate them
+                #   Using the current_sound change the color of the specific button
+
             def left_keypress_2(self, event=""):
                 print("left phase 2")
                 # TODO select previous sound
