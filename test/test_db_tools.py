@@ -246,7 +246,10 @@ class TestDb_tools(unittest.TestCase):
                 # TODO change the color of the selected sound
 
             def up_keypress_2(self, event=""):
-                # TODO save on db and qui windows with confirmation
+                # TODO save on db and quit windows with confirmation
+                #   Insert the sounds using table sound(numpy_array, method)
+                #   Find the way to confirm the closed
+                #   optionally: create a csv file containing the sounds
                 print("up phase 2")
 
             def down_keypress_2(self, event=""):
