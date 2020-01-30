@@ -225,14 +225,16 @@ class TestDb_tools(unittest.TestCase):
                 pass
 
             def left_keypress_2(self, event=""):
+                print("left phase 2")
                 # TODO select previous sound
                 self.current_sound = (self.current_sound - 1) % len(self.sounds)
-                print("left phase 2")
+                # TODO change the color of the selected sound
 
             def right_keypress_2(self, event=""):
-                # TODO select next sound
                 print("right phase 2")
+                # TODO select next sound
                 self.current_sound = (self.current_sound + 1) % len(self.sounds)
+                # TODO change the color of the selected sound
 
             def up_keypress_2(self, event=""):
                 # TODO save on db and qui windows with confirmation
