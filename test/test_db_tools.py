@@ -248,12 +248,11 @@ class TestDb_tools(unittest.TestCase):
             def up_keypress_2(self, event=""):
                 # TODO save on db and quit windows with confirmation
                 #   Insert the sounds using table sound(numpy_array, method)
-                #   Find the way to confirm the closed
+                #   Use function message box on link https://pythonspot.com/tkinter-askquestion-dialog/ to create a confirm dialog
                 #   optionally: create a csv file containing the sounds
                 #       Open a csv file
                 #       Write on the csv file each sound using pandas
                 #       Close the csv file
-
                 print("up phase 2")
 
             def down_keypress_2(self, event=""):
