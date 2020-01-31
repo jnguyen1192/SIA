@@ -232,6 +232,7 @@ class TestDb_tools(unittest.TestCase):
                 # TODO
                 #   Select all sounds buttons and recreate them
                 #   Using the current_sound change the color of the specific button
+                #   Use parameter bg on corresponding button on link https://pythonexamples.org/python-tkinter-button-background-color/
 
             def left_keypress_2(self, event=""):
                 print("left phase 2")
