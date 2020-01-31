@@ -250,6 +250,10 @@ class TestDb_tools(unittest.TestCase):
                 #   Insert the sounds using table sound(numpy_array, method)
                 #   Find the way to confirm the closed
                 #   optionally: create a csv file containing the sounds
+                #       Open a csv file
+                #       Write on the csv file each sound using pandas
+                #       Close the csv file
+
                 print("up phase 2")
 
             def down_keypress_2(self, event=""):
