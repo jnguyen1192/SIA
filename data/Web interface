@@ -8,3 +8,5 @@ Strategie 3 Action 7 Action 8 Action 9                                  Call 3 w
 Context:
 Click to match link betwen Strategy 1 and Call 1 for example
 This will save on the database the label for SAI understanding
+
+Show a box to understand how SAI interpret the labels
