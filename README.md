@@ -33,7 +33,7 @@ Strong Artificial Intelligence
 ![draft](https://github.com/jnguyen1192/SAI/blob/master/data/sai_spirit.jpg)
 
 # Plans to work for Nguyen
-
+Mind as a screen
 
 # Source
 
