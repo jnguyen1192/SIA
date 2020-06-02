@@ -34,6 +34,7 @@ Strong Artificial Intelligence
 
 # Plans to work for Nguyen
 Mind as a screen
+Mic as an input
 
 # Source
 
