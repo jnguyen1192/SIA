@@ -34,6 +34,7 @@ Strong Artificial Intelligence
 
 # Plans to work for Nguyen
 Box as a spirit
+    Define the shape
 Mic as an input
 Screen as eyes
 
