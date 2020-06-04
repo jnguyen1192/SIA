@@ -37,6 +37,7 @@ Box as a spirit
     Define the shape
     Only active for developer
     Specify how the colors will appear on
+    Specify if a voice of the thinking will exist
 Mic as an input
 Screen as eyes
 
