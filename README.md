@@ -36,6 +36,7 @@ Strong Artificial Intelligence
 Box as a spirit
     Define the shape
     Only active for developer
+    Specify how the colors will appear on
 Mic as an input
 Screen as eyes
 
