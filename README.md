@@ -39,6 +39,7 @@ Box as a spirit
     Specify how the colors will appear on
     Specify if a voice of the thinking will exist
 Mic as an input
+    Separate sounds listen
 Screen as eyes
 
 # Source
