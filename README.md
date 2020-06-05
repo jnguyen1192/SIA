@@ -41,7 +41,7 @@ Box as a spirit
 Mic as an input
     Separate sounds listen
     Focus on user voice
-    
+    Remove noise from sounds
 Screen as eyes
 
 # Source
