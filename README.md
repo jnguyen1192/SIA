@@ -40,6 +40,7 @@ Box as a spirit
     Specify if a voice of the thinking will exist
 Mic as an input
     Separate sounds listen
+    Focus on user voice
 Screen as eyes
 
 # Source
