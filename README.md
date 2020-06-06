@@ -43,6 +43,8 @@ Mic as an input
     Focus on user voice
     Remove noise from sounds
     Make patterns if sounds
+    Future: differentiate voices
+
 
 Screen as eyes
 
