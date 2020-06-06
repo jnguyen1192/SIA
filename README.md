@@ -42,6 +42,8 @@ Mic as an input
     Separate sounds listen
     Focus on user voice
     Remove noise from sounds
+    Make patterns if sounds
+
 Screen as eyes
 
 # Source
