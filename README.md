@@ -44,9 +44,9 @@ Mic as an input
     Remove noise from sounds
     Make patterns if sounds
     Future: differentiate voices
-
-
 Screen as eyes
+    Identifiate every shape
+
 
 # Source
 
