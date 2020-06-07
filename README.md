@@ -46,8 +46,8 @@ Mic as an input
     Future: differentiate voices
 Screen as eyes
     Identifiate every shape
-    Convert a 2D shape into 3D shape using deduction
-    Convert 3D shape into 4D shape using deduction
+    Convert a 2D shape into 3D shape using deduction (GAN like)
+    Convert 3D shape into 4D shape using deduction (GAN like)
     
 
 
