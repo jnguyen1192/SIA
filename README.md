@@ -46,6 +46,7 @@ Mic as an input
     Future: differentiate voices
 Screen as eyes
     Identifiate every shape
+    Convert a 2D shape into 3D shape using decudction
 
 
 # Source
