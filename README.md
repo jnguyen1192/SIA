@@ -48,6 +48,7 @@ Screen as eyes
     Identifiate every shape
     Convert a 2D shape into 3D shape using deduction (GAN like)
     Convert 3D shape into 4D shape using deduction (GAN like)
+    Zoom on different part of screen
     
 
 
