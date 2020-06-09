@@ -35,6 +35,7 @@ Strong Artificial Intelligence
 # Plans to work for Nguyen
 Box as a spirit
     Define the shape
+        Think if it will only appear on debug mode
     Only active for developer
     Specify how the colors will appear on
     Specify if a voice of the thinking will exist
