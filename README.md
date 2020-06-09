@@ -36,7 +36,8 @@ Strong Artificial Intelligence
 Box as a spirit
     Define the shape
         Think if it will only appear on debug mode
-        If it is choose the best sizes
+        If it is choosen the best sizes
+        Else team will be split into other teams
     Only active for developer
     Specify how the colors will appear on
     Specify if a voice of the thinking will exist
