@@ -39,6 +39,7 @@ Box as a spirit
         If it is choosen the best sizes
         Else team will be split into other teams
     Only active for developer
+        Think about how to activate the developer mode
     Specify how the colors will appear on
     Specify if a voice of the thinking will exist
 Mic as an input
