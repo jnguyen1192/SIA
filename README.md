@@ -40,6 +40,7 @@ Box as a spirit
         Else team will be split into other teams
     Only active for developer
         Think about how to activate the developer mode
+        Think how to switch betwezn develeper and production mode
     Specify how the colors will appear on
     Specify if a voice of the thinking will exist
 Mic as an input
