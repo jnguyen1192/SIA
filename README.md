@@ -44,7 +44,8 @@ Box as a spirit
         Specify the police of the developer mode
     Specify how the colors will appear on
         Choose between black/white or colors
-        It can be similar color of the real color
+        Can it be similar color of the real color ?
+        Synthesis of choices of the colors of the box
     Specify if a voice of the thinking will exist
 Mic as an input
     Separate sounds listen
