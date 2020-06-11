@@ -43,6 +43,7 @@ Box as a spirit
         Think how to switch betwen develeper and production mode
         Specify the police of the developer mode
     Specify how the colors will appear on
+        Choose between black/white or colors
     Specify if a voice of the thinking will exist
 Mic as an input
     Separate sounds listen
