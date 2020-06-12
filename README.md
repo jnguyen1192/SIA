@@ -48,6 +48,7 @@ Box as a spirit
         Synthesis of choices of the colors of the box
     Specify if a voice of the thinking will exist
         Etablish the show of the voice (text or audio)
+        Prototype the voice of the thinking using last meeting
 Mic as an input
     Separate sounds listen
     Focus on user voice
