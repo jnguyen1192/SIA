@@ -47,6 +47,7 @@ Box as a spirit
         Can it be similar color of the real color ?
         Synthesis of choices of the colors of the box
     Specify if a voice of the thinking will exist
+        Etablish the show of the voice (text or audio)
 Mic as an input
     Separate sounds listen
     Focus on user voice
