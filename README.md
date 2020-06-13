@@ -52,6 +52,7 @@ Box as a spirit
         If it works correctly validate or try the other way
 Mic as an input
     Separate sounds listen
+        Choose clustering or classification
     Focus on user voice
     Remove noise from sounds
     Make patterns if sounds
