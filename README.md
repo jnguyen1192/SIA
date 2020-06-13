@@ -53,6 +53,7 @@ Box as a spirit
 Mic as an input
     Separate sounds listen
         Choose clustering or classification
+        Use the method choosen
     Focus on user voice
     Remove noise from sounds
     Make patterns if sounds
