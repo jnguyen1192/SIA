@@ -54,6 +54,7 @@ Mic as an input
     Separate sounds listen
         Choose clustering or classification
         Use the method choosen
+        If it works correctly validate or try the other way
     Focus on user voice
     Remove noise from sounds
     Make patterns if sounds
