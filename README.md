@@ -58,6 +58,7 @@ Mic as an input
     Focus on user voice
         Show all voices
         Select user voice
+        Match voices with user voice
     Remove noise from sounds
     Make patterns if sounds
     Future: differentiate voices
