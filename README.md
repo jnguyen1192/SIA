@@ -61,6 +61,7 @@ Mic as an input
         Match voices with user voice
     Remove noise from sounds
         Detect noises
+        Manage noises
     Make patterns if sounds
     Future: differentiate voices
 Screen as eyes
