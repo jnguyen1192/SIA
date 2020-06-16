@@ -65,6 +65,7 @@ Mic as an input
         Remove noises
     Make patterns if sounds
         Define the pattern
+        Find 3 patterns
     Future: differentiate voices
 Screen as eyes
     Identifiate every shape
