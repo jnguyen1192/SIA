@@ -72,6 +72,7 @@ Screen as eyes
     Identifiate every shape
         Get all different shapes
         Label the first ten shapes
+        Create a model to autolabel shapes
     Convert a 2D shape into 3D shape using deduction (GAN like)
     Convert 3D shape into 4D shape using deduction (GAN like)
     Zoom on different part of screen
