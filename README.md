@@ -76,6 +76,7 @@ Screen as eyes
     Convert a 2D shape into 3D shape using deduction (GAN like)
         Select 10 2D images 
         Convert previous images into 3D images
+        Determine if model works
     Convert 3D shape into 4D shape using deduction (GAN like)
     Zoom on different part of screen
     Create a 3D space of the screen
