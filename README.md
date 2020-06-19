@@ -78,6 +78,7 @@ Screen as eyes
         Convert previous images into 3D images
         Determine if model works
     Convert 3D shape into 4D shape using deduction (GAN like)
+        Select 10 3D images
     Zoom on different part of screen
     Create a 3D space of the screen
     Minimize the screen data using shapes
