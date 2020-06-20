@@ -84,6 +84,7 @@ Screen as eyes
     Zoom on different part of screen
         Select 5 images to treat
         Detect interesting zone
+        Convert the detecting zone into an image
     Create a 3D space of the screen
     Minimize the screen data using shapes
     
