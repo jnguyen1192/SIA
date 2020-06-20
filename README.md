@@ -83,6 +83,7 @@ Screen as eyes
         Determine if model works
     Zoom on different part of screen
         Select 5 images to treat
+        Detect interesting zone
     Create a 3D space of the screen
     Minimize the screen data using shapes
     
