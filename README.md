@@ -82,6 +82,7 @@ Screen as eyes
         Convert previous images into 4D images
         Determine if model works
     Zoom on different part of screen
+        Select 5 images to treat
     Create a 3D space of the screen
     Minimize the screen data using shapes
     
