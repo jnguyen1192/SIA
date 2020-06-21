@@ -88,6 +88,7 @@ Screen as eyes
     Create a 3D space of the screen
         Select 5 possibly screen
         Try to convert them into 3D space
+        Check if it works
     Minimize the screen data using shapes
     
 
