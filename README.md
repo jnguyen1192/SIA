@@ -87,6 +87,7 @@ Screen as eyes
         Convert the detecting zone into an image
     Create a 3D space of the screen
         Select 5 possibly screen
+        Try to convert them into 3D space
     Minimize the screen data using shapes
     
 
