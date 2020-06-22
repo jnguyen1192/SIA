@@ -91,6 +91,7 @@ Screen as eyes
         Check if it works
     Minimize the screen data using shapes
         Select the main shapes of a screen
+        Remove the background of the screen
     
 
 
