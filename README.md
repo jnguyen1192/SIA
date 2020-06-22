@@ -90,6 +90,7 @@ Screen as eyes
         Try to convert them into 3D space
         Check if it works
     Minimize the screen data using shapes
+        Select the main shapes of a screen
     
 
 
