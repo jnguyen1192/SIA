@@ -95,7 +95,7 @@ Screen as eyes
         Check if the results is ok
         
 # Synthesis of the plan
-
+Box, mic and screen
     
 
 
