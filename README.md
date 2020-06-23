@@ -95,7 +95,7 @@ Screen as eyes
         Check if the results is ok
         
 # Synthesis of the plan
-Box, mic and screen
+Box (4 teams), mic (4 teams) and screen (6 teams)
     
 
 
