@@ -93,6 +93,9 @@ Screen as eyes
         Select the main shapes of a screen
         Remove the background of the screen
         Check if the results is ok
+        
+# Synthesis of the plan
+
     
 
 
