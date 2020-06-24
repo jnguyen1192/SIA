@@ -38,6 +38,7 @@ Box as a spirit
         Think if it will only appear on debug mode
             first proposal white color debug mode
             second proposal black color debug mode
+            third proposal green color debug mode
         If it is choosen the best sizes
         Else team will be split into other teams
     Only active for developer
