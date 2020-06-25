@@ -40,6 +40,7 @@ Box as a spirit
             second proposal black color debug mode
             third proposal green color debug mode
         If it is choosen the best sizes
+            first proposal 100*100
         Else team will be split into other teams
     Only active for developer
         Think about how to activate the developer mode
