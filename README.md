@@ -40,8 +40,9 @@ Box as a spirit
             second proposal black color debug mode
             third proposal green color debug mode
         If it is choosen the best sizes
-            first proposal 100*100
-            second proposal 500*500
+            first proposal 124*124
+            second proposal 512*512
+            third proposal 1024*1024
         Else team will be split into other teams
     Only active for developer
         Think about how to activate the developer mode
