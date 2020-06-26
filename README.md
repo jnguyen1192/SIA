@@ -46,6 +46,7 @@ Box as a spirit
         Else team will be split into other teams
             first proposal go on a team of first big point
             second proposal go on a team of second big point
+            third proposal go on a team of third big point
     Only active for developer
         Think about how to activate the developer mode
         Think how to switch betwen develeper and production mode
