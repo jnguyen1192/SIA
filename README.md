@@ -44,7 +44,8 @@ Box as a spirit
             second proposal 512*512
             third proposal 1024*1024
         Else team will be split into other teams
-            first proposal go on the first team
+            first proposal go on a team of first big point
+            second proposal go on a team of second big point
     Only active for developer
         Think about how to activate the developer mode
         Think how to switch betwen develeper and production mode
