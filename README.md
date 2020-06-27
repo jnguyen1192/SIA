@@ -50,6 +50,7 @@ Box as a spirit
     Only active for developer
         Think about how to activate the developer mode
             first proposal use a key touch
+            second proposal use a voice speech
         Think how to switch betwen develeper and production mode
         Specify the police of the developer mode
     Specify how the colors will appear on
