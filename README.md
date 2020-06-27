@@ -49,6 +49,7 @@ Box as a spirit
             third proposal go on a team of third big point
     Only active for developer
         Think about how to activate the developer mode
+            first proposal use a key touch
         Think how to switch betwen develeper and production mode
         Specify the police of the developer mode
     Specify how the colors will appear on
