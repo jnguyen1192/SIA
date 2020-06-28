@@ -55,6 +55,7 @@ Box as a spirit
         Think how to switch between developer and production mode
             first proposal use a key touch
             second proposal use a voice speech
+            third proposal use a command line
         Specify the police of the developer mode
     Specify how the colors will appear on
         Choose between black/white or colors
