@@ -52,7 +52,8 @@ Box as a spirit
             first proposal use a key touch
             second proposal use a voice speech
             third proposal use a special button
-        Think how to switch betwen develeper and production mode
+        Think how to switch between developer and production mode
+            first proposal use a key touch
         Specify the police of the developer mode
     Specify how the colors will appear on
         Choose between black/white or colors
