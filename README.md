@@ -59,6 +59,7 @@ Box as a spirit
         Specify the police of the developer mode
     Specify how the colors will appear on
         Choose between black/white or colors
+            first proposal choose black
         Can it be similar color of the real color ?
         Synthesis of choices of the colors of the box
     Specify if a voice of the thinking will exist
