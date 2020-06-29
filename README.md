@@ -61,6 +61,7 @@ Box as a spirit
         Choose between black/white or colors
             first proposal choose black/white
             second proposal choose colors
+            third proposal choose black/white for a specific task and colors for another specific task
         Can it be similar color of the real color ?
         Synthesis of choices of the colors of the box
     Specify if a voice of the thinking will exist
