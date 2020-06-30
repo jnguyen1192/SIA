@@ -59,6 +59,7 @@ Box as a spirit
         Specify the police of the developer mode
             first proposal cabria
             second proposal comics sans ms
+            third proposal Times New roman
     Specify how the colors will appear on
         Choose between black/white or colors
             first proposal choose black/white
