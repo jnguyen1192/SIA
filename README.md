@@ -57,6 +57,7 @@ Box as a spirit
             second proposal use a voice speech
             third proposal use a command line
         Specify the police of the developer mode
+            first proposal cabria
     Specify how the colors will appear on
         Choose between black/white or colors
             first proposal choose black/white
