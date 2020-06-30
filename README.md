@@ -58,6 +58,7 @@ Box as a spirit
             third proposal use a command line
         Specify the police of the developer mode
             first proposal cabria
+            second proposal comics sans ms
     Specify how the colors will appear on
         Choose between black/white or colors
             first proposal choose black/white
