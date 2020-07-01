@@ -68,6 +68,7 @@ Box as a spirit
         Can it be similar color of the real color ?
             first proposal use the real colors
             second proposal use the primary colors
+            third proposal use the AVG of colors on video
         Synthesis of choices of the colors of the box
     Specify if a voice of the thinking will exist
         Etablish the show of the voice (text or audio)
