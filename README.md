@@ -72,6 +72,7 @@ Box as a spirit
         Synthesis of choices of the colors of the box
             first proposal resume all choices
             second proposal make a schema of each choices
+            third proposal make a prototype for each choices
     Specify if a voice of the thinking will exist
         Etablish the show of the voice (text or audio)
         Prototype the voice of the thinking using last meeting
