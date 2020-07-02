@@ -70,6 +70,7 @@ Box as a spirit
             second proposal use the primary colors
             third proposal use the AVG of colors on video
         Synthesis of choices of the colors of the box
+            first proposal resume all choices
     Specify if a voice of the thinking will exist
         Etablish the show of the voice (text or audio)
         Prototype the voice of the thinking using last meeting
