@@ -75,6 +75,7 @@ Box as a spirit
             third proposal make a prototype for each choices
     Specify if a voice of the thinking will exist
         Etablish the show of the voice (text or audio)
+            first proposal generate a texte using sylabus
         Prototype the voice of the thinking using last meeting
         If it works correctly validate or try the other way
 Mic as an input
