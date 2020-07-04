@@ -80,6 +80,7 @@ Box as a spirit
             third proposal use Google to read voice or another speaker using text
         Prototype the voice of the thinking using last meeting
             first proposal generate prototype using sylabus
+            second proposal generate prototype using smart text
         If it works correctly validate or try the other way
 Mic as an input
     Separate sounds listen
