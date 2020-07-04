@@ -81,6 +81,7 @@ Box as a spirit
         Prototype the voice of the thinking using last meeting
             first proposal generate prototype using sylabus
             second proposal generate prototype using smart text
+            third proposal connect google voice to previous prototypes
         If it works correctly validate or try the other way
 Mic as an input
     Separate sounds listen
