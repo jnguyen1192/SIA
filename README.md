@@ -84,6 +84,7 @@ Box as a spirit
             third proposal connect google voice to previous prototypes
         If it works correctly validate or try the other way
             first proposal validate
+            second proposal try a new way
 Mic as an input
     Separate sounds listen
         Choose clustering or classification
