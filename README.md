@@ -85,6 +85,7 @@ Box as a spirit
         If it works correctly validate or try the other way
             first proposal validate
             second proposal try a new way
+            third proposal give up the voice of SAI
 Mic as an input
     Separate sounds listen
         Choose clustering or classification
