@@ -83,6 +83,7 @@ Box as a spirit
             second proposal generate prototype using smart text
             third proposal connect google voice to previous prototypes
         If it works correctly validate or try the other way
+            first proposal validate
 Mic as an input
     Separate sounds listen
         Choose clustering or classification
