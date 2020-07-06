@@ -90,6 +90,7 @@ Mic as an input
     Separate sounds listen
         Choose clustering or classification
             first proposal clustering choosen
+            second proposal classification choosen
         Use the method choosen
         If it works correctly validate or try the other way
     Focus on user voice
