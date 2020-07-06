@@ -91,6 +91,7 @@ Mic as an input
         Choose clustering or classification
             first proposal clustering choosen
             second proposal classification choosen
+            Third proposal pipeline using both method choosen
         Use the method choosen
         If it works correctly validate or try the other way
     Focus on user voice
