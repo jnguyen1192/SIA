@@ -93,6 +93,8 @@ Mic as an input
             second proposal classification choosen
             Third proposal pipeline using both method choosen
         Use the method choosen
+            first proposal Random Forest
+
         If it works correctly validate or try the other way
     Focus on user voice
         Show all voices
