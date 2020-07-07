@@ -95,7 +95,7 @@ Mic as an input
         Use the method choosen
             first proposal Random Forest
             second proposal K means
-
+            third proposal spectral clustering
         If it works correctly validate or try the other way
     Focus on user voice
         Show all voices
