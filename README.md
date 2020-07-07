@@ -94,6 +94,7 @@ Mic as an input
             Third proposal pipeline using both method choosen
         Use the method choosen
             first proposal Random Forest
+            second proposal K means
 
         If it works correctly validate or try the other way
     Focus on user voice
